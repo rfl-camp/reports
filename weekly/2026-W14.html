@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RFL Weekly - 2026-W14</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --c-bg: #ffffff;
+  --c-surface: #f9f9f9;
+  --c-border: #ddd;
+  --c-border-light: #eee;
+  --c-text: #111;
+  --c-text-secondary: #555;
+  --c-text-tertiary: #999;
+  --c-link: #000;
+  --c-accent: #e8730e;
+  --radius: 2px;
+  --max-w: 1100px;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Helvetica Neue', Helvetica, Arial, 'Noto Sans SC', sans-serif;
+  background: var(--c-bg);
+  color: var(--c-text);
+  font-size: 14px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Header — Editorial masthead */
+.header {
+  border-bottom: 1px solid var(--c-border);
+  background: var(--c-bg);
+}
+.header-inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.logo {
+  font-size: 42px;
+  font-weight: 700;
+  color: #000;
+  text-decoration: none;
+  letter-spacing: 4px;
+  font-family: Georgia, 'Times New Roman', serif;
+  padding: 24px 0 0;
+  display: block;
+  text-align: center;
+}
+.logo:hover { color: var(--c-accent); }
+.logo .accent { color: inherit; }
+nav {
+  display: flex;
+  gap: 24px;
+  padding: 14px 0;
+  border-top: 1px solid var(--c-border-light);
+  margin-top: 16px;
+}
+nav a {
+  color: var(--c-text-secondary);
+  text-decoration: none;
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  font-weight: 500;
+  transition: color 0.15s;
+}
+nav a:hover { color: #000; }
+nav a.active {
+  color: #000;
+  font-weight: 700;
+}
+
+/* Layout */
+.container {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 32px 24px;
+}
+.back-link {
+  display: inline-block;
+  color: #000;
+  text-decoration: none;
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: 24px;
+  transition: color .15s;
+}
+.back-link:hover { color: var(--c-accent); }
+
+/* Page header */
+.page-header {
+  margin-bottom: 32px;
+  padding-bottom: 20px;
+  border-bottom: 2px solid #000;
+}
+.page-header h1 {
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: -0.3px;
+  font-family: Georgia, 'Times New Roman', serif;
+  text-transform: uppercase;
+}
+.page-header .subtitle {
+  color: var(--c-text-tertiary);
+  font-size: 11px;
+  margin-top: 6px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+/* Stats row */
+.stats {
+  display: flex;
+  gap: 24px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+.stat {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+}
+.stat-val {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--c-text);
+}
+.stat-label {
+  font-size: 12px;
+  color: var(--c-text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Report list */
+.list-section {
+  margin-bottom: 32px;
+}
+.list-section-title {
+  font-size: 9px;
+  font-weight: 700;
+  color: var(--c-accent);
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  padding: 12px 0 10px;
+  border-bottom: 2px solid #000;
+  margin-bottom: 0;
+}
+.list-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--c-border-light);
+  gap: 12px;
+  transition: background .15s;
+}
+.list-item:hover { background: #fafafa; }
+.list-item:last-child { border-bottom: none; }
+.list-item-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+.list-item a {
+  color: #000;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 15px;
+  font-family: Georgia, 'Times New Roman', serif;
+}
+.list-item a:hover { color: var(--c-accent); }
+.list-item-meta {
+  color: var(--c-text-tertiary);
+  font-size: 11px;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.5px;
+}
+
+/* Tags */
+.tag {
+  display: inline-block;
+  padding: 2px 8px;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  background: #000;
+  color: #fff;
+  border-radius: 0;
+}
+.tag-daily { background: #000; }
+.tag-weekly { background: #333; }
+.tag-monthly { background: #555; }
+.tag-yearly { background: #777; }
+
+/* Report content */
+.report-card {
+  border: none;
+  border-top: 2px solid #000;
+  border-radius: 0;
+  background: var(--c-bg);
+  overflow: hidden;
+}
+.report-card-header {
+  background: transparent;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--c-border-light);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.report-card-header h2 {
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.report-body {
+  padding: 28px 0;
+  font-size: 15px;
+  line-height: 1.8;
+  font-family: 'Noto Serif SC', Georgia, serif;
+}
+.report-body h1 { font-size: 24px; font-weight: 700; margin: 0 0 20px 0; color: #000; font-family: Georgia, serif; text-transform: uppercase; letter-spacing: -0.3px; }
+.report-body h2 { font-size: 18px; font-weight: 700; margin: 32px 0 14px 0; color: #000; padding-bottom: 8px; border-bottom: 1px solid var(--c-border-light); font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-transform: uppercase; letter-spacing: 0.3px; }
+.report-body h3 { font-size: 14px; font-weight: 700; margin: 24px 0 8px 0; color: var(--c-text-secondary); text-transform: uppercase; letter-spacing: 0.5px; }
+.report-body ul { padding-left: 20px; margin: 8px 0; }
+.report-body li { margin-bottom: 4px; }
+.report-body a { color: #000; text-decoration: none; border-bottom: 1px solid #ccc; transition: all .15s; }
+.report-body a:hover { color: var(--c-accent); border-color: var(--c-accent); }
+.report-body blockquote { border-left: 2px solid #000; padding: 8px 16px; margin: 12px 0; color: var(--c-text-secondary); background: #f9f9f9; font-size: 13.5px; }
+.report-body code { background: #f5f5f5; padding: 2px 6px; border-radius: 2px; font-size: 12px; font-family: 'SF Mono', 'Fira Code', monospace; border: 1px solid #e5e5e5; }
+.report-body hr { border: none; border-top: 1px solid var(--c-border-light); margin: 28px 0; }
+.report-body p { margin: 10px 0; }
+.report-body img { max-width: 100%; }
+/* Embedded newsletter overrides */
+.report-body > div {
+  background: transparent !important;
+  box-shadow: none !important;
+  margin-bottom: 20px;
+}
+.report-body > div > div {
+  border-color: var(--c-border-light);
+}
+/* 小白科普 info boxes */
+.report-body div[style*="#f0f7ff"] {
+  background: #f9f9f9 !important;
+  border: 1px solid var(--c-border-light) !important;
+  border-top: 2px solid #000 !important;
+  border-radius: 0 !important;
+}
+/* Report prev/next navigation */
+.report-nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 0;
+  border-top: 2px solid #000;
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+.report-nav a {
+  color: #000;
+  text-decoration: none;
+  font-weight: 700;
+  transition: color .15s;
+}
+.report-nav a:hover {
+  color: var(--c-accent);
+}
+
+/* Empty state */
+.empty {
+  color: var(--c-text-tertiary);
+  text-align: center;
+  padding: 48px 20px;
+  border-top: 2px solid #000;
+  font-size: 13px;
+  letter-spacing: 1px;
+}
+
+/* Footer */
+.footer {
+  text-align: center;
+  padding: 32px;
+  color: #ccc;
+  font-size: 9px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  border-top: 1px solid var(--c-border-light);
+  margin-top: 48px;
+  max-width: var(--max-w);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Magazine rack */
+.magazine-shelf {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 24px;
+  padding: 16px 0;
+}
+.magazine-cover {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  aspect-ratio: 3/4;
+  background: linear-gradient(160deg, #1a1a3e 0%, #0d1b2a 50%, #1b2838 100%);
+  border-radius: 4px;
+  padding: 20px 18px 16px;
+  text-decoration: none;
+  color: #fff;
+  overflow: hidden;
+  box-shadow: 4px 4px 14px rgba(0,0,0,0.3);
+  transition: transform 0.4s cubic-bezier(0.25,0.46,0.45,0.94), box-shadow 0.4s cubic-bezier(0.25,0.46,0.45,0.94);
+}
+.magazine-cover::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.08) 45%, rgba(255,255,255,0.15) 50%, rgba(255,255,255,0.08) 55%, transparent 60%);
+  background-size: 200% 100%;
+  background-position: 200% 0;
+  transition: background-position 0.6s ease-out;
+  pointer-events: none;
+  border-radius: 4px;
+}
+.magazine-cover:hover {
+  transform: perspective(600px) rotateY(-3deg) translateY(-4px) scale(1.02);
+  box-shadow: 8px 8px 28px rgba(0,0,0,0.4);
+}
+.magazine-cover:hover::after {
+  background-position: -200% 0;
+}
+.mc-spine {
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 4px;
+  background: linear-gradient(180deg, rgba(232,115,14,0.6), rgba(232,115,14,0.2));
+}
+.mc-masthead {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  color: #e8730e;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.mc-date {
+  font-size: 18px;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: -0.3px;
+  line-height: 1.2;
+}
+.mc-weekday {
+  font-size: 11px;
+  color: rgba(255,255,255,0.45);
+  margin-bottom: 14px;
+}
+.mc-hero {
+  font-size: 12px;
+  line-height: 1.5;
+  color: rgba(255,255,255,0.8);
+  font-family: Georgia, 'Noto Serif SC', serif;
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+}
+.mc-stats {
+  font-size: 10px;
+  color: rgba(255,255,255,0.35);
+  margin-top: 10px;
+}
+.mc-issue {
+  position: absolute;
+  bottom: 12px;
+  right: 14px;
+  font-size: 10px;
+  color: rgba(255,255,255,0.25);
+  font-variant-numeric: tabular-nums;
+}
+</style>
+</head>
+<body>
+<div class="header">
+  <div class="header-inner">
+    <a href="../index.html" class="logo">RFL DAILY</a>
+    <nav><a href="../index.html">All Issues</a>
+<a href="../daily/">Daily</a>
+</nav>
+  </div>
+</div>
+<div class="container">
+<a href="index.html" class="back-link">&larr; Back</a>
+
+<div class="page-header">
+  <h1><span class="tag tag-weekly">weekly</span> 2026-W14</h1>
+</div>
+
+<div class="report-card">
+  <div class="report-card-header">
+    <h2>2026-W14</h2>
+    
+  </div>
+  <div class="report-body">
+    <h1>RFL 周报 - 2026-W14</h1>
+<blockquote>
+<p>2026-03-30 ~ 2026-04-05 | 覆盖 1 份日报</p>
+</blockquote>
+<h2>Summary / 本周要点</h2>
+<p><strong>EN:</strong> 1 reports aggregated. No significant activity.</p>
+<p><strong>CN:</strong> 共聚合 1 份报告。无显著活动。</p>
+<hr />
+<p><em>Generated at 2026-03-30 08:00:00 CST by rfl-reports.py</em></p>
+  </div>
+  <div class="report-nav"><a href="2026-W13.html">&larr; 2026-W13</a><span></span></div>
+</div>
+
+</div>
+<div class="footer">Rust-for-Linux &middot; RFL Daily</div>
+</body>
+</html>
