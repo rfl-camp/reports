@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RFL 社区日报 &middot; 2026-04-06</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:#fff;font-family:'Helvetica Neue',Helvetica,Arial,'Noto Sans SC',sans-serif;color:#111;-webkit-font-smoothing:antialiased}
+
+/* ── Masthead ── */
+.af-masthead{text-align:center;padding:20px 0 0;border-bottom:1px solid #ddd}
+.af-logo{font-size:48px;font-weight:700;letter-spacing:3px;color:#000;font-family:Georgia,'Times New Roman',serif;text-decoration:none;display:block;line-height:1}
+.af-logo:hover{color:#e8730e}
+.af-nav{display:flex;justify-content:center;gap:24px;padding:14px 0;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;font-weight:500;border-top:1px solid #eee;margin-top:16px}
+.af-nav a{color:#555;text-decoration:none;transition:color .15s}
+.af-nav a:hover{color:#000}
+.af-nav a.active{color:#000;font-weight:700}
+
+/* ── Prev/Next arrows ── */
+.pn-arrow{position:fixed;top:50%;transform:translateY(-50%);z-index:200;display:flex;align-items:center;justify-content:center;width:48px;height:48px;background:rgba(0,0,0,0.06);color:#333;text-decoration:none;font-size:22px;font-family:Georgia,serif;transition:all .2s;border-radius:50%}
+.pn-arrow:hover{background:rgba(0,0,0,0.12);color:#000}
+.pn-arrow.pn-left{left:16px}
+.pn-arrow.pn-right{right:16px}
+.pn-arrow .pn-label{position:absolute;top:50%;white-space:nowrap;font-size:9px;letter-spacing:2px;text-transform:uppercase;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-weight:700;color:#999;opacity:0;transition:opacity .2s;transform:translateY(-50%)}
+.pn-left .pn-label{left:56px}
+.pn-right .pn-label{right:56px}
+.pn-arrow:hover .pn-label{opacity:1}
+
+/* ── Date bar tools ── */
+.af-date-bar{font-size:10px;color:#999;letter-spacing:2px;text-transform:uppercase;text-align:center;padding:10px 0;border-bottom:2px solid #000;position:relative;display:flex;align-items:center;justify-content:center;gap:20px}
+.af-today{font-size:9px;letter-spacing:2px;text-transform:uppercase;font-weight:700;color:#e8730e;text-decoration:none;transition:color .15s;cursor:pointer}
+.af-today:hover{color:#000}
+.af-cal-btn{font-size:9px;letter-spacing:2px;text-transform:uppercase;font-weight:700;color:#999;cursor:pointer;transition:color .15s;user-select:none;position:relative}
+.af-cal-btn:hover{color:#000}
+.af-cal-btn svg{width:14px;height:14px;vertical-align:-2px;margin-right:3px;fill:currentColor}
+
+/* ── Calendar dropdown ── */
+.cal-overlay{display:none;position:fixed;inset:0;z-index:500}
+.cal-overlay.open{display:block}
+.cal-drop{position:absolute;top:100%;left:50%;transform:translateX(-50%);margin-top:8px;background:#fff;border:1px solid #ddd;box-shadow:0 8px 32px rgba(0,0,0,0.12);z-index:501;padding:16px;min-width:280px}
+.cal-drop.open{display:block}
+.cal-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+.cal-month{font-size:13px;font-weight:700;font-family:Georgia,serif;letter-spacing:0.5px}
+.cal-arrow-btn{background:none;border:none;cursor:pointer;font-size:16px;color:#999;padding:4px 8px;transition:color .15s}
+.cal-arrow-btn:hover{color:#000}
+.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:2px;text-align:center}
+.cal-dow{font-size:8px;color:#999;letter-spacing:1px;text-transform:uppercase;padding:4px 0;font-weight:700}
+.cal-day{font-size:12px;padding:6px 2px;color:#ccc;cursor:default;border-radius:2px;transition:all .12s;font-variant-numeric:tabular-nums}
+.cal-day.has-issue{color:#000;font-weight:600;cursor:pointer}
+.cal-day.has-issue:hover{background:#f5f5f5}
+.cal-day.current{background:#000;color:#fff;font-weight:700}
+.cal-day.current:hover{background:#333}
+.cal-day.today-mark{box-shadow:inset 0 -2px 0 #e8730e}
+
+/* ── Hero split layout ── */
+.af-hero{display:flex;gap:0;border-bottom:2px solid #000;max-width:1100px;margin:0 auto}
+.af-hero-left{flex:1;min-width:0;border-right:1px solid #ddd;display:flex;flex-direction:column}
+.af-hero-visual{flex:1;background:#000;display:flex;align-items:center;justify-content:center;padding:48px;min-height:340px;position:relative;overflow:hidden}
+.af-hero-visual .cover-crab{font-size:80px}
+.af-hero-visual .cover-date{font-size:36px;font-weight:700;color:#fff;margin-top:12px;font-family:Georgia,serif;letter-spacing:1px}
+.af-hero-visual .cover-weekday{font-size:10px;color:rgba(255,255,255,0.4);letter-spacing:4px;text-transform:uppercase;margin-top:4px}
+.af-hero-visual .cover-hero{font-size:15px;color:rgba(255,255,255,0.6);margin-top:16px;font-family:'Noto Serif SC',Georgia,serif;line-height:1.6;max-width:340px;text-align:center}
+.af-hero-right{flex:1;min-width:0;display:flex;flex-direction:column}
+
+/* ── Hero article list (right side) ── */
+.af-hero-item{padding:20px 24px;border-bottom:1px solid #eee;transition:background .15s}
+.af-hero-item:last-child{border-bottom:none}
+.af-hero-item:hover{background:#fafafa}
+.af-hero-cat{font-size:9px;letter-spacing:2px;color:#e8730e;text-transform:uppercase;font-weight:700;margin-bottom:4px}
+.af-hero-title{font-size:17px;font-weight:700;color:#000;text-transform:uppercase;line-height:1.3;letter-spacing:0.3px;margin-bottom:4px}
+.af-hero-excerpt{font-size:12.5px;color:#666;line-height:1.5;font-family:'Noto Serif SC',Georgia,serif}
+
+/* ── Main content ── */
+.af-main{max-width:1100px;margin:0 auto;padding:0}
+
+/* ── Page / Section base ── */
+.mag-page{background:#fff;border:none;box-shadow:none;overflow:visible;cursor:default;position:relative}
+.mag-page-inner{padding:40px 32px;font-family:'Noto Serif SC',Georgia,serif;font-size:15.5px;line-height:1.95;color:#222;position:relative;height:auto;overflow:visible}
+.mag-page + .mag-page{border-top:1px solid #ddd}
+
+/* Full-bleed */
+.mag-full-bleed{width:100vw;margin-left:calc(-50vw + 50%);position:relative}
+
+/* Hide original cover/back-cover inside main flow (we rebuild them) */
+.mag-cover{display:none !important}
+.mag-back-cover{border-top:2px solid #000 !important}
+
+/* ── OVERVIEW ── */
+.overview-inner{display:flex;flex-direction:column;height:auto;overflow:visible}
+.ov-label{font-size:9px;letter-spacing:3px;color:#e8730e;text-transform:uppercase;font-weight:700;margin-bottom:6px}
+.ov-title{font-size:24px;font-weight:700;color:#000;margin-bottom:20px;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;letter-spacing:-0.3px;line-height:1.2;text-transform:uppercase}
+.ov-body{font-size:15.5px;line-height:2;color:#333}
+.ov-body b,.ov-body strong{color:#000;font-weight:700}
+.ov-body a{color:#000;text-decoration:none;border-bottom:1px solid #ccc;transition:all .15s}
+.ov-body a:hover{border-color:#e8730e;color:#e8730e}
+.ov-dropcap{float:left;font-size:64px;line-height:0.78;font-family:Georgia,serif;color:#000;margin:4px 12px 0 0;font-weight:400}
+
+/* ── SECTION PAGES ── */
+.mag-accent-bar{height:2px;background:#000;margin-bottom:16px}
+.mag-section-label{font-size:9px;letter-spacing:3px;color:#e8730e;text-transform:uppercase;font-weight:700;margin-bottom:4px}
+.mag-title{font-size:22px;font-weight:700;color:#000;margin-bottom:24px;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;line-height:1.25;padding-bottom:14px;border-bottom:1px solid #ddd;text-transform:uppercase;letter-spacing:0.2px}
+.mag-section-content{overflow:visible}
+
+/* Articles */
+.mag-article{margin-bottom:24px;padding:0 0 20px;border-bottom:1px solid #eee}
+.mag-article:last-child{border-bottom:none;margin-bottom:8px;padding-bottom:0}
+.art-title{font-size:16px;font-weight:700;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;color:#000;margin-bottom:6px;line-height:1.3;text-transform:uppercase;letter-spacing:0.2px}
+.art-body{font-size:14.5px;line-height:1.85;color:#444}
+.art-body p{margin-bottom:8px}
+.art-body b,.art-body strong{color:#000}
+.art-body code{background:#f5f5f5;padding:2px 6px;border-radius:2px;font-size:12.5px;font-family:'SF Mono','Fira Code',monospace;color:#333;border:1px solid #e5e5e5}
+.art-body a{color:#000;text-decoration:none;border-bottom:1px solid #ccc;transition:all .15s}
+.art-body a:hover{color:#e8730e;border-color:#e8730e}
+.art-body ul,.art-body ol{padding-left:20px;margin:8px 0}
+.art-body li{margin-bottom:3px;font-size:14px}
+.art-links{margin-top:10px}
+.art-link{display:inline-block;background:#000;color:#fff;padding:4px 12px;font-size:9px;text-decoration:none;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;margin-right:5px;margin-bottom:4px;transition:background .15s;letter-spacing:1px;text-transform:uppercase;font-weight:500}
+.art-link:hover{background:#e8730e}
+
+/* Tips box */
+.mag-tips{margin-top:16px;padding:18px 22px;background:#f7f7f7;border:none;border-top:2px solid #000;font-size:13.5px;line-height:1.8}
+.mag-tips div{background:transparent !important;border:none !important;padding:0 !important;border-radius:0 !important}
+.mag-tips b,.mag-tips strong{color:#000;font-size:13.5px}
+.mag-tips a{color:#000;font-size:12.5px;border-bottom:1px solid #ccc}
+.mag-tips a:hover{color:#e8730e;border-color:#e8730e}
+.mag-tips br{line-height:1.8}
+
+.mag-page-fade{display:none}
+.mag-page-num{display:none}
+
+/* ── BACK COVER → Footer ── */
+.mag-back-cover{background:#000 !important;cursor:default;position:relative;overflow:hidden;border:none !important;box-shadow:none}
+.mag-back-cover::before{display:none}
+.back-cover-inner{display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;padding:48px 24px;height:auto}
+.back-decoration{display:none}
+.back-content{display:flex;flex-direction:column;align-items:center;text-align:center}
+.back-logo{font-size:44px}
+.back-title{font-size:12px;font-weight:700;color:#fff;letter-spacing:6px;margin-top:12px;text-transform:uppercase}
+.back-subtitle{font-size:9px;color:rgba(255,255,255,0.3);letter-spacing:4px;text-transform:uppercase;margin-top:2px}
+.back-date{font-size:12px;color:rgba(255,255,255,0.3);margin-top:12px;letter-spacing:2px}
+.back-rule{width:40px;height:1px;background:rgba(255,255,255,0.2);margin:20px 0}
+.back-sources{font-size:10px;letter-spacing:1px}
+.back-sources a{color:rgba(255,255,255,0.5);text-decoration:none;transition:color .15s;text-transform:uppercase;font-size:10px;letter-spacing:1px}
+.back-sources a:hover{color:#e8730e}
+.back-nav{margin-top:24px;display:flex;gap:12px}
+.back-nav a{color:#fff;text-decoration:none;font-size:10px;padding:6px 16px;border:1px solid rgba(255,255,255,0.2);transition:all .15s;letter-spacing:1px;text-transform:uppercase}
+.back-nav a:hover{border-color:#e8730e;color:#e8730e}
+
+/* Reveal */
+@keyframes revealUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+.mag-page:not(.mag-cover):not(.mag-back-cover){opacity:0}
+.mag-page.revealed{animation:revealUp 0.35s ease-out forwards}
+
+@media(max-width:767px){
+  .af-hero{flex-direction:column}
+  .af-hero-left{border-right:none;border-bottom:1px solid #ddd}
+  .af-hero-visual{min-height:240px;padding:32px}
+  .af-logo{font-size:32px}
+  .af-nav{gap:12px;font-size:10px;flex-wrap:wrap}
+  .mag-page-inner{padding:28px 16px}
+  .mag-title{font-size:18px}
+  .art-title{font-size:14px}
+  .art-body{font-size:13.5px}
+}
+</style>
+</head>
+<body>
+
+<!-- ── Artforum-style masthead ── -->
+<div class="af-masthead">
+  <a href="2026-04-06.html" class="af-logo">RFL 社区日报</a>
+  <nav class="af-nav">
+    <a href="https://github.com/Rust-for-Linux" target="_blank" rel="noopener"><svg style="width:14px;height:14px;vertical-align:-2px;margin-right:3px;fill:currentColor" viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>RFL GitHub</a>
+    <a href="https://lore.kernel.org/rust-for-linux/" target="_blank" rel="noopener"><svg style="width:14px;height:14px;vertical-align:-2px;margin-right:3px;fill:currentColor" viewBox="0 0 16 16"><path d="M0 4a2 2 0 012-2h12a2 2 0 012 2v8a2 2 0 01-2 2H2a2 2 0 01-2-2V4zm2-1a1 1 0 00-1 1v.217l7 4.2 7-4.2V4a1 1 0 00-1-1H2zm13 2.383l-4.758 2.855L15 11.114V5.383zm-.034 6.878L9.271 8.82 8 9.583 6.729 8.82l-5.694 3.44A1 1 0 002 13h12a1 1 0 00.966-.739zM1 11.114l4.758-2.876L1 5.383v5.73z"/></svg>Lore</a>
+    <a href="https://rust-for-linux.zulipchat.com/" target="_blank" rel="noopener"><svg style="width:14px;height:14px;vertical-align:-2px;margin-right:3px;fill:currentColor" viewBox="0 0 16 16"><path d="M14 1a1 1 0 011 1v8a1 1 0 01-1 1h-2.5a1 1 0 00-.8.4l-1.9 2.533a1 1 0 01-1.6 0L5.3 11.4a1 1 0 00-.8-.4H2a1 1 0 01-1-1V2a1 1 0 011-1h12zM2 0a2 2 0 00-2 2v8a2 2 0 002 2h2.5a.5.5 0 01.4.2l1.9 2.533a2 2 0 003.2 0l1.9-2.533a.5.5 0 01.4-.2H14a2 2 0 002-2V2a2 2 0 00-2-2H2z"/></svg>Zulip</a>
+    <span style="color:#ddd">|</span>
+    <a href="https://github.com/rfl-camp/reports" target="_blank" rel="noopener"><svg style="width:14px;height:14px;vertical-align:-2px;margin-right:3px;fill:currentColor" viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>Source</a>
+  </nav>
+</div>
+<div class="af-date-bar" id="dateBar">
+  <a class="af-today" id="todayBtn" href="2026-04-06.html">TODAY</a>
+  <span>2026-04-06</span>
+  <span class="af-cal-btn" id="calBtn"><svg viewBox="0 0 16 16"><path d="M4 0v1H1.5A1.5 1.5 0 000 2.5v12A1.5 1.5 0 001.5 16h13a1.5 1.5 0 001.5-1.5v-12A1.5 1.5 0 0014.5 1H12V0h-1v1H5V0H4zm0 2v1h1V2h6v1h1V2h2.5a.5.5 0 01.5.5V4H1V2.5a.5.5 0 01.5-.5H4zM1 5h14v9.5a.5.5 0 01-.5.5h-13a.5.5 0 01-.5-.5V5z"/></svg>SELECT</span>
+  <div id="calDrop" class="cal-drop" style="display:none"></div>
+</div>
+<div id="calOverlay" class="cal-overlay"></div>
+
+<!-- ── Prev / Next arrows ── -->
+<a href="2026-04-05.html" class="pn-arrow pn-left" title="Previous: 2026-04-05">&#8592;<span class="pn-label">2026-04-05</span></a>
+
+
+<!-- ── Hero: left visual + right article list ── -->
+<div class="af-hero" id="afHero">
+  <div class="af-hero-left">
+    <div class="af-hero-visual" id="heroVisual"></div>
+  </div>
+  <div class="af-hero-right" id="heroRight"></div>
+</div>
+
+<!-- ── Main article content ── -->
+<div class="af-main">
+  <div id="magContent">
+    <div class="mag-page mag-cover" data-density="hard"><div class="mag-page-inner cover-inner"><div class="cover-decoration"></div><div class="cover-content"><div class="cover-masthead">R&thinsp;F&thinsp;L&ensp;D&thinsp;A&thinsp;I&thinsp;L&thinsp;Y</div><div class="cover-rule"></div><div class="cover-crab">🦀</div><div class="cover-date">2026-04-06</div><div class="cover-weekday">Monday</div><div class="cover-rule"></div><div class="cover-hero">GPU 驱动 · Nova-core（NVIDIA 开源驱动）</div><div class="cover-rule-thin"></div><div class="cover-stats">27 emails &middot; 2 msgs</div></div></div></div><div class="mag-page"><div class="mag-page-inner overview-inner"><div class="mag-accent-bar"></div><div class="ov-label">TODAY'S OVERVIEW</div><h2 class="ov-title">📋 今日概览</h2><div class="ov-body"><span class="ov-dropcap">今</span>天社区非常活跃！<strong>NVIDIA 的 nova-core GPU 驱动</strong>是今天的主角，收到了大量补丁——从固件对齐、代码警告修复到 GSP 命令基础设施的搭建，开发者们正在一砖一瓦地用 Rust 构建一个全新的 NVIDIA 开源 GPU 驱动。与此同时，<strong>I/O 子系统迎来了一次重要的抽象层重构</strong>，Alexandre Courbot 提交了一组 8 个补丁，把底层的内存映射 I/O 从"地址"模型升级为更安全的"指针类型"模型。<strong>群晖（Synology）NAS 的微控制器驱动</strong>已经迭代到第 6 版，正在用 Rust 编写控制 LED 灯和风扇的代码。另外，Miguel Ojeda 提交了一组 <strong>33 个补丁的大型工具链升级</strong>，将内核使用的 Rust 最低版本提升到 1.80.0 并做了一系列清理工作。Zulip 上则有新手在分享自己第一次为树莓派编写 Rust 内核驱动的体验。
+  </div><div class="mag-page-num">2</div></div></div><div class="mag-page"><div class="mag-page-inner"><div class="mag-accent-bar"></div><div class="mag-section-label">GPU 驱动 · NOVA-CORE（NVIDIA 开源驱动）</div><h2 class="mag-title">GPU 驱动 · Nova-core（NVIDIA 开源驱动）</h2><div class="mag-section-content"><div class="mag-article"><div class="art-title">1. 修复 Clippy 代码风格警告（v2，共 3 个补丁）</div><div class="art-body"><p>今天 nova-core 项目动态密集，共有 <strong>6 组补丁/讨论</strong>涉及固件加载、代码质量和 GPU 系统处理器（GSP）命令通信。</p><p>
+    <strong>发生了什么：</strong>Alexandre Courbot（NVIDIA）提交了一个小修复，针对 <code>read_sysmem_flush_page_ga100()</code> 函数中的运算优先级问题。Rust 的静态分析工具 Clippy 发现代码里有一处位运算（<code>&</code>）和比较运算的优先级可能让人看不懂（虽然逻辑是对的），于是作者加了括号让意图更明确。Miguel Ojeda 和 Danilo Krummrich 都参与了审查。这虽然是个小改动，但它属于更大的目标——<strong>消除 drm-rust-next 分支中的所有 Clippy 警告</strong>，确保 Rust GPU 驱动代码质量达到上游标准。
+  </p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/DHL6ZYVYIHI3.2SXJQ5VWKIU5T@nvidia.com/" class="art-link">📬 查看补丁</a> </div></div><div class="mag-article"><div class="art-title">2. 修复 drm-rust-next 分支中的所有 Clippy 警告（v2，共 3 个补丁）</div><div class="art-body"><p>
+    <strong>发生了什么：</strong>Danilo Krummrich（nova-core 维护者）提交了一组补丁，目标是<strong>把 DRM Rust 开发分支中剩余的所有 Clippy 警告全部清零</strong>。这就像打扫房间一样——代码功能没问题，但有些写法不够规范或可读性不够好。把警告清零后，未来任何新提交如果引入新的风格问题就会被立刻发现，有利于保持代码整洁。
+  </p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/DHLBJM6MGHZP.2UP49SIMCBN9B@kernel.org/" class="art-link">📬 查看补丁</a> </div></div><div class="mag-article"><div class="art-title">3. Falcon 固件 DMA 对象大小对齐（v1 + v2）</div><div class="art-body"><p>
+    <strong>发生了什么：</strong>这组补丁解决了一个因代码重构引入的隐患。之前 nova-core 有一个自定义的 <code>DmaObject</code> 类型来管理 GPU 固件的 DMA 内存，它会自动把内存大小对齐到页面（PAGE_SIZE）。后来重构时换成了内核全局的 <code>dma::Coherent</code> 类型，但这个类型<strong>不会自动对齐</strong>。问题在于：GPU 上的 Falcon 微控制器（负责加载和运行固件的小处理器）要求 DMA 内存块必须按特定大小对齐，否则固件加载可能失败。Alexandre Courbot 的补丁在分配内存时手动将大小向上取整到要求的对齐值，从而修复了这个问题。v1 和 v2 的区别是 Danilo 在代码审查中提出了改进意见后的迭代。
+  </p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/20260405-falcon-dma-roundup-v2-1-4af5b2ff9c16@nvidia.com/" class="art-link">📬 查看 v2 补丁</a> <a href="https://lore.kernel.org/rust-for-linux/DHKUVJPFY5TD.210EGM8FP4IHG@nvidia.com/" class="art-link">📬 查看 v1 补丁</a> </div></div></div><div class="mag-page-fade"></div><div class="mag-page-num">3</div></div></div><div class="mag-page"><div class="mag-page-inner"><div class="mag-accent-bar"></div><div class="mag-section-label">CONTINUED</div><h2 class="mag-title">GPU 驱动 · Nova-core（NVIDIA 开源驱动）</h2><div class="mag-section-content"><div class="mag-article"><div class="art-title">4. 修复 GSP 命令队列中的未定义行为（v5）</div><div class="art-body"><p>
+    <strong>发生了什么：</strong>这是一个<strong>安全性修复</strong>。GSP（GPU System Processor）是 NVIDIA 现代 GPU 中的一个独立处理器，驱动程序需要通过"命令队列"向它发指令。Danilo Krummrich 发现队列代码中存在<strong>未定义行为（undefined behavior, UB）</strong>——也就是说，代码在某些情况下的行为不可预测，编译器可以对其做任何优化，可能导致数据损坏甚至安全漏洞。这个补丁已经迭代到第 5 版，说明社区对这个问题非常重视，反复审查确保修复方案万无一失。这也体现了 Rust 在内核中的价值——虽然 <code>unsafe</code> 代码仍可能引入 UB，但 Rust 的类型系统让这类问题更容易被发现和追踪。
+  </p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/DHLBJ7FDJHZ8.XHEA93HJA53B@kernel.org/" class="art-link">📬 查看补丁</a> </div></div><div class="mag-article"><div class="art-title">5. GSP RM 控制命令基础设施（v3，共 9 个补丁）</div><div class="art-body"><p>
+    <strong>发生了什么：</strong>John Hubbard（NVIDIA）提交了 9 个补丁，搭建 nova-core 与 GPU 上 GSP 固件通信的"控制命令"框架。你可以把 GSP 想象成 GPU 里的一个"管家"，驱动程序需要发各种"指令"给它——比如查询 GPU 状态、配置显存等。这组补丁就是在建造发送这些指令的"管道"和"信封格式"。这是 nova-core 走向功能可用的关键一步，因为没有这套基础设施，驱动就没法真正控制 GPU。
+  </p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/7428e395-33ce-4dd6-b74a-9f61f2b831a9@nvidia.com/" class="art-link">📬 查看补丁</a> </div></div><div class="mag-article"><div class="art-title">6. GSP NV_STATUS 错误码绑定（v3，共 9 个补丁）</div><div class="art-body"><p>
+    <strong>发生了什么：</strong>同样来自 John Hubbard 的补丁系列。NVIDIA 的 GPU 固件有自己的一套错误码体系叫 <code>NV_STATUS</code>（类似于 Linux 内核的 errno）。这组补丁把这些错误码"翻译"成 Rust 可以使用的类型绑定，这样当 GSP 固件返回错误时，Rust 驱动就能正确识别和处理这些错误，而不是得到一堆看不懂的数字。这也是 RM 控制命令基础设施的配套工作。
+  </p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/fd010f7a-6d0d-4faf-bdea-23bac608f03e@nvidia.com/" class="art-link">📬 查看补丁</a> </div></div><div class="mag-tips"><div>
+    💡 <strong>小白科普</strong><br/>
+    <strong>Nova-core</strong>：一个正在开发中的、用 Rust 编写的 NVIDIA 开源 GPU 内核驱动，目标是替代现有的 nouveau 驱动，提供更好的性能和功能支持。<br/>
+    <strong>Falcon</strong>：NVIDIA GPU 内部的微控制器（你可以理解为 GPU 里的"小 CPU"），负责固件加载、电源管理等任务。<br/>
+    <strong>GSP（GPU System Processor）</strong>：NVIDIA 较新 GPU 中的系统处理器，驱动程序通过发送命令与其交互来控制 GPU。<br/>
+    <strong>Clippy</strong>：Rust 官方的代码质量检查工具，能发现代码中的风格问题和潜在 bug。
+    <a href="https://doc.rust-lang.org/clippy/">📖 了解 Clippy</a>
+  </div></div></div><div class="mag-page-fade"></div><div class="mag-page-num">4</div></div></div><div class="mag-page"><div class="mag-page-inner"><div class="mag-accent-bar"></div><div class="mag-section-label">I/O 抽象层与内存管理</div><h2 class="mag-title">I/O 抽象层与内存管理</h2><div class="mag-section-content"><div class="mag-article"><div class="art-title">1. I/O 从"地址"改为"指针类型"（共 8 个补丁）</div><div class="art-body"><p>今天 I/O 子系统迎来了一组<strong>重量级的重构</strong>，Alexandre Courbot 提交了多组相互关联的补丁，旨在让 Rust 内核的 I/O 操作更安全、更灵活。</p><p>
+    <strong>发生了什么：</strong>在内核中，驱动程序需要读写硬件寄存器——就像通过"地址"去控制硬件开关一样。之前 Rust 内核代码用原始的整数地址（<code>usize</code>）来表示这些硬件地址，但这样做缺少类型安全——编译器没法帮你检查你是不是把一个普通内存地址当成硬件寄存器地址来用了。这组补丁把底层实现从"整数地址"改为 Rust 的指针类型，这样编译器就能在编译时帮你捕获更多错误。这就像是把家里所有的钥匙从"编号标签"换成了"形状各异的钥匙"——你拿错了就插不进去，而不是插进去了才发现开错了门。Danilo Krummrich 参与了代码审查。
+  </p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/DHLB4703ZJUX.371TA9OH871FG@nvidia.com/" class="art-link">📬 查看补丁</a> </div></div><div class="mag-article"><div class="art-title">2. 将 Mmio 泛化到任意类型（共 8 个补丁）</div><div class="art-body"><p>
+    <strong>发生了什么：</strong>MMIO（Memory-Mapped I/O，内存映射 I/O）是驱动程序与硬件通信的主要方式——CPU 把硬件寄存器"映射"到内存地址空间，读写这些地址就等于在操作硬件。之前 Rust 内核中的 <code>Mmio</code> 类型是比较固定的，只能处理特定的情况。这组补丁把它泛化了——让 <code>Mmio</code> 能适配任意的寄存器布局类型。这意味着不同的驱动可以定义自己独特的寄存器"蓝图"，然后用同一套安全的 <code>Mmio</code> 接口来操作，大大减少了重复代码。
+  </p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/DHLB3RO3OSF5.2R7F27U99BKLN@nvidia.com/" class="art-link">📬 查看补丁</a> </div></div></div><div class="mag-page-fade"></div><div class="mag-page-num">5</div></div></div><div class="mag-page"><div class="mag-page-inner"><div class="mag-accent-bar"></div><div class="mag-section-label">CONTINUED</div><h2 class="mag-title">I/O 抽象层与内存管理</h2><div class="mag-section-content"><div class="mag-article"><div class="art-title">3. I/O 类型泛化与投影（共 8 个补丁）</div><div class="art-body"><p>
+    <strong>发生了什么：</strong>这是上面两组工作的"伞补丁"（cover letter），统领整个 I/O 类型重构的设计思路。"投影"（projection）是一个关键概念——指的是从一个大的寄存器映射中"取出"一部分子区域来操作，就像从一张大地图中裁出你关心的那一小块。这让驱动代码可以安全地把寄存器空间按功能模块划分，每个模块只能访问自己那部分寄存器，避免越界操作。这对于像 GPU 这样寄存器空间巨大且复杂的设备尤其重要。
+  </p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/DHLB8H63S0R6.1RP67M1C8S5G4@nvidia.com/" class="art-link">📬 查看补丁</a> </div></div><div class="mag-article"><div class="art-title">4. DMA 分配溢出时返回更准确的错误码</div><div class="art-body"><p>
+    <strong>发生了什么：</strong>内核测试机器人（kernel test robot）发现了一个问题：当 DMA 内存分配的大小计算发生整数溢出时（比如申请的内存大到超过了数字能表示的范围），代码原来返回 <code>ENOMEM</code>（"内存不足"），但更准确的错误应该是 <code>EOVERFLOW</code>（"数值溢出"）。虽然对用户来说最终结果都是"分配失败"，但返回正确的错误码有助于开发者调试问题——就像医生给你诊断时应该区分"感冒"和"过敏"，虽然都流鼻涕但原因不同。
+  </p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/202604051110.OC0tBUnh-lkp@intel.com/" class="art-link">📬 查看补丁</a> </div></div><div class="mag-tips"><div>
+    💡 <strong>小白科普</strong><br/>
+    <strong>MMIO（Memory-Mapped I/O）</strong>：一种让 CPU 通过读写内存地址来控制硬件的技术。CPU 不需要特殊指令，直接像操作普通内存一样就能和硬件"对话"。
+    <a href="https://en.wikipedia.org/wiki/Memory-mapped_I/O">📖 了解 MMIO</a><br/>
+    <strong>DMA（Direct Memory Access）</strong>：让硬件设备直接读写内存，不需要 CPU 一个字节一个字节地搬运。就像快递直接送到你家，而不是每次都要你亲自去邮局取。
+    <a href="https://en.wikipedia.org/wiki/Direct_memory_access">📖 了解 DMA</a>
+  </div></div></div><div class="mag-page-fade"></div><div class="mag-page-num">6</div></div></div><div class="mag-page"><div class="mag-page-inner"><div class="mag-accent-bar"></div><div class="mag-section-label">设备驱动</div><h2 class="mag-title">设备驱动</h2><div class="mag-section-content"><div class="mag-article"><div class="art-title">1. 群晖（Synology）NAS 微控制器驱动 v6（共 2 个补丁）</div><div class="art-body"><p>
+    <strong>发生了什么：</strong>Markus Probst 提交了群晖 NAS 设备微控制器驱动的第 6 版。群晖是大家常用的 NAS（网络存储）品牌，它们的硬件中有一个微控制器（MCU），通过串口连接到主处理器，负责控制机器上的 LED 指示灯、风扇转速、蜂鸣器，以及处理开关机和按钮操作。这个驱动<strong>完全用 Rust 编写</strong>，目前第一版先支持了四种 LED 的控制：电源灯、状态灯、警告灯和 USB 灯。风扇控制、蜂鸣器等功能将在后续版本加入。
+  </p><p>
+    <strong>为什么重要：</strong>这是一个很好的"真实世界 Rust 驱动"案例。它依赖于 Rust 的 LED 子系统抽象和串口设备（serdev）抽象，说明 Rust 内核的基础设施正在成熟到可以支撑实际的嵌入式设备驱动开发。同时，补丁还包含了 devicetree 绑定的定义，让系统可以通过设备树来识别和加载这个驱动。
+  </p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/20260405-synology_microp_initial-v6-0-08fde474b6c9@posteo.de/" class="art-link">📬 查看补丁系列</a> </div></div><div class="mag-article"><div class="art-title">2. ACPI PRP0001 设备匹配修复（v2）</div><div class="art-body"><p>
+    <strong>发生了什么：</strong>这个补丁修复了 Rust ACPI 子系统中的一个设备匹配问题。在 PC 和服务器中，硬件设备的信息通常由 ACPI 表提供（就像硬件的"户口本"）。其中 <code>PRP0001</code> 是一种特殊的 ACPI 设备标识，它允许 ACPI 设备使用 Device Tree 风格的兼容性字符串来匹配驱动。Markus Probst 发现在 Rust 驱动中，匹配 PRP0001 设备时 <code>id_info</code> 总是为空（None），导致驱动无法正确识别设备。
+  </p><p>
+    修复方法是导出内核的 <code>acpi_of_match_device</code> 函数供 Rust 调用，用它来做匹配。之所以不能直接用 <code>device_get_match_data</code>，是因为 Rust 绑定存储的是一个索引值而不是数据指针——这是之前架构决策的副作用。Greg Kroah-Hartman（Linux 设备模型维护者）参与了审查。
+  </p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/20260405-rust_acpi_prp0001-v2-1-4f8b1cf075d3@posteo.de/" class="art-link">📬 查看补丁</a> </div></div><div class="mag-tips"><div>
+    💡 <strong>小白科普</strong><br/>
+    <strong>ACPI</strong>：高级配置与电源接口，是 PC/服务器硬件向操作系统描述自己的标准方式。系统启动时，BIOS/UEFI 会提供 ACPI 表，告诉操作系统"我有哪些硬件、它们的地址是什么"。
+    <a href="https://en.wikipedia.org/wiki/ACPI">📖 了解 ACPI</a><br/>
+    <strong>Device Tree（设备树）</strong>：嵌入式系统（如树莓派、手机）中描述硬件的方式，和 ACPI 类似但格式不同，常用于 ARM 平台。
+    <a href="https://docs.kernel.org/devicetree/">📖 了解 Device Tree</a>
+  </div></div></div><div class="mag-page-fade"></div><div class="mag-page-num">7</div></div></div><div class="mag-page"><div class="mag-page-inner"><div class="mag-accent-bar"></div><div class="mag-section-label">工具链与构建系统</div><h2 class="mag-title">工具链与构建系统</h2><div class="mag-section-content"><div class="mag-article"><div class="art-title">1. 利用 Rust 1.80.0 新特性简化 transmute 代码</div><div class="art-body"><p>Miguel Ojeda（Rust-for-Linux 项目负责人）今天提交了一组<strong>多达 33 个补丁</strong>的大型系列，围绕 Rust 工具链版本升级进行了大量清理和简化工作。</p><p>
+    <strong>发生了什么：</strong>Rust 1.80.0 稳定了 <code>split_at_checked()</code> 和 <code>split_at_mut_checked()</code> 方法。之前内核代码在做类型转换（transmute）时需要手动做边界检查，写起来比较啰嗦。现在可以直接用标准库的新方法，代码更简洁也更不容易出错。这就像是从"手动计算找零"升级到"用计算器找零"——结果一样但过程更可靠。
+  </p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/CANiq72=EL4pEagthmrQ=DTNe8-5jWMfgxxx+fsj=pFy3EX0zdw@mail.gmail.com/" class="art-link">📬 查看补丁</a> </div></div><div class="mag-article"><div class="art-title">2. 利用稳定的 NonNull::add() 简化分配器代码</div><div class="art-body"><p>
+    <strong>发生了什么：</strong><code>NonNull::add()</code> 是一个在非空指针上做偏移计算的方法，之前是 unstable（不稳定）API，内核需要特殊声明才能使用。现在它已经稳定了，代码可以直接调用，同时移除之前需要的 <code>#![feature(...)]</code> 声明。这是 Rust-for-Linux 一直努力的方向：<strong>尽量减少对 Rust 不稳定特性的依赖</strong>，因为不稳定特性随时可能改变，会给内核维护带来风险。
+  </p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/CANiq72k1U0JacHf9rEVhOMmeZ4szCPBhbfLxC1K_0a0cQPw6HA@mail.gmail.com/" class="art-link">📬 查看补丁</a> </div></div><div class="mag-article"><div class="art-title">3. 更新 bindgen 的 --rust-target 版本</div><div class="art-body"><p>
+    <strong>发生了什么：</strong><code>bindgen</code> 是内核构建过程中使用的工具，负责自动将 C 头文件转换为 Rust 可以调用的绑定代码。这个补丁更新了传给 bindgen 的 <code>--rust-target</code> 参数，使其匹配新的最低 Rust 版本，同时更新了相关注释说明。
+  </p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/CANiq72kh47Nss9+OdHf=wRhO2=79dxPaL_vcPv8U8qG64bYfmw@mail.gmail.com/" class="art-link">📬 查看补丁</a> </div></div></div><div class="mag-page-fade"></div><div class="mag-page-num">8</div></div></div><div class="mag-page"><div class="mag-page-inner"><div class="mag-accent-bar"></div><div class="mag-section-label">CONTINUED</div><h2 class="mag-title">工具链与构建系统</h2><div class="mag-section-content"><div class="mag-article"><div class="art-title">4. 移除不再需要的 allow 属性</div><div class="art-body"><p>
+    <strong>发生了什么：</strong>之前 bindgen 生成的代码会触发一些 Rust 编译器警告（比如布局测试中的命名风格警告），所以代码里加了 <code>#[allow(...)]</code> 来抑制这些警告。现在新版本的 bindgen 生成的代码不再有这些问题，所以这些 allow 属性就成了"历史遗留"，可以安全删除了。保持代码里没有不必要的 allow 很重要，因为它们会掩盖潜在的真实问题。
+  </p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/CANiq72m9bsXZnMJv2w9eszV5DGUG1Cq0NCEUqv60=4Op__Uong@mail.gmail.com/" class="art-link">📬 查看补丁</a> </div></div><div class="mag-article"><div class="art-title">5. 更新 Ubuntu 快速入门文档中的版本号</div><div class="art-body"><p>
+    <strong>发生了什么：</strong>Rust-for-Linux 的快速入门文档中列出了在 Ubuntu 上安装所需工具的命令，其中包含带版本号的包名。随着 Rust 最低版本的提升，这些包名需要同步更新，否则新手按照文档安装会装到旧版本，导致编译不过。这是文档维护中很容易被忽略但对新手非常重要的一环。
+  </p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/CANiq72nqenC30r7QQAmdKxS8ehGU2SoSGr+LCnoTAGLegH-KnA@mail.gmail.com/" class="art-link">📬 查看补丁</a> </div></div><div class="mag-tips"><div>
+    💡 <strong>小白科普</strong><br/>
+    <strong>bindgen</strong>：一个自动工具，能读取 C/C++ 的头文件，然后生成对应的 Rust FFI（外部函数接口）绑定。内核中大量的 C 代码需要通过 bindgen 才能被 Rust 代码安全调用。
+    <a href="https://doc.rust-lang.org/nomicon/ffi.html">📖 了解 Rust FFI</a><br/>
+    <strong>Unstable features（不稳定特性）</strong>：Rust 语言中还在实验阶段的功能，只有 nightly 版本才能使用。内核减少对它们的依赖是为了长期维护的稳定性。
+    <a href="https://doc.rust-lang.org/unstable-book/">📖 了解 Rust 不稳定特性</a>
+  </div></div></div><div class="mag-page-fade"></div><div class="mag-page-num">9</div></div></div><div class="mag-page"><div class="mag-page-inner"><div class="mag-accent-bar"></div><div class="mag-section-label">社区交流与新手问答</div><h2 class="mag-title">社区交流与新手问答</h2><div class="mag-section-content"><div class="mag-article"><div class="art-title">Zulip：如何在 I2C Rust 驱动中看到调试输出？</div><div class="art-body"><p>
+    <strong>发生了什么：</strong>社区成员 Christian Meusel 在 Zulip 的 #Help 频道分享了自己的经历。他正在树莓派（aarch64 架构）上迈出用 Rust 写内核驱动的第一步，尝试编写一个 I2C 设备驱动（用于 GPIO 扩展器）。他遇到了一个问题：驱动加载后看不到任何调试输出。
+  </p><p>
+    后来他自己发现了原因——<strong>忘记注册 I2C 设备了</strong>！在 Linux 中，光有驱动代码还不够，你还需要告诉系统"这个地址上有一个这样的设备"，驱动才会被激活。他通过 <code>echo rust_driver_i2c 0x20 > /sys/bus/i2c/devices/i2c-1/new_device</code> 命令手动注册了设备，问题就解决了。他还特别感谢了社区，说第一次写 Rust 内核代码的体验"非常愉快"。这对新手来说是一个很好的学习案例！
+  </p></div><div class="art-links"><a href="https://rust-for-linux.zulipchat.com/#narrow/stream/Help/topic/How%20to%20see%20debug%20output%20from%20rust_driver_i2c" class="art-link">💬 查看讨论</a> </div></div><div class="mag-tips"><div>
+    💡 <strong>小白科普</strong><br/>
+    <strong>I2C</strong>：一种简单的硬件通信协议，常用于连接传感器、小屏幕、GPIO 扩展器等低速设备。你的笔记本里的电池管理芯片很可能就是通过 I2C 连接的。
+    <a href="https://en.wikipedia.org/wiki/I%C2%B2C">📖 了解 I2C</a><br/>
+    <strong>sysfs</strong>：Linux 内核提供的一个虚拟文件系统（在 <code>/sys</code> 下），通过读写文件的方式让用户和内核交互。上面的命令就是通过 sysfs 来"告诉"I2C 总线有一个新设备。
+    <a href="https://docs.kernel.org/filesystems/sysfs.html">📖 了解 sysfs</a>
+  </div></div></div><div class="mag-page-fade"></div><div class="mag-page-num">10</div></div></div><div class="mag-page"><div class="mag-page-inner"><div class="mag-accent-bar"></div><div class="mag-section-label">项目追踪 · GITHUB ISSUES</div><h2 class="mag-title">项目追踪 · GitHub Issues</h2><div class="mag-section-content"><div class="mag-article"><div class="art-title">1. Rust 不稳定特性追踪（Issue #1223 & #2）</div><div class="art-body"><p>
+    <strong>这是什么：</strong>这两个 Issue 是由 Miguel Ojeda 维护的长期追踪清单，记录内核目前依赖的所有 Rust 不稳定特性。每当一个特性被 Rust 官方稳定化，就从清单上划掉一个。Issue #1223 标记为"Done"，说明<strong>某一批不稳定特性已经全部被稳定化或替代方案已到位</strong>。这是一个里程碑式的进展——内核对 Rust nightly 编译器的依赖正在持续减少，离可以用稳定版 Rust 编译器编译内核的目标又近了一步。
+  </p></div><div class="art-links"><a href="https://github.com/Rust-for-Linux/linux/issues/2" class="art-link">🔗 Issue #2（总览）</a> </div></div><div class="mag-article"><div class="art-title">2. LLVM/Clang 需求与 Bug 追踪（Issue #1132）</div><div class="art-body"><p>
+    <strong>这是什么：</strong>Rust 内核代码的编译依赖 LLVM 工具链（Clang 编译器等）。这个 Issue 追踪了内核项目希望 LLVM/Clang 改进或修复的功能和 Bug。比如某些架构上的代码生成问题、链接器行为等。如果你对编译器开发感兴趣，这是一个了解内核对工具链需求的好入口。
+  </p></div><div class="art-links"><a href="https://github.com/Rust-for-Linux/linux/issues/1132" class="art-link">🔗 Issue #1132</a> </div></div><div class="mag-tips"><div>
+    💡 <strong>小白科普</strong><br/>
+    <strong>LLVM</strong>：一套编译器基础设施，Clang（C/C++ 编译器）和 Rust 编译器的后端都基于它。内核的 Rust 代码最终通过 LLVM 生成机器码。
+    <a href="https://en.wikipedia.org/wiki/LLVM">📖 了解 LLVM</a><br/>
+    <strong>Nightly vs Stable Rust</strong>：Rust 有三个发布通道——nightly（每天更新，包含实验特性）、beta 和 stable（稳定版）。内核目前需要 nightly，但目标是迁移到 stable。
+    <a href="https://doc.rust-lang.org/book/appendix-07-nightly-rust.html">📖 了解 Rust 发布通道</a>
+  </div></div></div><div class="mag-page-fade"></div><div class="mag-page-num">11</div></div></div><div class="mag-page mag-back-cover" data-density="hard"><div class="mag-page-inner back-cover-inner"><div class="back-decoration"></div><div class="back-content"><div class="back-logo">🦀</div><div class="back-title">Rust-for-Linux</div><div class="back-subtitle">Daily Briefing</div><div class="back-date">2026-04-06</div><div class="back-rule"></div><div class="back-sources"><a href="https://lore.kernel.org/rust-for-linux/">Lore</a> &middot; <a href="https://rust-for-linux.zulipchat.com/">Zulip</a> &middot; <a href="https://github.com/Rust-for-Linux">GitHub</a></div><div class="back-nav"><a href="2026-04-05.html" class="back-link-prev">&larr; 2026-04-05</a></div></div></div></div>
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded',function(){
+  var sections=document.querySelectorAll('.mag-page');
+
+  /* ── Build hero from cover data ── */
+  var cover=document.querySelector('.mag-cover');
+  if(cover){
+    var vis=document.getElementById('heroVisual');
+    var crab=cover.querySelector('.cover-crab');
+    var date=cover.querySelector('.cover-date');
+    var wd=cover.querySelector('.cover-weekday');
+    var hero=cover.querySelector('.cover-hero');
+    if(crab)vis.appendChild(crab.cloneNode(true));
+    if(date)vis.appendChild(date.cloneNode(true));
+    if(wd)vis.appendChild(wd.cloneNode(true));
+    if(hero)vis.appendChild(hero.cloneNode(true));
+    vis.style.display='flex';
+    vis.style.flexDirection='column';
+    vis.style.alignItems='center';
+    vis.style.textAlign='center';
+  }
+
+  /* ── Build hero right: first few section titles ── */
+  var heroR=document.getElementById('heroRight');
+  var sectionPages=document.querySelectorAll('.mag-page:not(.mag-cover):not(.mag-back-cover)');
+  var count=0;
+  sectionPages.forEach(function(pg){
+    if(count>=5)return;
+    var label=pg.querySelector('.mag-section-label,.ov-label');
+    var title=pg.querySelector('.mag-title,.ov-title');
+    if(!title)return;
+    var item=document.createElement('div');
+    item.className='af-hero-item';
+    var cat=label?label.textContent.trim():'';
+    var ttl=title.textContent.trim();
+    // Get first line of body
+    var body=pg.querySelector('.art-body,.ov-body');
+    var excerpt=body?body.textContent.trim().slice(0,80)+'…':'';
+    item.innerHTML='<div class="af-hero-cat">'+cat+'</div><div class="af-hero-title">'+ttl+'</div><div class="af-hero-excerpt">'+excerpt+'</div>';
+    // Click to scroll to section
+    item.style.cursor='pointer';
+    item.addEventListener('click',function(){pg.scrollIntoView({behavior:'smooth',block:'start'})});
+    heroR.appendChild(item);
+    count++;
+  });
+
+  /* ── Back cover full-bleed ── */
+  var bc=document.querySelector('.mag-back-cover');
+  if(bc)bc.classList.add('mag-full-bleed');
+
+  /* ── Scroll reveal ── */
+  var observer=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){e.target.classList.add('revealed');observer.unobserve(e.target)}
+    });
+  },{threshold:0.06});
+  sections.forEach(function(s){
+    if(!s.classList.contains('mag-cover'))observer.observe(s);
+  });
+
+  /* ── Keyboard: left/right arrows for prev/next ── */
+  var prevUrl='2026-04-05.html';
+  var nextUrl='';
+  document.addEventListener('keydown',function(e){
+    if(calOpen){if(e.key==='Escape'){closeCal();e.stopPropagation()}return}
+    if(e.key==='Escape'){window.location.href='index.html'}
+    if(e.key==='ArrowLeft'&&prevUrl){window.location.href=prevUrl}
+    if(e.key==='ArrowRight'&&nextUrl){window.location.href=nextUrl}
+  });
+
+  /* ── Calendar picker ── */
+  var allSlugs=["2026-04-06", "2026-04-05", "2026-04-04", "2026-04-03", "2026-04-02", "2026-04-01", "2026-03-31", "2026-03-30", "2026-03-29", "2026-03-28", "2026-03-27", "2026-03-26", "2026-03-25", "2026-03-24", "2026-03-23", "2026-03-22", "2026-03-21", "2026-03-20", "2026-03-19"];
+  var slugSet=new Set(allSlugs);
+  var curDate='2026-04-06';
+  var calOpen=false;
+  var calMonth,calYear;
+  // init to current page's month
+  var dp=curDate.split('-');
+  calYear=parseInt(dp[0]);calMonth=parseInt(dp[1])-1;
+
+  var calBtn=document.getElementById('calBtn');
+  var calDrop=document.getElementById('calDrop');
+  var calOverlay=document.getElementById('calOverlay');
+
+  function closeCal(){calOpen=false;calDrop.style.display='none';calOverlay.className='cal-overlay'}
+  function openCal(){calOpen=true;renderCal();calDrop.style.display='block';calOverlay.className='cal-overlay open'}
+  calBtn.addEventListener('click',function(e){e.stopPropagation();calOpen?closeCal():openCal()});
+  calOverlay.addEventListener('click',closeCal);
+
+  var MONTHS=['January','February','March','April','May','June','July','August','September','October','November','December'];
+  var DOWS=['Su','Mo','Tu','We','Th','Fr','Sa'];
+  var today=new Date();var todayStr=today.getFullYear()+'-'+String(today.getMonth()+1).padStart(2,'0')+'-'+String(today.getDate()).padStart(2,'0');
+
+  function renderCal(){
+    var first=new Date(calYear,calMonth,1);
+    var startDow=first.getDay();
+    var daysInMonth=new Date(calYear,calMonth+1,0).getDate();
+    var h='<div class="cal-header">';
+    h+='<button class="cal-arrow-btn" id="calPrev">&#8592;</button>';
+    h+='<span class="cal-month">'+MONTHS[calMonth]+' '+calYear+'</span>';
+    h+='<button class="cal-arrow-btn" id="calNext">&#8594;</button>';
+    h+='</div><div class="cal-grid">';
+    for(var d=0;d<7;d++)h+='<div class="cal-dow">'+DOWS[d]+'</div>';
+    for(var b=0;b<startDow;b++)h+='<div class="cal-day"></div>';
+    for(var day=1;day<=daysInMonth;day++){
+      var ds=calYear+'-'+String(calMonth+1).padStart(2,'0')+'-'+String(day).padStart(2,'0');
+      var cls='cal-day';
+      var hasIssue=slugSet.has(ds);
+      if(hasIssue)cls+=' has-issue';
+      if(ds===curDate)cls+=' current';
+      if(ds===todayStr)cls+=' today-mark';
+      h+='<div class="'+cls+'" data-date="'+ds+'">'+day+'</div>';
+    }
+    h+='</div>';
+    calDrop.innerHTML=h;
+    document.getElementById('calPrev').addEventListener('click',function(e){e.stopPropagation();calMonth--;if(calMonth<0){calMonth=11;calYear--}renderCal()});
+    document.getElementById('calNext').addEventListener('click',function(e){e.stopPropagation();calMonth++;if(calMonth>11){calMonth=0;calYear++}renderCal()});
+    calDrop.querySelectorAll('.cal-day.has-issue').forEach(function(el){
+      el.addEventListener('click',function(){window.location.href=el.dataset.date+'.html'});
+    });
+  }
+
+  // Hide TODAY button if already on latest
+  if(curDate==='2026-04-06'){document.getElementById('todayBtn').style.display='none'}
+});
+</script>
+</body>
+</html>
