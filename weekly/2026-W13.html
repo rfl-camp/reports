@@ -410,7 +410,10 @@ nav a.active {
 <div class="page-header">
   <h1><span class="tag tag-weekly">weekly</span> 2026-W13</h1>
 </div>
-
+<div class="stats"><div class="stat"><span class="stat-val">308</span><span class="stat-label">Lore</span></div>
+<div class="stat"><span class="stat-val">12</span><span class="stat-label">Zulip</span></div>
+<div class="stat"><span class="stat-val">13</span><span class="stat-label">GitHub</span></div>
+</div>
 <div class="report-card">
   <div class="report-card-header">
     <h2>2026-W13</h2>
@@ -419,13 +422,349 @@ nav a.active {
   <div class="report-body">
     <h1>RFL 周报 - 2026-W13</h1>
 <blockquote>
-<p>2026-03-23 ~ 2026-03-29 | 覆盖 1 份日报</p>
+<p>2026-03-23 ~ 2026-03-29 | 覆盖 7 份日报</p>
 </blockquote>
 <h2>Summary / 本周要点</h2>
-<p><strong>EN:</strong> 1 reports aggregated. No significant activity.</p>
-<p><strong>CN:</strong> 共聚合 1 份报告。无显著活动。</p>
+<p><strong>EN:</strong> 7 reports aggregated. Lore: 308 threads | Zulip: 12 active topics | GitHub: 13 items</p>
+<p><strong>CN:</strong> 共聚合 7 份报告。邮件列表 308 个讨论、Zulip 12 个活跃话题、GitHub 13 项更新</p>
+<h2>邮件列表 (Lore)</h2>
+<h3>补丁</h3>
+<ul>
+<li><a href="https://lore.kernel.org/rust-for-linux/CANiq72=w0HcWi7z1wL+R1wa6jS_+P=L8Zp7pvZtUG+C51ETzng@mail.gmail.com/">rust: print: add SAFETY comments to unsafe blocks</a> — Miguel Ojeda, Shivendra Sharma, Albab Hasan, 3 reviews</li>
+<li><a href="https://lore.kernel.org/rust-for-linux/DH8UHISTLOA4.934370PUTLB4@gmail.com/">rust: dma: add generalized container for types other than slices</a> v2 (8p) — Gary Guo, Aditya Rajan, 3 reviews</li>
+<li><a href="https://lore.kernel.org/rust-for-linux/CAH5fLghK2q4Du+74ctWftbDXrS4E4uPsuOrsOwxbs=HGm5CX6g@mail.gmail.com/">rust: dma: remove DMA_ATTR_NO_KERNEL_MAPPING from public attrs</a> (2p) — Alexandre Courbot, Alice Ryhl, 2 reviews</li>
+<li><a href="https://lore.kernel.org/rust-for-linux/DH9EA6773QO6.W3EDFZPEL8K@nvidia.com/">rust: dma: add CoherentHandle for DMA allocations without kernel mapping</a> (2p) — Danilo Krummrich, Alexandre Courbot, 2 reviews</li>
+<li><a href="https://lore.kernel.org/rust-for-linux/20260322044340.129985-1-albabhasan276@gmail.com/">rust: workqueue: add SAFETY comments for Pin<KBox\<T>> impl blocks</a> — Albab Hasan<blockquote>
+<p>Replace the placeholder // SAFETY: TODO. comments with proper safety descriptions for the two unsafe impl blocks WorkItemPointer and RawWorkItem for Pin<KBox\<T>>.  For WorkItemPointer the safety relies on __enqueue obtaining the work_struct from the ...</p>
+</blockquote>
+</li>
+<li><a href="https://lore.kernel.org/rust-for-linux/DH939HK0611M.22A8T9BJ3NG8@gmail.com/">rust: add <code>TryFrom</code> and <code>Into</code> derive macros</a> v5 (4p) — Jesung Yang, 1 reviews</li>
+<li><a href="https://lore.kernel.org/rust-for-linux/20260322192159.88138-1-ojeda@kernel.org/">Inline helpers into Rust without full LTO</a> v2 (3p) — Miguel Ojeda, 1 reviews</li>
+</ul>
+<h3>讨论</h3>
+<ul>
+<li><a href="https://lore.kernel.org/rust-for-linux/CAHk-=wjA2mOM=hCGBiS9r7+5KCmTd3KMrTTZQsE=rRLqqKMTyg@mail.gmail.com/">[GIT PULL] Driver core fixes for 7.0-rc5</a> — Danilo Krummrich, pr-tracker-bot@kernel.org, Linus Torvalds (3 条)</li>
+<li><a href="https://lore.kernel.org/rust-for-linux/20260322193830.89324-1-ojeda@kernel.org/">Re: Inline helpers into Rust without full LTO</a> — Miguel Ojeda (2 条)</li>
+<li><a href="https://lore.kernel.org/rust-for-linux/ab+PgBzwJkhhj6dw@lstrano-desk.jf.intel.com/">[RFC PATCH 02/12] drm/dep: Add DRM dependency queue layer</a> — Matthew Brost (1 条)</li>
+<li><a href="https://lore.kernel.org/rust-for-linux/20260323-update-rust-i2c-maintainers-v1-1-0744ce44f846@gmail.com/">MAINTAINERS: Update Rust I2C Subsystem entries</a> — Gary Guo, Igor Korotin, Danilo Krummrich, 6 reviews<blockquote>
+<p>From: Igor Korotin <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#105;&#103;&#111;&#114;&#46;&#107;&#111;&#114;&#111;&#116;&#105;&#110;&#46;&#108;&#105;&#110;&#117;&#120;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;">&#105;&#103;&#111;&#114;&#46;&#107;&#111;&#114;&#111;&#116;&#105;&#110;&#46;&#108;&#105;&#110;&#117;&#120;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;</a>  - Change Igor Korotin's e-mail address - Add git tree entry</p>
+</blockquote>
+</li>
+<li><a href="https://lore.kernel.org/rust-for-linux/CANiq72kZH-AX=QQz2V+qCfVzMsUEAPan=o1E=OZOAnivj3L3HQ@mail.gmail.com/">rust: make <code>build_assert</code> module the home of related macros</a> v3 (4p) — Miguel Ojeda, Alexandre Courbot, Tamir Duberstein, 5 reviews</li>
+<li><a href="https://lore.kernel.org/rust-for-linux/20260323-b4-nova-register-v3-1-ae2486ecef1b@nvidia.com/">gpu: nova-core: convert PMC registers to kernel register macro</a> v3 (10p) — Danilo Krummrich, Eliot Courtney, Alexandre Courbot, 4 reviews<blockquote>
+<p>Convert all PMC registers to use the kernel's register macro and update the code accordingly.</p>
+</blockquote>
+</li>
+<li><a href="https://lore.kernel.org/rust-for-linux/1c4e429b-f30c-42a9-8de1-71cb2cbbc114@samsung.com/">Inline helpers into Rust without full LTO</a> v2 (3p) — Miguel Ojeda, Gary Guo, Marek Szyprowski, 5 reviews</li>
+<li><a href="https://lore.kernel.org/rust-for-linux/20260323-b4-nova-register-v3-7-ae2486ecef1b@nvidia.com/">gpu: nova-core: falcon: introduce <code>bounded_enum</code> macro</a> v3 (10p) — Danilo Krummrich, Gary Guo, Alexandre Courbot, 3 reviews<blockquote>
+<p>Introduce a powered-up version of our ad-hoc <code>impl_from_enum_to_u8</code> macro that allows the definition of an enum type associated to a <code>Bounded</code> of a given width, and provides the <code>From</code> and <code>TryFrom</code> implementations required to use that enum as a regi...</p>
+</blockquote>
+</li>
+<li><a href="https://lore.kernel.org/rust-for-linux/20260323-module-value-ref-v1-1-32507e1085f1@kernel.org/">rust: module_param: return copy from value() for Copy types</a> — Gary Guo, Andreas Hindborg, Alice Ryhl, 3 reviews<blockquote>
+<p>Rename the existing <code>value()</code> method to <code>value_ref()</code> which returns a shared reference to the parameter value, and add a new <code>value()</code> method on <code>ModuleParamAccess&lt;T&gt;</code> where <code>T: Copy</code> that returns the value by copy.  This provides a more ergonomic AP...</p>
+</blockquote>
+</li>
+<li><a href="https://lore.kernel.org/rust-for-linux/20260323-cmdq-ub-fix-v2-1-77d1213c3f7f@nvidia.com/">gpu: nova-core: gsp: fix undefined behavior in command queue code</a> v2 — Gary Guo, Alexandre Courbot, 2 reviews<blockquote>
+<p><code>driver_read_area</code> and <code>driver_write_area</code> are internal methods that return slices containing the area of the command queue buffer that the driver has exclusive read or write access, respectively.  While their returned value is correct and safe to us...</p>
+</blockquote>
+</li>
+<li><a href="https://lore.kernel.org/rust-for-linux/DH9XWWNM1GY4.1W6N89W6UCYDW@nvidia.com/">gpu: nova-core: firmware: riscv: use dma::Coherent</a> (7p) — Gary Guo, Alexandre Courbot, 3 reviews</li>
+<li><a href="https://lore.kernel.org/rust-for-linux/20260323130224.165738-1-ojeda@kernel.org/">rust: allow Clang-native <code>RANDSTRUCT</code> configs</a> v2 — Gary Guo, Miguel Ojeda, 2 reviews<blockquote>
+<p>The kernel supports <code>RANDSTRUCT_FULL</code> with Clang 16+, and <code>bindgen</code> (which uses <code>libclang</code> under the hood) inherits the information, so the generated bindings look correct.  For instance, running:  bindgen x.h -- -frandomize-layout-seed0  with:  str...</p>
+</blockquote>
+</li>
+<li><a href="https://lore.kernel.org/rust-for-linux/20260323201925.8405-1-iprintercanon@gmail.com/">rust: phy: add read-only device field accessors</a> (4p) — Andrew Lunn, Artem Lytkin, 2 reviews<blockquote>
+<p>Add getter methods for commonly needed PHY device fields:  - speed(): Returns the current link speed as i32, matching the C struct field type (int speed). - duplex(): Returns the current duplex mode as DuplexMode enum. Only the setter (set_duplex) ex...</p>
+</blockquote>
+</li>
+<li><a href="https://lore.kernel.org/rust-for-linux/CAGeanHfNwP6Zs3LSfc9eEO7_LG0kK-jO24oUd7BjxrQbndEmNw@mail.gmail.com/">rust: interop: Add list module for C linked list interface</a> v13 — Alejandra González, Danilo Krummrich, 2 reviews</li>
+<li><a href="https://lore.kernel.org/rust-for-linux/CABx5tqJvOFEzmadeXpDxSUjkghviqtP0jo+kzSB5X6u_P_j2ig@mail.gmail.com/">Implement Send and Sync for clk</a> v5 (3p) — Brian Masney, Miguel Ojeda, 2 reviews</li>
+<li><a href="https://lore.kernel.org/rust-for-linux/20260323-b4-nova-register-v3-9-ae2486ecef1b@nvidia.com/">gpu: nova-core: remove <code>io::</code> qualifier to register macro invocations</a> v3 (10p) — Eliot Courtney, Alexandre Courbot, 1 reviews<blockquote>
+<p>The kernel's <code>register</code> macro would clash with nova-core's own version if it was imported directly, so it was accessed through its <code>io</code> module during the conversion phase.  Now that nova-core's <code>register</code> macro doesn't exist anymore, we can import an...</p>
+</blockquote>
+</li>
+<li><a href="https://lore.kernel.org/rust-for-linux/CANiq72=9Dh9tN4xFZmai0dFKKa_GSD+WOhrf_bxpFprbfZrgPw@mail.gmail.com/">rust: str: improve safety comment for CString::try_from_fmt</a> — Miguel Ojeda, 1 reviews</li>
+<li><a href="https://lore.kernel.org/rust-for-linux/20260323024206.129401-1-ojeda@kernel.org/">MAINTAINERS: add <code>.rustfmt.toml</code> to "RUST" entry</a> — Miguel Ojeda</li>
+<li><a href="https://lore.kernel.org/rust-for-linux/20260323000327.111235-1-ojeda@kernel.org/">Re: Inline helpers into Rust without full LTO</a> — Russell King (Oracle), Mark Brown, Miguel Ojeda (9 条)</li>
+<li><a href="https://lore.kernel.org/rust-for-linux/acDyu5M7KY0qQ5aD@lstrano-desk.jf.intel.com/">[RFC PATCH 02/12] drm/dep: Add DRM dependency queue layer</a> — Miguel Ojeda, Matthew Brost, Boris Brezillon (5 条)</li>
+<li><a href="https://lore.kernel.org/rust-for-linux/CANiq72nvR70EOud=4drW6gs=FAndv5o7+8n5NNRkAStTaSJWPg@mail.gmail.com/">[RFC PATCH] rust: allow Clang-native <code>RANDSTRUCT</code> configs</a> — Miguel Ojeda (1 条)</li>
+<li><a href="https://lore.kernel.org/rust-for-linux/20260323-b4-tyr-use-register-macro-v3-v3-1-a87daf9e4701@collabora.com/">drm/tyr: Use register! macro for GPU_CONTROL</a> v3 (12p) — Boris Brezillon, Deborah Brouwer, Danilo Krummrich, 6 reviews<blockquote>
+<p>From: Daniel Almeida <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#100;&#97;&#110;&#105;&#101;&#108;&#46;&#97;&#108;&#109;&#101;&#105;&#100;&#97;&#64;&#99;&#111;&#108;&#108;&#97;&#98;&#111;&#114;&#97;&#46;&#99;&#111;&#109;">&#100;&#97;&#110;&#105;&#101;&#108;&#46;&#97;&#108;&#109;&#101;&#105;&#100;&#97;&#64;&#99;&#111;&#108;&#108;&#97;&#98;&#111;&#114;&#97;&#46;&#99;&#111;&#109;</a>  Convert the GPU_CONTROL register definitions to use the <code>register!</code> macro.  Using the <code>register!</code> macro allows us to replace manual bit masks and shifts with typed register and field accessors, whi...</p>
+</blockquote>
+</li>
+<li><a href="https://lore.kernel.org/rust-for-linux/20260324-regulator-fix-v1-1-a5244afa3c15@google.com/">rust: regulator: do not assume that regulator_get() returns non-null</a> — Alice Ryhl, Daniel Almeida, Miguel Ojeda, 4 reviews<blockquote>
+<p>The Rust <code>Regulator</code> abstraction uses <code>NonNull</code> to wrap the underlying <code>struct regulator</code> pointer. When <code>CONFIG_REGULATOR</code> is disabled, the C stub for <code>regulator_get</code> returns <code>NULL</code>. <code>from_err_ptr</code> does not treat <code>NULL</code> as an error, so it was passed ...</p>
+</blockquote>
+</li>
+<li><a href="https://lore.kernel.org/rust-for-linux/87cy0tqueu.fsf@kernel.org/">dma::Coherent &amp; dma::CoherentInit API</a> (8p) — Danilo Krummrich, Andreas Hindborg, 4 reviews</li>
+<li><a href="https://lore.kernel.org/rust-for-linux/e8ffc9902c0af24ce6fde2d8712ea588b36e9194.camel@posteo.de/">acpi: add acpi_of_match_device_ids</a> v3 (7p) — Rafael J. Wysocki, Markus Probst, 4 reviews</li>
+<li><a href="https://lore.kernel.org/rust-for-linux/20260323-b4-tyr-use-register-macro-v3-v3-0-a87daf9e4701@collabora.com/">drm/tyr: Use register! macro</a> v3 (12p) — Alice Ryhl, Deborah Brouwer, Boris Brezillon, 2 reviews<blockquote>
+<p>This series changes the Tyr driver to use the kernel's register! macro for hardware register access, replacing manual bit manipulation and custom register structures with a more type-safe and maintainable approach.</p>
+</blockquote>
+</li>
+<li><a href="https://lore.kernel.org/rust-for-linux/877br1qr6v.fsf@kernel.org/">rust: dma: add generalized container for types other than slices</a> v2 (8p) — Gary Guo, Andreas Hindborg, 3 reviews</li>
+<li><a href="https://lore.kernel.org/rust-for-linux/87y0jhpbsp.fsf@kernel.org/">rust: dma: add Coherent:init() and Coherent::init_with_attrs()</a> v2 (8p) — Danilo Krummrich, Andreas Hindborg, 3 reviews</li>
+<li><a href="https://lore.kernel.org/rust-for-linux/DHB3CGY1Z5HF.1KSJV8SP8YD8A@nvidia.com/">gpu: nova-core: gsp: fix undefined behavior in command queue code</a> v2 — Danilo Krummrich, Gary Guo, Alexandre Courbot, 3 reviews</li>
+<li><a href="https://lore.kernel.org/rust-for-linux/20260323-aref-workitem-v3-0-f59729b812aa@collabora.com/">rust: Add ARef support for work items</a> v3 (4p) — Alice Ryhl, Daniel Almeida, 1 reviews<blockquote>
+<p>This series adds ARef<T> support for both regular and delayed work items.  - Patches 1 and 3 actually implement the support in workqueue.rs - Patches 2 and 4 adds a corresponding implementation in drm::Device that dispatches the calls to the underlyi...</p>
+</blockquote>
+</li>
+<li><a href="https://lore.kernel.org/rust-for-linux/20260323-aref-workitem-v3-1-f59729b812aa@collabora.com/">rust: workqueue: add support for ARef<T></a> v3 (4p) — Alice Ryhl, Daniel Almeida, 1 reviews<blockquote>
+<p>Add support for the ARef<T> smart pointer. This allows an instance of ARef<T> to handle deferred work directly, which can be convenient or even necessary at times, depending on the specifics of the driver or subsystem.  The implementation is similar ...</p>
+</blockquote>
+</li>
+<li><a href="https://lore.kernel.org/rust-for-linux/20260323-b4-tyr-use-register-macro-v3-v3-3-a87daf9e4701@collabora.com/">drm/tyr: Set interconnect coherency during probe</a> v3 (12p) — Boris Brezillon, Deborah Brouwer, 1 reviews<blockquote>
+<p>Currently GpuInfo reports the interconnect coherency protocol as none without actually reading the <code>COHERENCY_ENABLE</code> register.  Although the result is the same, write <code>NO_COHERENCY</code> to the register during probe and then read back the register to pop...</p>
+</blockquote>
+</li>
+<li><a href="https://lore.kernel.org/rust-for-linux/20260323-b4-tyr-use-register-macro-v3-v3-5-a87daf9e4701@collabora.com/">drm/tyr: Use register! macro for MMU_CONTROL</a> v3 (12p) — Boris Brezillon, Deborah Brouwer, 1 reviews<blockquote>
+<p>Convert the MMU_CONTROL register definitions to use the <code>register!</code> macro.  Using the <code>register!</code> macro allows us to replace manual bit masks and shifts with typed register and field accessors, which makes the code easier to read and avoids errors fr...</p>
+</blockquote>
+</li>
+<li><a href="https://lore.kernel.org/rust-for-linux/20260323-b4-tyr-use-register-macro-v3-v3-2-a87daf9e4701@collabora.com/">drm/tyr: Print GPU_ID without filtering</a> v3 (12p) — Boris Brezillon, Deborah Brouwer, 1 reviews<blockquote>
+<p>Currently, Tyr prints just the upper 16 bits of the GPU_ID register, namely, ARCH_MAJOR, ARCH_MINOR, ARCH_REV, and PRODUCT_MAJOR. This matches the id printed by the panthor driver.  To avoid the manual bit shift, just print the full GPU_ID register. ...</p>
+</blockquote>
+</li>
+<li><a href="https://lore.kernel.org/rust-for-linux/20260323-b4-tyr-use-register-macro-v3-v3-4-a87daf9e4701@collabora.com/">drm/tyr: Use register! macro for JOB_CONTROL</a> v3 (12p) — Boris Brezillon, Deborah Brouwer, 1 reviews<blockquote>
+<p>Convert the JOB_CONTROL register definitions to use the <code>register!</code> macro.  Using the <code>register!</code> macro allows us to replace manual bit masks and shifts with typed register and field accessors, which makes the code easier to read and avoids errors fr...</p>
+</blockquote>
+</li>
+<li><a href="https://lore.kernel.org/rust-for-linux/20260323-b4-tyr-use-register-macro-v3-v3-7-a87daf9e4701@collabora.com/">drm/tyr: Add MMU address space registers</a> v3 (12p) — Boris Brezillon, Deborah Brouwer, 1 reviews<blockquote>
+<p>Add a new module for the per-address-space MMU registers and constants. Leave the more complex register field definitions empty for now; they will be filled in by follow-up commits.</p>
+</blockquote>
+</li>
+<li><a href="https://lore.kernel.org/rust-for-linux/20260325035242.368661-6-jhubbard@nvidia.com/">gpu: nova-core: set DMA mask width based on GPU architecture</a> v8 (31p) — Alexandre Courbot, Danilo Krummrich, John Hubbard, 6 reviews<blockquote>
+<p>Replace the hardcoded 47-bit DMA mask with per-architecture values. Add Architecture::dma_mask() with an exhaustive match, so new architectures get a compile-time reminder to specify their width.  Move Spec creation into probe() so the architecture i...</p>
+</blockquote>
+</li>
+<li><a href="https://lore.kernel.org/rust-for-linux/20260325003921.3420-1-dakr@kernel.org/">rust: uaccess: generalize write_dma() to accept any Coherent<T></a> (3p) — Alice Ryhl, Danilo Krummrich, Gary Guo, 4 reviews<blockquote>
+<p>Generalize write_dma() from &amp;Coherent&lt;[u8]&gt; to &amp;Coherent<T> where T: KnownSize + AsBytes + ?Sized. The function body only uses as_ptr() and size(), which work for any such T, so there is no reason to restrict it to byte slices.</p>
+</blockquote>
+</li>
+<li><a href="https://lore.kernel.org/rust-for-linux/20260325035242.368661-8-jhubbard@nvidia.com/">gpu: nova-core: move firmware image parsing code to firmware.rs</a> v8 (31p) — Miguel Ojeda, Alexandre Courbot, John Hubbard, 4 reviews<blockquote>
+<p>Up until now, only the GSP required parsing of its firmware headers. However, upcoming support for Hopper/Blackwell+ adds another firmware image (FMC), along with another format (ELF32).  Therefore, the current ELF64 section parsing support needs to ...</p>
+</blockquote>
+</li>
+<li><a href="https://lore.kernel.org/rust-for-linux/20260325-kasan-rust-sw-tags-v1-1-7d3a765a72aa@google.com/">rust: kasan: do not pass -Zsanitizer-recover</a> (2p) — Alice Ryhl, Danilo Krummrich, Gary Guo, 4 reviews<blockquote>
+<p>We do not pass -fsanitize-recover to clang, so for consistency we should not pass -Zsanitizer-recover to rustc. Thus, remove these flags.  Fixes: e3117404b411 ("kbuild: rust: Enable KASAN support")</p>
+</blockquote>
+</li>
+<li><a href="https://lore.kernel.org/rust-for-linux/20260325005118.168814-1-alistair.francis@wdc.com/">rust: Mark all from() for Error functions inline</a> v2 — Miguel Ojeda, alistair23@gmail.com, Gary Guo, 3 reviews<blockquote>
+<p>From: Alistair Francis <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#97;&#108;&#105;&#115;&#116;&#97;&#105;&#114;&#46;&#102;&#114;&#97;&#110;&#99;&#105;&#115;&#64;&#119;&#100;&#99;&#46;&#99;&#111;&#109;">&#97;&#108;&#105;&#115;&#116;&#97;&#105;&#114;&#46;&#102;&#114;&#97;&#110;&#99;&#105;&#115;&#64;&#119;&#100;&#99;&#46;&#99;&#111;&#109;</a>  Mark all of the existing  impl From&lt;...&gt; for Error { fn from(err: ...) -&gt; Self { ... } }  functions as <code>#[inline]</code>  There was a recent request [1] to inline the simple from() Error functions to avoid...</p>
+</blockquote>
+</li>
+<li><a href="https://lore.kernel.org/rust-for-linux/20260325035242.368661-7-jhubbard@nvidia.com/">gpu: nova-core: Hopper/Blackwell: skip GFW boot waiting</a> v8 (31p) — Alexandre Courbot, Gary Guo, John Hubbard, 3 reviews<blockquote>
+<p>Hopper and Blackwell GPUs use FSP-based secure boot and do not require waiting for GFW_BOOT completion. Move the GFW_BOOT wait into a GPU HAL so the decision and the wait both live in the HAL.  Pre-Hopper families (Tu102 HAL) wait for GFW_BOOT comple...</p>
+</blockquote>
+</li>
+<li><a href="https://lore.kernel.org/rust-for-linux/20260325125734.944247-1-lossin@kernel.org/">rust: pin-init: internal: init: document load-bearing fact of field accessors</a> (2p) — Benno Lossin<blockquote>
+<p>[ Upstream commit 580cc37b1de4fcd9997c48d7080e744533f09f36 ]  The functions <code>[Pin]Init::__[pinned_]init</code> and <code>ptr::write</code> called from the <code>init!</code> macro require the passed pointer to be aligned. This fact is ensured by the creation of field accessors ...</p>
+</blockquote>
+</li>
+<li><a href="https://lore.kernel.org/rust-for-linux/20260325125734.944247-2-lossin@kernel.org/">rust: pin-init: replace shadowed return token by <code>unsafe</code>-to-create token</a> (2p) — Benno Lossin<blockquote>
+<p>[ Upstream commit fdbaa9d2b78e0da9e1aeb303bbdc3adfe6d8e749 ]  We use a unit struct <code>__InitOk</code> in the closure generated by the initializer macros as the return value. We shadow it by creating a struct with the same name again inside of the closure, pr...</p>
+</blockquote>
+</li>
+<li><a href="https://lore.kernel.org/rust-for-linux/20260325015548.70912-1-ojeda@kernel.org/">dma-mapping: add missing <code>inline</code> for <code>dma_free_attrs</code></a> — Miguel Ojeda, Leon Romanovsky, Marek Szyprowski, 2 reviews<blockquote>
+<p>Under an UML build for an upcoming series [1], I got <code>-Wstatic-in-inline</code> for <code>dma_free_attrs</code>:  BINDGEN rust/bindings/bindings_generated.rs - due to target missing In file included from rust/helpers/helpers.c:59: rust/helpers/dma.c:17:2: warning: st...</p>
+</blockquote>
+</li>
+<li><a href="https://lore.kernel.org/rust-for-linux/20260325-rmcontrol-v3-0-f3101093484e@nvidia.com/">gpu: nova-core: gsp: add RM control command infrastructure</a> v3 (9p) — Eliot Courtney, 1 reviews<blockquote>
+<p>Add the infrastructure for sending RM control RPCs. This is needed e.g. for channel allocation.  This series adds: - <code>NV_STATUS</code> bindings and wrapping <code>NvStatus</code> enum (used by RM control RPCs) - The necessary bindings for the RM control RPCs. - `RmCo...</p>
+</blockquote>
+</li>
+<li><a href="https://lore.kernel.org/rust-for-linux/20260325035242.368661-2-jhubbard@nvidia.com/">gpu: nova-core: Hopper/Blackwell: basic GPU identification</a> v8 (31p) — Gary Guo, John Hubbard, 2 reviews<blockquote>
+<p>Hopper (GH100) and Blackwell identification, including ELF .fwsignature_* items.</p>
+</blockquote>
+</li>
+<li><a href="https://lore.kernel.org/rust-for-linux/20260325035242.368661-3-jhubbard@nvidia.com/">gpu: nova-core: factor .fwsignature* selection into a new find_gsp_sigs_section()</a> v8 (31p) — Alexandre Courbot, John Hubbard, 2 reviews<blockquote>
+<p>Keep Gsp::new() from getting too cluttered, by factoring out the selection of .fwsignature* items. This will continue to grow as we add GPUs.</p>
+</blockquote>
+</li>
+<li><a href="https://lore.kernel.org/rust-for-linux/20260325035242.368661-5-jhubbard@nvidia.com/">gpu: nova-core: add Copy/Clone to Spec and Revision, add chipset() accessor</a> v8 (31p) — Alexandre Courbot, Gary Guo, John Hubbard, 2 reviews<blockquote>
+<p>Derive Clone and Copy for Revision and Spec. Both are small value types (4 bytes total) and Copy makes them easier to use in later patches that pass them across function boundaries.  Add a Spec::chipset() accessor for use by later patches that need t...</p>
+</blockquote>
+</li>
+<li><a href="https://lore.kernel.org/rust-for-linux/20260325035242.368661-17-jhubbard@nvidia.com/">rust: ptr: add const_align_up()</a> v8 (31p) — Alice Ryhl, Gary Guo, John Hubbard, 2 reviews<blockquote>
+<p>Add const_align_up() to kernel::ptr as the const-compatible equivalent of Alignable::align_up().</p>
+</blockquote>
+</li>
+<li><a href="https://lore.kernel.org/rust-for-linux/20260325-b4-nova-register-v4-0-bdf172f0f6ca@nvidia.com/">gpu: nova-core: convert registers to use the kernel register macro</a> v4 (10p) — Alexandre Courbot, Danilo Krummrich, 1 reviews<blockquote>
+<p>nova-core carried its own helper macro to declare register types. Its purpose was to be temporary since the beginning, and to serve as a testbed to develop an equivalent that could be used kernel-wide.  That equivalent has now been merged, so it is t...</p>
+</blockquote>
+</li>
+<li><a href="https://lore.kernel.org/rust-for-linux/20260326024226.GB2302780@ax162/">Inline helpers into Rust without full LTO</a> v2 (3p) — Arnd Bergmann, Nathan Chancellor, Russell King (Oracle), 9 reviews</li>
+<li><a href="https://lore.kernel.org/rust-for-linux/20260326095621.846840-1-david@readahead.eu/">rust/alloc: add Vec::into_boxed_slice()</a> — Danilo Krummrich, Alice Ryhl, David Rheinsberg, 6 reviews<blockquote>
+<p>Add <code>Vec::into_boxed_slice()</code> similar to <code>std::vec::Vec::into_boxed_slice()</code> [1].  There is currently no way to easily consume the allocation of a vector. However, it is very convenient to use <code>Vec</code> to initialize a dynamically sized array and then "s...</p>
+</blockquote>
+</li>
+<li><a href="https://lore.kernel.org/rust-for-linux/20260326-cmdq-ub-fix-v3-1-96af2148ca5c@nvidia.com/">gpu: nova-core: gsp: fix undefined behavior in command queue code</a> v3 — Gary Guo, Alexandre Courbot, Alice Ryhl, 4 reviews<blockquote>
+<p><code>driver_read_area</code> and <code>driver_write_area</code> are internal methods that return slices containing the area of the command queue buffer that the driver has exclusive read or write access, respectively.  While their returned value is correct and safe to us...</p>
+</blockquote>
+</li>
+<li><a href="https://lore.kernel.org/rust-for-linux/DHCAN2PHLP6X.26O0FW4ELMYPL@nvidia.com/">rust: uaccess: generalize write_dma() to accept any Coherent<T></a> (3p) — Gary Guo, Alexandre Courbot, Miguel Ojeda, 3 reviews</li>
+<li><a href="https://lore.kernel.org/rust-for-linux/20260326013902.588242-5-jhubbard@nvidia.com/">gpu: nova-core: add Copy/Clone to Spec and Revision, add chipset() accessor</a> v9 (31p) — John Hubbard, 2 reviews<blockquote>
+<p>Derive Clone and Copy for Revision and Spec. Both are small value types (4 bytes total) and Copy makes them easier to use in later patches that pass them across function boundaries.  Add a Spec::chipset() accessor for use by later patches that need t...</p>
+</blockquote>
+</li>
+<li><a href="https://lore.kernel.org/rust-for-linux/20260326013902.588242-6-jhubbard@nvidia.com/">gpu: nova-core: set DMA mask width based on GPU architecture</a> v9 (31p) — John Hubbard, 2 reviews<blockquote>
+<p>Replace the hardcoded 47-bit DMA mask with per-architecture values. Add Architecture::dma_mask() with an exhaustive match, so new architectures get a compile-time reminder to specify their width.  Set the DMA mask in Gpu::new(). Gpu owns all DMA allo...</p>
+</blockquote>
+</li>
+<li><a href="https://lore.kernel.org/rust-for-linux/20260326013902.588242-7-jhubbard@nvidia.com/">gpu: nova-core: Hopper/Blackwell: skip GFW boot waiting</a> v9 (31p) — John Hubbard, 2 reviews<blockquote>
+<p>Hopper and Blackwell GPUs use FSP-based secure boot and do not require waiting for GFW_BOOT completion. Move the GFW_BOOT wait into a GPU HAL so the decision and the wait both live in the HAL.  Pre-Hopper families (Tu102 HAL) wait for GFW_BOOT comple...</p>
+</blockquote>
+</li>
+<li><a href="https://lore.kernel.org/rust-for-linux/20260326-b4-tyr-debugfs-v1-3-074badd18716@linux.dev/">rust: sync: set_once: Rename InitError variants to fix clippy warning</a> (13p) — Gary Guo, Miguel Ojeda, Alvin Sun, 2 reviews<blockquote>
+<p>Fixes clippy warning: warning: all variants have the same postfix: <code>Init</code> --&gt; rust/kernel/sync/set_once.rs:68:1</p>
+</blockquote>
+</li>
+<li><a href="https://lore.kernel.org/rust-for-linux/87o6kayc5t.fsf@t14s.mail-host-address-is-not-set/">rust: io: generalize <code>Mmio</code> to arbitrary type</a> (8p) — Gary Guo, Andreas Hindborg, 3 reviews</li>
+<li><a href="https://lore.kernel.org/rust-for-linux/20260327-b4-nova-dma-removal-v2-1-616e1d0b5cb3@nvidia.com/">rust: dma: add from-slice constructors for Coherent and CoherentBox</a> v2 (7p) — Danilo Krummrich, Alexandre Courbot, 2 reviews<blockquote>
+<p>A very common pattern is to create a block of coherent memory with the content of an already-existing slice of bytes (e.g. a loaded firmware blob).  <code>CoherentBox</code> makes this easier, but still implies a potentially panicking operation with `copy_from_...</p>
+</blockquote>
+</li>
+<li><a href="https://lore.kernel.org/rust-for-linux/20260327-b4-nova-dma-removal-v2-4-616e1d0b5cb3@nvidia.com/">gpu: nova-core: falcon: use dma::Coherent</a> v2 (7p) — Gary Guo, Alexandre Courbot, 2 reviews<blockquote>
+<p>Replace the nova-core local <code>DmaObject</code> with a <code>Coherent</code> that can fulfill the same role.</p>
+</blockquote>
+</li>
+<li><a href="https://lore.kernel.org/rust-for-linux/20260326013902.588242-13-jhubbard@nvidia.com/">gpu: nova-core: Hopper/Blackwell: add FMC firmware image, in support of FSP</a> v9 (31p) — John Hubbard, 1 reviews<blockquote>
+<p>FSP is the Falcon that runs FMC firmware on Hopper and Blackwell. Load the FMC ELF in two forms: the image section that FSP boots from, and the full Firmware object for later signature extraction during Chain of Trust verification.</p>
+</blockquote>
+</li>
+<li><a href="https://lore.kernel.org/rust-for-linux/20260326-b4-tyr-debugfs-v1-0-074badd18716@linux.dev/">drm/tyr: add debugfs support</a> (13p) — Boqun Feng, Alvin Sun, 1 reviews<blockquote>
+<p>This patchset contains: - hazptr: Add hazard pointer abstraction to kernel::sync - revocable: Introduce HazPtrRevocable, and adapt Gary Guo's downstream LazyRevocable implementation to use hazard pointers internally, enabling safe sharing of debugfs-...</p>
+</blockquote>
+</li>
+<li><a href="https://lore.kernel.org/rust-for-linux/acUgzwk+ULSjW8sW@BLRRASHENOY1.amd.com/">cpufreq: Pass the policy to cpufreq_driver-&gt;adjust_perf()</a> v4 (2p) — Gautham R. Shenoy, Zhongqiu Han, 2 reviews</li>
+<li><a href="https://lore.kernel.org/rust-for-linux/87qzp6ycol.fsf@t14s.mail-host-address-is-not-set/">rust: io: generalize <code>MmioRaw</code> to pointer to arbitrary type</a> (8p) — Gary Guo, Andreas Hindborg, 2 reviews</li>
+<li><a href="https://lore.kernel.org/rust-for-linux/20260326-drm-rust-next-fix-aref-v1-0-7f6f58d2828a@google.com/">[drm-rust-next PATCH 0/2] Fix sync::aref imports</a> — Danilo Krummrich, Alice Ryhl, Gary Guo (6 条)<blockquote>
+<p>A few imports of types::ARef were merged into drm-rust-next, but this old path is being removed in rust-next this cycle. Thus update them.</p>
+</blockquote>
+</li>
+<li><a href="https://lore.kernel.org/rust-for-linux/DHCBEGGPWSVK.30MV8652PV4PY@kernel.org/">(subset) Rust bindings for gem shmem</a> — Danilo Krummrich, Janne Grunau, Alice Ryhl (3 条)</li>
+<li><a href="https://lore.kernel.org/rust-for-linux/acUGAsjYvNvTEO92@google.com/">Re: Inline helpers into Rust without full LTO</a> — Miguel Ojeda, Alice Ryhl (2 条)</li>
+<li><a href="https://lore.kernel.org/rust-for-linux/CABx5tqL+G9i1ZW7i5AHaTqUFTVRDmBvP=RycUdwjG-GOp4uzBA@mail.gmail.com/">Implement Send and Sync for clk</a> v5 (3p) — Danilo Krummrich, Miguel Ojeda, Brian Masney, 8 reviews</li>
+<li><a href="https://lore.kernel.org/rust-for-linux/DHD5FQ1O1Q60.1C2FZI4A85PQ2@nvidia.com/">gpu: nova-core: gsp: fix undefined behavior in command queue code</a> v2 — kernel test robot, Alexandre Courbot, Danilo Krummrich, 5 reviews</li>
+<li><a href="https://lore.kernel.org/rust-for-linux/CANiq72nz6zB0jGahw4Eh-i-Rew1kQ0g_qcZ68Whw==MyjhYaJw@mail.gmail.com/">Inline helpers into Rust without full LTO</a> v2 (3p) — Marek Szyprowski, Arnd Bergmann, Miguel Ojeda, 5 reviews</li>
+<li><a href="https://lore.kernel.org/rust-for-linux/921fd8fa-48ba-47ca-9330-fccf7c76a80a@linux.dev/">rust: sync: set_once: Rename InitError variants to fix clippy warning</a> (13p) — Alvin Sun, 2 reviews</li>
+<li><a href="https://lore.kernel.org/rust-for-linux/877bqxy96y.fsf@t14s.mail-host-address-is-not-set/">rust: io: add <code>read_val</code> and <code>write_val</code> function on I/O view</a> (8p) — Andreas Hindborg, Gary Guo, 2 reviews</li>
+<li><a href="https://lore.kernel.org/rust-for-linux/871ph5y2gv.fsf@t14s.mail-host-address-is-not-set/">rust: Mark all from() for Error functions inline</a> v3 — Andreas Hindborg, Miguel Ojeda, 2 reviews</li>
+<li><a href="https://lore.kernel.org/rust-for-linux/CAH5fLgj+pDm_VzNGWZ2Js9EVmH2xahP9V3bj9KXqnnARiVzHZg@mail.gmail.com/">rust: kasan: do not pass -Zsanitizer-recover</a> (2p) — kernel test robot, Alice Ryhl, 2 reviews</li>
+<li><a href="https://lore.kernel.org/rust-for-linux/48987e65-a4cc-438d-9782-9f14a4494da6@linux.dev/">drm/tyr: add debugfs support</a> (13p) — Alvin Sun, 1 reviews</li>
+<li><a href="https://lore.kernel.org/rust-for-linux/DHDDAY4B5JXG.5FBC99G558N7@nvidia.com/">rust: dma: add from-slice constructors and use them in nova-core</a> v2 (7p) — Alexandre Courbot, 1 reviews</li>
+<li><a href="https://lore.kernel.org/rust-for-linux/CANiq72kTaU3xtzFLRdAGMrrSC+oqJip3VsFjg4P0yH6w=5tvtw@mail.gmail.com/">rust: workqueue: add SAFETY comments for Pin<KBox\<T>> impl blocks</a> — Miguel Ojeda, 1 reviews</li>
+<li><a href="https://lore.kernel.org/rust-for-linux/874im1y8z6.fsf@t14s.mail-host-address-is-not-set/">rust: dma: drop <code>dma_read!</code> and <code>dma_write!</code> API</a> (8p) — Andreas Hindborg, 1 reviews</li>
+<li><a href="https://lore.kernel.org/rust-for-linux/CANiq72=TGv80K9Z=VhWkh392oCZjSVH=W5JsmYgKR1D7k8yf+w@mail.gmail.com/">rust: watchdog: add watchdog device abstraction</a> (2p) — Miguel Ojeda, 1 reviews</li>
+<li><a href="https://lore.kernel.org/rust-for-linux/CANiq72mwC9K3mOaTUsfrreJqiE7WumqcwqhXQK=nvhsb=024=A@mail.gmail.com/">rust: ptr: add const_align_up()</a> v9 (31p) — Miguel Ojeda, 1 reviews</li>
+<li><a href="https://lore.kernel.org/rust-for-linux/CANiq72nmM_L2qSZtrvPN1bt9OzMiKu7NUZQXM=TknhbCOU=wuA@mail.gmail.com/">rust: io: use pointer types instead of address</a> (8p) — Miguel Ojeda, 1 reviews</li>
+<li><a href="https://lore.kernel.org/rust-for-linux/CANiq72k4ib+pXymM9Z2gGvVk3UoDSdrw8d61W5-x+zuV3542Zg@mail.gmail.com/">rust: dma: add from-slice constructors for Coherent and CoherentBox</a> (7p) — Miguel Ojeda, 1 reviews</li>
+<li><a href="https://lore.kernel.org/rust-for-linux/20260327114741.91500-1-pilgrimtao@gmail.com/">[RFC 0/2] block: Introduce a BPF-based I/O scheduler</a> — Chengkaitao, Bart Van Assche (2 条)<blockquote>
+<p>From: Kaitao Cheng <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#99;&#104;&#101;&#110;&#103;&#107;&#97;&#105;&#116;&#97;&#111;&#64;&#107;&#121;&#108;&#105;&#110;&#111;&#115;&#46;&#99;&#110;">&#99;&#104;&#101;&#110;&#103;&#107;&#97;&#105;&#116;&#97;&#111;&#64;&#107;&#121;&#108;&#105;&#110;&#111;&#115;&#46;&#99;&#110;</a>  I have been working on adding a new BPF-based I/O scheduler. It has both kernel and user-space parts. In ...</p>
+</blockquote>
+</li>
+<li><a href="https://lore.kernel.org/rust-for-linux/20260327114741.91500-2-pilgrimtao@gmail.com/">[RFC 1/2] block: Introduce the UFQ I/O scheduler</a> — Alexei Starovoitov, Chengkaitao (2 条)<blockquote>
+<p>From: Kaitao Cheng <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#99;&#104;&#101;&#110;&#103;&#107;&#97;&#105;&#116;&#97;&#111;&#64;&#107;&#121;&#108;&#105;&#110;&#111;&#115;&#46;&#99;&#110;">&#99;&#104;&#101;&#110;&#103;&#107;&#97;&#105;&#116;&#97;&#111;&#64;&#107;&#121;&#108;&#105;&#110;&#111;&#115;&#46;&#99;&#110;</a>  Introduce IOSCHED_UFQ, a blk-mq elevator ("ufq: User-programmable Flexible Queueing") whose policy is sup...</p>
+</blockquote>
+</li>
+<li><a href="https://lore.kernel.org/rust-for-linux/20260327114741.91500-3-pilgrimtao@gmail.com/">[RFC 2/2] tools/ufq_iosched: add BPF example scheduler and build scaffolding</a> — Miguel Ojeda, Chengkaitao (2 条)<blockquote>
+<p>From: Kaitao Cheng <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#99;&#104;&#101;&#110;&#103;&#107;&#97;&#105;&#116;&#97;&#111;&#64;&#107;&#121;&#108;&#105;&#110;&#111;&#115;&#46;&#99;&#110;">&#99;&#104;&#101;&#110;&#103;&#107;&#97;&#105;&#116;&#97;&#111;&#64;&#107;&#121;&#108;&#105;&#110;&#111;&#115;&#46;&#99;&#110;</a>  Add ufq_iosched as a simple example for the UFQ block I/O scheduler, In the ufq_simple example, we implem...</p>
+</blockquote>
+</li>
+<li><a href="https://lore.kernel.org/rust-for-linux/CANiq72muiQzRkvcEZNUceqxvDmUf0zPLaBvQRH+EfDSS0edo+A@mail.gmail.com/">(subset) Rust bindings for gem shmem</a> — Miguel Ojeda (1 条)</li>
+<li><a href="https://lore.kernel.org/rust-for-linux/34796d72-71bf-4414-8352-47258fd1d700@amperemail.onmicrosoft.com/">subscribe</a> — Greg Rose (1 条)</li>
+<li><a href="https://lore.kernel.org/rust-for-linux/DHDUW10P5BMJ.QNFRFHLHOH6H@kernel.org/">(subset) Re: Rust GPUVM immediate mode</a> — Danilo Krummrich (1 条)</li>
+<li><a href="https://lore.kernel.org/rust-for-linux/DHDUW55OWUU6.2YPVSZVHGYPI3@kernel.org/">(subset) Re: Rust bindings for gem shmem</a> — Danilo Krummrich (1 条)</li>
+<li><a href="https://lore.kernel.org/rust-for-linux/202603281331.1ESuqgfz-lkp@intel.com/">gpu: nova-core: gsp: fix undefined behavior in command queue code</a> v3 — kernel test robot, Alexandre Courbot, Gary Guo, 3 reviews</li>
+<li><a href="https://lore.kernel.org/rust-for-linux/20260328114005.125617-1-adzicmirko97@gmail.com/">rust: error: clarify that <code>from_err_ptr</code> can return <code>Ok(NULL)</code></a> — Mirko Adzic, Miguel Ojeda, 1 reviews<blockquote>
+<p>Improve the doc comment of <code>from_err_ptr</code> by explicitly stating that it will return <code>Ok(NULL)</code> when passed a null pointer, as it isn't an error value.  Add a doctest case that tests the behavior described above, as well as other scenarios (non-null/n...</p>
+</blockquote>
+</li>
+<li><a href="https://lore.kernel.org/rust-for-linux/DHEFPG4FA0PQ.1JJL8ZN4NO5C@nvidia.com/">gpu: nova-core: falcon: use dma::Coherent</a> (7p) — Alexandre Courbot, 1 reviews</li>
+<li><a href="https://lore.kernel.org/rust-for-linux/CANiq72kk_UJVNbQ3aKuV4_LPFm-a0xjZqZyk57ZpkHp8yX8jzQ@mail.gmail.com/">pwm: th1520: fix <code>CLIPPY=1</code> warning</a> — Miguel Ojeda, 1 reviews</li>
+<li><a href="https://lore.kernel.org/rust-for-linux/DHEI0HCIIWBG.3GOZM9R8EFT5X@nvidia.com/">rust: dma: remove DMA_ATTR_NO_KERNEL_MAPPING from public attrs</a> (2p) — Alexandre Courbot, 1 reviews</li>
+<li><a href="https://lore.kernel.org/rust-for-linux/DHEI0U0BYVRN.M1IVH5E5Y4IS@nvidia.com/">rust: dma: add from-slice constructors and use them in nova-core</a> v2 (7p) — Alexandre Courbot, 1 reviews</li>
+<li><a href="https://lore.kernel.org/rust-for-linux/CAAWJmAZe+pyfju+37-dfjYUdwRR1ae6Rq8OJjZea76d2CPkEMA@mail.gmail.com/">[RFC 0/2] block: Introduce a BPF-based I/O scheduler</a> — Chengkaitao (1 条)</li>
+</ul>
+<h2>Zulip 讨论</h2>
+<ul>
+<li><a href="https://rust-for-linux.zulipchat.com/#narrow/stream/pin-init/topic/staging%20workflow">#pin-init &gt; staging workflow</a> (6 msgs)<blockquote>
+<p><strong>Benno Lossin</strong>: only thing we need to do is delay the deletion of the temporary branch a bit, otherwise github won't recognize the PR as merged :)</p>
+</blockquote>
+</li>
+<li><a href="https://rust-for-linux.zulipchat.com/#narrow/stream/Announcements/topic/Sashiko%20for%20Rust%20for%20Linux">#Announcements &gt; Sashiko for Rust for Linux</a> (3 msgs)<blockquote>
+<p><strong>Alice Ryhl</strong>: It doesn't send emails right now. You have to view them in the browser instead.</p>
+</blockquote>
+</li>
+<li><a href="https://rust-for-linux.zulipchat.com/#narrow/stream/Help/topic/%E2%9C%94%20Build%20errors%20on%20x86%20defconfig">#Help &gt; ✔ Build errors on x86 defconfig</a> (2 msgs)<blockquote>
+<p><strong>Notification Bot</strong>: Andreas Hindborg  has marked this topic as resolved.</p>
+</blockquote>
+</li>
+<li><a href="https://rust-for-linux.zulipchat.com/#narrow/stream/General/topic/Generic%20I%2FO%20backends">#General &gt; Generic I/O backends</a> (2 msgs)<blockquote>
+<p><strong>Zhi Wang</strong>: Cool!! Let me rebase my vGPU staging tree and PCI capability patches on top of it.</p>
+</blockquote>
+</li>
+<li><a href="https://rust-for-linux.zulipchat.com/#narrow/stream/General/topic/Spinlocks%20with%20IRQs%3F">#General &gt; Spinlocks with IRQs?</a> (1 msgs)<blockquote>
+<p><strong>Boqun Feng</strong>: FYI, an urgent RCU bug occured last week, so I had to fix it. Which means I probably would make the 64bit preemtp_count changes to v7.1.</p>
+</blockquote>
+</li>
+<li><a href="https://rust-for-linux.zulipchat.com/#narrow/stream/Modules/topic/Rust%20kernel%20module%20using%20external%20crate">#Modules &gt; Rust kernel module using external crate</a> (2 msgs)<blockquote>
+<p><strong>Miguel Ojeda</strong>: It is hard to say what you are trying to do (e.g. what is linked to what and where) -- just in case, please note that it is very unlikely that the kernel will ever support arbitrar...</p>
+</blockquote>
+</li>
+<li><a href="https://rust-for-linux.zulipchat.com/#narrow/stream/DRM/topic/FenceCtx%20signalling%20DmaFences">#DRM &gt; FenceCtx signalling DmaFences</a> (5 msgs)<blockquote>
+<p><strong>Boris Brezillon</strong>: @Philipp Stanner  Hehe =&gt;  https://gitlab.freedesktop.org/bbrezillon/linux/-/blob/8bec931a3a222873bf93cd8111d88c2f79df30cd/rust/kernel/sync/dma_fence.rs#L845</p>
+</blockquote>
+</li>
+<li><a href="https://rust-for-linux.zulipchat.com/#narrow/stream/Help/topic/%E2%9C%94%20Suggestions%20on%20my%20HP%20laptop">#Help &gt; ✔ Suggestions on my HP laptop</a> (1 msgs)<blockquote>
+<p><strong>Notification Bot</strong>: shivamklr  has marked this topic as resolved.</p>
+</blockquote>
+</li>
+<li><a href="https://rust-for-linux.zulipchat.com/#narrow/stream/Library/topic/Type%20erasing">#Library &gt; Type erasing</a> (6 msgs)<blockquote>
+<p><strong>Alice Ryhl</strong>: Don't we already have type erasure approach for fences?</p>
+</blockquote>
+</li>
+<li><a href="https://rust-for-linux.zulipchat.com/#narrow/stream/Library/topic/Memory%20barriers%20design">#Library &gt; Memory barriers design</a> (3 msgs)<blockquote>
+<p><strong>Gary Guo</strong>: (I want to eventually propose to add  {smp_,dma_,}mb_{acquire,release}  to C too, but I won't do that until I have some numbers on the performance benefit of having dma_mb_release)</p>
+</blockquote>
+</li>
+<li><a href="https://rust-for-linux.zulipchat.com/#narrow/stream/pin-init/topic/pinnable%20option">#pin-init &gt; pinnable option</a> (3 msgs)<blockquote>
+<p><strong>Benno Lossin</strong>: can you share a link if the code is publicly available?</p>
+</blockquote>
+</li>
+</ul>
+<h2>GitHub</h2>
+<h3>议题 (2)</h3>
+<ul>
+<li>[open] <a href="https://github.com/Rust-for-Linux/linux/issues/353">#353 <code>bindgen</code> wanted features &amp; bugfixes</a> — ojeda <code>• toolchain</code> <code>meta</code></li>
+<li>[open] <a href="https://github.com/Rust-for-Linux/linux/issues/936">#936 Review comment on "rust: str: add <code>CString</code> type"</a> — riking <code>• lib</code></li>
+</ul>
+<h3>议题 (4)</h3>
+<ul>
+<li>[open] <a href="https://github.com/Rust-for-Linux/linux/issues/351">#351 Add missing <code>// SAFETY</code> comments</a> — ojeda <code>• lib</code> <code>good first issue</code> <code>easy</code></li>
+<li>[open] <a href="https://github.com/Rust-for-Linux/linux/issues/354">#354 Rust wanted features</a> — ojeda <code>• toolchain</code> <code>meta</code></li>
+<li>[closed] <a href="https://github.com/Rust-for-Linux/linux/issues/1227">#1227 Trailing comma in <code>fmt!</code> macro</a> — Darksonn <code>• lib</code> <code>good first issue</code> <code>medium</code></li>
+<li>[open] <a href="https://github.com/Rust-for-Linux/linux/issues/1172">#1172 Allow omitting the trailing comma in macros provided by the <code>macros</code> crate.</a> — BennoLossin <code>• lib</code> <code>good first issue</code> <code>medium</code></li>
+</ul>
+<h3>议题 (1)</h3>
+<h3>rust-next 提交 (3)</h3>
+<ul>
+<li><a href="https://github.com/Rust-for-Linux/linux/commit/4f13c93497e366cd8e41561a8e30ad4da887cb82"><code>4f13c934</code></a> rust: kernel: mark as <code>#[inline]</code> all <code>From::from()</code>s for <code>Error</code> — Alistair Francis<blockquote>
+<p>There was a recent request [1] to mark as <code>#[inline]</code> the simple <code>From::from()</code> functions implemented for <code>Error</code>.  Thus mark all of the existing  impl From&lt;...&gt; for Error { fn from(err: ...) -&gt; Self ...</p>
+</blockquote>
+</li>
+<li><a href="https://github.com/Rust-for-Linux/linux/commit/d58f0f146a6e3fe3c6fcf6db1e0d385414bc8713"><code>d58f0f14</code></a> rust: list: hide macros from top-level kernel doc — Gary Guo<blockquote>
+<p>Due to Rust macro scoping rules, all macros defined in a crate using <code>#[macro_export]</code> end up in the top-level. For the list macros, we re-export them inside the list module, and expect users to use `...</p>
+</blockquote>
+</li>
+<li><a href="https://github.com/Rust-for-Linux/linux/commit/9bf32bc60cb2561f8e27fea2cb24c86d5ab99997"><code>9bf32bc6</code></a> MAINTAINERS: add <code>.rustfmt.toml</code> to "RUST" entry — Miguel Ojeda<blockquote>
+<p><code>.rustfmt.toml</code> is not covered by <code>MAINTAINERS</code>, so tools like <code>scripts/get_maintainer.pl</code> do not report it properly, e.g.:  $ scripts/get_maintainer.pl -f .rustfmt.toml linux-kernel@vger.kernel.org (...</p>
+</blockquote>
+</li>
+<li>[open] <a href="https://github.com/Rust-for-Linux/linux/issues/1231">#1231 Clarifying <code>from_err_ptr</code> may return <code>Ok(NULL)</code></a> — ojeda <code>• lib</code> <code>good first issue</code> <code>easy</code></li>
+</ul>
 <hr />
-<p><em>Generated at 2026-03-23 08:00:00 CST by rfl-reports.py</em></p>
+<p><em>Generated at 2026-04-07 13:28:10 CST by rfl-reports.py</em></p>
   </div>
   <div class="report-nav"><span></span><a href="2026-W14.html">2026-W14 &rarr;</a></div>
 </div>
