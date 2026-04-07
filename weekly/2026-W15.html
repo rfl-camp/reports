@@ -3,608 +3,365 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>RFL Weekly - 2026-W15</title>
+<title>RFL 社区日报 &middot; </title>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
 <style>
-:root {
-  --c-bg: #ffffff;
-  --c-surface: #f9f9f9;
-  --c-border: #ddd;
-  --c-border-light: #eee;
-  --c-text: #111;
-  --c-text-secondary: #555;
-  --c-text-tertiary: #999;
-  --c-link: #000;
-  --c-accent: #e8730e;
-  --radius: 2px;
-  --max-w: 1100px;
-}
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body {
-  font-family: 'Helvetica Neue', Helvetica, Arial, 'Noto Sans SC', sans-serif;
-  background: var(--c-bg);
-  color: var(--c-text);
-  font-size: 14px;
-  line-height: 1.5;
-  -webkit-font-smoothing: antialiased;
-}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:#fff;font-family:'Helvetica Neue',Helvetica,Arial,'Noto Sans SC',sans-serif;color:#111;-webkit-font-smoothing:antialiased}
 
-/* Header — Editorial masthead */
-.header {
-  border-bottom: 1px solid var(--c-border);
-  background: var(--c-bg);
-}
-.header-inner {
-  max-width: var(--max-w);
-  margin: 0 auto;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-.logo {
-  font-size: 42px;
-  font-weight: 700;
-  color: #000;
-  text-decoration: none;
-  letter-spacing: 4px;
-  font-family: Georgia, 'Times New Roman', serif;
-  padding: 24px 0 0;
-  display: block;
-  text-align: center;
-}
-.logo:hover { color: var(--c-accent); }
-.logo .accent { color: inherit; }
-nav {
-  display: flex;
-  gap: 24px;
-  padding: 14px 0;
-  border-top: 1px solid var(--c-border-light);
-  margin-top: 16px;
-}
-nav a {
-  color: var(--c-text-secondary);
-  text-decoration: none;
-  font-size: 11px;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  font-weight: 500;
-  transition: color 0.15s;
-}
-nav a:hover { color: #000; }
-nav a.active {
-  color: #000;
-  font-weight: 700;
-}
+/* ── Masthead ── */
+.af-masthead{text-align:center;padding:20px 0 0;border-bottom:1px solid #ddd}
+.af-logo{font-size:48px;font-weight:700;letter-spacing:3px;color:#000;font-family:Georgia,'Times New Roman',serif;text-decoration:none;display:block;line-height:1}
+.af-logo:hover{color:#e8730e}
+.af-nav{display:flex;justify-content:center;gap:24px;padding:14px 0;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;font-weight:500;border-top:1px solid #eee;margin-top:16px}
+.af-nav a{color:#555;text-decoration:none;transition:color .15s}
+.af-nav a:hover{color:#000}
+.af-nav a.active{color:#000;font-weight:700}
 
-/* Layout */
-.container {
-  max-width: var(--max-w);
-  margin: 0 auto;
-  padding: 32px 24px;
-}
-.back-link {
-  display: inline-block;
-  color: #000;
-  text-decoration: none;
-  font-size: 10px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  font-weight: 700;
-  margin-bottom: 24px;
-  transition: color .15s;
-}
-.back-link:hover { color: var(--c-accent); }
+/* ── Prev/Next arrows ── */
+.pn-arrow{position:fixed;top:50%;transform:translateY(-50%);z-index:200;display:flex;align-items:center;justify-content:center;width:48px;height:48px;background:rgba(0,0,0,0.06);color:#333;text-decoration:none;font-size:22px;font-family:Georgia,serif;transition:all .2s;border-radius:50%}
+.pn-arrow:hover{background:rgba(0,0,0,0.12);color:#000}
+.pn-arrow.pn-left{left:16px}
+.pn-arrow.pn-right{right:16px}
+.pn-arrow .pn-label{position:absolute;top:50%;white-space:nowrap;font-size:9px;letter-spacing:2px;text-transform:uppercase;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-weight:700;color:#999;opacity:0;transition:opacity .2s;transform:translateY(-50%)}
+.pn-left .pn-label{left:56px}
+.pn-right .pn-label{right:56px}
+.pn-arrow:hover .pn-label{opacity:1}
 
-/* Page header */
-.page-header {
-  margin-bottom: 32px;
-  padding-bottom: 20px;
-  border-bottom: 2px solid #000;
-}
-.page-header h1 {
-  font-size: 28px;
-  font-weight: 700;
-  letter-spacing: -0.3px;
-  font-family: Georgia, 'Times New Roman', serif;
-  text-transform: uppercase;
-}
-.page-header .subtitle {
-  color: var(--c-text-tertiary);
-  font-size: 11px;
-  margin-top: 6px;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-}
+/* ── Date bar tools ── */
+.af-date-bar{font-size:10px;color:#999;letter-spacing:2px;text-transform:uppercase;text-align:center;padding:10px 0;border-bottom:2px solid #000;position:relative;display:flex;align-items:center;justify-content:center;gap:20px}
+.af-today{font-size:9px;letter-spacing:2px;text-transform:uppercase;font-weight:700;color:#e8730e;text-decoration:none;transition:color .15s;cursor:pointer}
+.af-today:hover{color:#000}
+.af-cal-btn{font-size:9px;letter-spacing:2px;text-transform:uppercase;font-weight:700;color:#999;cursor:pointer;transition:color .15s;user-select:none;position:relative}
+.af-cal-btn:hover{color:#000}
+.af-cal-btn svg{width:14px;height:14px;vertical-align:-2px;margin-right:3px;fill:currentColor}
 
-/* Stats row */
-.stats {
-  display: flex;
-  gap: 24px;
-  margin-bottom: 24px;
-  flex-wrap: wrap;
-}
-.stat {
-  display: flex;
-  align-items: baseline;
-  gap: 6px;
-}
-.stat-val {
-  font-size: 20px;
-  font-weight: 600;
-  color: var(--c-text);
-}
-.stat-label {
-  font-size: 12px;
-  color: var(--c-text-tertiary);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
+/* ── Calendar dropdown ── */
+.cal-overlay{display:none;position:fixed;inset:0;z-index:500}
+.cal-overlay.open{display:block}
+.cal-drop{position:absolute;top:100%;left:50%;transform:translateX(-50%);margin-top:8px;background:#fff;border:1px solid #ddd;box-shadow:0 8px 32px rgba(0,0,0,0.12);z-index:501;padding:16px;min-width:280px}
+.cal-drop.open{display:block}
+.cal-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+.cal-month{font-size:13px;font-weight:700;font-family:Georgia,serif;letter-spacing:0.5px}
+.cal-arrow-btn{background:none;border:none;cursor:pointer;font-size:16px;color:#999;padding:4px 8px;transition:color .15s}
+.cal-arrow-btn:hover{color:#000}
+.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:2px;text-align:center}
+.cal-dow{font-size:8px;color:#999;letter-spacing:1px;text-transform:uppercase;padding:4px 0;font-weight:700}
+.cal-day{font-size:12px;padding:6px 2px;color:#ccc;cursor:default;border-radius:2px;transition:all .12s;font-variant-numeric:tabular-nums}
+.cal-day.has-issue{color:#000;font-weight:600;cursor:pointer}
+.cal-day.has-issue:hover{background:#f5f5f5}
+.cal-day.current{background:#000;color:#fff;font-weight:700}
+.cal-day.current:hover{background:#333}
+.cal-day.today-mark{box-shadow:inset 0 -2px 0 #e8730e}
 
-/* Report list */
-.list-section {
-  margin-bottom: 32px;
-}
-.list-section-title {
-  font-size: 9px;
-  font-weight: 700;
-  color: var(--c-accent);
-  text-transform: uppercase;
-  letter-spacing: 3px;
-  padding: 12px 0 10px;
-  border-bottom: 2px solid #000;
-  margin-bottom: 0;
-}
-.list-item {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 14px 0;
-  border-bottom: 1px solid var(--c-border-light);
-  gap: 12px;
-  transition: background .15s;
-}
-.list-item:hover { background: #fafafa; }
-.list-item:last-child { border-bottom: none; }
-.list-item-left {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  min-width: 0;
-}
-.list-item a {
-  color: #000;
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 15px;
-  font-family: Georgia, 'Times New Roman', serif;
-}
-.list-item a:hover { color: var(--c-accent); }
-.list-item-meta {
-  color: var(--c-text-tertiary);
-  font-size: 11px;
-  white-space: nowrap;
-  font-variant-numeric: tabular-nums;
-  letter-spacing: 0.5px;
-}
+/* ── Hero split layout ── */
+.af-hero{display:flex;gap:0;border-bottom:2px solid #000;max-width:1100px;margin:0 auto}
+.af-hero-left{flex:1;min-width:0;border-right:1px solid #ddd;display:flex;flex-direction:column}
+.af-hero-visual{flex:1;background:#000;display:flex;align-items:center;justify-content:center;padding:48px;min-height:340px;position:relative;overflow:hidden}
+.af-hero-visual .cover-crab{font-size:80px}
+.af-hero-visual .cover-date{font-size:36px;font-weight:700;color:#fff;margin-top:12px;font-family:Georgia,serif;letter-spacing:1px}
+.af-hero-visual .cover-weekday{font-size:10px;color:rgba(255,255,255,0.4);letter-spacing:4px;text-transform:uppercase;margin-top:4px}
+.af-hero-visual .cover-hero{font-size:15px;color:rgba(255,255,255,0.6);margin-top:16px;font-family:'Noto Serif SC',Georgia,serif;line-height:1.6;max-width:340px;text-align:center}
+.af-hero-right{flex:1;min-width:0;display:flex;flex-direction:column}
 
-/* Tags */
-.tag {
-  display: inline-block;
-  padding: 2px 8px;
-  font-size: 9px;
-  font-weight: 700;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  background: #000;
-  color: #fff;
-  border-radius: 0;
-}
-.tag-daily { background: #000; }
-.tag-weekly { background: #333; }
-.tag-monthly { background: #555; }
-.tag-yearly { background: #777; }
+/* ── Hero article list (right side) ── */
+.af-hero-item{padding:20px 24px;border-bottom:1px solid #eee;transition:background .15s}
+.af-hero-item:last-child{border-bottom:none}
+.af-hero-item:hover{background:#fafafa}
+.af-hero-cat{font-size:9px;letter-spacing:2px;color:#e8730e;text-transform:uppercase;font-weight:700;margin-bottom:4px}
+.af-hero-title{font-size:17px;font-weight:700;color:#000;text-transform:uppercase;line-height:1.3;letter-spacing:0.3px;margin-bottom:4px}
+.af-hero-excerpt{font-size:12.5px;color:#666;line-height:1.5;font-family:'Noto Serif SC',Georgia,serif}
 
-/* Report content */
-.report-card {
-  border: none;
-  border-top: 2px solid #000;
-  border-radius: 0;
-  background: var(--c-bg);
-  overflow: hidden;
-}
-.report-card-header {
-  background: transparent;
-  padding: 16px 0;
-  border-bottom: 1px solid var(--c-border-light);
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-.report-card-header h2 {
-  font-size: 14px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-.report-body {
-  padding: 28px 0;
-  font-size: 15px;
-  line-height: 1.8;
-  font-family: 'Noto Serif SC', Georgia, serif;
-}
-.report-body h1 { font-size: 24px; font-weight: 700; margin: 0 0 20px 0; color: #000; font-family: Georgia, serif; text-transform: uppercase; letter-spacing: -0.3px; }
-.report-body h2 { font-size: 18px; font-weight: 700; margin: 32px 0 14px 0; color: #000; padding-bottom: 8px; border-bottom: 1px solid var(--c-border-light); font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-transform: uppercase; letter-spacing: 0.3px; }
-.report-body h3 { font-size: 14px; font-weight: 700; margin: 24px 0 8px 0; color: var(--c-text-secondary); text-transform: uppercase; letter-spacing: 0.5px; }
-.report-body ul { padding-left: 20px; margin: 8px 0; }
-.report-body li { margin-bottom: 4px; }
-.report-body a { color: #000; text-decoration: none; border-bottom: 1px solid #ccc; transition: all .15s; }
-.report-body a:hover { color: var(--c-accent); border-color: var(--c-accent); }
-.report-body blockquote { border-left: 2px solid #000; padding: 8px 16px; margin: 12px 0; color: var(--c-text-secondary); background: #f9f9f9; font-size: 13.5px; }
-.report-body code { background: #f5f5f5; padding: 2px 6px; border-radius: 2px; font-size: 12px; font-family: 'SF Mono', 'Fira Code', monospace; border: 1px solid #e5e5e5; }
-.report-body hr { border: none; border-top: 1px solid var(--c-border-light); margin: 28px 0; }
-.report-body p { margin: 10px 0; }
-.report-body img { max-width: 100%; }
-/* Embedded newsletter overrides */
-.report-body > div {
-  background: transparent !important;
-  box-shadow: none !important;
-  margin-bottom: 20px;
-}
-.report-body > div > div {
-  border-color: var(--c-border-light);
-}
-/* 小白科普 info boxes */
-.report-body div[style*="#f0f7ff"] {
-  background: #f9f9f9 !important;
-  border: 1px solid var(--c-border-light) !important;
-  border-top: 2px solid #000 !important;
-  border-radius: 0 !important;
-}
-/* Report prev/next navigation */
-.report-nav {
-  display: flex;
-  justify-content: space-between;
-  padding: 20px 0;
-  border-top: 2px solid #000;
-  font-size: 10px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-}
-.report-nav a {
-  color: #000;
-  text-decoration: none;
-  font-weight: 700;
-  transition: color .15s;
-}
-.report-nav a:hover {
-  color: var(--c-accent);
-}
+/* ── Main content ── */
+.af-main{max-width:1100px;margin:0 auto;padding:0}
 
-/* Empty state */
-.empty {
-  color: var(--c-text-tertiary);
-  text-align: center;
-  padding: 48px 20px;
-  border-top: 2px solid #000;
-  font-size: 13px;
-  letter-spacing: 1px;
-}
+/* ── Page / Section base ── */
+.mag-page{background:#fff;border:none;box-shadow:none;overflow:visible;cursor:default;position:relative}
+.mag-page-inner{padding:40px 32px;font-family:'Noto Serif SC',Georgia,serif;font-size:15.5px;line-height:1.95;color:#222;position:relative;height:auto;overflow:visible}
+.mag-page + .mag-page{border-top:1px solid #ddd}
 
-/* Footer */
-.footer {
-  text-align: center;
-  padding: 32px;
-  color: #ccc;
-  font-size: 9px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  border-top: 1px solid var(--c-border-light);
-  margin-top: 48px;
-  max-width: var(--max-w);
-  margin-left: auto;
-  margin-right: auto;
-}
+/* Full-bleed */
+.mag-full-bleed{width:100vw;margin-left:calc(-50vw + 50%);position:relative}
 
-/* Magazine rack */
-.magazine-shelf {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-  gap: 24px;
-  padding: 16px 0;
-}
-.magazine-cover {
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  aspect-ratio: 3/4;
-  background: linear-gradient(160deg, #1a1a3e 0%, #0d1b2a 50%, #1b2838 100%);
-  border-radius: 4px;
-  padding: 20px 18px 16px;
-  text-decoration: none;
-  color: #fff;
-  overflow: hidden;
-  box-shadow: 4px 4px 14px rgba(0,0,0,0.3);
-  transition: transform 0.4s cubic-bezier(0.25,0.46,0.45,0.94), box-shadow 0.4s cubic-bezier(0.25,0.46,0.45,0.94);
-}
-.magazine-cover::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.08) 45%, rgba(255,255,255,0.15) 50%, rgba(255,255,255,0.08) 55%, transparent 60%);
-  background-size: 200% 100%;
-  background-position: 200% 0;
-  transition: background-position 0.6s ease-out;
-  pointer-events: none;
-  border-radius: 4px;
-}
-.magazine-cover:hover {
-  transform: perspective(600px) rotateY(-3deg) translateY(-4px) scale(1.02);
-  box-shadow: 8px 8px 28px rgba(0,0,0,0.4);
-}
-.magazine-cover:hover::after {
-  background-position: -200% 0;
-}
-.mc-spine {
-  position: absolute;
-  left: 0; top: 0; bottom: 0;
-  width: 4px;
-  background: linear-gradient(180deg, rgba(232,115,14,0.6), rgba(232,115,14,0.2));
-}
-.mc-masthead {
-  font-size: 9px;
-  font-weight: 700;
-  letter-spacing: 3px;
-  color: #e8730e;
-  text-transform: uppercase;
-  margin-bottom: 8px;
-}
-.mc-date {
-  font-size: 18px;
-  font-weight: 700;
-  color: #fff;
-  letter-spacing: -0.3px;
-  line-height: 1.2;
-}
-.mc-weekday {
-  font-size: 11px;
-  color: rgba(255,255,255,0.45);
-  margin-bottom: 14px;
-}
-.mc-hero {
-  font-size: 12px;
-  line-height: 1.5;
-  color: rgba(255,255,255,0.8);
-  font-family: Georgia, 'Noto Serif SC', serif;
-  flex-grow: 1;
-  display: flex;
-  align-items: center;
-}
-.mc-stats {
-  font-size: 10px;
-  color: rgba(255,255,255,0.35);
-  margin-top: 10px;
-}
-.mc-issue {
-  position: absolute;
-  bottom: 12px;
-  right: 14px;
-  font-size: 10px;
-  color: rgba(255,255,255,0.25);
-  font-variant-numeric: tabular-nums;
+/* Hide original cover/back-cover inside main flow (we rebuild them) */
+.mag-cover{display:none !important}
+.mag-back-cover{border-top:2px solid #000 !important}
+
+/* ── OVERVIEW ── */
+.overview-inner{display:flex;flex-direction:column;height:auto;overflow:visible}
+.ov-label{font-size:9px;letter-spacing:3px;color:#e8730e;text-transform:uppercase;font-weight:700;margin-bottom:6px}
+.ov-title{font-size:24px;font-weight:700;color:#000;margin-bottom:20px;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;letter-spacing:-0.3px;line-height:1.2;text-transform:uppercase}
+.ov-body{font-size:15.5px;line-height:2;color:#333}
+.ov-body b,.ov-body strong{color:#000;font-weight:700}
+.ov-body a{color:#000;text-decoration:none;border-bottom:1px solid #ccc;transition:all .15s}
+.ov-body a:hover{border-color:#e8730e;color:#e8730e}
+.ov-dropcap{float:left;font-size:64px;line-height:0.78;font-family:Georgia,serif;color:#000;margin:4px 12px 0 0;font-weight:400}
+
+/* ── SECTION PAGES ── */
+.mag-accent-bar{height:2px;background:#000;margin-bottom:16px}
+.mag-section-label{font-size:9px;letter-spacing:3px;color:#e8730e;text-transform:uppercase;font-weight:700;margin-bottom:4px}
+.mag-title{font-size:22px;font-weight:700;color:#000;margin-bottom:24px;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;line-height:1.25;padding-bottom:14px;border-bottom:1px solid #ddd;text-transform:uppercase;letter-spacing:0.2px}
+.mag-section-content{overflow:visible}
+
+/* Articles */
+.mag-article{margin-bottom:24px;padding:0 0 20px;border-bottom:1px solid #eee}
+.mag-article:last-child{border-bottom:none;margin-bottom:8px;padding-bottom:0}
+.art-title{font-size:16px;font-weight:700;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;color:#000;margin-bottom:6px;line-height:1.3;text-transform:uppercase;letter-spacing:0.2px}
+.art-body{font-size:14.5px;line-height:1.85;color:#444}
+.art-body p{margin-bottom:8px}
+.art-body b,.art-body strong{color:#000}
+.art-body code{background:#f5f5f5;padding:2px 6px;border-radius:2px;font-size:12.5px;font-family:'SF Mono','Fira Code',monospace;color:#333;border:1px solid #e5e5e5}
+.art-body a{color:#000;text-decoration:none;border-bottom:1px solid #ccc;transition:all .15s}
+.art-body a:hover{color:#e8730e;border-color:#e8730e}
+.art-body ul,.art-body ol{padding-left:20px;margin:8px 0}
+.art-body li{margin-bottom:3px;font-size:14px}
+.art-links{margin-top:10px}
+.art-link{display:inline-block;background:#000;color:#fff;padding:4px 12px;font-size:9px;text-decoration:none;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;margin-right:5px;margin-bottom:4px;transition:background .15s;letter-spacing:1px;text-transform:uppercase;font-weight:500}
+.art-link:hover{background:#e8730e}
+
+/* Tips box */
+.mag-tips{margin-top:16px;padding:18px 22px;background:#f7f7f7;border:none;border-top:2px solid #000;font-size:13.5px;line-height:1.8}
+.mag-tips div{background:transparent !important;border:none !important;padding:0 !important;border-radius:0 !important}
+.mag-tips b,.mag-tips strong{color:#000;font-size:13.5px}
+.mag-tips a{color:#000;font-size:12.5px;border-bottom:1px solid #ccc}
+.mag-tips a:hover{color:#e8730e;border-color:#e8730e}
+.mag-tips br{line-height:1.8}
+
+.mag-page-fade{display:none}
+.mag-page-num{display:none}
+
+/* ── BACK COVER → Footer ── */
+.mag-back-cover{background:#000 !important;cursor:default;position:relative;overflow:hidden;border:none !important;box-shadow:none}
+.mag-back-cover::before{display:none}
+.back-cover-inner{display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;padding:48px 24px;height:auto}
+.back-decoration{display:none}
+.back-content{display:flex;flex-direction:column;align-items:center;text-align:center}
+.back-logo{font-size:44px}
+.back-title{font-size:12px;font-weight:700;color:#fff;letter-spacing:6px;margin-top:12px;text-transform:uppercase}
+.back-subtitle{font-size:9px;color:rgba(255,255,255,0.3);letter-spacing:4px;text-transform:uppercase;margin-top:2px}
+.back-date{font-size:12px;color:rgba(255,255,255,0.3);margin-top:12px;letter-spacing:2px}
+.back-rule{width:40px;height:1px;background:rgba(255,255,255,0.2);margin:20px 0}
+.back-sources{font-size:10px;letter-spacing:1px}
+.back-sources a{color:rgba(255,255,255,0.5);text-decoration:none;transition:color .15s;text-transform:uppercase;font-size:10px;letter-spacing:1px}
+.back-sources a:hover{color:#e8730e}
+.back-nav{margin-top:24px;display:flex;gap:12px}
+.back-nav a{color:#fff;text-decoration:none;font-size:10px;padding:6px 16px;border:1px solid rgba(255,255,255,0.2);transition:all .15s;letter-spacing:1px;text-transform:uppercase}
+.back-nav a:hover{border-color:#e8730e;color:#e8730e}
+
+/* Reveal */
+@keyframes revealUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+.mag-page:not(.mag-cover):not(.mag-back-cover){opacity:0}
+.mag-page.revealed{animation:revealUp 0.35s ease-out forwards}
+
+@media(max-width:767px){
+  .af-hero{flex-direction:column}
+  .af-hero-left{border-right:none;border-bottom:1px solid #ddd}
+  .af-hero-visual{min-height:240px;padding:32px}
+  .af-logo{font-size:32px}
+  .af-nav{gap:12px;font-size:10px;flex-wrap:wrap}
+  .mag-page-inner{padding:28px 16px}
+  .mag-title{font-size:18px}
+  .art-title{font-size:14px}
+  .art-body{font-size:13.5px}
 }
 </style>
 </head>
 <body>
-<div class="header">
-  <div class="header-inner">
-    <a href="../index.html" class="logo">RFL DAILY</a>
-    <nav><a href="../index.html">All Issues</a>
-<a href="../daily/">Daily</a>
-</nav>
-  </div>
-</div>
-<div class="container">
-<a href="index.html" class="back-link">&larr; Back</a>
 
-<div class="page-header">
-  <h1><span class="tag tag-weekly">weekly</span> 2026-W15</h1>
+<!-- ── Artforum-style masthead ── -->
+<div class="af-masthead">
+  <a href="2026-W15.html" class="af-logo">RFL 社区日报</a>
+  <nav class="af-nav">
+    <a href="https://github.com/Rust-for-Linux" target="_blank" rel="noopener"><svg style="width:14px;height:14px;vertical-align:-2px;margin-right:3px;fill:currentColor" viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>RFL GitHub</a>
+    <a href="https://lore.kernel.org/rust-for-linux/" target="_blank" rel="noopener"><svg style="width:14px;height:14px;vertical-align:-2px;margin-right:3px;fill:currentColor" viewBox="0 0 16 16"><path d="M0 4a2 2 0 012-2h12a2 2 0 012 2v8a2 2 0 01-2 2H2a2 2 0 01-2-2V4zm2-1a1 1 0 00-1 1v.217l7 4.2 7-4.2V4a1 1 0 00-1-1H2zm13 2.383l-4.758 2.855L15 11.114V5.383zm-.034 6.878L9.271 8.82 8 9.583 6.729 8.82l-5.694 3.44A1 1 0 002 13h12a1 1 0 00.966-.739zM1 11.114l4.758-2.876L1 5.383v5.73z"/></svg>Lore</a>
+    <a href="https://rust-for-linux.zulipchat.com/" target="_blank" rel="noopener"><svg style="width:14px;height:14px;vertical-align:-2px;margin-right:3px;fill:currentColor" viewBox="0 0 16 16"><path d="M14 1a1 1 0 011 1v8a1 1 0 01-1 1h-2.5a1 1 0 00-.8.4l-1.9 2.533a1 1 0 01-1.6 0L5.3 11.4a1 1 0 00-.8-.4H2a1 1 0 01-1-1V2a1 1 0 011-1h12zM2 0a2 2 0 00-2 2v8a2 2 0 002 2h2.5a.5.5 0 01.4.2l1.9 2.533a2 2 0 003.2 0l1.9-2.533a.5.5 0 01.4-.2H14a2 2 0 002-2V2a2 2 0 00-2-2H2z"/></svg>Zulip</a>
+    <span style="color:#ddd">|</span>
+    <a href="https://github.com/rfl-camp/reports" target="_blank" rel="noopener"><svg style="width:14px;height:14px;vertical-align:-2px;margin-right:3px;fill:currentColor" viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>Source</a>
+  </nav>
 </div>
-<div class="stats"><div class="stat"><span class="stat-val">92</span><span class="stat-label">Lore</span></div>
-<div class="stat"><span class="stat-val">3</span><span class="stat-label">Zulip</span></div>
-<div class="stat"><span class="stat-val">33</span><span class="stat-label">GitHub</span></div>
+<div class="af-date-bar" id="dateBar">
+  <a class="af-today" id="todayBtn" href="2026-W15.html">TODAY</a>
+  <span></span>
+  <span class="af-cal-btn" id="calBtn"><svg viewBox="0 0 16 16"><path d="M4 0v1H1.5A1.5 1.5 0 000 2.5v12A1.5 1.5 0 001.5 16h13a1.5 1.5 0 001.5-1.5v-12A1.5 1.5 0 0014.5 1H12V0h-1v1H5V0H4zm0 2v1h1V2h6v1h1V2h2.5a.5.5 0 01.5.5V4H1V2.5a.5.5 0 01.5-.5H4zM1 5h14v9.5a.5.5 0 01-.5.5h-13a.5.5 0 01-.5-.5V5z"/></svg>SELECT</span>
+  <div id="calDrop" class="cal-drop" style="display:none"></div>
 </div>
-<div class="report-card">
-  <div class="report-card-header">
-    <h2>2026-W15</h2>
-    
+<div id="calOverlay" class="cal-overlay"></div>
+
+<!-- ── Prev / Next arrows ── -->
+<a href="2026-W14.html" class="pn-arrow pn-left" title="Previous: 2026-W14">&#8592;<span class="pn-label">2026-W14</span></a>
+
+
+<!-- ── Hero: left visual + right article list ── -->
+<div class="af-hero" id="afHero">
+  <div class="af-hero-left">
+    <div class="af-hero-visual" id="heroVisual"></div>
   </div>
-  <div class="report-body">
-    <h1>RFL 周报 - 2026-W15</h1>
-<blockquote>
-<p>2026-04-06 ~ 2026-04-12 | 覆盖 2 份日报</p>
-</blockquote>
-<h2>Summary / 本周要点</h2>
-<p><strong>EN:</strong> 2 reports aggregated. Lore: 92 threads | Zulip: 3 active topics | GitHub: 33 items</p>
-<p><strong>CN:</strong> 共聚合 2 份报告。邮件列表 92 个讨论、Zulip 3 个活跃话题、GitHub 33 项更新</p>
-<h2>邮件列表 (Lore)</h2>
-<h3>补丁</h3>
-<ul>
-<li><a href="https://lore.kernel.org/rust-for-linux/DHL6ZYVYIHI3.2SXJQ5VWKIU5T@nvidia.com/">gpu: nova-core: fb: fix clippy::precedence warning in read_sysmem_flush_page_ga100()</a> v2 (3p) — Alexandre Courbot, Miguel Ojeda, Danilo Krummrich, 3 reviews</li>
-<li><a href="https://lore.kernel.org/rust-for-linux/20260405-falcon-dma-roundup-v2-1-4af5b2ff9c16@nvidia.com/">gpu: nova-core: falcon: pad firmware DMA object size to required block alignment</a> v2 — Alexandre Courbot, Danilo Krummrich, 1 reviews<blockquote>
-<p>Commit a88831502c8f ("gpu: nova-core: falcon: use dma::Coherent") dropped the nova-local <code>DmaObject</code> device memory type for the kernel-global <code>Coherent</code> one.  This switch had a side-effect: <code>DmaObject</code> always aligned the requested size to <code>PAGE_SIZE</code>...</p>
-</blockquote>
-</li>
-<li><a href="https://lore.kernel.org/rust-for-linux/20260405-rust_acpi_prp0001-v2-1-4f8b1cf075d3@posteo.de/">rust: ACPI: fix missing match data for PRP0001</a> v2 — Greg Kroah-Hartman, Markus Probst, 1 reviews<blockquote>
-<p>Export <code>acpi_of_match_device</code> function and use it to match the of device table against ACPI PRP0001 in Rust.  This fixes id_info being None on ACPI PRP0001 devices.  Using <code>device_get_match_data</code> is not possible, because Rust stores an index in the o...</p>
-</blockquote>
-</li>
-<li><a href="https://lore.kernel.org/rust-for-linux/DHLB4703ZJUX.371TA9OH871FG@nvidia.com/">rust: io: use pointer types instead of address</a> (8p) — Alexandre Courbot, Danilo Krummrich, 2 reviews</li>
-<li><a href="https://lore.kernel.org/rust-for-linux/DHKUVJPFY5TD.210EGM8FP4IHG@nvidia.com/">gpu: nova-core: falcon: align firmware DMA object size to required block alignment</a> — Alexandre Courbot, 1 reviews</li>
-<li><a href="https://lore.kernel.org/rust-for-linux/202604051110.OC0tBUnh-lkp@intel.com/">rust: dma: return EOVERFLOW instead of ENOMEM on size overflow</a> — kernel test robot, 1 reviews</li>
-<li><a href="https://lore.kernel.org/rust-for-linux/DHLB3RO3OSF5.2R7F27U99BKLN@nvidia.com/">rust: io: generalize <code>Mmio</code> to arbitrary type</a> (8p) — Alexandre Courbot, 1 reviews</li>
-<li><a href="https://lore.kernel.org/rust-for-linux/DHLB8H63S0R6.1RP67M1C8S5G4@nvidia.com/">I/O type generalization and projection</a> (8p) — Alexandre Courbot, 1 reviews</li>
-<li><a href="https://lore.kernel.org/rust-for-linux/DHLBJ7FDJHZ8.XHEA93HJA53B@kernel.org/">gpu: nova-core: gsp: fix undefined behavior in command queue code</a> v5 — Danilo Krummrich, 1 reviews</li>
-<li><a href="https://lore.kernel.org/rust-for-linux/DHLBJM6MGHZP.2UP49SIMCBN9B@kernel.org/">Fix all clippy warnings in drm-rust-next</a> v2 (3p) — Danilo Krummrich, 1 reviews</li>
-<li><a href="https://lore.kernel.org/rust-for-linux/20260405-synology_microp_initial-v6-0-08fde474b6c9@posteo.de/">Introduce Synology Microp driver</a> v6 (2p) — Markus Probst via B4 Relay<blockquote>
-<p>Synology uses a microcontroller in their NAS devices connected to a serial port to control certain LEDs, fan speeds, a beeper, to handle proper shutdown and restart, buttons and fan failures.  This patch series depends on the rust led abstraction [1]...</p>
-</blockquote>
-</li>
-<li><a href="https://lore.kernel.org/rust-for-linux/20260405-synology_microp_initial-v6-1-08fde474b6c9@posteo.de/">platform: Add initial synology microp driver</a> v6 (2p) — Markus Probst via B4 Relay<blockquote>
-<p>From: Markus Probst <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#109;&#97;&#114;&#107;&#117;&#115;&#46;&#112;&#114;&#111;&#98;&#115;&#116;&#64;&#112;&#111;&#115;&#116;&#101;&#111;&#46;&#100;&#101;">&#109;&#97;&#114;&#107;&#117;&#115;&#46;&#112;&#114;&#111;&#98;&#115;&#116;&#64;&#112;&#111;&#115;&#116;&#101;&#111;&#46;&#100;&#101;</a>  Add a initial synology microp driver, written in Rust. The driver targets a microcontroller found in Synology NAS devices. It currently only supports controlling of the power led, status led, alert led a...</p>
-</blockquote>
-</li>
-<li><a href="https://lore.kernel.org/rust-for-linux/20260405-synology_microp_initial-v6-2-08fde474b6c9@posteo.de/">dt-bindings: embedded-controller: Add synology microp devices</a> v6 (2p) — Markus Probst via B4 Relay<blockquote>
-<p>From: Markus Probst <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#109;&#97;&#114;&#107;&#117;&#115;&#46;&#112;&#114;&#111;&#98;&#115;&#116;&#64;&#112;&#111;&#115;&#116;&#101;&#111;&#46;&#100;&#101;">&#109;&#97;&#114;&#107;&#117;&#115;&#46;&#112;&#114;&#111;&#98;&#115;&#116;&#64;&#112;&#111;&#115;&#116;&#101;&#111;&#46;&#100;&#101;</a>  Add the Synology Microp devicetree bindings. Those devices are microcontrollers found on Synology NAS devices. They are connected to a serial port on the host device.  Those devices are used to control c...</p>
-</blockquote>
-</li>
-<li><a href="https://lore.kernel.org/rust-for-linux/CANiq72=EL4pEagthmrQ=DTNe8-5jWMfgxxx+fsj=pFy3EX0zdw@mail.gmail.com/">rust: transmute: simplify code with Rust 1.80.0 <code>split_at_*checked()</code></a> (33p) — Miguel Ojeda, 1 reviews</li>
-<li><a href="https://lore.kernel.org/rust-for-linux/CANiq72k1U0JacHf9rEVhOMmeZ4szCPBhbfLxC1K_0a0cQPw6HA@mail.gmail.com/">rust: alloc: simplify with <code>NonNull::add()</code> now that it is stable</a> (33p) — Miguel Ojeda, 1 reviews</li>
-<li><a href="https://lore.kernel.org/rust-for-linux/20260405235309.418950-1-ojeda@kernel.org/">rust: bump minimum Rust and <code>bindgen</code> versions</a> v2 (33p) — John Hubbard, Miguel Ojeda, 4 reviews<blockquote>
-<p>As proposed in the past in e.g. LPC 2025 and the Maintainers Summit [1], we are going to follow Debian Stable's Rust versions as our minimum supported version.  Debian Trixie was released with a Rust 1.85.0 toolchain [2], which it still uses to this ...</p>
-</blockquote>
-</li>
-<li><a href="https://lore.kernel.org/rust-for-linux/20260405235309.418950-8-ojeda@kernel.org/">rust: allow globally <code>clippy::incompatible_msrv</code></a> v2 (33p) — Gary Guo, Miguel Ojeda, Tamir Duberstein, 4 reviews<blockquote>
-<p><code>clippy::incompatible_msrv</code> is not buying us much, and we discussed allowing it several times in the past.  For instance, there was recently another patch sent to <code>allow</code> it where needed [1]. While that particular case would not be needed after the m...</p>
-</blockquote>
-</li>
-<li><a href="https://lore.kernel.org/rust-for-linux/20260406-fix-kconfig-v1-1-8f634499f7f0@nvidia.com/">gpu: nova-core: require little endian</a> — John Hubbard, Gary Guo, Eliot Courtney, 4 reviews<blockquote>
-<p>The driver already assumes little endian in a lot of locations. For example, all the code that reads RPCs out of the command queue just directly interprets the bytes.  Make this explicit in Kconfig.</p>
-</blockquote>
-</li>
-<li><a href="https://lore.kernel.org/rust-for-linux/20260405235309.418950-33-ojeda@kernel.org/">rust: kbuild: support global per-version flags</a> v2 (33p) — Gary Guo, Miguel Ojeda, Tamir Duberstein, 3 reviews<blockquote>
-<p>Sometimes it is useful to gate global Rust flags per compiler version. For instance, we may want to disable a lint that has false positives in a single version [1].  We already had helpers like <code>rustc-min-version</code> for that, which we use elsewhere, bu...</p>
-</blockquote>
-</li>
-<li><a href="https://lore.kernel.org/rust-for-linux/20260406-ancient-amethyst-poodle-1ba0b2@quoll/">dt-bindings: embedded-controller: Add synology microp devices</a> v6 (2p) — Markus Probst, Krzysztof Kozlowski, 4 reviews</li>
-<li><a href="https://lore.kernel.org/rust-for-linux/CANiq72=tKVD13GD2Bzmt_LnC4SiOX1nkHQPcz2BS=P=b23e0Yw@mail.gmail.com/">rust: time: add <code>pr_warn_once!</code> for clamped delta in <code>fsleep</code></a> (4p) — Greg KH, Miguel Ojeda, 4 reviews</li>
-<li><a href="https://lore.kernel.org/rust-for-linux/CANiq72msbAP3F2wtCxA=Zn9w__7bTgUxjjOvS1pR_xOB9pQYYQ@mail.gmail.com/">rust: ptr: allow clippy::incompatible_msrv for slice_ptr_len</a> v2 (3p) — John Hubbard, Miguel Ojeda, 3 reviews</li>
-<li><a href="https://lore.kernel.org/rust-for-linux/20260405235309.418950-2-ojeda@kernel.org/">rust: kbuild: remove <code>--remap-path-prefix</code> workarounds</a> v2 (33p) — Gary Guo, Miguel Ojeda, Tamir Duberstein, 2 reviews<blockquote>
-<p>Commit 8cf5b3f83614 ("Revert "kbuild, rust: use -fremap-path-prefix to make paths relative"") removed <code>--remap-path-prefix</code> from the build system, so the workarounds are not needed anymore.  Thus remove them.  Note that the flag has landed again in p...</p>
-</blockquote>
-</li>
-<li><a href="https://lore.kernel.org/rust-for-linux/20260405235309.418950-24-ojeda@kernel.org/">docs: rust: quick-start: update Ubuntu versioned packages</a> v2 (33p) — Gary Guo, Miguel Ojeda, 2 reviews<blockquote>
-<p>Now that the minimum supported Rust version is bumped, bump the versioned Rust packages [1][2][3][4] to that version for Ubuntu in the Quick Start guide.  In addition, add "may" to the <code>RUST_LIB_SRC</code> line since it does not look like it is needed from...</p>
-</blockquote>
-</li>
-<li><a href="https://lore.kernel.org/rust-for-linux/20260406095820.465994-1-ojeda@kernel.org/">rust: kernel: update <code>file_with_nul</code> comment</a> v2 (2p) — Gary Guo, Miguel Ojeda, Boqun Feng, 2 reviews<blockquote>
-<p><code>feature(file_with_nul)</code> [1] has been stabilized in Rust 1.92.0 [2].  Thus update the comment to keep track of it.  In addition, this will help to sort new conditionally enabled features (i.e. <code>cfg_attr</code>) around it appropiately.</p>
-</blockquote>
-</li>
-<li><a href="https://lore.kernel.org/rust-for-linux/4665d787-bf4f-4ecb-8ba5-f4e1d3517537@nvidia.com/">gpu: nova-core: mm: Add TLB flush support</a> v10 (21p) — Joel Fernandes, 3 reviews</li>
-<li><a href="https://lore.kernel.org/rust-for-linux/DHLLV6ER6L2T.JF2CXDXSFJX7@garyguo.net/">rust: io: generalize <code>Mmio</code> to arbitrary type</a> (8p) — Gary Guo, Alexandre Courbot, 2 reviews</li>
-<li><a href="https://lore.kernel.org/rust-for-linux/20260405235309.418950-16-ojeda@kernel.org/">rust: macros: simplify code using <code>feature(extract_if)</code></a> v2 (33p) — Miguel Ojeda, Tamir Duberstein, 1 reviews<blockquote>
-<p><code>feature(extract_if)</code> [1] was stabilized in Rust 1.87.0 [2], and the last significant change happened in Rust 1.85.0 [3] when the range parameter was added.  That is, with our new minimum version, we can start using the feature.  Thus simplify the co...</p>
-</blockquote>
-</li>
-<li><a href="https://lore.kernel.org/rust-for-linux/20260405235309.418950-34-ojeda@kernel.org/">rust: kbuild: allow <code>clippy::precedence</code> for Rust &lt; 1.86.0</a> v2 (33p) — Miguel Ojeda, 1 reviews<blockquote>
-<p>The Clippy <code>precedence</code> lint was extended in Rust 1.85.0 to include bitmasking and shift operations [1]. However, because it generated many hits, in Rust 1.86.0 it was split into a new <code>precedence_bits</code> lint which is not enabled by default [2].  In o...</p>
-</blockquote>
-</li>
-<li><a href="https://lore.kernel.org/rust-for-linux/DHLY21KWINJP.32YXNJEUXBE9T@nvidia.com/">gpu: nova-core: gsp: add NV_STATUS error code bindings</a> v3 (9p) — John Hubbard, Eliot Courtney, 2 reviews</li>
-</ul>
-<h3>讨论</h3>
-<ul>
-<li><a href="https://lore.kernel.org/rust-for-linux/20260406165120.166928-2-wenzhaoliao@ruc.edu.cn/">[RFC PATCH v3 1/6] uapi: add goldfish_address_space userspace ABI header</a> — Wenzhao Liao (1 条)</li>
-<li><a href="https://lore.kernel.org/rust-for-linux/20260406165120.166928-1-wenzhaoliao@ruc.edu.cn/">[RFC PATCH v3 0/6] Rust goldfish_address_space driver (ioctl-only subset)</a> — Wenzhao Liao (1 条)</li>
-<li><a href="https://lore.kernel.org/rust-for-linux/20260406165120.166928-5-wenzhaoliao@ruc.edu.cn/">[RFC PATCH v3 4/6] rust: pci: add shared BAR memremap support</a> — Wenzhao Liao (1 条)</li>
-<li><a href="https://lore.kernel.org/rust-for-linux/20260406165120.166928-3-wenzhaoliao@ruc.edu.cn/">[RFC PATCH v3 2/6] rust: bindings: expose goldfish address-space headers</a> — Wenzhao Liao (1 条)</li>
-<li><a href="https://lore.kernel.org/rust-for-linux/20260406165120.166928-4-wenzhaoliao@ruc.edu.cn/">[RFC PATCH v3 3/6] rust: page: add helpers for page-backed ping state</a> — Wenzhao Liao (1 条)</li>
-<li><a href="https://lore.kernel.org/rust-for-linux/20260406165120.166928-6-wenzhaoliao@ruc.edu.cn/">[RFC PATCH v3 5/6] rust: miscdevice: harden registration and safe file_operations invariants</a> — Wenzhao Liao (1 条)</li>
-<li><a href="https://lore.kernel.org/rust-for-linux/20260406165120.166928-7-wenzhaoliao@ruc.edu.cn/">[RFC PATCH v3 6/6] platform/goldfish: add Rust goldfish_address_space driver</a> — Wenzhao Liao (1 条)</li>
-</ul>
-<h2>Zulip 讨论</h2>
-<ul>
-<li><a href="https://rust-for-linux.zulipchat.com/#narrow/stream/Help/topic/How%20to%20see%20debug%20output%20from%20rust_driver_i2c">#Help &gt; How to see debug output from rust_driver_i2c</a> (2 msgs)<blockquote>
-<p><strong>Christian Meusel</strong>: I'm sorry for the noise. I figured out that i forgot the register a i2c device (in my case the gpio expander  i want to play with) under the drivers device id  rust_driver_i2c . Wh...</p>
-</blockquote>
-</li>
-<li><a href="https://rust-for-linux.zulipchat.com/#narrow/stream/Help/topic/%E2%9C%94%20How%20to%20see%20debug%20output%20from%20rust_driver_i2c">#Help &gt; ✔ How to see debug output from rust_driver_i2c</a> (1 msgs)<blockquote>
-<p><strong>Notification Bot</strong>: Onur Özkan  has marked this topic as resolved.</p>
-</blockquote>
-</li>
-<li><a href="https://rust-for-linux.zulipchat.com/#narrow/stream/Help/topic/Seeking%20guidance%20on%20a%20reviewable%20Rust%20driver%20target">#Help &gt; Seeking guidance on a reviewable Rust driver target</a> (1 msgs)<blockquote>
-<p><strong>Miguel Ojeda</strong>: It is a strictly structured pipeline designed to enforce safety boundaries     Hmm... Not sure if I follow this. Adding a few static checks would still mean it is tooling-generated...</p>
-</blockquote>
-</li>
-</ul>
-<h2>GitHub</h2>
-<h3>议题 (3)</h3>
-<ul>
-<li>[open] <a href="https://github.com/Rust-for-Linux/linux/issues/1223">#1223 Rust unstable features needed for the kernel — Done</a> — ojeda <code>• toolchain</code> <code>meta</code></li>
-<li>[open] <a href="https://github.com/Rust-for-Linux/linux/issues/2">#2 Rust unstable features needed for the kernel</a> — ojeda <code>• toolchain</code> <code>meta</code></li>
-<li>[open] <a href="https://github.com/Rust-for-Linux/linux/issues/1132">#1132 LLVM and Clang wanted features &amp; bugfixes</a> — ojeda <code>• toolchain</code> <code>meta</code></li>
-</ul>
-<h3>rust-next 提交 (30)</h3>
-<ul>
-<li><a href="https://github.com/Rust-for-Linux/linux/commit/232e79c72f572782434b43d0fc72581271cea7f3"><code>232e79c7</code></a> rust: kbuild: allow <code>clippy::precedence</code> for Rust &lt; 1.86.0 — Miguel Ojeda<blockquote>
-<p>The Clippy <code>precedence</code> lint was extended in Rust 1.85.0 to include bitmasking and shift operations [1]. However, because it generated many hits, in Rust 1.86.0 it was split into a new `precedence_bit...</p>
-</blockquote>
-</li>
-<li><a href="https://github.com/Rust-for-Linux/linux/commit/602913c10d4701fb6b31339319deb0c1a5299ec8"><code>602913c1</code></a> rust: kbuild: support global per-version flags — Miguel Ojeda<blockquote>
-<p>Sometimes it is useful to gate global Rust flags per compiler version. For instance, we may want to disable a lint that has false positives in a single version [1].  We already had helpers like `rustc...</p>
-</blockquote>
-</li>
-<li><a href="https://github.com/Rust-for-Linux/linux/commit/cc99cd11520e5ba9977f2c0e19bf8fdaabd806d2"><code>cc99cd11</code></a> rust: declare cfi_encoding for lru_status — Alice Ryhl<blockquote>
-<p>By default bindgen will convert 'enum lru_status' into a typedef for an integer. For the most part, an integer of the same size as the enum results in the correct ABI, but in the specific case of CFI,...</p>
-</blockquote>
-</li>
-<li><a href="https://github.com/Rust-for-Linux/linux/commit/e94d17de0c605448348eca75ab79f9f3a63aefd2"><code>e94d17de</code></a> docs: rust: general-information: use real example — Miguel Ojeda<blockquote>
-<p>Currently the example in the documentation shows a version-based name for the Kconfig example:  RUSTC_VERSION_MIN_107900  The reason behind it was to possibly avoid repetition in case several features...</p>
-</blockquote>
-</li>
-<li><a href="https://github.com/Rust-for-Linux/linux/commit/05dd8e7a7b310ea60c62b4c794cbeaa1c7dd804f"><code>05dd8e7a</code></a> docs: rust: general-information: simplify Kconfig example — Miguel Ojeda<blockquote>
-<p>There is no need to use <code>def_bool y if &lt;expr&gt;</code> -- one can simply write <code>def_bool &lt;expr&gt;</code>.  In fact, the simpler form is how we actually use them in practice in <code>init/Kconfig</code>.  Thus simplify the examp...</p>
-</blockquote>
-</li>
-<li><a href="https://github.com/Rust-for-Linux/linux/commit/084139d9add7a0f15ed33295ff9e92a73cad4939"><code>084139d9</code></a> docs: rust: quick-start: remove GDB/Binutils mention — Miguel Ojeda<blockquote>
-<p>The versions provided nowadays by even a distribution like Debian Stable (and Debian Old Stable) are newer than those mentioned [1].  Thus remove the workaround.  Note that the minimum binutils versio...</p>
-</blockquote>
-</li>
-<li><a href="https://github.com/Rust-for-Linux/linux/commit/7c67a6c66a7c2633a184dec7df09ec92cd737dbd"><code>7c67a6c6</code></a> docs: rust: quick-start: remove Nix "unstable channel" note — Miguel Ojeda<blockquote>
-<p>Nix does not need the "unstable channel" note, since its packages are recent enough even in the stable channel [1][2].  Thus remove it to simplify the documentation.</p>
-</blockquote>
-</li>
-<li><a href="https://github.com/Rust-for-Linux/linux/commit/f1edc19220d1342b855cfb304b5b99b026c2d712"><code>f1edc192</code></a> docs: rust: quick-start: remove Gentoo "testing" note — Miguel Ojeda<blockquote>
-<p>Gentoo does not need the "testing" note, since its packages are recent enough even in the stable branch [1][2].  Thus remove it to simplify the documentation.</p>
-</blockquote>
-</li>
-<li><a href="https://github.com/Rust-for-Linux/linux/commit/738b25f6a8dd5a171e7494fc20b40064a4fec22f"><code>738b25f6</code></a> docs: rust: quick-start: add Ubuntu 26.04 LTS and remove subsection title — Miguel Ojeda<blockquote>
-<p>Ubuntu 26.04 LTS (Resolute Raccoon) is scheduled to be released in a few weeks [1], and it has a recent enough Rust toolchain, just like Ubuntu 25.10 has [2][3].  We could update the title and the par...</p>
-</blockquote>
-</li>
-<li><a href="https://github.com/Rust-for-Linux/linux/commit/c656c864c4e0c29edbdb755eb4ef7f000cb4ecec"><code>c656c864</code></a> docs: rust: quick-start: update minimum Ubuntu version — Miguel Ojeda<blockquote>
-<p>Ubuntu 25.04 is out of support [1], and Ubuntu 25.10 is the latest supported one.  Moreover, Ubuntu 25.10 is the first that provides a recent enough Rust given the minimum bump -- they provide 1.85.1 ...</p>
-</blockquote>
-</li>
-<li><a href="https://github.com/Rust-for-Linux/linux/commit/aeda22472902cfe8c459e7be0e1c166deab9cce2"><code>aeda2247</code></a> docs: rust: quick-start: update Ubuntu versioned packages — Miguel Ojeda<blockquote>
-<p>Now that the minimum supported Rust version is bumped, bump the versioned Rust packages [1][2][3][4] to that version for Ubuntu in the Quick Start guide.  In addition, add "may" to the <code>RUST_LIB_SRC</code> ...</p>
-</blockquote>
-</li>
-<li><a href="https://github.com/Rust-for-Linux/linux/commit/7240d870fadc7058b78c1005c337c9176862b9ec"><code>7240d870</code></a> docs: rust: quick-start: openSUSE provides <code>rust-src</code> package nowadays — Miguel Ojeda<blockquote>
-<p>Both openSUSE Tumbleweed and Slowroll provide the <code>rust-src</code> package nowadays [1].  Thus remove the version-specific one from the Quick Start guide.</p>
-</blockquote>
-</li>
-<li><a href="https://github.com/Rust-for-Linux/linux/commit/50309bfe2c8b21bcd58742be8e06d172701d466b"><code>50309bfe</code></a> rust: kbuild: remove "dummy parameter" workaround for <code>bindgen</code> &lt; 0.71.1 — Miguel Ojeda<blockquote>
-<p>Until the version bump of <code>bindgen</code>, we needed to pass a dummy parameter to avoid failing the <code>--version</code> call.  Thus remove it.</p>
-</blockquote>
-</li>
-<li><a href="https://github.com/Rust-for-Linux/linux/commit/9160e333bddb38dd5736da97518a99aa4647258f"><code>9160e333</code></a> rust: kbuild: update <code>bindgen --rust-target</code> version and replace comment — Miguel Ojeda<blockquote>
-<p>As the comment in the <code>Makefile</code> explains, previously, we needed to limit ourselves to the list of Rust versions known by <code>bindgen</code> for its <code>--rust-target</code> option [1].  In other words, we needed to co...</p>
-</blockquote>
-</li>
-<li><a href="https://github.com/Rust-for-Linux/linux/commit/a1a976ffc2a54ebaf5fefd7c2212183f4b40d885"><code>a1a976ff</code></a> rust: rust_is_available: remove warning for <code>bindgen</code> &lt; 0.69.5 &amp;&amp; libclang &gt;= 19.1 — Miguel Ojeda<blockquote>
-<p>It is not possible anymore to fall into the issue that this warning was alerting about given the <code>bindgen</code> version bump.  Thus simplify by removing the machinery behind it, including tests.</p>
-</blockquote>
-</li>
-</ul>
-<hr />
-<p><em>Generated at 2026-04-07 13:22:19 CST by rfl-reports.py</em></p>
-  </div>
-  <div class="report-nav"><a href="2026-W14.html">&larr; 2026-W14</a><span></span></div>
+  <div class="af-hero-right" id="heroRight"></div>
 </div>
 
+<!-- ── Main article content ── -->
+<div class="af-main">
+  <div id="magContent">
+    <div class="mag-page mag-cover" data-density="hard"><div class="mag-page-inner cover-inner"><div class="cover-decoration"></div><div class="cover-content"><div class="cover-masthead">R&thinsp;F&thinsp;L&ensp;D&thinsp;A&thinsp;I&thinsp;L&thinsp;Y</div><div class="cover-rule"></div><div class="cover-crab">🦀</div><div class="cover-date"></div><div class="cover-weekday"></div><div class="cover-rule"></div><div class="cover-hero">Rust 工具链版本大升级</div><div class="cover-rule-thin"></div><div class="cover-stats"></div></div></div></div><div class="mag-page"><div class="mag-page-inner overview-inner"><div class="mag-accent-bar"></div><div class="ov-label">TODAY'S OVERVIEW</div><h2 class="ov-title">📋 今日概览</h2><div class="ov-body"><span class="ov-dropcap">本</span>周是 Rust-for-Linux 社区意义重大的一周。<strong>最低 Rust 版本正式升级到 1.85.0</strong>，这是一次跟随 Debian Stable 的版本升级策略，带来了一系列代码简化和工具链清理，共计 33 个补丁组成的大型补丁集已合入 rust-next 分支。GPU 方面，<strong>NVIDIA Nova-Core 驱动</strong>持续快速迭代，TLB 刷新支持已推进到第 10 版，GSP 固件的错误码绑定和命令队列的未定义行为修复也在本周推进。I/O 抽象层启动了一次<strong>重要的类型泛化重构</strong>，将 MMIO 映射从固定类型扩展为任意类型。设备驱动方面，<strong>群晖 NAS 微控制器驱动</strong>迭代到第 6 版，Goldfish 虚拟设备驱动提交了第 3 版 RFC。社区活跃度依然高涨，多位核心维护者参与了深入的代码审查。
+</div><div class="mag-page-num">2</div></div></div><div class="mag-page"><div class="mag-page-inner"><div class="mag-accent-bar"></div><div class="mag-section-label">RUST 工具链版本大升级</div><h2 class="mag-title">Rust 工具链版本大升级</h2><div class="mag-section-content"><div class="mag-article"><div class="art-body"><p>本周最重要的事件之一：<strong>Rust-for-Linux 的最低 Rust 编译器版本从之前的版本正式提升到了 1.85.0</strong>，同时 <code>bindgen</code>（用于自动生成 C 与 Rust 绑定代码的工具）的最低版本也一并升级。这个决定遵循了在 LPC 2025 和维护者峰会上达成的共识——跟随 Debian Stable（Trixie）发行版中附带的 Rust 版本。这是一种务实的策略：既能使用较新的语言特性，又不会把门槛设得太高，因为 Debian Stable 是很多服务器和开发者的常用发行版。</p><p>这次升级<strong>不只是改了一个版本号</strong>，而是由 Miguel Ojeda 提交的一个包含 33 个补丁的大型补丁集，已经全部合入 <code>rust-next</code> 分支。John Hubbard、Gary Guo、Tamir Duberstein 等核心开发者参与了 Review，至少有 4 位 Reviewer 给出了意见。升级带来的主要变化包括：</p><p><strong>代码简化：</strong>由于新版本中多个之前不稳定的 API 已经稳定化，大量代码得以简化。比如 <code>extract_if</code>（从集合中按条件提取元素）在 1.87.0 稳定后，宏代码可以直接使用它；<code>split_at_checked()</code> 在 1.80.0 稳定后简化了类型转换代码；<code>NonNull::add()</code> 稳定后简化了内存分配代码。这些变化体现了一个良性循环：随着 Rust 语言的成熟，内核代码可以越来越多地使用标准库功能，减少自己维护的"黑科技"代码。</p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/20260405235309.418950-1-ojeda@kernel.org/" class="art-link">📬 查看版本升级补丁集</a> </div></div><div class="mag-article"><div class="art-body"><p><strong>Clippy lint 调整：</strong><code>clippy::incompatible_msrv</code> 这个 lint（代码检查规则）被全局允许了。这个 lint 原本是提醒你"你用了比你声明的最低版本更新的 API"，但在内核场景下它的误报太多，维护者们多次讨论后决定直接关掉它。另一个变化是 <code>clippy::precedence</code>——1.85.0 中这个 lint 被扩展到检查位运算和移位的优先级，但因为触发太频繁，1.86.0 又拆分成了独立的 <code>precedence_bits</code> lint。为了兼容使用 1.85.x 编译器的开发者，补丁添加了按版本条件禁用的机制。</p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/20260405235309.418950-8-ojeda@kernel.org/" class="art-link">📬 clippy::incompatible_msrv 补丁</a> <a href="https://lore.kernel.org/rust-for-linux/20260405235309.418950-34-ojeda@kernel.org/" class="art-link">📬 clippy::precedence 补丁</a> </div></div><div class="mag-article"><div class="art-body"><p><strong>构建系统改进：</strong>新增了"按编译器版本设置全局编译标志"的机制。这解决了一个实际痛点——有时某个 lint 只在特定编译器版本有误报，你需要只在那个版本关掉它。此外还清理了多个历史遗留的兼容性 hack：移除了 <code>--remap-path-prefix</code> 的变通代码、移除了旧版 <code>bindgen</code> 需要的"假参数"技巧、移除了旧版 <code>bindgen</code> 与 libclang 19.1 兼容性问题的警告。</p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/20260405235309.418950-33-ojeda@kernel.org/" class="art-link">📬 per-version flags 补丁</a> </div></div></div><div class="mag-page-fade"></div><div class="mag-page-num">3</div></div></div><div class="mag-page"><div class="mag-page-inner"><div class="mag-accent-bar"></div><div class="mag-section-label">CONTINUED</div><h2 class="mag-title">Rust 工具链版本大升级</h2><div class="mag-section-content"><div class="mag-article"><div class="art-body"><p><strong>文档更新：</strong>快速入门指南也随着版本升级做了大量更新。Ubuntu 部分更新了版本化包名，添加了即将发布的 Ubuntu 26.04 LTS 的信息，移除了已过期的 Ubuntu 25.04 支持。Gentoo、Nix、openSUSE 的特殊说明也因为这些发行版已经提供了足够新的包而被简化或移除。GDB/Binutils 的版本说明也被移除——如今即使是 Debian Old Stable 提供的版本也足够新了。</p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/20260405235309.418950-24-ojeda@kernel.org/" class="art-link">📬 Ubuntu 文档更新</a> </div></div><div class="mag-article"><div class="art-body"><p><strong>其他细节：</strong><code>file_with_nul</code> 特性已在 Rust 1.92.0 中稳定，更新了相关注释以便追踪。还有一个与 CFI（控制流完整性）相关的修复——为 <code>lru_status</code> 枚举声明了 <code>cfi_encoding</code>，解决了 bindgen 将 C 枚举转为整数 typedef 时在 CFI 场景下可能出现的 ABI 不匹配问题。</p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/20260406095820.465994-1-ojeda@kernel.org/" class="art-link">📬 file_with_nul 注释更新</a> </div></div><div class="mag-tips"><div>
+<strong>🔰 小白科普</strong><br/>
+<strong>MSRV（Minimum Supported Rust Version）</strong>：最低支持的 Rust 编译器版本。就像一款游戏标注"最低系统要求"一样，内核项目也要声明至少需要哪个版本的 Rust 编译器才能编译成功。版本太低用不了新特性，版本太高则排斥了很多开发者。<br/>
+<strong>Clippy</strong>：Rust 官方的代码质量检查工具，类似于 C 的 <code>cppcheck</code>，能自动发现代码中的常见问题和不良风格。<br/>
+<a href="https://doc.rust-lang.org/clippy/">📖 了解更多：Clippy 官方文档</a>
+</div></div></div><div class="mag-page-fade"></div><div class="mag-page-num">4</div></div></div><div class="mag-page"><div class="mag-page-inner"><div class="mag-accent-bar"></div><div class="mag-section-label">GPU NOVA-CORE 驱动开发</div><h2 class="mag-title">GPU Nova-Core 驱动开发</h2><div class="mag-section-content"><div class="mag-article"><div class="art-body"><p>Nova-Core 是正在开发中的 NVIDIA GPU 开源内核驱动，用 Rust 编写，本周在多个方面取得了进展。</p><p><strong>TLB 刷新支持已推进到 v10：</strong>Joel Fernandes 提交的内存管理模块 TLB（Translation Lookaside Buffer）刷新支持补丁已迭代到第 10 版，共包含 21 个补丁。TLB 是 GPU 中用于加速虚拟地址到物理地址转换的高速缓存，当页表发生变化时必须刷新 TLB，否则 GPU 可能访问到错误的内存。这个功能对 GPU 内存管理至关重要。3 位 Reviewer 参与了审查。</p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/4665d787-bf4f-4ecb-8ba5-f4e1d3517537@nvidia.com/" class="art-link">📬 查看 TLB 刷新补丁 v10</a> </div></div><div class="mag-article"><div class="art-body"><p><strong>GSP 固件相关修复：</strong>Danilo Krummrich 提交了 GSP（GPU System Processor）命令队列中<strong>未定义行为的修复</strong>，已迭代到 v5。GSP 是 NVIDIA GPU 上运行固件的一个协处理器，驱动通过命令队列与它通信。"未定义行为"在 Rust 中是非常严肃的问题——它意味着编译器不保证代码行为的正确性，可能导致难以排查的 bug。此外，John Hubbard 和 Eliot Courtney 审查的 <strong>NV_STATUS 错误码绑定</strong>也推进到 v3（共 9 个补丁），这为从 Rust 代码中更好地处理 NVIDIA 固件返回的状态码奠定了基础。</p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/DHLY21KWINJP.32YXNJEUXBE9T@nvidia.com/" class="art-link">📬 NV_STATUS 错误码绑定 v3</a> </div></div><div class="mag-article"><div class="art-body"><p><strong>Falcon 固件 DMA 对齐修复：</strong>Alexandre Courbot 发现了一个因为切换 DMA 内存分配类型而引入的 bug。之前 nova-core 使用自定义的 <code>DmaObject</code> 类型，它会自动将分配大小对齐到页面大小（通常是 4KB）。切换到内核全局的 <code>dma::Coherent</code> 类型后，这个自动对齐消失了，导致 Falcon 微控制器的固件 DMA 对象大小可能不满足硬件要求的块对齐。v2 修复了这个问题。</p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/20260405-falcon-dma-roundup-v2-1-4af5b2ff9c16@nvidia.com/" class="art-link">📬 Falcon DMA 对齐修复 v2</a> </div></div></div><div class="mag-page-fade"></div><div class="mag-page-num">5</div></div></div><div class="mag-page"><div class="mag-page-inner"><div class="mag-accent-bar"></div><div class="mag-section-label">CONTINUED</div><h2 class="mag-title">GPU Nova-Core 驱动开发</h2><div class="mag-section-content"><div class="mag-article"><div class="art-body"><p><strong>要求小端序配置：</strong>Alexandre Courbot 提交了一个补丁，在 Kconfig 中明确声明 nova-core 驱动仅支持小端序（little endian）架构。驱动中已经有很多地方直接按小端序解释字节数据（比如读取 RPC 命令队列），现在只是把这个隐含假设变成了显式的配置要求。这个补丁引发了 John Hubbard、Gary Guo、Eliot Courtney 等 4 位开发者的讨论。</p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/20260406-fix-kconfig-v1-1-8f634499f7f0@nvidia.com/" class="art-link">📬 小端序要求补丁</a> </div></div><div class="mag-article"><div class="art-body"><p><strong>Clippy 警告全面清理：</strong>Danilo Krummrich 提交了修复 <code>drm-rust-next</code> 分支中所有 Clippy 警告的补丁集 v2。其中包括 Alexandre Courbot 修复的 <code>read_sysmem_flush_page_ga100()</code> 函数中的 <code>clippy::precedence</code> 警告（v2），这个警告与前面提到的 Rust 1.85.0 扩展的位运算优先级检查有关。</p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/DHL6ZYVYIHI3.2SXJQ5VWKIU5T@nvidia.com/" class="art-link">📬 precedence 警告修复 v2</a> </div></div><div class="mag-tips"><div>
+<strong>🔰 小白科普</strong><br/>
+<strong>Nova-Core</strong>：NVIDIA 正在开发的新一代开源 GPU 内核驱动，用 Rust 编写。你可以把它理解为"用更安全的语言重写 NVIDIA 显卡驱动"。它与现有的 <code>nouveau</code>（C 语言）驱动并行开发。<br/>
+<strong>DMA（Direct Memory Access）</strong>：设备直接读写内存的技术，不需要 CPU 参与每次数据传输。就像你网购时快递直接送到柜子里，不用你亲自去取货站——CPU 就是"你"，DMA 就是"直送快递柜"。<br/>
+<a href="https://www.kernel.org/doc/html/latest/gpu/nova/index.html">📖 了解更多：Nova 驱动文档</a>
+</div></div></div><div class="mag-page-fade"></div><div class="mag-page-num">6</div></div></div><div class="mag-page"><div class="mag-page-inner"><div class="mag-accent-bar"></div><div class="mag-section-label">I/O 抽象层类型泛化</div><h2 class="mag-title">I/O 抽象层类型泛化</h2><div class="mag-section-content"><div class="mag-article"><div class="art-body"><p>Alexandre Courbot 本周提交了一组 8 个补丁的系列，对内核 Rust I/O 抽象层进行了一次重要的<strong>类型系统重构</strong>。</p><p><strong>从地址到指针类型：</strong>第一个变化是将 I/O 操作从使用原始地址（整数）改为使用 Rust 的指针类型。这看起来是个小改动，实际上意义重大——Rust 的指针类型携带了更多的类型信息和安全保证，编译器可以做更多的静态检查，减少"不小心把一个普通数字当地址用"这类错误。</p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/DHLB4703ZJUX.371TA9OH871FG@nvidia.com/" class="art-link">📬 指针类型补丁</a> </div></div><div class="mag-article"><div class="art-body"><p><strong>Mmio 泛化为任意类型：</strong>更大的变化是将 <code>Mmio</code>（Memory-Mapped I/O，内存映射 I/O）结构从只能映射固定的寄存器类型，泛化为可以映射任意类型。Gary Guo 参与了审查，两人就设计细节展开了技术讨论。这种泛化使得驱动开发者可以用类型安全的方式访问各种 MMIO 设备的寄存器布局——你定义一个 Rust 结构体来描述寄存器布局，然后通过 <code>Mmio</code> 安全地读写它们，编译器会帮你检查偏移量和类型是否正确。</p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/DHLB3RO3OSF5.2R7F27U99BKLN@nvidia.com/" class="art-link">📬 Mmio 泛化补丁</a> <a href="https://lore.kernel.org/rust-for-linux/DHLLV6ER6L2T.JF2CXDXSFJX7@garyguo.net/" class="art-link">📬 Gary Guo 的审查讨论</a> </div></div><div class="mag-article"><div class="art-body"><p><strong>DMA 错误码修正：</strong>一个小但重要的修复——当 DMA 分配大小发生溢出时，将返回的错误码从 <code>ENOMEM</code>（内存不足）改为 <code>EOVERFLOW</code>（溢出）。这是 kernel test robot 自动发现的问题。正确的错误码有助于调试：如果你看到 ENOMEM 你会去查内存是否不足，但实际原因是请求的大小溢出了——使用正确的错误码能省去排查的弯路。</p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/202604051110.OC0tBUnh-lkp@intel.com/" class="art-link">📬 DMA 错误码修复</a> </div></div><div class="mag-tips"><div>
+<strong>🔰 小白科普</strong><br/>
+<strong>MMIO（Memory-Mapped I/O）</strong>：一种让 CPU 通过读写普通内存地址来控制硬件设备的技术。想象你家的智能家居面板——你按一个按钮（写一个内存地址），灯就亮了（硬件执行了操作）。MMIO 就是这个"面板"在计算机里的实现方式。<br/>
+<strong>类型投影（Type Projection）</strong>：从一个大的类型中安全地"取出"某个字段对应的子视图。比如你有一个描述所有寄存器的大结构体，类型投影让你只操作其中的某个寄存器，且编译器保证你不会越界。<br/>
+<a href="https://doc.rust-lang.org/book/ch19-01-unsafe-rust.html">📖 了解更多：Rust 的不安全代码与硬件交互</a>
+</div></div></div><div class="mag-page-fade"></div><div class="mag-page-num">7</div></div></div><div class="mag-page"><div class="mag-page-inner"><div class="mag-accent-bar"></div><div class="mag-section-label">新设备驱动进展</div><h2 class="mag-title">新设备驱动进展</h2><div class="mag-section-content"><div class="mag-article"><div class="art-body"><p><strong>群晖 NAS 微控制器驱动 v6：</strong>Markus Probst 提交的 Synology（群晖）NAS 设备微控制器驱动已经迭代到第 6 版。群晖是一家知名的 NAS（网络附属存储）设备厂商，他们的 NAS 内部有一个微控制器通过串口与主处理器通信，用来控制 LED 指示灯、风扇转速、蜂鸣器，以及处理关机/重启按钮和风扇故障检测。这个用 Rust 编写的驱动目前支持控制电源 LED、状态 LED 和警告 LED，未来会扩展更多功能。该补丁系列依赖于尚在开发中的 Rust LED 抽象层。设备树绑定的补丁也引发了 Krzysztof Kozlowski 等 4 位开发者的审查讨论。</p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/20260405-synology_microp_initial-v6-1-08fde474b6c9@posteo.de/" class="art-link">📬 驱动代码补丁</a> <a href="https://lore.kernel.org/rust-for-linux/20260406-ancient-amethyst-poodle-1ba0b2@quoll/" class="art-link">📬 设备树绑定讨论</a> </div></div><div class="mag-article"><div class="art-body"><p><strong>Goldfish 虚拟设备驱动 RFC v3：</strong>来自中国人民大学的 Wenzhao Liao 提交了 Goldfish Address Space 驱动的第 3 版 RFC（征求意见稿），共 6 个补丁。Goldfish 是 Android 模拟器使用的虚拟设备平台，这个驱动实现了其中地址空间管理的 ioctl 子集。补丁系列涉及多个基础设施增强：为 PCI 设备添加了共享 BAR 内存映射支持，为页面管理添加了 ping 状态辅助函数，还加固了 misc 设备的注册流程和文件操作不变量。作为 RFC，目前还没有 Review 回复，这组补丁主要是在探索可行的实现路径。</p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/20260406165120.166928-1-wenzhaoliao@ruc.edu.cn/" class="art-link">📬 Goldfish 驱动 RFC v3</a> </div></div><div class="mag-article"><div class="art-body"><p><strong>ACPI PRP0001 匹配修复：</strong>Markus Probst 修复了 Rust ACPI 驱动中一个设备匹配的问题。在 ACPI（高级配置与电源接口）标准中，PRP0001 是一个特殊标识符，表示设备的属性应该从设备树（Device Tree）的兼容字符串中查找。之前 Rust 代码在这种设备上会得到空的匹配数据（<code>id_info</code> 为 None），因为 Rust 存储的是索引值而不是直接的数据指针，所以不能使用通用的 <code>device_get_match_data</code> 函数。修复方法是导出并使用 <code>acpi_of_match_device</code> 函数来专门处理这种情况。Greg Kroah-Hartman 参与了审查。</p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/20260405-rust_acpi_prp0001-v2-1-4f8b1cf075d3@posteo.de/" class="art-link">📬 ACPI PRP0001 修复 v2</a> </div></div><div class="mag-tips"><div>
+<strong>🔰 小白科普</strong><br/>
+<strong>设备树（Device Tree）</strong>：一种描述硬件配置的数据结构，告诉操作系统"这台机器上有哪些硬件、连在哪里"。就像一份电脑的"零件清单"。嵌入式设备（如 NAS、手机）广泛使用设备树来描述硬件。<br/>
+<strong>RFC（Request for Comments）</strong>：在内核社区中表示"这是一个初步方案，我知道还不完善，请大家提意见"。与正式补丁相比，RFC 更侧重于讨论方向是否正确，而不是代码细节。<br/>
+<a href="https://www.kernel.org/doc/html/latest/devicetree/usage-model.html">📖 了解更多：Linux 设备树使用模型</a>
+</div></div></div><div class="mag-page-fade"></div><div class="mag-page-num">8</div></div></div><div class="mag-page"><div class="mag-page-inner"><div class="mag-accent-bar"></div><div class="mag-section-label">内核基础设施小改进</div><h2 class="mag-title">内核基础设施小改进</h2><div class="mag-section-content"><div class="mag-article"><div class="art-body"><p><strong>时间子系统的调试改进：</strong>Miguel Ojeda 为 <code>fsleep</code>（灵活睡眠）函数添加了 <code>pr_warn_once!</code> 宏调用，在睡眠时间参数被截断时打印一次警告。这个补丁引发了 Greg KH 等 4 位开发者的讨论。<code>fsleep</code> 是一个"智能"睡眠函数，会根据请求的时长自动选择最合适的底层睡眠机制（微秒级用忙等待，毫秒级用定时器），但对过大的值会截断。现在如果发生截断，开发者能在内核日志中看到警告，方便调试。</p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/CANiq72=tKVD13GD2Bzmt_LnC4SiOX1nkHQPcz2BS=P=b23e0Yw@mail.gmail.com/" class="art-link">📬 fsleep 警告补丁</a> </div></div><div class="mag-tips"><div>
+<strong>🔰 小白科普</strong><br/>
+<strong>fsleep</strong>：内核中的"灵活睡眠"函数。就像你设闹钟——如果只需等几微秒，就原地打转等（忙等待）；如果要等几毫秒，就真的"睡一觉"让出 CPU（定时器睡眠）。fsleep 自动帮你选最省资源的等待方式。<br/>
+<a href="https://www.kernel.org/doc/html/latest/timers/timers-howto.html">📖 了解更多：内核定时器与延迟</a>
+</div></div></div><div class="mag-page-fade"></div><div class="mag-page-num">9</div></div></div><div class="mag-page"><div class="mag-page-inner"><div class="mag-accent-bar"></div><div class="mag-section-label">社区互动与新手求助</div><h2 class="mag-title">社区互动与新手求助</h2><div class="mag-section-content"><div class="mag-article"><div class="art-body"><p><strong>I2C 驱动调试：</strong>在 Zulip 的 #Help 频道，Christian Meusel 遇到了一个常见的新手问题——编写了一个 Rust I2C 驱动后看不到调试输出。经过排查发现，原来是忘记在驱动的设备 ID 表中注册 I2C 设备（一个 GPIO 扩展器）。这个问题随后被 Onur Özkan 标记为已解决。这类"驱动怎么没反应"的问题通常就是设备 ID 没有正确匹配——内核靠设备 ID 来决定哪个驱动应该被加载来管理哪个设备。</p></div><div class="art-links"><a href="https://rust-for-linux.zulipchat.com/#narrow/stream/Help/topic/How%20to%20see%20debug%20output%20from%20rust_driver_i2c" class="art-link">💬 查看 Zulip 讨论</a> </div></div><div class="mag-article"><div class="art-body"><p><strong>寻找合适的 Rust 驱动练手目标：</strong>在 Zulip 上有人寻求建议——想找一个适合初学者、容易通过 Review 的 Rust 驱动目标来练手。Miguel Ojeda 回复了讨论，对关于"严格结构化的管线用于强制安全边界"的说法提出了疑问，指出仅仅添加一些静态检查仍然属于工具生成的范畴。这个讨论反映了社区对"什么样的驱动适合用 Rust 重写"这个问题的持续思考。</p></div><div class="art-links"><a href="https://rust-for-linux.zulipchat.com/#narrow/stream/Help/topic/Seeking%20guidance%20on%20a%20reviewable%20Rust%20driver%20target" class="art-link">💬 查看 Zulip 讨论</a> </div></div><div class="mag-article"><div class="art-body"><p><strong>GitHub 议题追踪更新：</strong>本周有 3 个 GitHub 议题活跃，均为 Miguel Ojeda 维护的元追踪议题。其中最值得关注的是 <a href="https://github.com/Rust-for-Linux/linux/issues/1223">#1223</a>（内核所需的 Rust 不稳定特性——已完成）和 <a href="https://github.com/Rust-for-Linux/linux/issues/2">#2</a>（内核所需的 Rust 不稳定特性），随着本周 Rust 版本升级，一些之前标记为不稳定的特性已经稳定化，这些追踪议题得到了相应更新。<a href="https://github.com/Rust-for-Linux/linux/issues/1132">#1132</a> 追踪 LLVM 和 Clang 的需求与 bug 修复。</p></div><div class="art-links"><a href="https://github.com/Rust-for-Linux/linux/issues/1132" class="art-link">#1132</a> </div></div><div class="mag-tips"><div>
+<strong>🔰 小白科普</strong><br/>
+<strong>I2C</strong>：一种简单的两线通信协议，用于连接低速外设（传感器、LED 控制器、EEPROM 等）。你可以把它想象成一条"公共汽车"线路——多个设备共享同一条总线，每个设备有自己的"站名"（地址），主设备喊站名来和特定设备通信。<br/>
+<strong>设备 ID 匹配</strong>：内核通过比对"设备说自己是什么"和"驱动说自己支持什么"来自动配对。如果驱动没有正确声明支持的设备 ID，内核就不会把设备交给这个驱动管理，驱动的代码根本不会运行。<br/>
+<a href="https://www.kernel.org/doc/html/latest/i2c/index.html">📖 了解更多：Linux I2C 子系统</a>
+</div></div></div><div class="mag-page-fade"></div><div class="mag-page-num">10</div></div></div><div class="mag-page"><div class="mag-page-inner"><div class="mag-accent-bar"></div><div class="mag-section-label">RUST-NEXT 分支合入统计</div><h2 class="mag-title">rust-next 分支合入统计</h2><div class="mag-section-content"><div class="mag-article"><div class="art-body"><p>本周共有 <strong>30 个提交</strong>合入 <code>rust-next</code> 分支，绝大多数来自 Miguel Ojeda 的工具链升级补丁集，还有 Alice Ryhl 的 CFI 编码修复。以下是完整的提交列表：</p><p>（另有 15 个提交涉及版本升级、特性简化、文档更新等，详见 <a href="https://github.com/Rust-for-Linux/linux">GitHub 仓库</a>）</p></div><div class="art-links"><a href="https://github.com/Rust-for-Linux/linux" class="art-link">GitHub 仓库</a> </div></div></div><div class="mag-page-fade"></div><div class="mag-page-num">11</div></div></div><div class="mag-page mag-back-cover" data-density="hard"><div class="mag-page-inner back-cover-inner"><div class="back-decoration"></div><div class="back-content"><div class="back-logo">🦀</div><div class="back-title">Rust-for-Linux</div><div class="back-subtitle">Daily Briefing</div><div class="back-date"></div><div class="back-rule"></div><div class="back-sources"><a href="https://lore.kernel.org/rust-for-linux/">Lore</a> &middot; <a href="https://rust-for-linux.zulipchat.com/">Zulip</a> &middot; <a href="https://github.com/Rust-for-Linux">GitHub</a></div><div class="back-nav"><a href="2026-W14.html" class="back-link-prev">&larr; 2026-W14</a></div></div></div></div>
+  </div>
 </div>
-<div class="footer">Rust-for-Linux &middot; RFL Daily</div>
+
+<script>
+document.addEventListener('DOMContentLoaded',function(){
+  var sections=document.querySelectorAll('.mag-page');
+
+  /* ── Build hero from cover data ── */
+  var cover=document.querySelector('.mag-cover');
+  if(cover){
+    var vis=document.getElementById('heroVisual');
+    var crab=cover.querySelector('.cover-crab');
+    var date=cover.querySelector('.cover-date');
+    var wd=cover.querySelector('.cover-weekday');
+    var hero=cover.querySelector('.cover-hero');
+    if(crab)vis.appendChild(crab.cloneNode(true));
+    if(date)vis.appendChild(date.cloneNode(true));
+    if(wd)vis.appendChild(wd.cloneNode(true));
+    if(hero)vis.appendChild(hero.cloneNode(true));
+    vis.style.display='flex';
+    vis.style.flexDirection='column';
+    vis.style.alignItems='center';
+    vis.style.textAlign='center';
+  }
+
+  /* ── Build hero right: first few section titles ── */
+  var heroR=document.getElementById('heroRight');
+  var sectionPages=document.querySelectorAll('.mag-page:not(.mag-cover):not(.mag-back-cover)');
+  var count=0;
+  sectionPages.forEach(function(pg){
+    if(count>=5)return;
+    var label=pg.querySelector('.mag-section-label,.ov-label');
+    var title=pg.querySelector('.mag-title,.ov-title');
+    if(!title)return;
+    var item=document.createElement('div');
+    item.className='af-hero-item';
+    var cat=label?label.textContent.trim():'';
+    var ttl=title.textContent.trim();
+    // Get first line of body
+    var body=pg.querySelector('.art-body,.ov-body');
+    var excerpt=body?body.textContent.trim().slice(0,80)+'…':'';
+    item.innerHTML='<div class="af-hero-cat">'+cat+'</div><div class="af-hero-title">'+ttl+'</div><div class="af-hero-excerpt">'+excerpt+'</div>';
+    // Click to scroll to section
+    item.style.cursor='pointer';
+    item.addEventListener('click',function(){pg.scrollIntoView({behavior:'smooth',block:'start'})});
+    heroR.appendChild(item);
+    count++;
+  });
+
+  /* ── Back cover full-bleed ── */
+  var bc=document.querySelector('.mag-back-cover');
+  if(bc)bc.classList.add('mag-full-bleed');
+
+  /* ── Scroll reveal ── */
+  var observer=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){e.target.classList.add('revealed');observer.unobserve(e.target)}
+    });
+  },{threshold:0.06});
+  sections.forEach(function(s){
+    if(!s.classList.contains('mag-cover'))observer.observe(s);
+  });
+
+  /* ── Keyboard: left/right arrows for prev/next ── */
+  var prevUrl='2026-W14.html';
+  var nextUrl='';
+  document.addEventListener('keydown',function(e){
+    if(calOpen){if(e.key==='Escape'){closeCal();e.stopPropagation()}return}
+    if(e.key==='Escape'){window.location.href='index.html'}
+    if(e.key==='ArrowLeft'&&prevUrl){window.location.href=prevUrl}
+    if(e.key==='ArrowRight'&&nextUrl){window.location.href=nextUrl}
+  });
+
+  /* ── Calendar picker ── */
+  var allSlugs=[];
+  var slugSet=new Set(allSlugs);
+  var curDate='';
+  var calOpen=false;
+  var calMonth,calYear;
+  // init to current page's month
+  var dp=curDate.split('-');
+  calYear=parseInt(dp[0]);calMonth=parseInt(dp[1])-1;
+
+  var calBtn=document.getElementById('calBtn');
+  var calDrop=document.getElementById('calDrop');
+  var calOverlay=document.getElementById('calOverlay');
+
+  function closeCal(){calOpen=false;calDrop.style.display='none';calOverlay.className='cal-overlay'}
+  function openCal(){calOpen=true;renderCal();calDrop.style.display='block';calOverlay.className='cal-overlay open'}
+  calBtn.addEventListener('click',function(e){e.stopPropagation();calOpen?closeCal():openCal()});
+  calOverlay.addEventListener('click',closeCal);
+
+  var MONTHS=['January','February','March','April','May','June','July','August','September','October','November','December'];
+  var DOWS=['Su','Mo','Tu','We','Th','Fr','Sa'];
+  var today=new Date();var todayStr=today.getFullYear()+'-'+String(today.getMonth()+1).padStart(2,'0')+'-'+String(today.getDate()).padStart(2,'0');
+
+  function renderCal(){
+    var first=new Date(calYear,calMonth,1);
+    var startDow=first.getDay();
+    var daysInMonth=new Date(calYear,calMonth+1,0).getDate();
+    var h='<div class="cal-header">';
+    h+='<button class="cal-arrow-btn" id="calPrev">&#8592;</button>';
+    h+='<span class="cal-month">'+MONTHS[calMonth]+' '+calYear+'</span>';
+    h+='<button class="cal-arrow-btn" id="calNext">&#8594;</button>';
+    h+='</div><div class="cal-grid">';
+    for(var d=0;d<7;d++)h+='<div class="cal-dow">'+DOWS[d]+'</div>';
+    for(var b=0;b<startDow;b++)h+='<div class="cal-day"></div>';
+    for(var day=1;day<=daysInMonth;day++){
+      var ds=calYear+'-'+String(calMonth+1).padStart(2,'0')+'-'+String(day).padStart(2,'0');
+      var cls='cal-day';
+      var hasIssue=slugSet.has(ds);
+      if(hasIssue)cls+=' has-issue';
+      if(ds===curDate)cls+=' current';
+      if(ds===todayStr)cls+=' today-mark';
+      h+='<div class="'+cls+'" data-date="'+ds+'">'+day+'</div>';
+    }
+    h+='</div>';
+    calDrop.innerHTML=h;
+    document.getElementById('calPrev').addEventListener('click',function(e){e.stopPropagation();calMonth--;if(calMonth<0){calMonth=11;calYear--}renderCal()});
+    document.getElementById('calNext').addEventListener('click',function(e){e.stopPropagation();calMonth++;if(calMonth>11){calMonth=0;calYear++}renderCal()});
+    calDrop.querySelectorAll('.cal-day.has-issue').forEach(function(el){
+      el.addEventListener('click',function(){window.location.href=el.dataset.date+'.html'});
+    });
+  }
+
+  // Hide TODAY button if already on latest
+  if(curDate==='2026-W15'){document.getElementById('todayBtn').style.display='none'}
+});
+</script>
 </body>
 </html>
