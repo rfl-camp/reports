@@ -3,773 +3,379 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>RFL Weekly - 2026-W13</title>
+<title>RFL 社区日报 &middot; </title>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
 <style>
-:root {
-  --c-bg: #ffffff;
-  --c-surface: #f9f9f9;
-  --c-border: #ddd;
-  --c-border-light: #eee;
-  --c-text: #111;
-  --c-text-secondary: #555;
-  --c-text-tertiary: #999;
-  --c-link: #000;
-  --c-accent: #e8730e;
-  --radius: 2px;
-  --max-w: 1100px;
-}
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body {
-  font-family: 'Helvetica Neue', Helvetica, Arial, 'Noto Sans SC', sans-serif;
-  background: var(--c-bg);
-  color: var(--c-text);
-  font-size: 14px;
-  line-height: 1.5;
-  -webkit-font-smoothing: antialiased;
-}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:#fff;font-family:'Helvetica Neue',Helvetica,Arial,'Noto Sans SC',sans-serif;color:#111;-webkit-font-smoothing:antialiased}
 
-/* Header — Editorial masthead */
-.header {
-  border-bottom: 1px solid var(--c-border);
-  background: var(--c-bg);
-}
-.header-inner {
-  max-width: var(--max-w);
-  margin: 0 auto;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-.logo {
-  font-size: 42px;
-  font-weight: 700;
-  color: #000;
-  text-decoration: none;
-  letter-spacing: 4px;
-  font-family: Georgia, 'Times New Roman', serif;
-  padding: 24px 0 0;
-  display: block;
-  text-align: center;
-}
-.logo:hover { color: var(--c-accent); }
-.logo .accent { color: inherit; }
-nav {
-  display: flex;
-  gap: 24px;
-  padding: 14px 0;
-  border-top: 1px solid var(--c-border-light);
-  margin-top: 16px;
-}
-nav a {
-  color: var(--c-text-secondary);
-  text-decoration: none;
-  font-size: 11px;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  font-weight: 500;
-  transition: color 0.15s;
-}
-nav a:hover { color: #000; }
-nav a.active {
-  color: #000;
-  font-weight: 700;
-}
+/* ── Masthead ── */
+.af-masthead{text-align:center;padding:20px 0 0;border-bottom:1px solid #ddd}
+.af-logo{font-size:48px;font-weight:700;letter-spacing:3px;color:#000;font-family:Georgia,'Times New Roman',serif;text-decoration:none;display:block;line-height:1}
+.af-logo:hover{color:#e8730e}
+.af-nav{display:flex;justify-content:center;gap:24px;padding:14px 0;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;font-weight:500;border-top:1px solid #eee;margin-top:16px}
+.af-nav a{color:#555;text-decoration:none;transition:color .15s}
+.af-nav a:hover{color:#000}
+.af-nav a.active{color:#000;font-weight:700}
 
-/* Layout */
-.container {
-  max-width: var(--max-w);
-  margin: 0 auto;
-  padding: 32px 24px;
-}
-.back-link {
-  display: inline-block;
-  color: #000;
-  text-decoration: none;
-  font-size: 10px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  font-weight: 700;
-  margin-bottom: 24px;
-  transition: color .15s;
-}
-.back-link:hover { color: var(--c-accent); }
+/* ── Prev/Next arrows ── */
+.pn-arrow{position:fixed;top:50%;transform:translateY(-50%);z-index:200;display:flex;align-items:center;justify-content:center;width:48px;height:48px;background:rgba(0,0,0,0.06);color:#333;text-decoration:none;font-size:22px;font-family:Georgia,serif;transition:all .2s;border-radius:50%}
+.pn-arrow:hover{background:rgba(0,0,0,0.12);color:#000}
+.pn-arrow.pn-left{left:16px}
+.pn-arrow.pn-right{right:16px}
+.pn-arrow .pn-label{position:absolute;top:50%;white-space:nowrap;font-size:9px;letter-spacing:2px;text-transform:uppercase;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-weight:700;color:#999;opacity:0;transition:opacity .2s;transform:translateY(-50%)}
+.pn-left .pn-label{left:56px}
+.pn-right .pn-label{right:56px}
+.pn-arrow:hover .pn-label{opacity:1}
 
-/* Page header */
-.page-header {
-  margin-bottom: 32px;
-  padding-bottom: 20px;
-  border-bottom: 2px solid #000;
-}
-.page-header h1 {
-  font-size: 28px;
-  font-weight: 700;
-  letter-spacing: -0.3px;
-  font-family: Georgia, 'Times New Roman', serif;
-  text-transform: uppercase;
-}
-.page-header .subtitle {
-  color: var(--c-text-tertiary);
-  font-size: 11px;
-  margin-top: 6px;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-}
+/* ── Date bar tools ── */
+.af-date-bar{font-size:10px;color:#999;letter-spacing:2px;text-transform:uppercase;text-align:center;padding:10px 0;border-bottom:2px solid #000;position:relative;display:flex;align-items:center;justify-content:center;gap:20px}
+.af-today{font-size:9px;letter-spacing:2px;text-transform:uppercase;font-weight:700;color:#e8730e;text-decoration:none;transition:color .15s;cursor:pointer}
+.af-today:hover{color:#000}
+.af-cal-btn{font-size:9px;letter-spacing:2px;text-transform:uppercase;font-weight:700;color:#999;cursor:pointer;transition:color .15s;user-select:none;position:relative}
+.af-cal-btn:hover{color:#000}
+.af-cal-btn svg{width:14px;height:14px;vertical-align:-2px;margin-right:3px;fill:currentColor}
 
-/* Stats row */
-.stats {
-  display: flex;
-  gap: 24px;
-  margin-bottom: 24px;
-  flex-wrap: wrap;
-}
-.stat {
-  display: flex;
-  align-items: baseline;
-  gap: 6px;
-}
-.stat-val {
-  font-size: 20px;
-  font-weight: 600;
-  color: var(--c-text);
-}
-.stat-label {
-  font-size: 12px;
-  color: var(--c-text-tertiary);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
+/* ── Calendar dropdown ── */
+.cal-overlay{display:none;position:fixed;inset:0;z-index:500}
+.cal-overlay.open{display:block}
+.cal-drop{position:absolute;top:100%;left:50%;transform:translateX(-50%);margin-top:8px;background:#fff;border:1px solid #ddd;box-shadow:0 8px 32px rgba(0,0,0,0.12);z-index:501;padding:16px;min-width:280px}
+.cal-drop.open{display:block}
+.cal-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+.cal-month{font-size:13px;font-weight:700;font-family:Georgia,serif;letter-spacing:0.5px}
+.cal-arrow-btn{background:none;border:none;cursor:pointer;font-size:16px;color:#999;padding:4px 8px;transition:color .15s}
+.cal-arrow-btn:hover{color:#000}
+.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:2px;text-align:center}
+.cal-dow{font-size:8px;color:#999;letter-spacing:1px;text-transform:uppercase;padding:4px 0;font-weight:700}
+.cal-day{font-size:12px;padding:6px 2px;color:#ccc;cursor:default;border-radius:2px;transition:all .12s;font-variant-numeric:tabular-nums}
+.cal-day.has-issue{color:#000;font-weight:600;cursor:pointer}
+.cal-day.has-issue:hover{background:#f5f5f5}
+.cal-day.current{background:#000;color:#fff;font-weight:700}
+.cal-day.current:hover{background:#333}
+.cal-day.today-mark{box-shadow:inset 0 -2px 0 #e8730e}
 
-/* Report list */
-.list-section {
-  margin-bottom: 32px;
-}
-.list-section-title {
-  font-size: 9px;
-  font-weight: 700;
-  color: var(--c-accent);
-  text-transform: uppercase;
-  letter-spacing: 3px;
-  padding: 12px 0 10px;
-  border-bottom: 2px solid #000;
-  margin-bottom: 0;
-}
-.list-item {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 14px 0;
-  border-bottom: 1px solid var(--c-border-light);
-  gap: 12px;
-  transition: background .15s;
-}
-.list-item:hover { background: #fafafa; }
-.list-item:last-child { border-bottom: none; }
-.list-item-left {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  min-width: 0;
-}
-.list-item a {
-  color: #000;
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 15px;
-  font-family: Georgia, 'Times New Roman', serif;
-}
-.list-item a:hover { color: var(--c-accent); }
-.list-item-meta {
-  color: var(--c-text-tertiary);
-  font-size: 11px;
-  white-space: nowrap;
-  font-variant-numeric: tabular-nums;
-  letter-spacing: 0.5px;
-}
+/* ── Hero split layout ── */
+.af-hero{display:flex;gap:0;border-bottom:2px solid #000;max-width:1100px;margin:0 auto}
+.af-hero-left{flex:1;min-width:0;border-right:1px solid #ddd;display:flex;flex-direction:column}
+.af-hero-visual{flex:1;background:#000;display:flex;align-items:center;justify-content:center;padding:48px;min-height:340px;position:relative;overflow:hidden}
+.af-hero-visual .cover-crab{font-size:80px}
+.af-hero-visual .cover-date{font-size:36px;font-weight:700;color:#fff;margin-top:12px;font-family:Georgia,serif;letter-spacing:1px}
+.af-hero-visual .cover-weekday{font-size:10px;color:rgba(255,255,255,0.4);letter-spacing:4px;text-transform:uppercase;margin-top:4px}
+.af-hero-visual .cover-hero{font-size:15px;color:rgba(255,255,255,0.6);margin-top:16px;font-family:'Noto Serif SC',Georgia,serif;line-height:1.6;max-width:340px;text-align:center}
+.af-hero-right{flex:1;min-width:0;display:flex;flex-direction:column}
 
-/* Tags */
-.tag {
-  display: inline-block;
-  padding: 2px 8px;
-  font-size: 9px;
-  font-weight: 700;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  background: #000;
-  color: #fff;
-  border-radius: 0;
-}
-.tag-daily { background: #000; }
-.tag-weekly { background: #333; }
-.tag-monthly { background: #555; }
-.tag-yearly { background: #777; }
+/* ── Hero article list (right side) ── */
+.af-hero-item{padding:20px 24px;border-bottom:1px solid #eee;transition:background .15s}
+.af-hero-item:last-child{border-bottom:none}
+.af-hero-item:hover{background:#fafafa}
+.af-hero-cat{font-size:9px;letter-spacing:2px;color:#e8730e;text-transform:uppercase;font-weight:700;margin-bottom:4px}
+.af-hero-title{font-size:17px;font-weight:700;color:#000;text-transform:uppercase;line-height:1.3;letter-spacing:0.3px;margin-bottom:4px}
+.af-hero-excerpt{font-size:12.5px;color:#666;line-height:1.5;font-family:'Noto Serif SC',Georgia,serif}
 
-/* Report content */
-.report-card {
-  border: none;
-  border-top: 2px solid #000;
-  border-radius: 0;
-  background: var(--c-bg);
-  overflow: hidden;
-}
-.report-card-header {
-  background: transparent;
-  padding: 16px 0;
-  border-bottom: 1px solid var(--c-border-light);
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-.report-card-header h2 {
-  font-size: 14px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-.report-body {
-  padding: 28px 0;
-  font-size: 15px;
-  line-height: 1.8;
-  font-family: 'Noto Serif SC', Georgia, serif;
-}
-.report-body h1 { font-size: 24px; font-weight: 700; margin: 0 0 20px 0; color: #000; font-family: Georgia, serif; text-transform: uppercase; letter-spacing: -0.3px; }
-.report-body h2 { font-size: 18px; font-weight: 700; margin: 32px 0 14px 0; color: #000; padding-bottom: 8px; border-bottom: 1px solid var(--c-border-light); font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-transform: uppercase; letter-spacing: 0.3px; }
-.report-body h3 { font-size: 14px; font-weight: 700; margin: 24px 0 8px 0; color: var(--c-text-secondary); text-transform: uppercase; letter-spacing: 0.5px; }
-.report-body ul { padding-left: 20px; margin: 8px 0; }
-.report-body li { margin-bottom: 4px; }
-.report-body a { color: #000; text-decoration: none; border-bottom: 1px solid #ccc; transition: all .15s; }
-.report-body a:hover { color: var(--c-accent); border-color: var(--c-accent); }
-.report-body blockquote { border-left: 2px solid #000; padding: 8px 16px; margin: 12px 0; color: var(--c-text-secondary); background: #f9f9f9; font-size: 13.5px; }
-.report-body code { background: #f5f5f5; padding: 2px 6px; border-radius: 2px; font-size: 12px; font-family: 'SF Mono', 'Fira Code', monospace; border: 1px solid #e5e5e5; }
-.report-body hr { border: none; border-top: 1px solid var(--c-border-light); margin: 28px 0; }
-.report-body p { margin: 10px 0; }
-.report-body img { max-width: 100%; }
-/* Embedded newsletter overrides */
-.report-body > div {
-  background: transparent !important;
-  box-shadow: none !important;
-  margin-bottom: 20px;
-}
-.report-body > div > div {
-  border-color: var(--c-border-light);
-}
-/* 小白科普 info boxes */
-.report-body div[style*="#f0f7ff"] {
-  background: #f9f9f9 !important;
-  border: 1px solid var(--c-border-light) !important;
-  border-top: 2px solid #000 !important;
-  border-radius: 0 !important;
-}
-/* Report prev/next navigation */
-.report-nav {
-  display: flex;
-  justify-content: space-between;
-  padding: 20px 0;
-  border-top: 2px solid #000;
-  font-size: 10px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-}
-.report-nav a {
-  color: #000;
-  text-decoration: none;
-  font-weight: 700;
-  transition: color .15s;
-}
-.report-nav a:hover {
-  color: var(--c-accent);
-}
+/* ── Main content ── */
+.af-main{max-width:1100px;margin:0 auto;padding:0}
 
-/* Empty state */
-.empty {
-  color: var(--c-text-tertiary);
-  text-align: center;
-  padding: 48px 20px;
-  border-top: 2px solid #000;
-  font-size: 13px;
-  letter-spacing: 1px;
-}
+/* ── Page / Section base ── */
+.mag-page{background:#fff;border:none;box-shadow:none;overflow:visible;cursor:default;position:relative}
+.mag-page-inner{padding:40px 32px;font-family:'Noto Serif SC',Georgia,serif;font-size:15.5px;line-height:1.95;color:#222;position:relative;height:auto;overflow:visible}
+.mag-page + .mag-page{border-top:1px solid #ddd}
 
-/* Footer */
-.footer {
-  text-align: center;
-  padding: 32px;
-  color: #ccc;
-  font-size: 9px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  border-top: 1px solid var(--c-border-light);
-  margin-top: 48px;
-  max-width: var(--max-w);
-  margin-left: auto;
-  margin-right: auto;
-}
+/* Full-bleed */
+.mag-full-bleed{width:100vw;margin-left:calc(-50vw + 50%);position:relative}
 
-/* Magazine rack */
-.magazine-shelf {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-  gap: 24px;
-  padding: 16px 0;
-}
-.magazine-cover {
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  aspect-ratio: 3/4;
-  background: linear-gradient(160deg, #1a1a3e 0%, #0d1b2a 50%, #1b2838 100%);
-  border-radius: 4px;
-  padding: 20px 18px 16px;
-  text-decoration: none;
-  color: #fff;
-  overflow: hidden;
-  box-shadow: 4px 4px 14px rgba(0,0,0,0.3);
-  transition: transform 0.4s cubic-bezier(0.25,0.46,0.45,0.94), box-shadow 0.4s cubic-bezier(0.25,0.46,0.45,0.94);
-}
-.magazine-cover::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.08) 45%, rgba(255,255,255,0.15) 50%, rgba(255,255,255,0.08) 55%, transparent 60%);
-  background-size: 200% 100%;
-  background-position: 200% 0;
-  transition: background-position 0.6s ease-out;
-  pointer-events: none;
-  border-radius: 4px;
-}
-.magazine-cover:hover {
-  transform: perspective(600px) rotateY(-3deg) translateY(-4px) scale(1.02);
-  box-shadow: 8px 8px 28px rgba(0,0,0,0.4);
-}
-.magazine-cover:hover::after {
-  background-position: -200% 0;
-}
-.mc-spine {
-  position: absolute;
-  left: 0; top: 0; bottom: 0;
-  width: 4px;
-  background: linear-gradient(180deg, rgba(232,115,14,0.6), rgba(232,115,14,0.2));
-}
-.mc-masthead {
-  font-size: 9px;
-  font-weight: 700;
-  letter-spacing: 3px;
-  color: #e8730e;
-  text-transform: uppercase;
-  margin-bottom: 8px;
-}
-.mc-date {
-  font-size: 18px;
-  font-weight: 700;
-  color: #fff;
-  letter-spacing: -0.3px;
-  line-height: 1.2;
-}
-.mc-weekday {
-  font-size: 11px;
-  color: rgba(255,255,255,0.45);
-  margin-bottom: 14px;
-}
-.mc-hero {
-  font-size: 12px;
-  line-height: 1.5;
-  color: rgba(255,255,255,0.8);
-  font-family: Georgia, 'Noto Serif SC', serif;
-  flex-grow: 1;
-  display: flex;
-  align-items: center;
-}
-.mc-stats {
-  font-size: 10px;
-  color: rgba(255,255,255,0.35);
-  margin-top: 10px;
-}
-.mc-issue {
-  position: absolute;
-  bottom: 12px;
-  right: 14px;
-  font-size: 10px;
-  color: rgba(255,255,255,0.25);
-  font-variant-numeric: tabular-nums;
+/* Hide original cover/back-cover inside main flow (we rebuild them) */
+.mag-cover{display:none !important}
+.mag-back-cover{border-top:2px solid #000 !important}
+
+/* ── OVERVIEW ── */
+.overview-inner{display:flex;flex-direction:column;height:auto;overflow:visible}
+.ov-label{font-size:9px;letter-spacing:3px;color:#e8730e;text-transform:uppercase;font-weight:700;margin-bottom:6px}
+.ov-title{font-size:24px;font-weight:700;color:#000;margin-bottom:20px;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;letter-spacing:-0.3px;line-height:1.2;text-transform:uppercase}
+.ov-body{font-size:15.5px;line-height:2;color:#333}
+.ov-body b,.ov-body strong{color:#000;font-weight:700}
+.ov-body a{color:#000;text-decoration:none;border-bottom:1px solid #ccc;transition:all .15s}
+.ov-body a:hover{border-color:#e8730e;color:#e8730e}
+.ov-dropcap{float:left;font-size:64px;line-height:0.78;font-family:Georgia,serif;color:#000;margin:4px 12px 0 0;font-weight:400}
+
+/* ── SECTION PAGES ── */
+.mag-accent-bar{height:2px;background:#000;margin-bottom:16px}
+.mag-section-label{font-size:9px;letter-spacing:3px;color:#e8730e;text-transform:uppercase;font-weight:700;margin-bottom:4px}
+.mag-title{font-size:22px;font-weight:700;color:#000;margin-bottom:24px;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;line-height:1.25;padding-bottom:14px;border-bottom:1px solid #ddd;text-transform:uppercase;letter-spacing:0.2px}
+.mag-section-content{overflow:visible}
+
+/* Articles */
+.mag-article{margin-bottom:24px;padding:0 0 20px;border-bottom:1px solid #eee}
+.mag-article:last-child{border-bottom:none;margin-bottom:8px;padding-bottom:0}
+.art-title{font-size:16px;font-weight:700;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;color:#000;margin-bottom:6px;line-height:1.3;text-transform:uppercase;letter-spacing:0.2px}
+.art-body{font-size:14.5px;line-height:1.85;color:#444}
+.art-body p{margin-bottom:8px}
+.art-body b,.art-body strong{color:#000}
+.art-body code{background:#f5f5f5;padding:2px 6px;border-radius:2px;font-size:12.5px;font-family:'SF Mono','Fira Code',monospace;color:#333;border:1px solid #e5e5e5}
+.art-body a{color:#000;text-decoration:none;border-bottom:1px solid #ccc;transition:all .15s}
+.art-body a:hover{color:#e8730e;border-color:#e8730e}
+.art-body ul,.art-body ol{padding-left:20px;margin:8px 0}
+.art-body li{margin-bottom:3px;font-size:14px}
+.art-links{margin-top:10px}
+.art-link{display:inline-block;background:#000;color:#fff;padding:4px 12px;font-size:9px;text-decoration:none;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;margin-right:5px;margin-bottom:4px;transition:background .15s;letter-spacing:1px;text-transform:uppercase;font-weight:500}
+.art-link:hover{background:#e8730e}
+
+/* Tips box */
+.mag-tips{margin-top:16px;padding:18px 22px;background:#f7f7f7;border:none;border-top:2px solid #000;font-size:13.5px;line-height:1.8}
+.mag-tips div{background:transparent !important;border:none !important;padding:0 !important;border-radius:0 !important}
+.mag-tips b,.mag-tips strong{color:#000;font-size:13.5px}
+.mag-tips a{color:#000;font-size:12.5px;border-bottom:1px solid #ccc}
+.mag-tips a:hover{color:#e8730e;border-color:#e8730e}
+.mag-tips br{line-height:1.8}
+
+.mag-page-fade{display:none}
+.mag-page-num{display:none}
+
+/* ── BACK COVER → Footer ── */
+.mag-back-cover{background:#000 !important;cursor:default;position:relative;overflow:hidden;border:none !important;box-shadow:none}
+.mag-back-cover::before{display:none}
+.back-cover-inner{display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;padding:48px 24px;height:auto}
+.back-decoration{display:none}
+.back-content{display:flex;flex-direction:column;align-items:center;text-align:center}
+.back-logo{font-size:44px}
+.back-title{font-size:12px;font-weight:700;color:#fff;letter-spacing:6px;margin-top:12px;text-transform:uppercase}
+.back-subtitle{font-size:9px;color:rgba(255,255,255,0.3);letter-spacing:4px;text-transform:uppercase;margin-top:2px}
+.back-date{font-size:12px;color:rgba(255,255,255,0.3);margin-top:12px;letter-spacing:2px}
+.back-rule{width:40px;height:1px;background:rgba(255,255,255,0.2);margin:20px 0}
+.back-sources{font-size:10px;letter-spacing:1px}
+.back-sources a{color:rgba(255,255,255,0.5);text-decoration:none;transition:color .15s;text-transform:uppercase;font-size:10px;letter-spacing:1px}
+.back-sources a:hover{color:#e8730e}
+.back-nav{margin-top:24px;display:flex;gap:12px}
+.back-nav a{color:#fff;text-decoration:none;font-size:10px;padding:6px 16px;border:1px solid rgba(255,255,255,0.2);transition:all .15s;letter-spacing:1px;text-transform:uppercase}
+.back-nav a:hover{border-color:#e8730e;color:#e8730e}
+
+/* Reveal */
+@keyframes revealUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+.mag-page:not(.mag-cover):not(.mag-back-cover){opacity:0}
+.mag-page.revealed{animation:revealUp 0.35s ease-out forwards}
+
+@media(max-width:767px){
+  .af-hero{flex-direction:column}
+  .af-hero-left{border-right:none;border-bottom:1px solid #ddd}
+  .af-hero-visual{min-height:240px;padding:32px}
+  .af-logo{font-size:32px}
+  .af-nav{gap:12px;font-size:10px;flex-wrap:wrap}
+  .mag-page-inner{padding:28px 16px}
+  .mag-title{font-size:18px}
+  .art-title{font-size:14px}
+  .art-body{font-size:13.5px}
 }
 </style>
 </head>
 <body>
-<div class="header">
-  <div class="header-inner">
-    <a href="../index.html" class="logo">RFL DAILY</a>
-    <nav><a href="../index.html">All Issues</a>
-<a href="../daily/">Daily</a>
-</nav>
-  </div>
-</div>
-<div class="container">
-<a href="index.html" class="back-link">&larr; Back</a>
 
-<div class="page-header">
-  <h1><span class="tag tag-weekly">weekly</span> 2026-W13</h1>
+<!-- ── Artforum-style masthead ── -->
+<div class="af-masthead">
+  <a href="2026-W13.html" class="af-logo">RFL 社区日报</a>
+  <nav class="af-nav">
+    <a href="https://github.com/Rust-for-Linux" target="_blank" rel="noopener"><svg style="width:14px;height:14px;vertical-align:-2px;margin-right:3px;fill:currentColor" viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>RFL GitHub</a>
+    <a href="https://lore.kernel.org/rust-for-linux/" target="_blank" rel="noopener"><svg style="width:14px;height:14px;vertical-align:-2px;margin-right:3px;fill:currentColor" viewBox="0 0 16 16"><path d="M0 4a2 2 0 012-2h12a2 2 0 012 2v8a2 2 0 01-2 2H2a2 2 0 01-2-2V4zm2-1a1 1 0 00-1 1v.217l7 4.2 7-4.2V4a1 1 0 00-1-1H2zm13 2.383l-4.758 2.855L15 11.114V5.383zm-.034 6.878L9.271 8.82 8 9.583 6.729 8.82l-5.694 3.44A1 1 0 002 13h12a1 1 0 00.966-.739zM1 11.114l4.758-2.876L1 5.383v5.73z"/></svg>Lore</a>
+    <a href="https://rust-for-linux.zulipchat.com/" target="_blank" rel="noopener"><svg style="width:14px;height:14px;vertical-align:-2px;margin-right:3px;fill:currentColor" viewBox="0 0 16 16"><path d="M14 1a1 1 0 011 1v8a1 1 0 01-1 1h-2.5a1 1 0 00-.8.4l-1.9 2.533a1 1 0 01-1.6 0L5.3 11.4a1 1 0 00-.8-.4H2a1 1 0 01-1-1V2a1 1 0 011-1h12zM2 0a2 2 0 00-2 2v8a2 2 0 002 2h2.5a.5.5 0 01.4.2l1.9 2.533a2 2 0 003.2 0l1.9-2.533a.5.5 0 01.4-.2H14a2 2 0 002-2V2a2 2 0 00-2-2H2z"/></svg>Zulip</a>
+    <span style="color:#ddd">|</span>
+    <a href="https://github.com/rfl-camp/reports" target="_blank" rel="noopener"><svg style="width:14px;height:14px;vertical-align:-2px;margin-right:3px;fill:currentColor" viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>Source</a>
+  </nav>
 </div>
-<div class="stats"><div class="stat"><span class="stat-val">308</span><span class="stat-label">Lore</span></div>
-<div class="stat"><span class="stat-val">12</span><span class="stat-label">Zulip</span></div>
-<div class="stat"><span class="stat-val">13</span><span class="stat-label">GitHub</span></div>
+<div class="af-date-bar" id="dateBar">
+  <a class="af-today" id="todayBtn" href="2026-W13.html">TODAY</a>
+  <span></span>
+  <span class="af-cal-btn" id="calBtn"><svg viewBox="0 0 16 16"><path d="M4 0v1H1.5A1.5 1.5 0 000 2.5v12A1.5 1.5 0 001.5 16h13a1.5 1.5 0 001.5-1.5v-12A1.5 1.5 0 0014.5 1H12V0h-1v1H5V0H4zm0 2v1h1V2h6v1h1V2h2.5a.5.5 0 01.5.5V4H1V2.5a.5.5 0 01.5-.5H4zM1 5h14v9.5a.5.5 0 01-.5.5h-13a.5.5 0 01-.5-.5V5z"/></svg>SELECT</span>
+  <div id="calDrop" class="cal-drop" style="display:none"></div>
 </div>
-<div class="report-card">
-  <div class="report-card-header">
-    <h2>2026-W13</h2>
-    
+<div id="calOverlay" class="cal-overlay"></div>
+
+<!-- ── Prev / Next arrows ── -->
+
+<a href="2026-W14.html" class="pn-arrow pn-right" title="Next: 2026-W14">&#8594;<span class="pn-label">2026-W14</span></a>
+
+<!-- ── Hero: left visual + right article list ── -->
+<div class="af-hero" id="afHero">
+  <div class="af-hero-left">
+    <div class="af-hero-visual" id="heroVisual"></div>
   </div>
-  <div class="report-body">
-    <h1>RFL 周报 - 2026-W13</h1>
-<blockquote>
-<p>2026-03-23 ~ 2026-03-29 | 覆盖 7 份日报</p>
-</blockquote>
-<h2>Summary / 本周要点</h2>
-<p><strong>EN:</strong> 7 reports aggregated. Lore: 308 threads | Zulip: 12 active topics | GitHub: 13 items</p>
-<p><strong>CN:</strong> 共聚合 7 份报告。邮件列表 308 个讨论、Zulip 12 个活跃话题、GitHub 13 项更新</p>
-<h2>邮件列表 (Lore)</h2>
-<h3>补丁</h3>
-<ul>
-<li><a href="https://lore.kernel.org/rust-for-linux/CANiq72=w0HcWi7z1wL+R1wa6jS_+P=L8Zp7pvZtUG+C51ETzng@mail.gmail.com/">rust: print: add SAFETY comments to unsafe blocks</a> — Miguel Ojeda, Shivendra Sharma, Albab Hasan, 3 reviews</li>
-<li><a href="https://lore.kernel.org/rust-for-linux/DH8UHISTLOA4.934370PUTLB4@gmail.com/">rust: dma: add generalized container for types other than slices</a> v2 (8p) — Gary Guo, Aditya Rajan, 3 reviews</li>
-<li><a href="https://lore.kernel.org/rust-for-linux/CAH5fLghK2q4Du+74ctWftbDXrS4E4uPsuOrsOwxbs=HGm5CX6g@mail.gmail.com/">rust: dma: remove DMA_ATTR_NO_KERNEL_MAPPING from public attrs</a> (2p) — Alexandre Courbot, Alice Ryhl, 2 reviews</li>
-<li><a href="https://lore.kernel.org/rust-for-linux/DH9EA6773QO6.W3EDFZPEL8K@nvidia.com/">rust: dma: add CoherentHandle for DMA allocations without kernel mapping</a> (2p) — Danilo Krummrich, Alexandre Courbot, 2 reviews</li>
-<li><a href="https://lore.kernel.org/rust-for-linux/20260322044340.129985-1-albabhasan276@gmail.com/">rust: workqueue: add SAFETY comments for Pin<KBox\<T>> impl blocks</a> — Albab Hasan<blockquote>
-<p>Replace the placeholder // SAFETY: TODO. comments with proper safety descriptions for the two unsafe impl blocks WorkItemPointer and RawWorkItem for Pin<KBox\<T>>.  For WorkItemPointer the safety relies on __enqueue obtaining the work_struct from the ...</p>
-</blockquote>
-</li>
-<li><a href="https://lore.kernel.org/rust-for-linux/DH939HK0611M.22A8T9BJ3NG8@gmail.com/">rust: add <code>TryFrom</code> and <code>Into</code> derive macros</a> v5 (4p) — Jesung Yang, 1 reviews</li>
-<li><a href="https://lore.kernel.org/rust-for-linux/20260322192159.88138-1-ojeda@kernel.org/">Inline helpers into Rust without full LTO</a> v2 (3p) — Miguel Ojeda, 1 reviews</li>
-</ul>
-<h3>讨论</h3>
-<ul>
-<li><a href="https://lore.kernel.org/rust-for-linux/CAHk-=wjA2mOM=hCGBiS9r7+5KCmTd3KMrTTZQsE=rRLqqKMTyg@mail.gmail.com/">[GIT PULL] Driver core fixes for 7.0-rc5</a> — Danilo Krummrich, pr-tracker-bot@kernel.org, Linus Torvalds (3 条)</li>
-<li><a href="https://lore.kernel.org/rust-for-linux/20260322193830.89324-1-ojeda@kernel.org/">Re: Inline helpers into Rust without full LTO</a> — Miguel Ojeda (2 条)</li>
-<li><a href="https://lore.kernel.org/rust-for-linux/ab+PgBzwJkhhj6dw@lstrano-desk.jf.intel.com/">[RFC PATCH 02/12] drm/dep: Add DRM dependency queue layer</a> — Matthew Brost (1 条)</li>
-<li><a href="https://lore.kernel.org/rust-for-linux/20260323-update-rust-i2c-maintainers-v1-1-0744ce44f846@gmail.com/">MAINTAINERS: Update Rust I2C Subsystem entries</a> — Gary Guo, Igor Korotin, Danilo Krummrich, 6 reviews<blockquote>
-<p>From: Igor Korotin <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#105;&#103;&#111;&#114;&#46;&#107;&#111;&#114;&#111;&#116;&#105;&#110;&#46;&#108;&#105;&#110;&#117;&#120;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;">&#105;&#103;&#111;&#114;&#46;&#107;&#111;&#114;&#111;&#116;&#105;&#110;&#46;&#108;&#105;&#110;&#117;&#120;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;</a>  - Change Igor Korotin's e-mail address - Add git tree entry</p>
-</blockquote>
-</li>
-<li><a href="https://lore.kernel.org/rust-for-linux/CANiq72kZH-AX=QQz2V+qCfVzMsUEAPan=o1E=OZOAnivj3L3HQ@mail.gmail.com/">rust: make <code>build_assert</code> module the home of related macros</a> v3 (4p) — Miguel Ojeda, Alexandre Courbot, Tamir Duberstein, 5 reviews</li>
-<li><a href="https://lore.kernel.org/rust-for-linux/20260323-b4-nova-register-v3-1-ae2486ecef1b@nvidia.com/">gpu: nova-core: convert PMC registers to kernel register macro</a> v3 (10p) — Danilo Krummrich, Eliot Courtney, Alexandre Courbot, 4 reviews<blockquote>
-<p>Convert all PMC registers to use the kernel's register macro and update the code accordingly.</p>
-</blockquote>
-</li>
-<li><a href="https://lore.kernel.org/rust-for-linux/1c4e429b-f30c-42a9-8de1-71cb2cbbc114@samsung.com/">Inline helpers into Rust without full LTO</a> v2 (3p) — Miguel Ojeda, Gary Guo, Marek Szyprowski, 5 reviews</li>
-<li><a href="https://lore.kernel.org/rust-for-linux/20260323-b4-nova-register-v3-7-ae2486ecef1b@nvidia.com/">gpu: nova-core: falcon: introduce <code>bounded_enum</code> macro</a> v3 (10p) — Danilo Krummrich, Gary Guo, Alexandre Courbot, 3 reviews<blockquote>
-<p>Introduce a powered-up version of our ad-hoc <code>impl_from_enum_to_u8</code> macro that allows the definition of an enum type associated to a <code>Bounded</code> of a given width, and provides the <code>From</code> and <code>TryFrom</code> implementations required to use that enum as a regi...</p>
-</blockquote>
-</li>
-<li><a href="https://lore.kernel.org/rust-for-linux/20260323-module-value-ref-v1-1-32507e1085f1@kernel.org/">rust: module_param: return copy from value() for Copy types</a> — Gary Guo, Andreas Hindborg, Alice Ryhl, 3 reviews<blockquote>
-<p>Rename the existing <code>value()</code> method to <code>value_ref()</code> which returns a shared reference to the parameter value, and add a new <code>value()</code> method on <code>ModuleParamAccess&lt;T&gt;</code> where <code>T: Copy</code> that returns the value by copy.  This provides a more ergonomic AP...</p>
-</blockquote>
-</li>
-<li><a href="https://lore.kernel.org/rust-for-linux/20260323-cmdq-ub-fix-v2-1-77d1213c3f7f@nvidia.com/">gpu: nova-core: gsp: fix undefined behavior in command queue code</a> v2 — Gary Guo, Alexandre Courbot, 2 reviews<blockquote>
-<p><code>driver_read_area</code> and <code>driver_write_area</code> are internal methods that return slices containing the area of the command queue buffer that the driver has exclusive read or write access, respectively.  While their returned value is correct and safe to us...</p>
-</blockquote>
-</li>
-<li><a href="https://lore.kernel.org/rust-for-linux/DH9XWWNM1GY4.1W6N89W6UCYDW@nvidia.com/">gpu: nova-core: firmware: riscv: use dma::Coherent</a> (7p) — Gary Guo, Alexandre Courbot, 3 reviews</li>
-<li><a href="https://lore.kernel.org/rust-for-linux/20260323130224.165738-1-ojeda@kernel.org/">rust: allow Clang-native <code>RANDSTRUCT</code> configs</a> v2 — Gary Guo, Miguel Ojeda, 2 reviews<blockquote>
-<p>The kernel supports <code>RANDSTRUCT_FULL</code> with Clang 16+, and <code>bindgen</code> (which uses <code>libclang</code> under the hood) inherits the information, so the generated bindings look correct.  For instance, running:  bindgen x.h -- -frandomize-layout-seed0  with:  str...</p>
-</blockquote>
-</li>
-<li><a href="https://lore.kernel.org/rust-for-linux/20260323201925.8405-1-iprintercanon@gmail.com/">rust: phy: add read-only device field accessors</a> (4p) — Andrew Lunn, Artem Lytkin, 2 reviews<blockquote>
-<p>Add getter methods for commonly needed PHY device fields:  - speed(): Returns the current link speed as i32, matching the C struct field type (int speed). - duplex(): Returns the current duplex mode as DuplexMode enum. Only the setter (set_duplex) ex...</p>
-</blockquote>
-</li>
-<li><a href="https://lore.kernel.org/rust-for-linux/CAGeanHfNwP6Zs3LSfc9eEO7_LG0kK-jO24oUd7BjxrQbndEmNw@mail.gmail.com/">rust: interop: Add list module for C linked list interface</a> v13 — Alejandra González, Danilo Krummrich, 2 reviews</li>
-<li><a href="https://lore.kernel.org/rust-for-linux/CABx5tqJvOFEzmadeXpDxSUjkghviqtP0jo+kzSB5X6u_P_j2ig@mail.gmail.com/">Implement Send and Sync for clk</a> v5 (3p) — Brian Masney, Miguel Ojeda, 2 reviews</li>
-<li><a href="https://lore.kernel.org/rust-for-linux/20260323-b4-nova-register-v3-9-ae2486ecef1b@nvidia.com/">gpu: nova-core: remove <code>io::</code> qualifier to register macro invocations</a> v3 (10p) — Eliot Courtney, Alexandre Courbot, 1 reviews<blockquote>
-<p>The kernel's <code>register</code> macro would clash with nova-core's own version if it was imported directly, so it was accessed through its <code>io</code> module during the conversion phase.  Now that nova-core's <code>register</code> macro doesn't exist anymore, we can import an...</p>
-</blockquote>
-</li>
-<li><a href="https://lore.kernel.org/rust-for-linux/CANiq72=9Dh9tN4xFZmai0dFKKa_GSD+WOhrf_bxpFprbfZrgPw@mail.gmail.com/">rust: str: improve safety comment for CString::try_from_fmt</a> — Miguel Ojeda, 1 reviews</li>
-<li><a href="https://lore.kernel.org/rust-for-linux/20260323024206.129401-1-ojeda@kernel.org/">MAINTAINERS: add <code>.rustfmt.toml</code> to "RUST" entry</a> — Miguel Ojeda</li>
-<li><a href="https://lore.kernel.org/rust-for-linux/20260323000327.111235-1-ojeda@kernel.org/">Re: Inline helpers into Rust without full LTO</a> — Russell King (Oracle), Mark Brown, Miguel Ojeda (9 条)</li>
-<li><a href="https://lore.kernel.org/rust-for-linux/acDyu5M7KY0qQ5aD@lstrano-desk.jf.intel.com/">[RFC PATCH 02/12] drm/dep: Add DRM dependency queue layer</a> — Miguel Ojeda, Matthew Brost, Boris Brezillon (5 条)</li>
-<li><a href="https://lore.kernel.org/rust-for-linux/CANiq72nvR70EOud=4drW6gs=FAndv5o7+8n5NNRkAStTaSJWPg@mail.gmail.com/">[RFC PATCH] rust: allow Clang-native <code>RANDSTRUCT</code> configs</a> — Miguel Ojeda (1 条)</li>
-<li><a href="https://lore.kernel.org/rust-for-linux/20260323-b4-tyr-use-register-macro-v3-v3-1-a87daf9e4701@collabora.com/">drm/tyr: Use register! macro for GPU_CONTROL</a> v3 (12p) — Boris Brezillon, Deborah Brouwer, Danilo Krummrich, 6 reviews<blockquote>
-<p>From: Daniel Almeida <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#100;&#97;&#110;&#105;&#101;&#108;&#46;&#97;&#108;&#109;&#101;&#105;&#100;&#97;&#64;&#99;&#111;&#108;&#108;&#97;&#98;&#111;&#114;&#97;&#46;&#99;&#111;&#109;">&#100;&#97;&#110;&#105;&#101;&#108;&#46;&#97;&#108;&#109;&#101;&#105;&#100;&#97;&#64;&#99;&#111;&#108;&#108;&#97;&#98;&#111;&#114;&#97;&#46;&#99;&#111;&#109;</a>  Convert the GPU_CONTROL register definitions to use the <code>register!</code> macro.  Using the <code>register!</code> macro allows us to replace manual bit masks and shifts with typed register and field accessors, whi...</p>
-</blockquote>
-</li>
-<li><a href="https://lore.kernel.org/rust-for-linux/20260324-regulator-fix-v1-1-a5244afa3c15@google.com/">rust: regulator: do not assume that regulator_get() returns non-null</a> — Alice Ryhl, Daniel Almeida, Miguel Ojeda, 4 reviews<blockquote>
-<p>The Rust <code>Regulator</code> abstraction uses <code>NonNull</code> to wrap the underlying <code>struct regulator</code> pointer. When <code>CONFIG_REGULATOR</code> is disabled, the C stub for <code>regulator_get</code> returns <code>NULL</code>. <code>from_err_ptr</code> does not treat <code>NULL</code> as an error, so it was passed ...</p>
-</blockquote>
-</li>
-<li><a href="https://lore.kernel.org/rust-for-linux/87cy0tqueu.fsf@kernel.org/">dma::Coherent &amp; dma::CoherentInit API</a> (8p) — Danilo Krummrich, Andreas Hindborg, 4 reviews</li>
-<li><a href="https://lore.kernel.org/rust-for-linux/e8ffc9902c0af24ce6fde2d8712ea588b36e9194.camel@posteo.de/">acpi: add acpi_of_match_device_ids</a> v3 (7p) — Rafael J. Wysocki, Markus Probst, 4 reviews</li>
-<li><a href="https://lore.kernel.org/rust-for-linux/20260323-b4-tyr-use-register-macro-v3-v3-0-a87daf9e4701@collabora.com/">drm/tyr: Use register! macro</a> v3 (12p) — Alice Ryhl, Deborah Brouwer, Boris Brezillon, 2 reviews<blockquote>
-<p>This series changes the Tyr driver to use the kernel's register! macro for hardware register access, replacing manual bit manipulation and custom register structures with a more type-safe and maintainable approach.</p>
-</blockquote>
-</li>
-<li><a href="https://lore.kernel.org/rust-for-linux/877br1qr6v.fsf@kernel.org/">rust: dma: add generalized container for types other than slices</a> v2 (8p) — Gary Guo, Andreas Hindborg, 3 reviews</li>
-<li><a href="https://lore.kernel.org/rust-for-linux/87y0jhpbsp.fsf@kernel.org/">rust: dma: add Coherent:init() and Coherent::init_with_attrs()</a> v2 (8p) — Danilo Krummrich, Andreas Hindborg, 3 reviews</li>
-<li><a href="https://lore.kernel.org/rust-for-linux/DHB3CGY1Z5HF.1KSJV8SP8YD8A@nvidia.com/">gpu: nova-core: gsp: fix undefined behavior in command queue code</a> v2 — Danilo Krummrich, Gary Guo, Alexandre Courbot, 3 reviews</li>
-<li><a href="https://lore.kernel.org/rust-for-linux/20260323-aref-workitem-v3-0-f59729b812aa@collabora.com/">rust: Add ARef support for work items</a> v3 (4p) — Alice Ryhl, Daniel Almeida, 1 reviews<blockquote>
-<p>This series adds ARef<T> support for both regular and delayed work items.  - Patches 1 and 3 actually implement the support in workqueue.rs - Patches 2 and 4 adds a corresponding implementation in drm::Device that dispatches the calls to the underlyi...</p>
-</blockquote>
-</li>
-<li><a href="https://lore.kernel.org/rust-for-linux/20260323-aref-workitem-v3-1-f59729b812aa@collabora.com/">rust: workqueue: add support for ARef<T></a> v3 (4p) — Alice Ryhl, Daniel Almeida, 1 reviews<blockquote>
-<p>Add support for the ARef<T> smart pointer. This allows an instance of ARef<T> to handle deferred work directly, which can be convenient or even necessary at times, depending on the specifics of the driver or subsystem.  The implementation is similar ...</p>
-</blockquote>
-</li>
-<li><a href="https://lore.kernel.org/rust-for-linux/20260323-b4-tyr-use-register-macro-v3-v3-3-a87daf9e4701@collabora.com/">drm/tyr: Set interconnect coherency during probe</a> v3 (12p) — Boris Brezillon, Deborah Brouwer, 1 reviews<blockquote>
-<p>Currently GpuInfo reports the interconnect coherency protocol as none without actually reading the <code>COHERENCY_ENABLE</code> register.  Although the result is the same, write <code>NO_COHERENCY</code> to the register during probe and then read back the register to pop...</p>
-</blockquote>
-</li>
-<li><a href="https://lore.kernel.org/rust-for-linux/20260323-b4-tyr-use-register-macro-v3-v3-5-a87daf9e4701@collabora.com/">drm/tyr: Use register! macro for MMU_CONTROL</a> v3 (12p) — Boris Brezillon, Deborah Brouwer, 1 reviews<blockquote>
-<p>Convert the MMU_CONTROL register definitions to use the <code>register!</code> macro.  Using the <code>register!</code> macro allows us to replace manual bit masks and shifts with typed register and field accessors, which makes the code easier to read and avoids errors fr...</p>
-</blockquote>
-</li>
-<li><a href="https://lore.kernel.org/rust-for-linux/20260323-b4-tyr-use-register-macro-v3-v3-2-a87daf9e4701@collabora.com/">drm/tyr: Print GPU_ID without filtering</a> v3 (12p) — Boris Brezillon, Deborah Brouwer, 1 reviews<blockquote>
-<p>Currently, Tyr prints just the upper 16 bits of the GPU_ID register, namely, ARCH_MAJOR, ARCH_MINOR, ARCH_REV, and PRODUCT_MAJOR. This matches the id printed by the panthor driver.  To avoid the manual bit shift, just print the full GPU_ID register. ...</p>
-</blockquote>
-</li>
-<li><a href="https://lore.kernel.org/rust-for-linux/20260323-b4-tyr-use-register-macro-v3-v3-4-a87daf9e4701@collabora.com/">drm/tyr: Use register! macro for JOB_CONTROL</a> v3 (12p) — Boris Brezillon, Deborah Brouwer, 1 reviews<blockquote>
-<p>Convert the JOB_CONTROL register definitions to use the <code>register!</code> macro.  Using the <code>register!</code> macro allows us to replace manual bit masks and shifts with typed register and field accessors, which makes the code easier to read and avoids errors fr...</p>
-</blockquote>
-</li>
-<li><a href="https://lore.kernel.org/rust-for-linux/20260323-b4-tyr-use-register-macro-v3-v3-7-a87daf9e4701@collabora.com/">drm/tyr: Add MMU address space registers</a> v3 (12p) — Boris Brezillon, Deborah Brouwer, 1 reviews<blockquote>
-<p>Add a new module for the per-address-space MMU registers and constants. Leave the more complex register field definitions empty for now; they will be filled in by follow-up commits.</p>
-</blockquote>
-</li>
-<li><a href="https://lore.kernel.org/rust-for-linux/20260325035242.368661-6-jhubbard@nvidia.com/">gpu: nova-core: set DMA mask width based on GPU architecture</a> v8 (31p) — Alexandre Courbot, Danilo Krummrich, John Hubbard, 6 reviews<blockquote>
-<p>Replace the hardcoded 47-bit DMA mask with per-architecture values. Add Architecture::dma_mask() with an exhaustive match, so new architectures get a compile-time reminder to specify their width.  Move Spec creation into probe() so the architecture i...</p>
-</blockquote>
-</li>
-<li><a href="https://lore.kernel.org/rust-for-linux/20260325003921.3420-1-dakr@kernel.org/">rust: uaccess: generalize write_dma() to accept any Coherent<T></a> (3p) — Alice Ryhl, Danilo Krummrich, Gary Guo, 4 reviews<blockquote>
-<p>Generalize write_dma() from &amp;Coherent&lt;[u8]&gt; to &amp;Coherent<T> where T: KnownSize + AsBytes + ?Sized. The function body only uses as_ptr() and size(), which work for any such T, so there is no reason to restrict it to byte slices.</p>
-</blockquote>
-</li>
-<li><a href="https://lore.kernel.org/rust-for-linux/20260325035242.368661-8-jhubbard@nvidia.com/">gpu: nova-core: move firmware image parsing code to firmware.rs</a> v8 (31p) — Miguel Ojeda, Alexandre Courbot, John Hubbard, 4 reviews<blockquote>
-<p>Up until now, only the GSP required parsing of its firmware headers. However, upcoming support for Hopper/Blackwell+ adds another firmware image (FMC), along with another format (ELF32).  Therefore, the current ELF64 section parsing support needs to ...</p>
-</blockquote>
-</li>
-<li><a href="https://lore.kernel.org/rust-for-linux/20260325-kasan-rust-sw-tags-v1-1-7d3a765a72aa@google.com/">rust: kasan: do not pass -Zsanitizer-recover</a> (2p) — Alice Ryhl, Danilo Krummrich, Gary Guo, 4 reviews<blockquote>
-<p>We do not pass -fsanitize-recover to clang, so for consistency we should not pass -Zsanitizer-recover to rustc. Thus, remove these flags.  Fixes: e3117404b411 ("kbuild: rust: Enable KASAN support")</p>
-</blockquote>
-</li>
-<li><a href="https://lore.kernel.org/rust-for-linux/20260325005118.168814-1-alistair.francis@wdc.com/">rust: Mark all from() for Error functions inline</a> v2 — Miguel Ojeda, alistair23@gmail.com, Gary Guo, 3 reviews<blockquote>
-<p>From: Alistair Francis <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#97;&#108;&#105;&#115;&#116;&#97;&#105;&#114;&#46;&#102;&#114;&#97;&#110;&#99;&#105;&#115;&#64;&#119;&#100;&#99;&#46;&#99;&#111;&#109;">&#97;&#108;&#105;&#115;&#116;&#97;&#105;&#114;&#46;&#102;&#114;&#97;&#110;&#99;&#105;&#115;&#64;&#119;&#100;&#99;&#46;&#99;&#111;&#109;</a>  Mark all of the existing  impl From&lt;...&gt; for Error { fn from(err: ...) -&gt; Self { ... } }  functions as <code>#[inline]</code>  There was a recent request [1] to inline the simple from() Error functions to avoid...</p>
-</blockquote>
-</li>
-<li><a href="https://lore.kernel.org/rust-for-linux/20260325035242.368661-7-jhubbard@nvidia.com/">gpu: nova-core: Hopper/Blackwell: skip GFW boot waiting</a> v8 (31p) — Alexandre Courbot, Gary Guo, John Hubbard, 3 reviews<blockquote>
-<p>Hopper and Blackwell GPUs use FSP-based secure boot and do not require waiting for GFW_BOOT completion. Move the GFW_BOOT wait into a GPU HAL so the decision and the wait both live in the HAL.  Pre-Hopper families (Tu102 HAL) wait for GFW_BOOT comple...</p>
-</blockquote>
-</li>
-<li><a href="https://lore.kernel.org/rust-for-linux/20260325125734.944247-1-lossin@kernel.org/">rust: pin-init: internal: init: document load-bearing fact of field accessors</a> (2p) — Benno Lossin<blockquote>
-<p>[ Upstream commit 580cc37b1de4fcd9997c48d7080e744533f09f36 ]  The functions <code>[Pin]Init::__[pinned_]init</code> and <code>ptr::write</code> called from the <code>init!</code> macro require the passed pointer to be aligned. This fact is ensured by the creation of field accessors ...</p>
-</blockquote>
-</li>
-<li><a href="https://lore.kernel.org/rust-for-linux/20260325125734.944247-2-lossin@kernel.org/">rust: pin-init: replace shadowed return token by <code>unsafe</code>-to-create token</a> (2p) — Benno Lossin<blockquote>
-<p>[ Upstream commit fdbaa9d2b78e0da9e1aeb303bbdc3adfe6d8e749 ]  We use a unit struct <code>__InitOk</code> in the closure generated by the initializer macros as the return value. We shadow it by creating a struct with the same name again inside of the closure, pr...</p>
-</blockquote>
-</li>
-<li><a href="https://lore.kernel.org/rust-for-linux/20260325015548.70912-1-ojeda@kernel.org/">dma-mapping: add missing <code>inline</code> for <code>dma_free_attrs</code></a> — Miguel Ojeda, Leon Romanovsky, Marek Szyprowski, 2 reviews<blockquote>
-<p>Under an UML build for an upcoming series [1], I got <code>-Wstatic-in-inline</code> for <code>dma_free_attrs</code>:  BINDGEN rust/bindings/bindings_generated.rs - due to target missing In file included from rust/helpers/helpers.c:59: rust/helpers/dma.c:17:2: warning: st...</p>
-</blockquote>
-</li>
-<li><a href="https://lore.kernel.org/rust-for-linux/20260325-rmcontrol-v3-0-f3101093484e@nvidia.com/">gpu: nova-core: gsp: add RM control command infrastructure</a> v3 (9p) — Eliot Courtney, 1 reviews<blockquote>
-<p>Add the infrastructure for sending RM control RPCs. This is needed e.g. for channel allocation.  This series adds: - <code>NV_STATUS</code> bindings and wrapping <code>NvStatus</code> enum (used by RM control RPCs) - The necessary bindings for the RM control RPCs. - `RmCo...</p>
-</blockquote>
-</li>
-<li><a href="https://lore.kernel.org/rust-for-linux/20260325035242.368661-2-jhubbard@nvidia.com/">gpu: nova-core: Hopper/Blackwell: basic GPU identification</a> v8 (31p) — Gary Guo, John Hubbard, 2 reviews<blockquote>
-<p>Hopper (GH100) and Blackwell identification, including ELF .fwsignature_* items.</p>
-</blockquote>
-</li>
-<li><a href="https://lore.kernel.org/rust-for-linux/20260325035242.368661-3-jhubbard@nvidia.com/">gpu: nova-core: factor .fwsignature* selection into a new find_gsp_sigs_section()</a> v8 (31p) — Alexandre Courbot, John Hubbard, 2 reviews<blockquote>
-<p>Keep Gsp::new() from getting too cluttered, by factoring out the selection of .fwsignature* items. This will continue to grow as we add GPUs.</p>
-</blockquote>
-</li>
-<li><a href="https://lore.kernel.org/rust-for-linux/20260325035242.368661-5-jhubbard@nvidia.com/">gpu: nova-core: add Copy/Clone to Spec and Revision, add chipset() accessor</a> v8 (31p) — Alexandre Courbot, Gary Guo, John Hubbard, 2 reviews<blockquote>
-<p>Derive Clone and Copy for Revision and Spec. Both are small value types (4 bytes total) and Copy makes them easier to use in later patches that pass them across function boundaries.  Add a Spec::chipset() accessor for use by later patches that need t...</p>
-</blockquote>
-</li>
-<li><a href="https://lore.kernel.org/rust-for-linux/20260325035242.368661-17-jhubbard@nvidia.com/">rust: ptr: add const_align_up()</a> v8 (31p) — Alice Ryhl, Gary Guo, John Hubbard, 2 reviews<blockquote>
-<p>Add const_align_up() to kernel::ptr as the const-compatible equivalent of Alignable::align_up().</p>
-</blockquote>
-</li>
-<li><a href="https://lore.kernel.org/rust-for-linux/20260325-b4-nova-register-v4-0-bdf172f0f6ca@nvidia.com/">gpu: nova-core: convert registers to use the kernel register macro</a> v4 (10p) — Alexandre Courbot, Danilo Krummrich, 1 reviews<blockquote>
-<p>nova-core carried its own helper macro to declare register types. Its purpose was to be temporary since the beginning, and to serve as a testbed to develop an equivalent that could be used kernel-wide.  That equivalent has now been merged, so it is t...</p>
-</blockquote>
-</li>
-<li><a href="https://lore.kernel.org/rust-for-linux/20260326024226.GB2302780@ax162/">Inline helpers into Rust without full LTO</a> v2 (3p) — Arnd Bergmann, Nathan Chancellor, Russell King (Oracle), 9 reviews</li>
-<li><a href="https://lore.kernel.org/rust-for-linux/20260326095621.846840-1-david@readahead.eu/">rust/alloc: add Vec::into_boxed_slice()</a> — Danilo Krummrich, Alice Ryhl, David Rheinsberg, 6 reviews<blockquote>
-<p>Add <code>Vec::into_boxed_slice()</code> similar to <code>std::vec::Vec::into_boxed_slice()</code> [1].  There is currently no way to easily consume the allocation of a vector. However, it is very convenient to use <code>Vec</code> to initialize a dynamically sized array and then "s...</p>
-</blockquote>
-</li>
-<li><a href="https://lore.kernel.org/rust-for-linux/20260326-cmdq-ub-fix-v3-1-96af2148ca5c@nvidia.com/">gpu: nova-core: gsp: fix undefined behavior in command queue code</a> v3 — Gary Guo, Alexandre Courbot, Alice Ryhl, 4 reviews<blockquote>
-<p><code>driver_read_area</code> and <code>driver_write_area</code> are internal methods that return slices containing the area of the command queue buffer that the driver has exclusive read or write access, respectively.  While their returned value is correct and safe to us...</p>
-</blockquote>
-</li>
-<li><a href="https://lore.kernel.org/rust-for-linux/DHCAN2PHLP6X.26O0FW4ELMYPL@nvidia.com/">rust: uaccess: generalize write_dma() to accept any Coherent<T></a> (3p) — Gary Guo, Alexandre Courbot, Miguel Ojeda, 3 reviews</li>
-<li><a href="https://lore.kernel.org/rust-for-linux/20260326013902.588242-5-jhubbard@nvidia.com/">gpu: nova-core: add Copy/Clone to Spec and Revision, add chipset() accessor</a> v9 (31p) — John Hubbard, 2 reviews<blockquote>
-<p>Derive Clone and Copy for Revision and Spec. Both are small value types (4 bytes total) and Copy makes them easier to use in later patches that pass them across function boundaries.  Add a Spec::chipset() accessor for use by later patches that need t...</p>
-</blockquote>
-</li>
-<li><a href="https://lore.kernel.org/rust-for-linux/20260326013902.588242-6-jhubbard@nvidia.com/">gpu: nova-core: set DMA mask width based on GPU architecture</a> v9 (31p) — John Hubbard, 2 reviews<blockquote>
-<p>Replace the hardcoded 47-bit DMA mask with per-architecture values. Add Architecture::dma_mask() with an exhaustive match, so new architectures get a compile-time reminder to specify their width.  Set the DMA mask in Gpu::new(). Gpu owns all DMA allo...</p>
-</blockquote>
-</li>
-<li><a href="https://lore.kernel.org/rust-for-linux/20260326013902.588242-7-jhubbard@nvidia.com/">gpu: nova-core: Hopper/Blackwell: skip GFW boot waiting</a> v9 (31p) — John Hubbard, 2 reviews<blockquote>
-<p>Hopper and Blackwell GPUs use FSP-based secure boot and do not require waiting for GFW_BOOT completion. Move the GFW_BOOT wait into a GPU HAL so the decision and the wait both live in the HAL.  Pre-Hopper families (Tu102 HAL) wait for GFW_BOOT comple...</p>
-</blockquote>
-</li>
-<li><a href="https://lore.kernel.org/rust-for-linux/20260326-b4-tyr-debugfs-v1-3-074badd18716@linux.dev/">rust: sync: set_once: Rename InitError variants to fix clippy warning</a> (13p) — Gary Guo, Miguel Ojeda, Alvin Sun, 2 reviews<blockquote>
-<p>Fixes clippy warning: warning: all variants have the same postfix: <code>Init</code> --&gt; rust/kernel/sync/set_once.rs:68:1</p>
-</blockquote>
-</li>
-<li><a href="https://lore.kernel.org/rust-for-linux/87o6kayc5t.fsf@t14s.mail-host-address-is-not-set/">rust: io: generalize <code>Mmio</code> to arbitrary type</a> (8p) — Gary Guo, Andreas Hindborg, 3 reviews</li>
-<li><a href="https://lore.kernel.org/rust-for-linux/20260327-b4-nova-dma-removal-v2-1-616e1d0b5cb3@nvidia.com/">rust: dma: add from-slice constructors for Coherent and CoherentBox</a> v2 (7p) — Danilo Krummrich, Alexandre Courbot, 2 reviews<blockquote>
-<p>A very common pattern is to create a block of coherent memory with the content of an already-existing slice of bytes (e.g. a loaded firmware blob).  <code>CoherentBox</code> makes this easier, but still implies a potentially panicking operation with `copy_from_...</p>
-</blockquote>
-</li>
-<li><a href="https://lore.kernel.org/rust-for-linux/20260327-b4-nova-dma-removal-v2-4-616e1d0b5cb3@nvidia.com/">gpu: nova-core: falcon: use dma::Coherent</a> v2 (7p) — Gary Guo, Alexandre Courbot, 2 reviews<blockquote>
-<p>Replace the nova-core local <code>DmaObject</code> with a <code>Coherent</code> that can fulfill the same role.</p>
-</blockquote>
-</li>
-<li><a href="https://lore.kernel.org/rust-for-linux/20260326013902.588242-13-jhubbard@nvidia.com/">gpu: nova-core: Hopper/Blackwell: add FMC firmware image, in support of FSP</a> v9 (31p) — John Hubbard, 1 reviews<blockquote>
-<p>FSP is the Falcon that runs FMC firmware on Hopper and Blackwell. Load the FMC ELF in two forms: the image section that FSP boots from, and the full Firmware object for later signature extraction during Chain of Trust verification.</p>
-</blockquote>
-</li>
-<li><a href="https://lore.kernel.org/rust-for-linux/20260326-b4-tyr-debugfs-v1-0-074badd18716@linux.dev/">drm/tyr: add debugfs support</a> (13p) — Boqun Feng, Alvin Sun, 1 reviews<blockquote>
-<p>This patchset contains: - hazptr: Add hazard pointer abstraction to kernel::sync - revocable: Introduce HazPtrRevocable, and adapt Gary Guo's downstream LazyRevocable implementation to use hazard pointers internally, enabling safe sharing of debugfs-...</p>
-</blockquote>
-</li>
-<li><a href="https://lore.kernel.org/rust-for-linux/acUgzwk+ULSjW8sW@BLRRASHENOY1.amd.com/">cpufreq: Pass the policy to cpufreq_driver-&gt;adjust_perf()</a> v4 (2p) — Gautham R. Shenoy, Zhongqiu Han, 2 reviews</li>
-<li><a href="https://lore.kernel.org/rust-for-linux/87qzp6ycol.fsf@t14s.mail-host-address-is-not-set/">rust: io: generalize <code>MmioRaw</code> to pointer to arbitrary type</a> (8p) — Gary Guo, Andreas Hindborg, 2 reviews</li>
-<li><a href="https://lore.kernel.org/rust-for-linux/20260326-drm-rust-next-fix-aref-v1-0-7f6f58d2828a@google.com/">[drm-rust-next PATCH 0/2] Fix sync::aref imports</a> — Danilo Krummrich, Alice Ryhl, Gary Guo (6 条)<blockquote>
-<p>A few imports of types::ARef were merged into drm-rust-next, but this old path is being removed in rust-next this cycle. Thus update them.</p>
-</blockquote>
-</li>
-<li><a href="https://lore.kernel.org/rust-for-linux/DHCBEGGPWSVK.30MV8652PV4PY@kernel.org/">(subset) Rust bindings for gem shmem</a> — Danilo Krummrich, Janne Grunau, Alice Ryhl (3 条)</li>
-<li><a href="https://lore.kernel.org/rust-for-linux/acUGAsjYvNvTEO92@google.com/">Re: Inline helpers into Rust without full LTO</a> — Miguel Ojeda, Alice Ryhl (2 条)</li>
-<li><a href="https://lore.kernel.org/rust-for-linux/CABx5tqL+G9i1ZW7i5AHaTqUFTVRDmBvP=RycUdwjG-GOp4uzBA@mail.gmail.com/">Implement Send and Sync for clk</a> v5 (3p) — Danilo Krummrich, Miguel Ojeda, Brian Masney, 8 reviews</li>
-<li><a href="https://lore.kernel.org/rust-for-linux/DHD5FQ1O1Q60.1C2FZI4A85PQ2@nvidia.com/">gpu: nova-core: gsp: fix undefined behavior in command queue code</a> v2 — kernel test robot, Alexandre Courbot, Danilo Krummrich, 5 reviews</li>
-<li><a href="https://lore.kernel.org/rust-for-linux/CANiq72nz6zB0jGahw4Eh-i-Rew1kQ0g_qcZ68Whw==MyjhYaJw@mail.gmail.com/">Inline helpers into Rust without full LTO</a> v2 (3p) — Marek Szyprowski, Arnd Bergmann, Miguel Ojeda, 5 reviews</li>
-<li><a href="https://lore.kernel.org/rust-for-linux/921fd8fa-48ba-47ca-9330-fccf7c76a80a@linux.dev/">rust: sync: set_once: Rename InitError variants to fix clippy warning</a> (13p) — Alvin Sun, 2 reviews</li>
-<li><a href="https://lore.kernel.org/rust-for-linux/877bqxy96y.fsf@t14s.mail-host-address-is-not-set/">rust: io: add <code>read_val</code> and <code>write_val</code> function on I/O view</a> (8p) — Andreas Hindborg, Gary Guo, 2 reviews</li>
-<li><a href="https://lore.kernel.org/rust-for-linux/871ph5y2gv.fsf@t14s.mail-host-address-is-not-set/">rust: Mark all from() for Error functions inline</a> v3 — Andreas Hindborg, Miguel Ojeda, 2 reviews</li>
-<li><a href="https://lore.kernel.org/rust-for-linux/CAH5fLgj+pDm_VzNGWZ2Js9EVmH2xahP9V3bj9KXqnnARiVzHZg@mail.gmail.com/">rust: kasan: do not pass -Zsanitizer-recover</a> (2p) — kernel test robot, Alice Ryhl, 2 reviews</li>
-<li><a href="https://lore.kernel.org/rust-for-linux/48987e65-a4cc-438d-9782-9f14a4494da6@linux.dev/">drm/tyr: add debugfs support</a> (13p) — Alvin Sun, 1 reviews</li>
-<li><a href="https://lore.kernel.org/rust-for-linux/DHDDAY4B5JXG.5FBC99G558N7@nvidia.com/">rust: dma: add from-slice constructors and use them in nova-core</a> v2 (7p) — Alexandre Courbot, 1 reviews</li>
-<li><a href="https://lore.kernel.org/rust-for-linux/CANiq72kTaU3xtzFLRdAGMrrSC+oqJip3VsFjg4P0yH6w=5tvtw@mail.gmail.com/">rust: workqueue: add SAFETY comments for Pin<KBox\<T>> impl blocks</a> — Miguel Ojeda, 1 reviews</li>
-<li><a href="https://lore.kernel.org/rust-for-linux/874im1y8z6.fsf@t14s.mail-host-address-is-not-set/">rust: dma: drop <code>dma_read!</code> and <code>dma_write!</code> API</a> (8p) — Andreas Hindborg, 1 reviews</li>
-<li><a href="https://lore.kernel.org/rust-for-linux/CANiq72=TGv80K9Z=VhWkh392oCZjSVH=W5JsmYgKR1D7k8yf+w@mail.gmail.com/">rust: watchdog: add watchdog device abstraction</a> (2p) — Miguel Ojeda, 1 reviews</li>
-<li><a href="https://lore.kernel.org/rust-for-linux/CANiq72mwC9K3mOaTUsfrreJqiE7WumqcwqhXQK=nvhsb=024=A@mail.gmail.com/">rust: ptr: add const_align_up()</a> v9 (31p) — Miguel Ojeda, 1 reviews</li>
-<li><a href="https://lore.kernel.org/rust-for-linux/CANiq72nmM_L2qSZtrvPN1bt9OzMiKu7NUZQXM=TknhbCOU=wuA@mail.gmail.com/">rust: io: use pointer types instead of address</a> (8p) — Miguel Ojeda, 1 reviews</li>
-<li><a href="https://lore.kernel.org/rust-for-linux/CANiq72k4ib+pXymM9Z2gGvVk3UoDSdrw8d61W5-x+zuV3542Zg@mail.gmail.com/">rust: dma: add from-slice constructors for Coherent and CoherentBox</a> (7p) — Miguel Ojeda, 1 reviews</li>
-<li><a href="https://lore.kernel.org/rust-for-linux/20260327114741.91500-1-pilgrimtao@gmail.com/">[RFC 0/2] block: Introduce a BPF-based I/O scheduler</a> — Chengkaitao, Bart Van Assche (2 条)<blockquote>
-<p>From: Kaitao Cheng <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#99;&#104;&#101;&#110;&#103;&#107;&#97;&#105;&#116;&#97;&#111;&#64;&#107;&#121;&#108;&#105;&#110;&#111;&#115;&#46;&#99;&#110;">&#99;&#104;&#101;&#110;&#103;&#107;&#97;&#105;&#116;&#97;&#111;&#64;&#107;&#121;&#108;&#105;&#110;&#111;&#115;&#46;&#99;&#110;</a>  I have been working on adding a new BPF-based I/O scheduler. It has both kernel and user-space parts. In ...</p>
-</blockquote>
-</li>
-<li><a href="https://lore.kernel.org/rust-for-linux/20260327114741.91500-2-pilgrimtao@gmail.com/">[RFC 1/2] block: Introduce the UFQ I/O scheduler</a> — Alexei Starovoitov, Chengkaitao (2 条)<blockquote>
-<p>From: Kaitao Cheng <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#99;&#104;&#101;&#110;&#103;&#107;&#97;&#105;&#116;&#97;&#111;&#64;&#107;&#121;&#108;&#105;&#110;&#111;&#115;&#46;&#99;&#110;">&#99;&#104;&#101;&#110;&#103;&#107;&#97;&#105;&#116;&#97;&#111;&#64;&#107;&#121;&#108;&#105;&#110;&#111;&#115;&#46;&#99;&#110;</a>  Introduce IOSCHED_UFQ, a blk-mq elevator ("ufq: User-programmable Flexible Queueing") whose policy is sup...</p>
-</blockquote>
-</li>
-<li><a href="https://lore.kernel.org/rust-for-linux/20260327114741.91500-3-pilgrimtao@gmail.com/">[RFC 2/2] tools/ufq_iosched: add BPF example scheduler and build scaffolding</a> — Miguel Ojeda, Chengkaitao (2 条)<blockquote>
-<p>From: Kaitao Cheng <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#99;&#104;&#101;&#110;&#103;&#107;&#97;&#105;&#116;&#97;&#111;&#64;&#107;&#121;&#108;&#105;&#110;&#111;&#115;&#46;&#99;&#110;">&#99;&#104;&#101;&#110;&#103;&#107;&#97;&#105;&#116;&#97;&#111;&#64;&#107;&#121;&#108;&#105;&#110;&#111;&#115;&#46;&#99;&#110;</a>  Add ufq_iosched as a simple example for the UFQ block I/O scheduler, In the ufq_simple example, we implem...</p>
-</blockquote>
-</li>
-<li><a href="https://lore.kernel.org/rust-for-linux/CANiq72muiQzRkvcEZNUceqxvDmUf0zPLaBvQRH+EfDSS0edo+A@mail.gmail.com/">(subset) Rust bindings for gem shmem</a> — Miguel Ojeda (1 条)</li>
-<li><a href="https://lore.kernel.org/rust-for-linux/34796d72-71bf-4414-8352-47258fd1d700@amperemail.onmicrosoft.com/">subscribe</a> — Greg Rose (1 条)</li>
-<li><a href="https://lore.kernel.org/rust-for-linux/DHDUW10P5BMJ.QNFRFHLHOH6H@kernel.org/">(subset) Re: Rust GPUVM immediate mode</a> — Danilo Krummrich (1 条)</li>
-<li><a href="https://lore.kernel.org/rust-for-linux/DHDUW55OWUU6.2YPVSZVHGYPI3@kernel.org/">(subset) Re: Rust bindings for gem shmem</a> — Danilo Krummrich (1 条)</li>
-<li><a href="https://lore.kernel.org/rust-for-linux/202603281331.1ESuqgfz-lkp@intel.com/">gpu: nova-core: gsp: fix undefined behavior in command queue code</a> v3 — kernel test robot, Alexandre Courbot, Gary Guo, 3 reviews</li>
-<li><a href="https://lore.kernel.org/rust-for-linux/20260328114005.125617-1-adzicmirko97@gmail.com/">rust: error: clarify that <code>from_err_ptr</code> can return <code>Ok(NULL)</code></a> — Mirko Adzic, Miguel Ojeda, 1 reviews<blockquote>
-<p>Improve the doc comment of <code>from_err_ptr</code> by explicitly stating that it will return <code>Ok(NULL)</code> when passed a null pointer, as it isn't an error value.  Add a doctest case that tests the behavior described above, as well as other scenarios (non-null/n...</p>
-</blockquote>
-</li>
-<li><a href="https://lore.kernel.org/rust-for-linux/DHEFPG4FA0PQ.1JJL8ZN4NO5C@nvidia.com/">gpu: nova-core: falcon: use dma::Coherent</a> (7p) — Alexandre Courbot, 1 reviews</li>
-<li><a href="https://lore.kernel.org/rust-for-linux/CANiq72kk_UJVNbQ3aKuV4_LPFm-a0xjZqZyk57ZpkHp8yX8jzQ@mail.gmail.com/">pwm: th1520: fix <code>CLIPPY=1</code> warning</a> — Miguel Ojeda, 1 reviews</li>
-<li><a href="https://lore.kernel.org/rust-for-linux/DHEI0HCIIWBG.3GOZM9R8EFT5X@nvidia.com/">rust: dma: remove DMA_ATTR_NO_KERNEL_MAPPING from public attrs</a> (2p) — Alexandre Courbot, 1 reviews</li>
-<li><a href="https://lore.kernel.org/rust-for-linux/DHEI0U0BYVRN.M1IVH5E5Y4IS@nvidia.com/">rust: dma: add from-slice constructors and use them in nova-core</a> v2 (7p) — Alexandre Courbot, 1 reviews</li>
-<li><a href="https://lore.kernel.org/rust-for-linux/CAAWJmAZe+pyfju+37-dfjYUdwRR1ae6Rq8OJjZea76d2CPkEMA@mail.gmail.com/">[RFC 0/2] block: Introduce a BPF-based I/O scheduler</a> — Chengkaitao (1 条)</li>
-</ul>
-<h2>Zulip 讨论</h2>
-<ul>
-<li><a href="https://rust-for-linux.zulipchat.com/#narrow/stream/pin-init/topic/staging%20workflow">#pin-init &gt; staging workflow</a> (6 msgs)<blockquote>
-<p><strong>Benno Lossin</strong>: only thing we need to do is delay the deletion of the temporary branch a bit, otherwise github won't recognize the PR as merged :)</p>
-</blockquote>
-</li>
-<li><a href="https://rust-for-linux.zulipchat.com/#narrow/stream/Announcements/topic/Sashiko%20for%20Rust%20for%20Linux">#Announcements &gt; Sashiko for Rust for Linux</a> (3 msgs)<blockquote>
-<p><strong>Alice Ryhl</strong>: It doesn't send emails right now. You have to view them in the browser instead.</p>
-</blockquote>
-</li>
-<li><a href="https://rust-for-linux.zulipchat.com/#narrow/stream/Help/topic/%E2%9C%94%20Build%20errors%20on%20x86%20defconfig">#Help &gt; ✔ Build errors on x86 defconfig</a> (2 msgs)<blockquote>
-<p><strong>Notification Bot</strong>: Andreas Hindborg  has marked this topic as resolved.</p>
-</blockquote>
-</li>
-<li><a href="https://rust-for-linux.zulipchat.com/#narrow/stream/General/topic/Generic%20I%2FO%20backends">#General &gt; Generic I/O backends</a> (2 msgs)<blockquote>
-<p><strong>Zhi Wang</strong>: Cool!! Let me rebase my vGPU staging tree and PCI capability patches on top of it.</p>
-</blockquote>
-</li>
-<li><a href="https://rust-for-linux.zulipchat.com/#narrow/stream/General/topic/Spinlocks%20with%20IRQs%3F">#General &gt; Spinlocks with IRQs?</a> (1 msgs)<blockquote>
-<p><strong>Boqun Feng</strong>: FYI, an urgent RCU bug occured last week, so I had to fix it. Which means I probably would make the 64bit preemtp_count changes to v7.1.</p>
-</blockquote>
-</li>
-<li><a href="https://rust-for-linux.zulipchat.com/#narrow/stream/Modules/topic/Rust%20kernel%20module%20using%20external%20crate">#Modules &gt; Rust kernel module using external crate</a> (2 msgs)<blockquote>
-<p><strong>Miguel Ojeda</strong>: It is hard to say what you are trying to do (e.g. what is linked to what and where) -- just in case, please note that it is very unlikely that the kernel will ever support arbitrar...</p>
-</blockquote>
-</li>
-<li><a href="https://rust-for-linux.zulipchat.com/#narrow/stream/DRM/topic/FenceCtx%20signalling%20DmaFences">#DRM &gt; FenceCtx signalling DmaFences</a> (5 msgs)<blockquote>
-<p><strong>Boris Brezillon</strong>: @Philipp Stanner  Hehe =&gt;  https://gitlab.freedesktop.org/bbrezillon/linux/-/blob/8bec931a3a222873bf93cd8111d88c2f79df30cd/rust/kernel/sync/dma_fence.rs#L845</p>
-</blockquote>
-</li>
-<li><a href="https://rust-for-linux.zulipchat.com/#narrow/stream/Help/topic/%E2%9C%94%20Suggestions%20on%20my%20HP%20laptop">#Help &gt; ✔ Suggestions on my HP laptop</a> (1 msgs)<blockquote>
-<p><strong>Notification Bot</strong>: shivamklr  has marked this topic as resolved.</p>
-</blockquote>
-</li>
-<li><a href="https://rust-for-linux.zulipchat.com/#narrow/stream/Library/topic/Type%20erasing">#Library &gt; Type erasing</a> (6 msgs)<blockquote>
-<p><strong>Alice Ryhl</strong>: Don't we already have type erasure approach for fences?</p>
-</blockquote>
-</li>
-<li><a href="https://rust-for-linux.zulipchat.com/#narrow/stream/Library/topic/Memory%20barriers%20design">#Library &gt; Memory barriers design</a> (3 msgs)<blockquote>
-<p><strong>Gary Guo</strong>: (I want to eventually propose to add  {smp_,dma_,}mb_{acquire,release}  to C too, but I won't do that until I have some numbers on the performance benefit of having dma_mb_release)</p>
-</blockquote>
-</li>
-<li><a href="https://rust-for-linux.zulipchat.com/#narrow/stream/pin-init/topic/pinnable%20option">#pin-init &gt; pinnable option</a> (3 msgs)<blockquote>
-<p><strong>Benno Lossin</strong>: can you share a link if the code is publicly available?</p>
-</blockquote>
-</li>
-</ul>
-<h2>GitHub</h2>
-<h3>议题 (2)</h3>
-<ul>
-<li>[open] <a href="https://github.com/Rust-for-Linux/linux/issues/353">#353 <code>bindgen</code> wanted features &amp; bugfixes</a> — ojeda <code>• toolchain</code> <code>meta</code></li>
-<li>[open] <a href="https://github.com/Rust-for-Linux/linux/issues/936">#936 Review comment on "rust: str: add <code>CString</code> type"</a> — riking <code>• lib</code></li>
-</ul>
-<h3>议题 (4)</h3>
-<ul>
-<li>[open] <a href="https://github.com/Rust-for-Linux/linux/issues/351">#351 Add missing <code>// SAFETY</code> comments</a> — ojeda <code>• lib</code> <code>good first issue</code> <code>easy</code></li>
-<li>[open] <a href="https://github.com/Rust-for-Linux/linux/issues/354">#354 Rust wanted features</a> — ojeda <code>• toolchain</code> <code>meta</code></li>
-<li>[closed] <a href="https://github.com/Rust-for-Linux/linux/issues/1227">#1227 Trailing comma in <code>fmt!</code> macro</a> — Darksonn <code>• lib</code> <code>good first issue</code> <code>medium</code></li>
-<li>[open] <a href="https://github.com/Rust-for-Linux/linux/issues/1172">#1172 Allow omitting the trailing comma in macros provided by the <code>macros</code> crate.</a> — BennoLossin <code>• lib</code> <code>good first issue</code> <code>medium</code></li>
-</ul>
-<h3>议题 (1)</h3>
-<h3>rust-next 提交 (3)</h3>
-<ul>
-<li><a href="https://github.com/Rust-for-Linux/linux/commit/4f13c93497e366cd8e41561a8e30ad4da887cb82"><code>4f13c934</code></a> rust: kernel: mark as <code>#[inline]</code> all <code>From::from()</code>s for <code>Error</code> — Alistair Francis<blockquote>
-<p>There was a recent request [1] to mark as <code>#[inline]</code> the simple <code>From::from()</code> functions implemented for <code>Error</code>.  Thus mark all of the existing  impl From&lt;...&gt; for Error { fn from(err: ...) -&gt; Self ...</p>
-</blockquote>
-</li>
-<li><a href="https://github.com/Rust-for-Linux/linux/commit/d58f0f146a6e3fe3c6fcf6db1e0d385414bc8713"><code>d58f0f14</code></a> rust: list: hide macros from top-level kernel doc — Gary Guo<blockquote>
-<p>Due to Rust macro scoping rules, all macros defined in a crate using <code>#[macro_export]</code> end up in the top-level. For the list macros, we re-export them inside the list module, and expect users to use `...</p>
-</blockquote>
-</li>
-<li><a href="https://github.com/Rust-for-Linux/linux/commit/9bf32bc60cb2561f8e27fea2cb24c86d5ab99997"><code>9bf32bc6</code></a> MAINTAINERS: add <code>.rustfmt.toml</code> to "RUST" entry — Miguel Ojeda<blockquote>
-<p><code>.rustfmt.toml</code> is not covered by <code>MAINTAINERS</code>, so tools like <code>scripts/get_maintainer.pl</code> do not report it properly, e.g.:  $ scripts/get_maintainer.pl -f .rustfmt.toml linux-kernel@vger.kernel.org (...</p>
-</blockquote>
-</li>
-<li>[open] <a href="https://github.com/Rust-for-Linux/linux/issues/1231">#1231 Clarifying <code>from_err_ptr</code> may return <code>Ok(NULL)</code></a> — ojeda <code>• lib</code> <code>good first issue</code> <code>easy</code></li>
-</ul>
-<hr />
-<p><em>Generated at 2026-04-07 13:28:10 CST by rfl-reports.py</em></p>
-  </div>
-  <div class="report-nav"><span></span><a href="2026-W14.html">2026-W14 &rarr;</a></div>
+  <div class="af-hero-right" id="heroRight"></div>
 </div>
 
+<!-- ── Main article content ── -->
+<div class="af-main">
+  <div id="magContent">
+    <div class="mag-page mag-cover" data-density="hard"><div class="mag-page-inner cover-inner"><div class="cover-decoration"></div><div class="cover-content"><div class="cover-masthead">R&thinsp;F&thinsp;L&ensp;D&thinsp;A&thinsp;I&thinsp;L&thinsp;Y</div><div class="cover-rule"></div><div class="cover-crab">🦀</div><div class="cover-date"></div><div class="cover-weekday"></div><div class="cover-rule"></div><div class="cover-hero">Rust 工具链与编译优化</div><div class="cover-rule-thin"></div><div class="cover-stats"></div></div></div></div><div class="mag-page"><div class="mag-page-inner overview-inner"><div class="mag-accent-bar"></div><div class="ov-label">TODAY'S OVERVIEW</div><h2 class="ov-title">📋 今日概览</h2><div class="ov-body"><span class="ov-dropcap">本</span>周是 Rust-for-Linux 社区异常活跃的一周。最受关注的话题是<strong>「不依赖完整 LTO 就将 C 内联函数引入 Rust」</strong>的系列补丁进入 v2 迭代，引发了跨架构兼容性的热烈讨论。DMA 内存管理 API 经历了大幅演进，<code>dma::Coherent</code> 从仅支持字节切片扩展到了通用类型容器。NVIDIA 开源 GPU 驱动 Nova-Core 连续推进 Hopper/Blackwell 架构支持，补丁集已迭代到 v8/v9。ARM Mali GPU 驱动 Tyr 全面转向内核的 <code>register!</code> 宏来管理硬件寄存器。I/O 子系统也开始了一轮大重构，<code>Mmio</code> 类型被泛化以支持任意类型的内存映射。此外，多位贡献者为代码中缺失的 SAFETY 注释补充了正式的安全性说明，代码质量持续提升。
+</div><div class="mag-page-num">2</div></div></div><div class="mag-page"><div class="mag-page-inner"><div class="mag-accent-bar"></div><div class="mag-section-label">RUST 工具链与编译优化</div><h2 class="mag-title">Rust 工具链与编译优化</h2><div class="mag-section-content"><div class="mag-article"><div class="art-title">将 C 内联辅助函数引入 Rust（无需完整 LTO）—— v2 热烈讨论</div><div class="art-body"><p><strong>将 C 内联辅助函数引入 Rust（无需完整 LTO）—— v2 热烈讨论</strong></p><p>这是本周最重磅的话题。目前内核中有很多用 C 写的"辅助函数"（helper），它们是 Rust 代码调用 C 内核 API 的桥梁。问题在于：这些小函数如果不能被"内联"（即把函数体直接嵌入调用处），会带来额外的函数调用开销。此前的方案需要开启完整的 LTO（链接时优化），但 LTO 会大幅拖慢编译速度。Miguel Ojeda 提交的 v2 方案通过编译器的 <code>always_inline</code> 属性，让这些辅助函数即使不开 LTO 也能被内联到 Rust 代码中。本周围绕此补丁的讨论非常活跃（超过 20 条回复），涉及 ARM、x86 等多个架构的兼容性问题，Russell King、Arnd Bergmann、Marek Szyprowski 等资深内核开发者都参与了讨论。Marek 在三星 ARM 平台上测试发现了一些问题，推动了进一步迭代。</p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/20260322192159.88138-1-ojeda@kernel.org/" class="art-link">📬 查看补丁 v2</a> <a href="https://lore.kernel.org/rust-for-linux/20260326024226.GB2302780@ax162/" class="art-link">📬 查看讨论（Arnd Bergmann）</a> </div></div><div class="mag-article"><div class="art-title">KASAN 消毒器：移除 -Zsanitizer-recover 标志</div><div class="art-body"><p><strong>KASAN 消毒器：移除 <code>-Zsanitizer-recover</code> 标志</strong></p><p>KASAN（Kernel Address Sanitizer）是内核中用来检测内存越界访问的工具。Alice Ryhl 发现 Rust 编译器被传入了 <code>-Zsanitizer-recover</code> 标志（遇到错误时继续运行而不停止），但 C 编译器 Clang 端并没有传同样的标志。为了保持 Rust 和 C 行为一致，该补丁移除了这个标志，使得内存错误发生时程序会立即停止，更有利于发现问题。</p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/20260325-kasan-rust-sw-tags-v1-1-7d3a765a72aa@google.com/" class="art-link">📬 查看补丁</a> </div></div><div class="mag-article"><div class="art-title">允许 Clang 原生的 RANDSTRUCT 配置 —— v2</div><div class="art-body"><p><strong>允许 Clang 原生的 <code>RANDSTRUCT</code> 配置 —— v2</strong></p><p>RANDSTRUCT 是一种安全加固技术——它会随机打乱结构体字段的内存排列顺序，让攻击者更难猜出内存布局。Miguel Ojeda 的补丁确认 <code>bindgen</code>（Rust 用来生成 C 绑定的工具）能正确继承 Clang 的随机化信息，因此可以安全地允许这个配置选项。</p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/20260323130224.165738-1-ojeda@kernel.org/" class="art-link">📬 查看补丁</a> </div></div></div><div class="mag-page-fade"></div><div class="mag-page-num">3</div></div></div><div class="mag-page"><div class="mag-page-inner"><div class="mag-accent-bar"></div><div class="mag-section-label">CONTINUED</div><h2 class="mag-title">Rust 工具链与编译优化</h2><div class="mag-section-content"><div class="mag-article"><div class="art-title">为所有 From::from() Error 转换函数添加 #[inline] —— v2→v3</div><div class="art-body"><p><strong>为所有 <code>From::from()</code> Error 转换函数添加 <code>#[inline]</code> —— v2→v3</strong></p><p>Alistair Francis 为内核中所有将各种错误类型转换为通用 <code>Error</code> 的 <code>from()</code> 函数加上了 <code>#[inline]</code> 标记。这些函数通常只有一两行代码，内联后可以避免不必要的函数调用开销。该补丁本周从 v2 迭代到 v3，并已合入 rust-next 分支。</p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/20260325005118.168814-1-alistair.francis@wdc.com/" class="art-link">📬 查看补丁 v2</a> </div></div><div class="mag-article"><div class="art-title">添加 TryFrom 和 Into 派生宏 —— v5</div><div class="art-body"><p><strong>添加 <code>TryFrom</code> 和 <code>Into</code> 派生宏 —— v5</strong></p><p>Jesung Yang 提交的派生宏已经迭代到第 5 版。这些宏让开发者只需在枚举类型上加一个 <code>#[derive(TryFrom, Into)]</code> 注解，编译器就能自动生成类型转换代码，减少手写样板代码。</p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/DH939HK0611M.22A8T9BJ3NG8@gmail.com/" class="art-link">📬 查看补丁</a> </div></div><div class="mag-tips"><div>
+<strong>小白科普</strong><br/>
+<strong>LTO（Link-Time Optimization）</strong>：链接时优化，是编译器在把多个编译单元合并成最终程序时进行的优化。好比把拼图拼好后再整体雕琢细节，效果好但很耗时。
+<a href="https://doc.rust-lang.org/rustc/codegen-options/index.html#lto">了解更多</a><br/>
+<strong>内联（Inline）</strong>：编译器把一个小函数的代码直接"复制粘贴"到调用它的地方，省去了函数调用的跳转开销，就像把常用的小工具直接放在手边而不是每次去工具箱里拿。
+</div></div></div><div class="mag-page-fade"></div><div class="mag-page-num">4</div></div></div><div class="mag-page"><div class="mag-page-inner"><div class="mag-accent-bar"></div><div class="mag-section-label">DMA 内存管理</div><h2 class="mag-title">DMA 内存管理</h2><div class="mag-section-content"><div class="mag-article"><div class="art-title">dma::Coherent 泛化：从字节切片到任意类型 —— v2</div><div class="art-body"><p><strong><code>dma::Coherent</code> 泛化：从字节切片到任意类型 —— v2</strong></p><p>DMA（直接内存访问）是设备绑过 CPU 直接读写内存的方式，而"一致性 DMA 内存"（Coherent DMA）是 CPU 和设备都能看到相同数据的特殊内存区域。此前 Rust 的 <code>Coherent</code> 类型只能包装字节切片（<code>[u8]</code>），本周 Aditya Rajan 的 v2 补丁将其扩展为可包装任意类型——比如一个结构体或自定义数据。这让 DMA 内存的使用变得更加灵活。Andreas Hindborg 和 Danilo Krummrich 就 API 设计展开了深入的技术讨论。</p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/DH8UHISTLOA4.934370PUTLB4@gmail.com/" class="art-link">📬 查看补丁</a> </div></div><div class="mag-article"><div class="art-title">新增 CoherentHandle：无内核映射的 DMA 分配</div><div class="art-body"><p><strong>新增 <code>CoherentHandle</code>：无内核映射的 DMA 分配</strong></p><p>有些场景下，CPU 根本不需要访问 DMA 内存（只有设备在用），这时可以跳过内核地址映射以节省资源。Alexandre Courbot 提交了 <code>CoherentHandle</code> 类型来处理这种情况，同时配套移除了 <code>DMA_ATTR_NO_KERNEL_MAPPING</code> 这个公开属性标志——因为有了专用类型，就不需要通过标志位来控制了。</p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/DH9EA6773QO6.W3EDFZPEL8K@nvidia.com/" class="art-link">📬 查看 CoherentHandle</a> </div></div><div class="mag-article"><div class="art-title">DMA 从切片构造器 —— v2</div><div class="art-body"><p><strong>DMA 从切片构造器 —— v2</strong></p><p>实际开发中经常需要"把一段已有的数据（比如固件）复制到 DMA 内存里"。Alexandre Courbot 为 <code>Coherent</code> 和 <code>CoherentBox</code> 添加了 <code>from_slice</code> 构造函数，可以一步完成分配+复制，避免了之前可能触发 panic 的中间操作。</p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/20260327-b4-nova-dma-removal-v2-1-616e1d0b5cb3@nvidia.com/" class="art-link">📬 查看补丁</a> </div></div></div><div class="mag-page-fade"></div><div class="mag-page-num">5</div></div></div><div class="mag-page"><div class="mag-page-inner"><div class="mag-accent-bar"></div><div class="mag-section-label">CONTINUED</div><h2 class="mag-title">DMA 内存管理</h2><div class="mag-section-content"><div class="mag-article"><div class="art-title">泛化 write_dma() 接口</div><div class="art-body"><p><strong>泛化 <code>write_dma()</code> 接口</strong></p><p>Danilo Krummrich 的补丁将用户空间访问模块中的 <code>write_dma()</code> 函数从只接受 <code>Coherent&lt;[u8]&gt;</code> 扩展为接受任意 <code>Coherent&lt;T&gt;</code>，因为函数内部实际上只用到了指针和大小信息，没有理由限制为字节切片。</p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/20260325003921.3420-1-dakr@kernel.org/" class="art-link">📬 查看补丁</a> </div></div><div class="mag-article"><div class="art-title">废弃 dma_read! 和 dma_write! 宏</div><div class="art-body"><p><strong>废弃 <code>dma_read!</code> 和 <code>dma_write!</code> 宏</strong></p><p>随着 I/O 子系统泛化工作的推进，Andreas Hindborg 提议移除专用的 DMA 读写宏，转而使用更通用的 I/O 视图（I/O view）接口来完成同样的功能。</p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/874im1y8z6.fsf@t14s.mail-host-address-is-not-set/" class="art-link">📬 查看补丁</a> </div></div><div class="mag-tips"><div>
+<strong>小白科普</strong><br/>
+<strong>DMA（Direct Memory Access）</strong>：直接内存访问，让硬件设备（如显卡、网卡）无需经过 CPU 就能直接读写内存。好比快递员直接把包裹放进你的快递柜，不用你亲自去门口拿。"Coherent"（一致性）指 CPU 和设备看到的内存内容始终一致，不需要手动"刷新缓存"。
+<a href="https://www.kernel.org/doc/html/latest/core-api/dma-api.html">了解更多</a>
+</div></div></div><div class="mag-page-fade"></div><div class="mag-page-num">6</div></div></div><div class="mag-page"><div class="mag-page-inner"><div class="mag-accent-bar"></div><div class="mag-section-label">GPU 驱动：NOVA-CORE（NVIDIA 开源驱动）</div><h2 class="mag-title">GPU 驱动：Nova-Core（NVIDIA 开源驱动）</h2><div class="mag-section-content"><div class="mag-article"><div class="art-title">Hopper/Blackwell 架构支持 —— v8→v9 大型补丁集</div><div class="art-body"><p><strong>Hopper/Blackwell 架构支持 —— v8→v9 大型补丁集</strong></p><p>John Hubbard 持续推进 NVIDIA 下一代 GPU 架构（Hopper GH100 和 Blackwell）在 Nova-Core 驱动中的支持。这个 31 补丁的系列本周从 v8 迭代到 v9，内容涵盖：GPU 识别（识别不同型号的 GPU）、根据架构设置 DMA 掩码位宽（不同 GPU 支持的最大内存地址范围不同）、跳过 GFW 引导等待（新架构使用 FSP 安全启动，不再需要等 GFW_BOOT 完成）、FMC 固件加载（用于 FSP 信任链验证），以及固件解析代码的重构（将 ELF64 解析代码独立出来以支持未来的 ELF32 格式）。Alexandre Courbot 和 Gary Guo 提供了大量审查意见。</p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/20260326013902.588242-7-jhubbard@nvidia.com/" class="art-link">📬 v9 GFW 跳过</a> </div></div><div class="mag-article"><div class="art-title">寄存器宏迁移 —— v3→v4</div><div class="art-body"><p><strong>寄存器宏迁移 —— v3→v4</strong></p><p>Nova-Core 之前自带了一个临时的寄存器定义宏，用来描述 GPU 硬件寄存器。现在内核上游已经合入了通用版本的 <code>register!</code> 宏，Alexandre Courbot 正在把 Nova-Core 的所有寄存器定义迁移过去。v3 先将 PMC 寄存器转换完成，v4 继续推进。同时引入了 <code>bounded_enum</code> 宏，用来定义有严格取值范围限制的枚举类型，使寄存器字段的类型安全性更强。</p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/20260323-b4-nova-register-v3-7-ae2486ecef1b@nvidia.com/" class="art-link">📬 bounded_enum 宏</a> </div></div><div class="mag-article"><div class="art-title">GSP 命令队列未定义行为修复 —— v2→v3</div><div class="art-body"><p><strong>GSP 命令队列未定义行为修复 —— v2→v3</strong></p><p>Alexandre Courbot 修复了 GSP（GPU System Processor）命令队列代码中的一个微妙 bug：<code>driver_read_area</code> 和 <code>driver_write_area</code> 方法返回的切片虽然内容正确，但在构造过程中涉及了"从无效指针创建引用"的未定义行为。即使实际没有出过错，这在 Rust 的内存模型中是被严格禁止的。该补丁经过三轮迭代，v3 中还触发了内核测试机器人发现的额外问题并得到修复。</p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/20260326-cmdq-ub-fix-v3-1-96af2148ca5c@nvidia.com/" class="art-link">📬 查看 v3</a> </div></div></div><div class="mag-page-fade"></div><div class="mag-page-num">7</div></div></div><div class="mag-page"><div class="mag-page-inner"><div class="mag-accent-bar"></div><div class="mag-section-label">CONTINUED</div><h2 class="mag-title">GPU 驱动：Nova-Core（NVIDIA 开源驱动）</h2><div class="mag-section-content"><div class="mag-article"><div class="art-title">RM Control 命令基础设施 —— v3</div><div class="art-body"><p><strong>RM Control 命令基础设施 —— v3</strong></p><p>Eliot Courtney 添加了 RM（Resource Manager）控制 RPC 的基础架构。这是 NVIDIA GPU 驱动与 GSP 固件通信的核心机制之一，后续的通道分配等功能都依赖于此。补丁包含 <code>NV_STATUS</code> 绑定、<code>NvStatus</code> 枚举以及 <code>RmControl</code> trait 的定义。</p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/20260325-rmcontrol-v3-0-f59729b812aa@nvidia.com/" class="art-link">📬 查看补丁</a> </div></div><div class="mag-article"><div class="art-title">Falcon 固件加载改用 dma::Coherent</div><div class="art-body"><p><strong>Falcon 固件加载改用 <code>dma::Coherent</code></strong></p><p>作为 DMA API 统一工作的一部分，Alexandre Courbot 将 Nova-Core 中 Falcon 微控制器的固件加载代码从自制的 <code>DmaObject</code> 迁移到了上游的 <code>dma::Coherent</code>，减少了驱动内部的重复代码。</p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/20260327-b4-nova-dma-removal-v2-4-616e1d0b5cb3@nvidia.com/" class="art-link">📬 查看补丁</a> </div></div><div class="mag-tips"><div>
+<strong>小白科普</strong><br/>
+<strong>Nova-Core</strong>：NVIDIA 正在用 Rust 开发的开源 GPU 内核驱动，目标是替代现有的 <code>nouveau</code> 驱动。它使用 GSP（GPU System Processor）固件来管理 GPU 资源，是 Rust-for-Linux 最具标志性的实际项目之一。<br/>
+<strong>Falcon</strong>：NVIDIA GPU 内部的微控制器，负责运行固件来管理 GPU 的各种子系统，好比 GPU 里的"管家"。
+</div></div></div><div class="mag-page-fade"></div><div class="mag-page-num">8</div></div></div><div class="mag-page"><div class="mag-page-inner"><div class="mag-accent-bar"></div><div class="mag-section-label">GPU 驱动：TYR（ARM MALI GPU 驱动）</div><h2 class="mag-title">GPU 驱动：Tyr（ARM Mali GPU 驱动）</h2><div class="mag-section-content"><div class="mag-article"><div class="art-title">全面采用 register! 宏 —— v3 系列（12 补丁）</div><div class="art-body"><p><strong>全面采用 <code>register!</code> 宏 —— v3 系列（12 补丁）</strong></p><p>Tyr 是用 Rust 编写的 ARM Mali GPU 驱动（类似于 C 写的 panthor 驱动的 Rust 版本）。本周 Deborah Brouwer 提交了一个 12 补丁的 v3 系列，将 GPU_CONTROL、JOB_CONTROL、MMU_CONTROL 等多组硬件寄存器定义全部转为使用内核的 <code>register!</code> 宏。这带来的好处是：手动的位掩码操作和位移运算被类型安全的寄存器字段访问器取代，代码更易读、更不容易出错。Boris Brezillon 和 Alice Ryhl 进行了详细审查。此外，还顺便修改了 GPU_ID 的打印方式——不再手动移位，而是直接打印完整寄存器值。</p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/20260323-b4-tyr-use-register-macro-v3-v3-0-a87daf9e4701@collabora.com/" class="art-link">📬 查看系列</a> </div></div><div class="mag-article"><div class="art-title">添加 debugfs 支持（含 Hazard Pointer 抽象）</div><div class="art-body"><p><strong>添加 debugfs 支持（含 Hazard Pointer 抽象）</strong></p><p>Alvin Sun 提交了一个 13 补丁的系列，为 Tyr 驱动添加了 debugfs 支持。这不仅仅是简单地导出调试信息——它引入了 <strong>Hazard Pointer</strong>（危险指针）抽象到 <code>kernel::sync</code> 模块，并基于此实现了 <code>HazPtrRevocable</code>，使得 debugfs 文件可以安全地共享驱动数据，即使驱动被卸载也不会导致悬空引用。Boqun Feng 参与了审查。</p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/20260326-b4-tyr-debugfs-v1-0-074badd18716@linux.dev/" class="art-link">📬 查看系列</a> </div></div><div class="mag-article"><div class="art-title">ARef 工作队列支持 —— v3</div><div class="art-body"><p><strong>ARef 工作队列支持 —— v3</strong></p><p>Daniel Almeida 为工作队列（workqueue）添加了 <code>ARef&lt;T&gt;</code> 智能指针的支持。这让驱动可以用引用计数的方式把对象丢到工作队列中延迟执行，而不用担心对象在执行前被释放。补丁同时在 <code>drm::Device</code> 中添加了对应的实现，Tyr 驱动可以直接使用。</p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/20260323-aref-workitem-v3-0-f59729b812aa@collabora.com/" class="art-link">📬 查看系列</a> </div></div><div class="mag-tips"><div>
+<strong>小白科普</strong><br/>
+<strong>register! 宏</strong>：内核中新引入的宏，用来声明硬件寄存器的布局。好比给寄存器画了一张"填表说明"，每个字段在哪一位、多宽、什么含义都清清楚楚，编译器会帮你检查有没有填错。<br/>
+<strong>debugfs</strong>：内核中的一个虚拟文件系统（通常挂载在 <code>/sys/kernel/debug/</code>），驱动可以在这里暴露调试信息，开发者通过读文件就能查看驱动内部状态。
+</div></div></div><div class="mag-page-fade"></div><div class="mag-page-num">9</div></div></div><div class="mag-page"><div class="mag-page-inner"><div class="mag-accent-bar"></div><div class="mag-section-label">I/O 子系统重构</div><h2 class="mag-title">I/O 子系统重构</h2><div class="mag-section-content"><div class="mag-article"><div class="art-title">Mmio 和 MmioRaw 泛化为任意类型</div><div class="art-body"><p><strong><code>Mmio</code> 和 <code>MmioRaw</code> 泛化为任意类型</strong></p><p>Andreas Hindborg 提交了一组 8 补丁系列，对 I/O 子系统进行了一次重大重构。核心变化是将 <code>Mmio</code>（内存映射 I/O）和 <code>MmioRaw</code> 从只支持固定的寄存器地址范围，泛化为可以指向任意类型的内存映射区域。同时新增了 <code>read_val</code> 和 <code>write_val</code> 函数，允许从 I/O 视图中读写完整的值类型。这为 DMA 和 MMIO 统一使用同一套 I/O 后端打下了基础。Gary Guo 在 Zulip 上也讨论了"通用 I/O 后端"的设计方向。</p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/877bqxy96y.fsf@t14s.mail-host-address-is-not-set/" class="art-link">📬 read_val/write_val</a> </div></div><div class="mag-article"><div class="art-title">I/O 使用指针类型代替地址</div><div class="art-body"><p><strong>I/O 使用指针类型代替地址</strong></p><p>作为 I/O 重构的一部分，Miguel Ojeda 审查了将 I/O 操作从使用裸地址整数改为使用指针类型的变更。这使得代码在语义上更正确——因为 MMIO 本质上就是对特定内存地址的操作，用指针来表示比用整数更自然、更安全。</p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/CANiq72nmM_L2qSZtrvPN1bt9OzMiKu7NUZQXM=TknhbCOU=wuA@mail.gmail.com/" class="art-link">📬 查看讨论</a> </div></div><div class="mag-tips"><div>
+<strong>小白科普</strong><br/>
+<strong>MMIO（Memory-Mapped I/O）</strong>：内存映射 I/O，硬件设备的寄存器被映射到 CPU 的内存地址空间中。程序读写这些特殊的内存地址，就相当于在和硬件对话。好比给每个硬件开关分配了一个"信箱地址"，往那个地址写信就能控制硬件。
+<a href="https://www.kernel.org/doc/html/latest/driver-api/device-io.html">了解更多</a>
+</div></div></div><div class="mag-page-fade"></div><div class="mag-page-num">10</div></div></div><div class="mag-page"><div class="mag-page-inner"><div class="mag-accent-bar"></div><div class="mag-section-label">代码安全与质量改进</div><h2 class="mag-title">代码安全与质量改进</h2><div class="mag-section-content"><div class="mag-article"><div class="art-title">为 print 和 workqueue 模块补充 SAFETY 注释</div><div class="art-body"><p><strong>为 <code>print</code> 和 <code>workqueue</code> 模块补充 SAFETY 注释</strong></p><p>Rust-for-Linux 项目要求所有 <code>unsafe</code> 代码块必须附带 <code>// SAFETY:</code> 注释，解释为什么这段不安全的操作实际上是安全的。本周 Shivendra Sharma 和 Albab Hasan 分别为 <code>print</code> 模块和 <code>workqueue</code> 模块中遗留的 <code>// SAFETY: TODO.</code> 占位符补充了正式的安全性说明。对于初学者来说，补充 SAFETY 注释是一个很好的入门贡献方式——GitHub 上的 <a href="https://github.com/Rust-for-Linux/linux/issues/351">#351</a> 还列出了很多待补充的位置。</p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/20260322044340.129985-1-albabhasan276@gmail.com/" class="art-link">📬 workqueue 模块</a> </div></div><div class="mag-article"><div class="art-title">澄清 from_err_ptr 可能返回 Ok(NULL)</div><div class="art-body"><p><strong>澄清 <code>from_err_ptr</code> 可能返回 <code>Ok(NULL)</code></strong></p><p>Mirko Adzic 改进了 <code>from_err_ptr</code> 函数的文档，明确指出：当传入空指针时，它会返回 <code>Ok(NULL)</code> 而不是错误——因为在 C 内核 API 中，空指针不一定代表错误。这个小小的澄清揭示了 Rust 和 C 之间在错误处理语义上的微妙差异。Alice Ryhl 之前在 regulator 子系统中就被这个问题坑过（见下文）。对应的 GitHub issue <a href="https://github.com/Rust-for-Linux/linux/issues/1231">#1231</a> 也已创建并标记为"good first issue"。</p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/20260328114005.125617-1-adzicmirko97@gmail.com/" class="art-link">📬 查看补丁</a> </div></div></div><div class="mag-page-fade"></div><div class="mag-page-num">11</div></div></div><div class="mag-page"><div class="mag-page-inner"><div class="mag-accent-bar"></div><div class="mag-section-label">CONTINUED</div><h2 class="mag-title">代码安全与质量改进</h2><div class="mag-section-content"><div class="mag-article"><div class="art-title">pin-init 宏的安全性文档补充</div><div class="art-body"><p><strong>pin-init 宏的安全性文档补充</strong></p><p>Benno Lossin 为 <code>pin-init</code> 库（用于安全地初始化自引用结构体的工具）补充了两个上游回移的补丁：一个记录了字段访问器保证对齐的关键事实，另一个用 <code>unsafe</code> 标记的 token 替换了之前的 shadowed return token 技巧，让初始化宏的安全模型更加清晰。</p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/20260325125734.944247-1-lossin@kernel.org/" class="art-link">📬 文档补丁</a> </div></div><div class="mag-article"><div class="art-title">修复 set_once::InitError clippy 警告</div><div class="art-body"><p><strong>修复 <code>set_once::InitError</code> clippy 警告</strong></p><p>Alvin Sun 修复了 <code>set_once</code> 模块中所有 <code>InitError</code> 枚举变体都以 "Init" 结尾的 clippy 警告。虽然只是命名问题，但保持代码通过 clippy 检查是 Rust 项目维护的重要一环。</p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/20260326-b4-tyr-debugfs-v1-3-074badd18716@linux.dev/" class="art-link">📬 查看补丁</a> </div></div><div class="mag-tips"><div>
+<strong>小白科普</strong><br/>
+<strong>SAFETY 注释</strong>：Rust 的 <code>unsafe</code> 关键字表示"编译器无法自动验证这段代码的安全性，开发者需要自己保证"。<code>// SAFETY:</code> 注释就是开发者写给审查者（和未来的自己）的"安全保证书"，解释为什么这里不会出问题。<br/>
+<strong>clippy</strong>：Rust 的代码风格和质量检查工具，类似于 C 的 <code>checkpatch.pl</code>，会提醒你命名不规范、代码冗余等问题。
+</div></div></div><div class="mag-page-fade"></div><div class="mag-page-num">12</div></div></div><div class="mag-page"><div class="mag-page-inner"><div class="mag-accent-bar"></div><div class="mag-section-label">设备驱动与子系统</div><h2 class="mag-title">设备驱动与子系统</h2><div class="mag-section-content"><div class="mag-article"><div class="art-title">Regulator 子系统：修复 NULL 指针处理</div><div class="art-body"><p><strong>Regulator 子系统：修复 NULL 指针处理</strong></p><p>Alice Ryhl 发现了一个有趣的 bug：Rust 的 <code>Regulator</code> 抽象使用 <code>NonNull</code>（不可为空的指针）来包装底层 C 指针，但当内核关闭 <code>CONFIG_REGULATOR</code> 时，C 函数 <code>regulator_get()</code> 会返回 NULL。由于 <code>from_err_ptr</code> 不把 NULL 当错误处理，这个 NULL 被直接传入了要求非空的类型中，导致未定义行为。这个 bug 提醒我们：Rust 的安全包装需要考虑 C 端在不同内核配置下的行为差异。</p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/20260324-regulator-fix-v1-1-a5244afa3c15@google.com/" class="art-link">📬 查看补丁</a> </div></div><div class="mag-article"><div class="art-title">PHY 网络设备：添加只读字段访问器</div><div class="art-body"><p><strong>PHY 网络设备：添加只读字段访问器</strong></p><p>Artem Lytkin 为 PHY（物理层）设备抽象添加了获取链路速度和双工模式的方法。虽然 <code>set_duplex</code> 设置器已经存在，但之前没有对应的读取器。这个补丁也是一个"好的入门贡献"的例子——为已有的抽象补充缺失的 API。</p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/20260323201925.8405-1-iprintercanon@gmail.com/" class="art-link">📬 查看补丁</a> </div></div><div class="mag-article"><div class="art-title">CLK 子系统：实现 Send 和 Sync —— v5</div><div class="art-body"><p><strong>CLK 子系统：实现 Send 和 Sync —— v5</strong></p><p>Brian Masney 为时钟（clk）子系统的 Rust 抽象实现了 <code>Send</code> 和 <code>Sync</code> trait，这意味着时钟对象可以安全地在线程间传递和共享。这是 Rust 并发安全模型的基础要求——如果一个类型不实现这两个 trait，编译器会阻止你在多线程环境下使用它。该补丁已迭代到 v5，Miguel Ojeda 和 Danilo Krummrich 参与了审查。</p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/CABx5tqL+G9i1ZW7i5AHaTqUFTVRDmBvP=RycUdwjG-GOp4uzBA@mail.gmail.com/" class="art-link">📬 查看补丁</a> </div></div></div><div class="mag-page-fade"></div><div class="mag-page-num">13</div></div></div><div class="mag-page"><div class="mag-page-inner"><div class="mag-accent-bar"></div><div class="mag-section-label">CONTINUED</div><h2 class="mag-title">设备驱动与子系统</h2><div class="mag-section-content"><div class="mag-article"><div class="art-title">ACPI：添加设备匹配函数 —— v3</div><div class="art-body"><p><strong>ACPI：添加设备匹配函数 —— v3</strong></p><p>Markus Probst 为 ACPI（高级配置和电源接口）子系统添加了 <code>acpi_of_match_device_ids</code> 的 Rust 绑定。这个函数用来检查一个 ACPI 设备是否匹配驱动程序声明的设备 ID 列表，是设备-驱动绑定流程中的关键一环。</p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/e8ffc9902c0af24ce6fde2d8712ea588b36e9194.camel@posteo.de/" class="art-link">📬 查看补丁</a> </div></div><div class="mag-article"><div class="art-title">module_param：返回 Copy 类型的值而非引用</div><div class="art-body"><p><strong>module_param：返回 Copy 类型的值而非引用</strong></p><p>Andreas Hindborg 优化了模块参数的 API——对于 <code>Copy</code> 类型（如整数），<code>value()</code> 方法直接返回值的拷贝而非引用，使用起来更方便。原有的返回引用的方法被重命名为 <code>value_ref()</code>。</p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/20260323-module-value-ref-v1-1-32507e1085f1@kernel.org/" class="art-link">📬 查看补丁</a> </div></div><div class="mag-article"><div class="art-title">其他子系统更新</div><div class="art-body"><p><strong>其他子系统更新</strong></p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/CANiq72=TGv80K9Z=VhWkh392oCZjSVH=W5JsmYgKR1D7k8yf+w@mail.gmail.com/" class="art-link">📬 查看</a> <a href="https://lore.kernel.org/rust-for-linux/acUgzwk+ULSjW8sW@BLRRASHENOY1.amd.com/" class="art-link">📬 查看</a> <a href="https://lore.kernel.org/rust-for-linux/CANiq72kk_UJVNbQ3aKuV4_LPFm-a0xjZqZyk57ZpkHp8yX8jzQ@mail.gmail.com/" class="art-link">📬 查看</a> <a href="https://lore.kernel.org/rust-for-linux/20260323-update-rust-i2c-maintainers-v1-1-0744ce44f846@gmail.com/" class="art-link">📬 查看</a> </div></div><div class="mag-tips"><div>
+<strong>小白科普</strong><br/>
+<strong>Send 和 Sync</strong>：Rust 中的两个核心 trait。<code>Send</code> 表示类型可以安全地从一个线程转移到另一个线程；<code>Sync</code> 表示类型可以被多个线程同时引用。它们是 Rust "无畏并发"的基石——编译器会自动检查你有没有违反这些规则。
+<a href="https://doc.rust-lang.org/book/ch16-04-extensible-concurrency-sync-and-send.html">了解更多</a>
+</div></div></div><div class="mag-page-fade"></div><div class="mag-page-num">14</div></div></div><div class="mag-page"><div class="mag-page-inner"><div class="mag-accent-bar"></div><div class="mag-section-label">基础库与工具宏</div><h2 class="mag-title">基础库与工具宏</h2><div class="mag-section-content"><div class="mag-article"><div class="art-title">build_assert 模块重组 —— v3</div><div class="art-body"><p><strong><code>build_assert</code> 模块重组 —— v3</strong></p><p>Miguel Ojeda 将与编译时断言相关的宏统一迁移到 <code>build_assert</code> 模块中，使代码组织更加清晰。Alexandre Courbot 和 Tamir Duberstein 参与了 5 轮审查讨论。</p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/CANiq72kZH-AX=QQz2V+qCfVzMsUEAPan=o1E=OZOAnivj3L3HQ@mail.gmail.com/" class="art-link">📬 查看补丁</a> </div></div><div class="mag-article"><div class="art-title">Vec::into_boxed_slice()</div><div class="art-body"><p><strong><code>Vec::into_boxed_slice()</code></strong></p><p>David Rheinsberg 为内核的 <code>Vec</code> 添加了 <code>into_boxed_slice()</code> 方法，与标准库的同名方法类似。这让开发者可以用 <code>Vec</code> 动态构建数据，然后"冻结"为固定大小的 <code>Box&lt;[T]&gt;</code>。之前没有方便的方法来消耗一个 Vec 的底层分配。Alice Ryhl 和 Danilo Krummrich 参与了 6 轮审查。</p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/20260326095621.846840-1-david@readahead.eu/" class="art-link">📬 查看补丁</a> </div></div><div class="mag-article"><div class="art-title">const_align_up()：编译时对齐计算</div><div class="art-body"><p><strong><code>const_align_up()</code>：编译时对齐计算</strong></p><p>John Hubbard 在 <code>kernel::ptr</code> 模块添加了 <code>const_align_up()</code> 函数，作为运行时 <code>align_up()</code> 的编译时替代版本。这在需要编译期常量计算对齐地址的场景中很有用。</p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/20260325035242.368661-17-jhubbard@nvidia.com/" class="art-link">📬 查看补丁</a> </div></div></div><div class="mag-page-fade"></div><div class="mag-page-num">15</div></div></div><div class="mag-page"><div class="mag-page-inner"><div class="mag-accent-bar"></div><div class="mag-section-label">CONTINUED</div><h2 class="mag-title">基础库与工具宏</h2><div class="mag-section-content"><div class="mag-article"><div class="art-title">C 链表 Rust 接口 —— v13</div><div class="art-body"><p><strong>C 链表 Rust 接口 —— v13</strong></p><p>Alejandra González 的 C 链表互操作模块已经迭代到了 v13。这个模块让 Rust 代码可以安全地操作 C 内核中广泛使用的 <code>list_head</code> 链表结构。</p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/CAGeanHfNwP6Zs3LSfc9eEO7_LG0kK-jO24oUd7BjxrQbndEmNw@mail.gmail.com/" class="art-link">📬 查看补丁</a> </div></div><div class="mag-article"><div class="art-title">CString::try_from_fmt 安全注释改进 &amp; list 宏隐藏</div><div class="art-body"><p><strong><code>CString::try_from_fmt</code> 安全注释改进 &amp; list 宏隐藏</strong></p><p>Miguel Ojeda 改进了 <code>CString</code> 字符串类型的安全注释；Gary Guo 将 list 模块的宏从顶层文档中隐藏（这些宏已在 list 模块中重新导出，不应出现在顶层）。后者已合入 rust-next。</p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/CANiq72=9Dh9tN4xFZmai0dFKKa_GSD+WOhrf_bxpFprbfZrgPw@mail.gmail.com/" class="art-link">📬 CString 注释</a> </div></div><div class="mag-tips"><div>
+<strong>小白科普</strong><br/>
+<strong>Box&lt;[T]&gt;</strong>：堆上分配的固定大小切片。与 <code>Vec&lt;T&gt;</code> 不同，它不能再增长或缩小。好比从可伸缩的行李箱换成了刚好合适的硬壳箱——不浪费空间，也更轻便。
+</div></div></div><div class="mag-page-fade"></div><div class="mag-page-num">16</div></div></div><div class="mag-page"><div class="mag-page-inner"><div class="mag-accent-bar"></div><div class="mag-section-label">DRM 图形子系统（其他）</div><h2 class="mag-title">DRM 图形子系统（其他）</h2><div class="mag-section-content"><div class="mag-article"><div class="art-title">DRM 依赖队列层（RFC）</div><div class="art-body"><p><strong>DRM 依赖队列层（RFC）</strong></p><p>Matthew Brost 提交了一个 RFC 补丁，提议在 DRM 子系统中添加一个"依赖队列层"。这是一个用于管理 GPU 任务依赖关系的抽象层，使得 GPU 提交的作业可以声明"我必须等某个任务完成才能开始"。Miguel Ojeda 和 Boris Brezillon 参与了讨论，涉及与 Rust 绑定的兼容性问题。</p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/ab+PgBzwJkhhj6dw@lstrano-desk.jf.intel.com/" class="art-link">📬 查看 RFC</a> </div></div><div class="mag-article"><div class="art-title">GEM shmem Rust 绑定 &amp; ARef 导入修复</div><div class="art-body"><p><strong>GEM shmem Rust 绑定 &amp; ARef 导入修复</strong></p><p>GEM shmem（显存共享内存对象）的 Rust 绑定正在推进中。同时 Alice Ryhl 修复了 drm-rust-next 分支中 <code>types::ARef</code> 的过时导入路径——由于 rust-next 正在移除旧路径，需要及时更新。Danilo Krummrich 和 Gary Guo 参与了 6 条讨论。</p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/20260326-drm-rust-next-fix-aref-v1-0-7f6f58d2828a@google.com/" class="art-link">📬 ARef 修复</a> </div></div><div class="mag-article"><div class="art-title">DMA Fence 信号与类型擦除讨论</div><div class="art-body"><p><strong>DMA Fence 信号与类型擦除讨论</strong></p><p>Zulip 上，Boris Brezillon 在 DRM 频道分享了 DMA Fence 信号化的实现方案，展示了如何让 <code>FenceCtx</code> 安全地通知 <code>DmaFence</code> 完成。Library 频道则讨论了"类型擦除"（type erasure）技术在 Fence 中的应用——Alice Ryhl 指出现有的 Fence 抽象已经采用了类型擦除方案。</p></div><div class="art-links"><a href="https://rust-for-linux.zulipchat.com/#narrow/stream/DRM/topic/FenceCtx%20signalling%20DmaFences" class="art-link">💬 Zulip 讨论</a> </div></div><div class="mag-tips"><div>
+<strong>小白科普</strong><br/>
+<strong>DMA Fence</strong>：GPU 编程中的"栅栏"机制。当 CPU 把一个任务提交给 GPU 后，会创建一个 Fence。其他想使用这个任务结果的操作必须"等在栅栏后面"，直到 GPU 完成任务后"打开栅栏"（信号化）。这是 GPU 任务同步的核心机制。
+</div></div></div><div class="mag-page-fade"></div><div class="mag-page-num">17</div></div></div><div class="mag-page"><div class="mag-page-inner"><div class="mag-accent-bar"></div><div class="mag-section-label">内核主线动态</div><h2 class="mag-title">内核主线动态</h2><div class="mag-section-content"><div class="mag-article"><div class="art-title">Driver Core 修复合入 7.0-rc5</div><div class="art-body"><p><strong>Driver Core 修复合入 7.0-rc5</strong></p><p>Linus Torvalds 合并了 Danilo Krummrich 提交的 Driver Core 修复 pull request，这是 Linux 7.0 发布候选版本的常规修复流程。这意味着 Rust 驱动核心基础设施的修复已经进入了主线的 RC 阶段。</p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/CAHk-=wjA2mOM=hCGBiS9r7+5KCmTd3KMrTTZQsE=rRLqqKMTyg@mail.gmail.com/" class="art-link">📬 查看 GIT PULL</a> </div></div><div class="mag-article"><div class="art-title">rust-next 分支本周合入</div><div class="art-body"><p><strong>rust-next 分支本周合入</strong></p><p>本周有 3 个提交合入了 rust-next 分支：Alistair Francis 的 Error <code>from()</code> 内联标记、Gary Guo 的 list 宏隐藏、以及 Miguel Ojeda 将 <code>.rustfmt.toml</code> 添加到 MAINTAINERS 文件。</p></div></div><div class="mag-article"><div class="art-title">dma-mapping：为 dma_free_attrs 添加缺失的 inline</div><div class="art-body"><p><strong>dma-mapping：为 <code>dma_free_attrs</code> 添加缺失的 <code>inline</code></strong></p><p>Miguel Ojeda 在 UML（User Mode Linux）构建中发现 <code>dma_free_attrs</code> 缺少 <code>inline</code> 标记导致编译器警告。这是一个 C 端的修复，但动机来自 Rust 绑定的测试——体现了 Rust-for-Linux 开发对 C 侧代码质量的"反哺"效应。</p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/20260325015548.70912-1-ojeda@kernel.org/" class="art-link">📬 查看补丁</a> </div></div><div class="mag-tips"><div>
+<strong>小白科普</strong><br/>
+<strong>rust-next 分支</strong>：Rust-for-Linux 项目的"暂存区"分支。补丁先在这里积累测试，然后在下一个内核合并窗口时一起提交给 Linus Torvalds。好比正式演出前的彩排舞台。
+<a href="https://github.com/Rust-for-Linux/linux">查看仓库</a>
+</div></div></div><div class="mag-page-fade"></div><div class="mag-page-num">18</div></div></div><div class="mag-page"><div class="mag-page-inner"><div class="mag-accent-bar"></div><div class="mag-section-label">社区动态</div><h2 class="mag-title">社区动态</h2><div class="mag-section-content"><div class="mag-article"><div class="art-title">Sashiko 工具发布</div><div class="art-body"><p><strong>Sashiko 工具发布</strong></p><p>Alice Ryhl 在 Zulip Announcements 频道宣布了 "Sashiko for Rust for Linux" 工具。目前该工具还不支持邮件通知，需要在浏览器中查看。（Sashiko 是一种辅助 RFL 开发的工具。）</p></div><div class="art-links"><a href="https://rust-for-linux.zulipchat.com/#narrow/stream/Announcements/topic/Sashiko%20for%20Rust%20for%20Linux" class="art-link">💬 查看公告</a> </div></div><div class="mag-article"><div class="art-title">Spinlocks with IRQs 与 RCU bug</div><div class="art-body"><p><strong>Spinlocks with IRQs 与 RCU bug</strong></p><p>Boqun Feng 在 Zulip 上提到，由于上周出现了一个紧急的 RCU bug 需要修复，他关于 64 位 preempt_count 的改动推迟到了 v7.1。这提醒我们：内核开发中，紧急修复总是优先于新功能开发。</p></div><div class="art-links"><a href="https://rust-for-linux.zulipchat.com/#narrow/stream/General/topic/Spinlocks%20with%20IRQs%3F" class="art-link">💬 查看讨论</a> </div></div><div class="mag-article"><div class="art-title">内存屏障设计讨论</div><div class="art-body"><p><strong>内存屏障设计讨论</strong></p><p>Gary Guo 在 Library 频道提出了关于内存屏障 API 的设计想法，希望最终能向 C 端也提议添加 <code>smp_mb_acquire</code>、<code>dma_mb_release</code> 等更细粒度的屏障原语——但他打算先收集 <code>dma_mb_release</code> 的性能数据再行动。</p></div><div class="art-links"><a href="https://rust-for-linux.zulipchat.com/#narrow/stream/Library/topic/Memory%20barriers%20design" class="art-link">💬 查看讨论</a> </div></div></div><div class="mag-page-fade"></div><div class="mag-page-num">19</div></div></div><div class="mag-page"><div class="mag-page-inner"><div class="mag-accent-bar"></div><div class="mag-section-label">CONTINUED</div><h2 class="mag-title">社区动态</h2><div class="mag-section-content"><div class="mag-article"><div class="art-title">BPF I/O 调度器 RFC</div><div class="art-body"><p><strong>BPF I/O 调度器 RFC</strong></p><p>Kaitao Cheng 提交了一个有趣的 RFC：使用 BPF（内核可编程框架）来实现 I/O 调度器。虽然这不是 Rust 项目，但它被发送到了 rust-for-linux 邮件列表，引发了 Alexei Starovoitov 和 Miguel Ojeda 的关注。这代表了一种"可编程内核"的趋势——用户空间的策略可以动态注入内核中。</p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/20260327114741.91500-1-pilgrimtao@gmail.com/" class="art-link">📬 查看 RFC</a> </div></div><div class="mag-article"><div class="art-title">外部 crate 使用讨论</div><div class="art-body"><p><strong>外部 crate 使用讨论</strong></p><p>有人在 Zulip Modules 频道询问是否可以在内核模块中使用外部 Rust crate。Miguel Ojeda 明确表示：内核不太可能支持任意外部 crate——内核代码有特殊的内存分配器、错误处理和 ABI 要求，标准库的 crate 很难直接适配。</p></div><div class="art-links"><a href="https://rust-for-linux.zulipchat.com/#narrow/stream/Modules/topic/Rust%20kernel%20module%20using%20external%20crate" class="art-link">💬 查看讨论</a> </div></div><div class="mag-tips"><div>
+<strong>小白科普</strong><br/>
+<strong>BPF（Berkeley Packet Filter）</strong>：一种让用户在内核中安全运行小程序的技术。最初用来过滤网络包，现在已经扩展到了跟踪、安全策略、甚至 I/O 调度等领域。好比在内核中开了一个"小沙盒"，让用户可以安全地自定义内核行为。<br/>
+<strong>RCU（Read-Copy-Update）</strong>：内核中一种高效的并发数据访问机制，允许读者在不加锁的情况下访问数据，写者则创建副本修改后再替换。
+</div></div></div><div class="mag-page-fade"></div><div class="mag-page-num">20</div></div></div><div class="mag-page"><div class="mag-page-inner"><div class="mag-accent-bar"></div><div class="mag-section-label">新手贡献机会</div><h2 class="mag-title">新手贡献机会</h2><div class="mag-section-content"><div class="mag-article"><div class="art-body"><p>本周 GitHub 上有几个标记为 <strong>good first issue</strong> 的议题适合新手参与：</p></div><div class="art-links"><a href="https://github.com/Rust-for-Linux/linux/issues/1227" class="art-link">#1227 fmt! 宏的尾部逗号处理</a> </div></div></div><div class="mag-page-fade"></div><div class="mag-page-num">21</div></div></div><div class="mag-page mag-back-cover" data-density="hard"><div class="mag-page-inner back-cover-inner"><div class="back-decoration"></div><div class="back-content"><div class="back-logo">🦀</div><div class="back-title">Rust-for-Linux</div><div class="back-subtitle">Daily Briefing</div><div class="back-date"></div><div class="back-rule"></div><div class="back-sources"><a href="https://lore.kernel.org/rust-for-linux/">Lore</a> &middot; <a href="https://rust-for-linux.zulipchat.com/">Zulip</a> &middot; <a href="https://github.com/Rust-for-Linux">GitHub</a></div><div class="back-nav"><a href="2026-W14.html" class="back-link-next">2026-W14 &rarr;</a></div></div></div></div>
+  </div>
 </div>
-<div class="footer">Rust-for-Linux &middot; RFL Daily</div>
+
+<script>
+document.addEventListener('DOMContentLoaded',function(){
+  var sections=document.querySelectorAll('.mag-page');
+
+  /* ── Build hero from cover data ── */
+  var cover=document.querySelector('.mag-cover');
+  if(cover){
+    var vis=document.getElementById('heroVisual');
+    var crab=cover.querySelector('.cover-crab');
+    var date=cover.querySelector('.cover-date');
+    var wd=cover.querySelector('.cover-weekday');
+    var hero=cover.querySelector('.cover-hero');
+    if(crab)vis.appendChild(crab.cloneNode(true));
+    if(date)vis.appendChild(date.cloneNode(true));
+    if(wd)vis.appendChild(wd.cloneNode(true));
+    if(hero)vis.appendChild(hero.cloneNode(true));
+    vis.style.display='flex';
+    vis.style.flexDirection='column';
+    vis.style.alignItems='center';
+    vis.style.textAlign='center';
+  }
+
+  /* ── Build hero right: first few section titles ── */
+  var heroR=document.getElementById('heroRight');
+  var sectionPages=document.querySelectorAll('.mag-page:not(.mag-cover):not(.mag-back-cover)');
+  var count=0;
+  sectionPages.forEach(function(pg){
+    if(count>=5)return;
+    var label=pg.querySelector('.mag-section-label,.ov-label');
+    var title=pg.querySelector('.mag-title,.ov-title');
+    if(!title)return;
+    var item=document.createElement('div');
+    item.className='af-hero-item';
+    var cat=label?label.textContent.trim():'';
+    var ttl=title.textContent.trim();
+    // Get first line of body
+    var body=pg.querySelector('.art-body,.ov-body');
+    var excerpt=body?body.textContent.trim().slice(0,80)+'…':'';
+    item.innerHTML='<div class="af-hero-cat">'+cat+'</div><div class="af-hero-title">'+ttl+'</div><div class="af-hero-excerpt">'+excerpt+'</div>';
+    // Click to scroll to section
+    item.style.cursor='pointer';
+    item.addEventListener('click',function(){pg.scrollIntoView({behavior:'smooth',block:'start'})});
+    heroR.appendChild(item);
+    count++;
+  });
+
+  /* ── Back cover full-bleed ── */
+  var bc=document.querySelector('.mag-back-cover');
+  if(bc)bc.classList.add('mag-full-bleed');
+
+  /* ── Scroll reveal ── */
+  var observer=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){e.target.classList.add('revealed');observer.unobserve(e.target)}
+    });
+  },{threshold:0.06});
+  sections.forEach(function(s){
+    if(!s.classList.contains('mag-cover'))observer.observe(s);
+  });
+
+  /* ── Keyboard: left/right arrows for prev/next ── */
+  var prevUrl='';
+  var nextUrl='2026-W14.html';
+  document.addEventListener('keydown',function(e){
+    if(calOpen){if(e.key==='Escape'){closeCal();e.stopPropagation()}return}
+    if(e.key==='Escape'){window.location.href='index.html'}
+    if(e.key==='ArrowLeft'&&prevUrl){window.location.href=prevUrl}
+    if(e.key==='ArrowRight'&&nextUrl){window.location.href=nextUrl}
+  });
+
+  /* ── Calendar picker ── */
+  var allSlugs=[];
+  var slugSet=new Set(allSlugs);
+  var curDate='';
+  var calOpen=false;
+  var calMonth,calYear;
+  // init to current page's month
+  var dp=curDate.split('-');
+  calYear=parseInt(dp[0]);calMonth=parseInt(dp[1])-1;
+
+  var calBtn=document.getElementById('calBtn');
+  var calDrop=document.getElementById('calDrop');
+  var calOverlay=document.getElementById('calOverlay');
+
+  function closeCal(){calOpen=false;calDrop.style.display='none';calOverlay.className='cal-overlay'}
+  function openCal(){calOpen=true;renderCal();calDrop.style.display='block';calOverlay.className='cal-overlay open'}
+  calBtn.addEventListener('click',function(e){e.stopPropagation();calOpen?closeCal():openCal()});
+  calOverlay.addEventListener('click',closeCal);
+
+  var MONTHS=['January','February','March','April','May','June','July','August','September','October','November','December'];
+  var DOWS=['Su','Mo','Tu','We','Th','Fr','Sa'];
+  var today=new Date();var todayStr=today.getFullYear()+'-'+String(today.getMonth()+1).padStart(2,'0')+'-'+String(today.getDate()).padStart(2,'0');
+
+  function renderCal(){
+    var first=new Date(calYear,calMonth,1);
+    var startDow=first.getDay();
+    var daysInMonth=new Date(calYear,calMonth+1,0).getDate();
+    var h='<div class="cal-header">';
+    h+='<button class="cal-arrow-btn" id="calPrev">&#8592;</button>';
+    h+='<span class="cal-month">'+MONTHS[calMonth]+' '+calYear+'</span>';
+    h+='<button class="cal-arrow-btn" id="calNext">&#8594;</button>';
+    h+='</div><div class="cal-grid">';
+    for(var d=0;d<7;d++)h+='<div class="cal-dow">'+DOWS[d]+'</div>';
+    for(var b=0;b<startDow;b++)h+='<div class="cal-day"></div>';
+    for(var day=1;day<=daysInMonth;day++){
+      var ds=calYear+'-'+String(calMonth+1).padStart(2,'0')+'-'+String(day).padStart(2,'0');
+      var cls='cal-day';
+      var hasIssue=slugSet.has(ds);
+      if(hasIssue)cls+=' has-issue';
+      if(ds===curDate)cls+=' current';
+      if(ds===todayStr)cls+=' today-mark';
+      h+='<div class="'+cls+'" data-date="'+ds+'">'+day+'</div>';
+    }
+    h+='</div>';
+    calDrop.innerHTML=h;
+    document.getElementById('calPrev').addEventListener('click',function(e){e.stopPropagation();calMonth--;if(calMonth<0){calMonth=11;calYear--}renderCal()});
+    document.getElementById('calNext').addEventListener('click',function(e){e.stopPropagation();calMonth++;if(calMonth>11){calMonth=0;calYear++}renderCal()});
+    calDrop.querySelectorAll('.cal-day.has-issue').forEach(function(el){
+      el.addEventListener('click',function(){window.location.href=el.dataset.date+'.html'});
+    });
+  }
+
+  // Hide TODAY button if already on latest
+  if(curDate==='2026-W13'){document.getElementById('todayBtn').style.display='none'}
+});
+</script>
 </body>
 </html>
