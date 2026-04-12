@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>RFL 社区日报 &middot; 2026-03-24</title>
+<title>RFL 社区日报 &middot; 2026-04-13</title>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
@@ -182,15 +182,15 @@ body{background:#fff;font-family:'Helvetica Neue',Helvetica,Arial,'Noto Sans SC'
 </div>
 <div class="af-date-bar" id="dateBar">
   <a class="af-today" id="todayBtn" href="2026-04-13.html">TODAY</a>
-  <span>2026-03-24</span>
+  <span>2026-04-13</span>
   <span class="af-cal-btn" id="calBtn"><svg viewBox="0 0 16 16"><path d="M4 0v1H1.5A1.5 1.5 0 000 2.5v12A1.5 1.5 0 001.5 16h13a1.5 1.5 0 001.5-1.5v-12A1.5 1.5 0 0014.5 1H12V0h-1v1H5V0H4zm0 2v1h1V2h6v1h1V2h2.5a.5.5 0 01.5.5V4H1V2.5a.5.5 0 01.5-.5H4zM1 5h14v9.5a.5.5 0 01-.5.5h-13a.5.5 0 01-.5-.5V5z"/></svg>SELECT</span>
   <div id="calDrop" class="cal-drop" style="display:none"></div>
 </div>
 <div id="calOverlay" class="cal-overlay"></div>
 
 <!-- ── Prev / Next arrows ── -->
-<a href="2026-03-23.html" class="pn-arrow pn-left" title="Previous: 2026-03-23">&#8592;<span class="pn-label">2026-03-23</span></a>
-<a href="2026-03-25.html" class="pn-arrow pn-right" title="Next: 2026-03-25">&#8594;<span class="pn-label">2026-03-25</span></a>
+<a href="2026-04-12.html" class="pn-arrow pn-left" title="Previous: 2026-04-12">&#8592;<span class="pn-label">2026-04-12</span></a>
+
 
 <!-- ── Hero: left visual + right article list ── -->
 <div class="af-hero" id="afHero">
@@ -203,7 +203,44 @@ body{background:#fff;font-family:'Helvetica Neue',Helvetica,Arial,'Noto Sans SC'
 <!-- ── Main article content ── -->
 <div class="af-main">
   <div id="magContent">
-    <div class="mag-page mag-cover" data-density="hard"><div class="mag-page-inner cover-inner"><div class="cover-decoration"></div><div class="cover-content"><div class="cover-masthead">R&thinsp;F&thinsp;L&ensp;D&thinsp;A&thinsp;I&thinsp;L&thinsp;Y</div><div class="cover-rule"></div><div class="cover-crab">🦀</div><div class="cover-date">2026-03-24</div><div class="cover-weekday">Tuesday</div><div class="cover-rule"></div><div class="cover-hero"></div><div class="cover-rule-thin"></div><div class="cover-stats">104 emails &middot; 10 msgs</div></div></div></div><div class="mag-page mag-back-cover" data-density="hard"><div class="mag-page-inner back-cover-inner"><div class="back-decoration"></div><div class="back-content"><div class="back-logo">🦀</div><div class="back-title">Rust-for-Linux</div><div class="back-subtitle">Daily Briefing</div><div class="back-date">2026-03-24</div><div class="back-rule"></div><div class="back-sources"><a href="https://lore.kernel.org/rust-for-linux/">Lore</a> &middot; <a href="https://rust-for-linux.zulipchat.com/">Zulip</a> &middot; <a href="https://github.com/Rust-for-Linux">GitHub</a></div><div class="back-nav"><a href="2026-03-23.html" class="back-link-prev">&larr; 2026-03-23</a><a href="2026-03-25.html" class="back-link-next">2026-03-25 &rarr;</a></div></div></div></div>
+    <div class="mag-page mag-cover" data-density="hard"><div class="mag-page-inner cover-inner"><div class="cover-decoration"></div><div class="cover-content"><div class="cover-masthead">R&thinsp;F&thinsp;L&ensp;D&thinsp;A&thinsp;I&thinsp;L&thinsp;Y</div><div class="cover-rule"></div><div class="cover-crab">🦀</div><div class="cover-date">2026-04-13</div><div class="cover-weekday">Monday</div><div class="cover-rule"></div><div class="cover-hero">Rust 内核抽象层：seq_file 新增多个输出方法</div><div class="cover-rule-thin"></div><div class="cover-stats">5 emails</div></div></div></div><div class="mag-page"><div class="mag-page-inner overview-inner"><div class="mag-accent-bar"></div><div class="ov-label">TODAY'S OVERVIEW</div><h2 class="ov-title">📋 今日概览</h2><div class="ov-body"><span class="ov-dropcap">今</span>天是相对平静的周末，社区有三项值得关注的活动。<strong>Rust 内核抽象层</strong>方面，seq_file 模块迎来了新的输出方法，让内核通过 <code>/proc</code> 向用户空间输出信息的能力更加完善。<strong>构建系统</strong>方面，一个优化 Rust 编译器链接器调用方式的补丁进入了第 6 版迭代，正在逐步成熟。<strong>设备驱动</strong>方面，群晖 NAS 嵌入式控制器的设备树绑定描述也在积极推进中。整体来看，Rust-for-Linux 的基础设施仍在稳步完善，各个方向都有持续的打磨和改进。
+</div><div class="mag-page-num">2</div></div></div><div class="mag-page"><div class="mag-page-inner"><div class="mag-accent-bar"></div><div class="mag-section-label">RUST 内核抽象层：SEQ_FILE 新增多个输出方法</div><h2 class="mag-title">Rust 内核抽象层：seq_file 新增多个输出方法</h2><div class="mag-section-content"><div class="mag-article"><div class="art-body"><p>
+<strong>发生了什么：</strong>社区提交了一个补丁（目前是第 2 版），为 Rust 侧的 <code>seq_file</code> 模块新增了 <code>puts</code>、<code>putc</code>、<code>write</code> 和 <code>hex_dump</code> 四个方法。简单来说，<code>seq_file</code> 是 Linux 内核用来生成 <code>/proc</code> 文件内容的一套机制——当你在终端里执行 <code>cat /proc/某个文件</code> 看到的那些系统信息，背后很多就是通过 seq_file 输出的。
+</p><p>
+之前 Rust 对 seq_file 的封装还比较基础，只能做简单的格式化输出。这次新增的方法让 Rust 驱动可以：用 <code>puts</code> 输出一整行字符串，用 <code>putc</code> 输出单个字符，用 <code>write</code> 输出原始字节流，用 <code>hex_dump</code> 把一块内存以十六进制的形式打印出来（这在调试驱动时特别有用，就像把一堆二进制数据"翻译"成人能看懂的格式）。
+</p><p>
+<strong>为什么重要：</strong>这些是内核驱动日常开发中非常常用的操作。有了它们，用 Rust 写驱动的开发者在需要向用户空间暴露调试信息或状态信息时，就不再需要绕道调用底层 C 函数，可以直接使用类型安全的 Rust API。这是 Rust 抽象层逐渐"补齐短板"的一个缩影。目前该补丁收到了来自 kernel test robot（内核自动测试机器人）的一轮编译测试反馈，正在根据反馈进行调整。
+</p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/202604120236.nzYgh7vO-lkp@intel.com/" class="art-link">📬 查看补丁</a> </div></div><div class="mag-tips"><div>
+💡 <strong>小白科普</strong><br/>
+<strong>seq_file</strong>：Linux 内核中用于生成 <code>/proc</code> 虚拟文件内容的接口。你在终端里看到的 <code>/proc/cpuinfo</code>、<code>/proc/meminfo</code> 等系统信息，都是内核通过类似机制"写"出来的。它帮内核开发者以流式方式输出数据，不用操心缓冲区管理。
+<a href="https://docs.kernel.org/filesystems/seq_file.html">📖 seq_file 官方文档</a><br/>
+<strong>hex_dump</strong>：将内存中的二进制数据以十六进制格式展示出来，是一种经典的调试手段。想象你有一堆看不懂的乱码，hex_dump 就像一个"翻译器"，把每个字节用两位十六进制数表示，方便你逐字节分析。
+<a href="https://en.wikipedia.org/wiki/Hex_dump">📖 了解 Hex Dump</a>
+</div></div></div><div class="mag-page-fade"></div><div class="mag-page-num">3</div></div></div><div class="mag-page"><div class="mag-page-inner"><div class="mag-accent-bar"></div><div class="mag-section-label">构建系统：优化 RUST 编译器的链接器调用方式</div><h2 class="mag-title">构建系统：优化 Rust 编译器的链接器调用方式</h2><div class="mag-section-content"><div class="mag-article"><div class="art-body"><p>
+<strong>发生了什么：</strong>Mohamad Alsadhan 提交的一个 kbuild 补丁已经演进到了第 6 版（v6）。这个补丁的目标是：在内核构建过程中，让 <code>rustc</code>（Rust 编译器）使用单个可执行文件作为链接器（<code>-C linker</code> 参数），而不是之前可能涉及多个步骤或脚本的方式。
+</p><p>
+听起来很技术细节？打个比方：编译代码就像做菜，编译器负责"切菜"（把源码变成中间产物），链接器负责"拼盘"（把各个中间产物组合成最终的可执行文件）。之前 Rust 编译器在内核构建中调用链接器的方式有点绕，可能通过一个中间脚本来间接调用，这增加了复杂性。这个补丁把它简化为直接使用一个可执行文件，让构建过程更简洁、更可靠。
+</p><p>
+<strong>为什么重要：</strong>kbuild 是整个 Linux 内核的构建系统，它的稳定性和效率直接影响所有内核开发者的日常体验。这个补丁已经经过了 6 轮迭代，说明社区对构建系统的改动非常谨慎——毕竟构建系统出了问题，所有人都没法干活。目前收到了 1 条 review 反馈，还在打磨中。
+</p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/iwwybcjzsewhxhgzccdeplkoyxft3g37jogzsijdtxaa3tbxpf@jk7ytyz6nfr6/" class="art-link">📬 查看补丁</a> </div></div><div class="mag-tips"><div>
+💡 <strong>小白科普</strong><br/>
+<strong>kbuild</strong>：Linux 内核专用的构建系统，基于 Make 工具。你执行 <code>make</code> 编译内核时，背后就是 kbuild 在协调成千上万个源文件的编译和链接。它是整个内核开发的基础设施之一。
+<a href="https://docs.kernel.org/kbuild/index.html">📖 kbuild 官方文档</a><br/>
+<strong>链接器（Linker）</strong>：编译器将源代码变成一个个".o"目标文件后，链接器负责把它们"拼"在一起，生成最终的可执行文件或内核模块。常见的链接器有 <code>ld</code>（GNU）和 <code>lld</code>（LLVM）。
+<a href="https://en.wikipedia.org/wiki/Linker_(computing)">📖 了解链接器</a>
+</div></div></div><div class="mag-page-fade"></div><div class="mag-page-num">4</div></div></div><div class="mag-page"><div class="mag-page-inner"><div class="mag-accent-bar"></div><div class="mag-section-label">设备驱动：群晖 NAS 嵌入式控制器设备树绑定</div><h2 class="mag-title">设备驱动：群晖 NAS 嵌入式控制器设备树绑定</h2><div class="mag-section-content"><div class="mag-article"><div class="art-body"><p>
+<strong>发生了什么：</strong>Markus Probst 提交了一组补丁（共 2 个，目前是第 7 版），为群晖（Synology）NAS 设备中的 MicroP 嵌入式控制器添加设备树绑定（dt-bindings）描述。这组补丁已经收到了 Krzysztof Kozlowski 等人的 3 次 review 反馈。
+</p><p>
+你可能用过群晖的 NAS（家用网络存储器），它里面除了主 CPU 之外，还有一个小型的嵌入式控制器（叫 MicroP），专门负责管理风扇转速、LED 灯状态、按钮事件等硬件功能——就像一个"管家"芯片，打理各种琐碎的硬件事务。要让 Linux 内核能正确识别和驱动这个"管家"芯片，第一步就是在设备树（Device Tree）中描述它的存在和属性。
+</p><p>
+<strong>为什么重要：</strong>设备树绑定是 Linux 支持新硬件的"入口"。没有正确的绑定描述，内核就不知道硬件上有什么设备、该怎么跟它通信。这组补丁经过了 7 轮迭代，反映出设备树绑定的 review 过程要求很严格（因为绑定一旦合入主线就很难改动，相当于定义了一个"硬件接口合同"）。这也说明社区正在逐步扩大 Linux 对群晖 NAS 硬件的原生支持。
+</p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/20260412-cuddly-taipan-of-reputation-1cafe0@quoll/" class="art-link">📬 查看补丁</a> </div></div><div class="mag-tips"><div>
+💡 <strong>小白科普</strong><br/>
+<strong>设备树（Device Tree）</strong>：一种描述硬件信息的数据结构，告诉内核"这块板子上有哪些设备、地址是什么、用什么中断"。就像一张硬件地图，让内核不用把硬件信息写死在代码里，而是从这张"地图"中动态读取。主要用于 ARM 等嵌入式平台。
+<a href="https://docs.kernel.org/devicetree/usage-model.html">📖 设备树官方文档</a><br/>
+<strong>嵌入式控制器（Embedded Controller）</strong>：主板上的一个辅助微控制器，负责管理电源、风扇、LED 等与主 CPU 无关的底层硬件功能。你笔记本电脑里也有类似的芯片，负责在你合上盖子时让电脑休眠之类的事情。
+<a href="https://en.wikipedia.org/wiki/Embedded_controller">📖 了解嵌入式控制器</a>
+</div></div></div><div class="mag-page-fade"></div><div class="mag-page-num">5</div></div></div><div class="mag-page"><div class="mag-page-inner"><div class="mag-accent-bar"></div><div class="mag-section-label">今日数据一览</div><h2 class="mag-title">今日数据一览</h2><div class="mag-section-content"><div class="mag-article"><div class="art-body"></div></div></div><div class="mag-page-fade"></div><div class="mag-page-num">6</div></div></div><div class="mag-page mag-back-cover" data-density="hard"><div class="mag-page-inner back-cover-inner"><div class="back-decoration"></div><div class="back-content"><div class="back-logo">🦀</div><div class="back-title">Rust-for-Linux</div><div class="back-subtitle">Daily Briefing</div><div class="back-date">2026-04-13</div><div class="back-rule"></div><div class="back-sources"><a href="https://lore.kernel.org/rust-for-linux/">Lore</a> &middot; <a href="https://rust-for-linux.zulipchat.com/">Zulip</a> &middot; <a href="https://github.com/Rust-for-Linux">GitHub</a></div><div class="back-nav"><a href="2026-04-12.html" class="back-link-prev">&larr; 2026-04-12</a></div></div></div></div>
   </div>
 </div>
 
@@ -268,8 +305,8 @@ document.addEventListener('DOMContentLoaded',function(){
   });
 
   /* ── Keyboard: left/right arrows for prev/next ── */
-  var prevUrl='2026-03-23.html';
-  var nextUrl='2026-03-25.html';
+  var prevUrl='2026-04-12.html';
+  var nextUrl='';
   document.addEventListener('keydown',function(e){
     if(calOpen){if(e.key==='Escape'){closeCal();e.stopPropagation()}return}
     if(e.key==='Escape'){window.location.href='index.html'}
@@ -280,7 +317,7 @@ document.addEventListener('DOMContentLoaded',function(){
   /* ── Calendar picker ── */
   var allSlugs=["2026-04-13", "2026-04-12", "2026-04-11", "2026-04-10", "2026-04-09", "2026-04-08", "2026-04-07", "2026-04-06", "2026-04-05", "2026-04-04", "2026-04-03", "2026-04-02", "2026-04-01", "2026-03-31", "2026-03-30", "2026-03-29", "2026-03-28", "2026-03-27", "2026-03-26", "2026-03-25", "2026-03-24", "2026-03-23", "2026-03-22", "2026-03-21", "2026-03-20", "2026-03-19"];
   var slugSet=new Set(allSlugs);
-  var curDate='2026-03-24';
+  var curDate='2026-04-13';
   var calOpen=false;
   var calMonth,calYear;
   // init to current page's month
