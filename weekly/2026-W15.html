@@ -190,7 +190,7 @@ body{background:#fff;font-family:'Helvetica Neue',Helvetica,Arial,'Noto Sans SC'
 
 <!-- ── Prev / Next arrows ── -->
 <a href="2026-W14.html" class="pn-arrow pn-left" title="Previous: 2026-W14">&#8592;<span class="pn-label">2026-W14</span></a>
-
+<a href="2026-W16.html" class="pn-arrow pn-right" title="Next: 2026-W16">&#8594;<span class="pn-label">2026-W16</span></a>
 
 <!-- ── Hero: left visual + right article list ── -->
 <div class="af-hero" id="afHero">
@@ -233,7 +233,7 @@ body{background:#fff;font-family:'Helvetica Neue',Helvetica,Arial,'Noto Sans SC'
 <strong>I2C</strong>：一种简单的两线通信协议，用于连接低速外设（传感器、LED 控制器、EEPROM 等）。你可以把它想象成一条"公共汽车"线路——多个设备共享同一条总线，每个设备有自己的"站名"（地址），主设备喊站名来和特定设备通信。<br/>
 <strong>设备 ID 匹配</strong>：内核通过比对"设备说自己是什么"和"驱动说自己支持什么"来自动配对。如果驱动没有正确声明支持的设备 ID，内核就不会把设备交给这个驱动管理，驱动的代码根本不会运行。<br/>
 <a href="https://www.kernel.org/doc/html/latest/i2c/index.html">📖 了解更多：Linux I2C 子系统</a>
-</div></div></div><div class="mag-page-fade"></div><div class="mag-page-num">10</div></div></div><div class="mag-page"><div class="mag-page-inner"><div class="mag-accent-bar"></div><div class="mag-section-label">RUST-NEXT 分支合入统计</div><h2 class="mag-title">rust-next 分支合入统计</h2><div class="mag-section-content"><div class="mag-article"><div class="art-body"><p>本周共有 <strong>30 个提交</strong>合入 <code>rust-next</code> 分支，绝大多数来自 Miguel Ojeda 的工具链升级补丁集，还有 Alice Ryhl 的 CFI 编码修复。以下是完整的提交列表：</p><p>（另有 15 个提交涉及版本升级、特性简化、文档更新等，详见 <a href="https://github.com/Rust-for-Linux/linux">GitHub 仓库</a>）</p></div><div class="art-links"><a href="https://github.com/Rust-for-Linux/linux" class="art-link">GitHub 仓库</a> </div></div></div><div class="mag-page-fade"></div><div class="mag-page-num">11</div></div></div><div class="mag-page mag-back-cover" data-density="hard"><div class="mag-page-inner back-cover-inner"><div class="back-decoration"></div><div class="back-content"><div class="back-logo">🦀</div><div class="back-title">Rust-for-Linux</div><div class="back-subtitle">Daily Briefing</div><div class="back-date"></div><div class="back-rule"></div><div class="back-sources"><a href="https://lore.kernel.org/rust-for-linux/">Lore</a> &middot; <a href="https://rust-for-linux.zulipchat.com/">Zulip</a> &middot; <a href="https://github.com/Rust-for-Linux">GitHub</a></div><div class="back-nav"><a href="2026-W14.html" class="back-link-prev">&larr; 2026-W14</a></div></div></div></div>
+</div></div></div><div class="mag-page-fade"></div><div class="mag-page-num">10</div></div></div><div class="mag-page"><div class="mag-page-inner"><div class="mag-accent-bar"></div><div class="mag-section-label">RUST-NEXT 分支合入统计</div><h2 class="mag-title">rust-next 分支合入统计</h2><div class="mag-section-content"><div class="mag-article"><div class="art-body"><p>本周共有 <strong>30 个提交</strong>合入 <code>rust-next</code> 分支，绝大多数来自 Miguel Ojeda 的工具链升级补丁集，还有 Alice Ryhl 的 CFI 编码修复。以下是完整的提交列表：</p><p>（另有 15 个提交涉及版本升级、特性简化、文档更新等，详见 <a href="https://github.com/Rust-for-Linux/linux">GitHub 仓库</a>）</p></div><div class="art-links"><a href="https://github.com/Rust-for-Linux/linux" class="art-link">GitHub 仓库</a> </div></div></div><div class="mag-page-fade"></div><div class="mag-page-num">11</div></div></div><div class="mag-page mag-back-cover" data-density="hard"><div class="mag-page-inner back-cover-inner"><div class="back-decoration"></div><div class="back-content"><div class="back-logo">🦀</div><div class="back-title">Rust-for-Linux</div><div class="back-subtitle">Daily Briefing</div><div class="back-date"></div><div class="back-rule"></div><div class="back-sources"><a href="https://lore.kernel.org/rust-for-linux/">Lore</a> &middot; <a href="https://rust-for-linux.zulipchat.com/">Zulip</a> &middot; <a href="https://github.com/Rust-for-Linux">GitHub</a></div><div class="back-nav"><a href="2026-W14.html" class="back-link-prev">&larr; 2026-W14</a><a href="2026-W16.html" class="back-link-next">2026-W16 &rarr;</a></div></div></div></div>
   </div>
 </div>
 
@@ -299,7 +299,7 @@ document.addEventListener('DOMContentLoaded',function(){
 
   /* ── Keyboard: left/right arrows for prev/next ── */
   var prevUrl='2026-W14.html';
-  var nextUrl='';
+  var nextUrl='2026-W16.html';
   document.addEventListener('keydown',function(e){
     if(calOpen){if(e.key==='Escape'){closeCal();e.stopPropagation()}return}
     if(e.key==='Escape'){window.location.href='index.html'}
