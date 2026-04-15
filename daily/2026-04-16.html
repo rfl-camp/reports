@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>RFL 社区日报 &middot; 2026-03-29</title>
+<title>RFL 社区日报 &middot; 2026-04-16</title>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
@@ -182,15 +182,15 @@ body{background:#fff;font-family:'Helvetica Neue',Helvetica,Arial,'Noto Sans SC'
 </div>
 <div class="af-date-bar" id="dateBar">
   <a class="af-today" id="todayBtn" href="2026-04-16.html">TODAY</a>
-  <span>2026-03-29</span>
+  <span>2026-04-16</span>
   <span class="af-cal-btn" id="calBtn"><svg viewBox="0 0 16 16"><path d="M4 0v1H1.5A1.5 1.5 0 000 2.5v12A1.5 1.5 0 001.5 16h13a1.5 1.5 0 001.5-1.5v-12A1.5 1.5 0 0014.5 1H12V0h-1v1H5V0H4zm0 2v1h1V2h6v1h1V2h2.5a.5.5 0 01.5.5V4H1V2.5a.5.5 0 01.5-.5H4zM1 5h14v9.5a.5.5 0 01-.5.5h-13a.5.5 0 01-.5-.5V5z"/></svg>SELECT</span>
   <div id="calDrop" class="cal-drop" style="display:none"></div>
 </div>
 <div id="calOverlay" class="cal-overlay"></div>
 
 <!-- ── Prev / Next arrows ── -->
-<a href="2026-03-28.html" class="pn-arrow pn-left" title="Previous: 2026-03-28">&#8592;<span class="pn-label">2026-03-28</span></a>
-<a href="2026-03-30.html" class="pn-arrow pn-right" title="Next: 2026-03-30">&#8594;<span class="pn-label">2026-03-30</span></a>
+<a href="2026-04-15.html" class="pn-arrow pn-left" title="Previous: 2026-04-15">&#8592;<span class="pn-label">2026-04-15</span></a>
+
 
 <!-- ── Hero: left visual + right article list ── -->
 <div class="af-hero" id="afHero">
@@ -203,7 +203,7 @@ body{background:#fff;font-family:'Helvetica Neue',Helvetica,Arial,'Noto Sans SC'
 <!-- ── Main article content ── -->
 <div class="af-main">
   <div id="magContent">
-    <div class="mag-page mag-cover" data-density="hard"><div class="mag-page-inner cover-inner"><div class="cover-decoration"></div><div class="cover-content"><div class="cover-masthead">R&thinsp;F&thinsp;L&ensp;D&thinsp;A&thinsp;I&thinsp;L&thinsp;Y</div><div class="cover-rule"></div><div class="cover-crab">🦀</div><div class="cover-date">2026-03-29</div><div class="cover-weekday">Sunday</div><div class="cover-rule"></div><div class="cover-hero"></div><div class="cover-rule-thin"></div><div class="cover-stats">10 emails &middot; 3 msgs</div></div></div></div><div class="mag-page mag-back-cover" data-density="hard"><div class="mag-page-inner back-cover-inner"><div class="back-decoration"></div><div class="back-content"><div class="back-logo">🦀</div><div class="back-title">Rust-for-Linux</div><div class="back-subtitle">Daily Briefing</div><div class="back-date">2026-03-29</div><div class="back-rule"></div><div class="back-sources"><a href="https://lore.kernel.org/rust-for-linux/">Lore</a> &middot; <a href="https://rust-for-linux.zulipchat.com/">Zulip</a> &middot; <a href="https://github.com/Rust-for-Linux">GitHub</a></div><div class="back-nav"><a href="2026-03-28.html" class="back-link-prev">&larr; 2026-03-28</a><a href="2026-03-30.html" class="back-link-next">2026-03-30 &rarr;</a></div></div></div></div>
+    <div class="mag-page mag-cover" data-density="hard"><div class="mag-page-inner cover-inner"><div class="cover-decoration"></div><div class="cover-content"><div class="cover-masthead">R&thinsp;F&thinsp;L&ensp;D&thinsp;A&thinsp;I&thinsp;L&thinsp;Y</div><div class="cover-rule"></div><div class="cover-crab">🦀</div><div class="cover-date">2026-04-16</div><div class="cover-weekday">Thursday</div><div class="cover-rule"></div><div class="cover-hero"></div><div class="cover-rule-thin"></div><div class="cover-stats">82 emails</div></div></div></div><div class="mag-page mag-back-cover" data-density="hard"><div class="mag-page-inner back-cover-inner"><div class="back-decoration"></div><div class="back-content"><div class="back-logo">🦀</div><div class="back-title">Rust-for-Linux</div><div class="back-subtitle">Daily Briefing</div><div class="back-date">2026-04-16</div><div class="back-rule"></div><div class="back-sources"><a href="https://lore.kernel.org/rust-for-linux/">Lore</a> &middot; <a href="https://rust-for-linux.zulipchat.com/">Zulip</a> &middot; <a href="https://github.com/Rust-for-Linux">GitHub</a></div><div class="back-nav"><a href="2026-04-15.html" class="back-link-prev">&larr; 2026-04-15</a></div></div></div></div>
   </div>
 </div>
 
@@ -268,8 +268,8 @@ document.addEventListener('DOMContentLoaded',function(){
   });
 
   /* ── Keyboard: left/right arrows for prev/next ── */
-  var prevUrl='2026-03-28.html';
-  var nextUrl='2026-03-30.html';
+  var prevUrl='2026-04-15.html';
+  var nextUrl='';
   document.addEventListener('keydown',function(e){
     if(calOpen){if(e.key==='Escape'){closeCal();e.stopPropagation()}return}
     if(e.key==='Escape'){window.location.href='index.html'}
@@ -280,7 +280,7 @@ document.addEventListener('DOMContentLoaded',function(){
   /* ── Calendar picker ── */
   var allSlugs=["2026-04-16", "2026-04-15", "2026-04-14", "2026-04-13", "2026-04-12", "2026-04-11", "2026-04-10", "2026-04-09", "2026-04-08", "2026-04-07", "2026-04-06", "2026-04-05", "2026-04-04", "2026-04-03", "2026-04-02", "2026-04-01", "2026-03-31", "2026-03-30", "2026-03-29", "2026-03-28", "2026-03-27", "2026-03-26", "2026-03-25", "2026-03-24", "2026-03-23", "2026-03-22", "2026-03-21", "2026-03-20", "2026-03-19"];
   var slugSet=new Set(allSlugs);
-  var curDate='2026-03-29';
+  var curDate='2026-04-16';
   var calOpen=false;
   var calMonth,calYear;
   // init to current page's month
