@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>RFL Monthly - 2026-04</title>
+<title>RFL Monthly - 2026-05</title>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
 <style>
 :root {
@@ -408,26 +408,73 @@ nav a.active {
 <a href="index.html" class="back-link">&larr; Back</a>
 
 <div class="page-header">
-  <h1><span class="tag tag-monthly">monthly</span> 2026-04</h1>
+  <h1><span class="tag tag-monthly">monthly</span> 2026-05</h1>
 </div>
-
+<div class="stats"><div class="stat"><span class="stat-val">29</span><span class="stat-label">Lore</span></div>
+<div class="stat"><span class="stat-val">2</span><span class="stat-label">Zulip</span></div>
+</div>
 <div class="report-card">
   <div class="report-card-header">
-    <h2>2026-04</h2>
+    <h2>2026-05</h2>
     
   </div>
   <div class="report-body">
-    <h1>RFL 月报 - 2026年4月</h1>
+    <h1>RFL 月报 - 2026年5月</h1>
 <blockquote>
-<p>2026-04-01 ~ 2026-04-30 | 覆盖 1 份日报</p>
+<p>2026-05-01 ~ 2026-05-31 | 覆盖 1 份日报</p>
 </blockquote>
 <h2>Summary / 本月要点</h2>
-<p><strong>EN:</strong> 1 reports aggregated. No significant activity.</p>
-<p><strong>CN:</strong> 共聚合 1 份报告。无显著活动。</p>
+<p><strong>EN:</strong> 1 reports aggregated. Lore: 29 threads | Zulip: 2 active topics</p>
+<p><strong>CN:</strong> 共聚合 1 份报告。邮件列表 29 个讨论、Zulip 2 个活跃话题</p>
+<h2>邮件列表 (Lore)</h2>
+<h3>补丁</h3>
+<ul>
+<li><a href="https://lore.kernel.org/rust-for-linux/20260430004857.38281-1-sagartaunk2@gmail.com/">rust: workqueue: replace SAFETY TODO for <code>WorkItemPointer</code> impl on <code>Pin&lt;KBox&lt;T&gt;&gt;</code></a> — Alice Ryhl, Onur Özkan, Sagar Taunk, 3 reviews<blockquote>
+<p>The original implementation left a <code>SAFETY: TODO</code> comment on the <code>WorkItemPointer</code> implementation for <code>Pin&lt;KBox&lt;T&gt;&gt;</code>. This patch documents the safety requirements that make this implementation sound.  The safety argument relies on three guarantees: `...</p>
+</blockquote>
+</li>
+<li><a href="https://lore.kernel.org/rust-for-linux/afMaAfcxpDR3xIE1@google.com/">rust: auxiliary: add registration data to auxiliary devices</a> (2p) — Alice Ryhl, Danilo Krummrich, Gary Guo, 5 reviews</li>
+<li><a href="https://lore.kernel.org/rust-for-linux/DI62AHDXLAWA.2ZM8JKWQALKAU@nvidia.com/">Support more safe <code>AsBytes</code>/<code>FromBytes</code> usage</a> v3 (4p) — Matthew Maurer, Miguel Ojeda, Alexandre Courbot, 4 reviews</li>
+<li><a href="https://lore.kernel.org/rust-for-linux/afMdfs0segrRBx34@google.com/">rust: device: Higher-Ranked Lifetime Types for device drivers</a> (24p) — Alice Ryhl, Danilo Krummrich, Alexandre Courbot, 3 reviews</li>
+<li><a href="https://lore.kernel.org/rust-for-linux/afMdCU06-Y2d_LXh@google.com/">rust: driver core: drop drvdata before devres release</a> (24p) — Alice Ryhl, Danilo Krummrich, 2 reviews</li>
+<li><a href="https://lore.kernel.org/rust-for-linux/DI6G9FSQHM1B.4KGHIQWPC94J@nvidia.com/">rust: ptr: add panicking index projection variant</a> (5p) — Gary Guo, Alexandre Courbot, 2 reviews</li>
+<li><a href="https://lore.kernel.org/rust-for-linux/20260430-ra-fix-primitive-v5-1-6364d2258e14@gmail.com/">scripts: generate_rust_analyzer.py: add versioning infrastructure</a> v5 (2p) — Jesung Yang via B4 Relay, Tamir Duberstein, 1 reviews<blockquote>
+<p>From: Jesung Yang <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#121;&#46;&#106;&#51;&#109;&#115;&#46;&#110;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;">&#121;&#46;&#106;&#51;&#109;&#115;&#46;&#110;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;</a>  Introduce multi-version support for rust-analyzer. The script now executes <code>rust-analyzer --version</code> to query the version string.  This is a preparatory patch to address inherent method resolution failures for ...</p>
+</blockquote>
+</li>
+<li><a href="https://lore.kernel.org/rust-for-linux/20260430-ra-fix-primitive-v5-2-6364d2258e14@gmail.com/">scripts: generate_rust_analyzer.py: fix IDE support for primitive types</a> v5 (2p) — Jesung Yang via B4 Relay, Tamir Duberstein, 1 reviews<blockquote>
+<p>From: Jesung Yang <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#121;&#46;&#106;&#51;&#109;&#115;&#46;&#110;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;">&#121;&#46;&#106;&#51;&#109;&#115;&#46;&#110;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;</a>  Update <code>generate_rust_analyzer.py</code> so that the generated <code>rust-project.json</code> contains the <code>sysroot_src</code> field with <code>"crate_attrs": ["no_std"]</code> specified for relevant crates. This ensures that rust-analyzer prov...</p>
+</blockquote>
+</li>
+<li><a href="https://lore.kernel.org/rust-for-linux/20260430-nova-exports-v1-3-7ca31664e983@nvidia.com/">gpu: nova-core: rename module from nova_core to nova-core</a> (7p) — Joel Fernandes, Alexandre Courbot, 1 reviews<blockquote>
+<p>Rename the kbuild module target from <code>nova_core.o</code> to <code>nova-core.o</code>. This avoids a name collision between the module target and the Rust crate object (<code>nova_core.o</code> from <code>nova_core.rs</code>), allowing the driver to be built as a composite module.</p>
+</blockquote>
+</li>
+<li><a href="https://lore.kernel.org/rust-for-linux/20260430-nova-exports-v1-4-7ca31664e983@nvidia.com/">gpu: nova-core: export Rust symbols for dependent modules</a> (7p) — Joel Fernandes, Alexandre Courbot, 1 reviews<blockquote>
+<p>Export <code>nova-core</code>'s Rust symbols so that other loadable modules, particularly <code>nova-drm</code>, can resolve references to <code>nova-core</code> at runtime.  This is done by generating declarations and <code>EXPORT_SYMBOL_GPL()</code> calls for Rust global text symbols using `...</p>
+</blockquote>
+</li>
+<li><a href="https://lore.kernel.org/rust-for-linux/DI6L3WUV1AX9.20T2183TYVJQR@nvidia.com/">rust: add warn_on_err macro</a> v3 (6p) — Danilo Krummrich, Alexandre Courbot, 2 reviews</li>
+<li><a href="https://lore.kernel.org/rust-for-linux/rwmbdsmmn2a4643xavesddv2mpkrb4oor3itfxdfjqpz4m3q7z@qzsrxf3t4dcw/">rust: module_param: use <code>pr_warn_once!</code> for null pointer warning</a> — Aaron Tomlin, 1 reviews</li>
+<li><a href="https://lore.kernel.org/rust-for-linux/177751087668.2042162.14581501251680231924.b4-review@b4/">kbuild: host: use single executable for rustc -C linker</a> v7 — Nathan Chancellor, 1 reviews</li>
+<li><a href="https://lore.kernel.org/rust-for-linux/DI63W1CWJ919.83AR9YQOE2CM@nvidia.com/">gpu: nova-core: firmware: Hopper/Blackwell support</a> v10 (28p) — Alexandre Courbot, 1 reviews</li>
+<li><a href="https://lore.kernel.org/rust-for-linux/DI63W897LC81.20VICFB5PKPV@nvidia.com/">gpu: nova-core: make WPR heap sizing fallible</a> v9 (31p) — Alexandre Courbot, 1 reviews</li>
+</ul>
+<h2>Zulip 讨论</h2>
+<ul>
+<li><a href="https://rust-for-linux.zulipchat.com/#narrow/stream/Help/topic/Seeking%20guidance%20on%20leveling%20up%20from%20documentation%20fixes.">#Help &gt; Seeking guidance on leveling up from documentation fixes.</a> (1 msgs)<blockquote>
+<p><strong>Sagar Taunk</strong>: Thank you! I will go through this carefully and will start reading the patches from the mailing list.</p>
+</blockquote>
+</li>
+<li><a href="https://rust-for-linux.zulipchat.com/#narrow/stream/Help/topic/Seeking%20feedback%20on%20a%20harness%20for%20C%2FRust%20block%20device%20driver">#Help &gt; Seeking feedback on a harness for C/Rust block device driver</a> (1 msgs)<blockquote>
+<p><strong>Guilherme Lima</strong>: I have created a harness that evaluates a C block device driver against its rust counterpart (using the null_blk/rnull pair as the main samples) over a variety of metrics consideri...</p>
+</blockquote>
+</li>
+</ul>
 <hr />
-<p><em>Generated at 2026-04-01 09:00:00 CST by rfl-reports.py</em></p>
+<p><em>Generated at 2026-05-01 09:00:01 CST by rfl-reports.py</em></p>
   </div>
-  <div class="report-nav"><span></span><a href="2026-05.html">2026-05 &rarr;</a></div>
+  <div class="report-nav"><a href="2026-04.html">&larr; 2026-04</a><span></span></div>
 </div>
 
 </div>
