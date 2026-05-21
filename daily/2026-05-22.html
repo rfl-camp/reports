@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>RFL 社区日报 &middot; 2026-03-23</title>
+<title>RFL 社区日报 &middot; 2026-05-22</title>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
@@ -182,15 +182,15 @@ body{background:#fff;font-family:'Helvetica Neue',Helvetica,Arial,'Noto Sans SC'
 </div>
 <div class="af-date-bar" id="dateBar">
   <a class="af-today" id="todayBtn" href="2026-05-22.html">TODAY</a>
-  <span>2026-03-23</span>
+  <span>2026-05-22</span>
   <span class="af-cal-btn" id="calBtn"><svg viewBox="0 0 16 16"><path d="M4 0v1H1.5A1.5 1.5 0 000 2.5v12A1.5 1.5 0 001.5 16h13a1.5 1.5 0 001.5-1.5v-12A1.5 1.5 0 0014.5 1H12V0h-1v1H5V0H4zm0 2v1h1V2h6v1h1V2h2.5a.5.5 0 01.5.5V4H1V2.5a.5.5 0 01.5-.5H4zM1 5h14v9.5a.5.5 0 01-.5.5h-13a.5.5 0 01-.5-.5V5z"/></svg>SELECT</span>
   <div id="calDrop" class="cal-drop" style="display:none"></div>
 </div>
 <div id="calOverlay" class="cal-overlay"></div>
 
 <!-- ── Prev / Next arrows ── -->
-<a href="2026-03-22.html" class="pn-arrow pn-left" title="Previous: 2026-03-22">&#8592;<span class="pn-label">2026-03-22</span></a>
-<a href="2026-03-24.html" class="pn-arrow pn-right" title="Next: 2026-03-24">&#8594;<span class="pn-label">2026-03-24</span></a>
+<a href="2026-05-21.html" class="pn-arrow pn-left" title="Previous: 2026-05-21">&#8592;<span class="pn-label">2026-05-21</span></a>
+
 
 <!-- ── Hero: left visual + right article list ── -->
 <div class="af-hero" id="afHero">
@@ -203,46 +203,79 @@ body{background:#fff;font-family:'Helvetica Neue',Helvetica,Arial,'Noto Sans SC'
 <!-- ── Main article content ── -->
 <div class="af-main">
   <div id="magContent">
-    <div class="mag-page mag-cover" data-density="hard"><div class="mag-page-inner cover-inner"><div class="cover-decoration"></div><div class="cover-content"><div class="cover-masthead">R&thinsp;F&thinsp;L&ensp;D&thinsp;A&thinsp;I&thinsp;L&thinsp;Y</div><div class="cover-rule"></div><div class="cover-crab">🦀</div><div class="cover-date">2026-03-23</div><div class="cover-weekday">Monday</div><div class="cover-rule"></div><div class="cover-hero">DMA（直接内存访问）抽象层大更新</div><div class="cover-rule-thin"></div><div class="cover-stats">19 emails &middot; 6 msgs</div></div></div></div><div class="mag-page"><div class="mag-page-inner overview-inner"><div class="mag-accent-bar"></div><div class="ov-label">TODAY'S OVERVIEW</div><h2 class="ov-title">📋 今日概览</h2><div class="ov-body"><span class="ov-dropcap">今</span>天社区围绕 <b>DMA（直接内存访问）</b> 展开了密集的工作，一口气出现了三组相关补丁，正在把 Rust 的 DMA 抽象层做得更完善、更安全。与此同时，Miguel Ojeda 发布了一个重要的编译优化方案——让 Rust 代码能在不开启完整 LTO 的情况下内联 C 辅助函数，这对内核编译速度意义重大。DRM/GPU 方向上，Intel 的工程师提出了一个全新的"依赖队列"层，试图用更优雅的方式处理 GPU 任务之间的先后依赖关系。另外，社区里有好几位贡献者在给 unsafe 代码补写安全注释，这是 Rust-for-Linux 一直在推进的"代码卫生"工作。Zulip 上，Benno Lossin 和 Gary Guo 在调试 pin-init 库的自动化发布流程。
-</div><div class="mag-page-num">2</div></div></div><div class="mag-page"><div class="mag-page-inner"><div class="mag-accent-bar"></div><div class="mag-section-label">DMA（直接内存访问）抽象层大更新</div><h2 class="mag-title">DMA（直接内存访问）抽象层大更新</h2><div class="mag-section-content"><div class="mag-article"><div class="art-title">1. DMA 通用容器：不再只支持"切片"</div><div class="art-body"><p>今天 DMA 子系统是最热闹的方向，一共有三组补丁在同步推进，目标都是让 Rust 代码能更安全、更灵活地和硬件打交道。简单来说，DMA 就是让硬件设备（比如显卡、网卡）直接读写内存，不用 CPU 当"搬运工"——速度飞快，但如果管理不好，硬件可能读到错误的内存内容，甚至引发系统崩溃。</p><p>Gary Guo 和 Aditya Rajan 提交了第二版补丁（共 8 个 patch），核心变化是：以前 Rust 的 DMA 抽象只能处理"切片"（slice，一种连续的数组视图），现在扩展为可以支持<b>任意类型</b>的数据结构。打个比方，以前这个"快递箱"只能装一排排整齐的小物件，现在可以装各种形状的东西了。这意味着驱动开发者可以直接把自定义的结构体放进 DMA 缓冲区，不需要再手动做类型转换，既方便又减少了出错的可能。这组补丁已经收到了 3 条评审意见，社区在讨论 API 的命名和边界检查细节。</p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/DH8UHISTLOA4.934370PUTLB4@gmail.com/" class="art-link">📬 查看补丁</a> </div></div><div class="mag-article"><div class="art-title">2. 移除 DMA_ATTR_NO_KERNEL_MAPPING 公开属性</div><div class="art-body"><p>Alexandre Courbot 提交了 2 个 patch，把 <code>DMA_ATTR_NO_KERNEL_MAPPING</code> 这个属性从 Rust 的公开 API 中移除了。这个属性的意思是"分配的 DMA 内存不需要在内核里有可访问的地址映射"——通常用于一些特殊硬件（比如某些嵌入式 GPU），它们自己直接访问内存，内核根本不需要看到这块内存的内容。之所以要移除它，是因为接下来会用一个更安全、更清晰的 <code>CoherentHandle</code> 类型（见下一条）来替代它。Alice Ryhl 参与了评审，确认这个清理方向是对的。</p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/CAH5fLghK2q4Du+74ctWftbDXrS4E4uPsuOrsOwxbs=HGm5CX6g@mail.gmail.com/" class="art-link">📬 查看补丁</a> </div></div><div class="mag-article"><div class="art-title">3. 新增 CoherentHandle：无内核映射的 DMA 分配</div><div class="art-body"><p>Danilo Krummrich 和 Alexandre Courbot 合作提交了 2 个 patch，引入了一个全新的类型 <code>CoherentHandle</code>。它代表一块"一致性 DMA 内存"，但<b>内核自己不持有这块内存的指针</b>——只有硬件设备能访问。这在 Rust 的类型系统里是一个很巧妙的设计：因为你拿不到指针，编译器就不会让你意外地去读写这块内存，从根源上防止了误操作。这比 C 语言里靠程序员"记住别碰"要安全得多。配合上面移除旧属性的补丁，DMA 的 Rust API 正在变得越来越"Rust 味"。</p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/DH9EA6773QO6.W3EDFZPEL8K@nvidia.com/" class="art-link">📬 查看补丁</a> </div></div><div class="mag-tips"><div>
-💡 <b>小白科普</b><br/>
-<b>DMA（Direct Memory Access）</b>：一种让硬件设备绕过 CPU、直接访问内存的技术，就像快递员直接把包裹放到你桌上，不需要你下楼取。用于提升数据传输效率。
-<a href="https://en.wikipedia.org/wiki/Direct_memory_access">📖 了解更多</a><br/>
-<b>Coherent Memory（一致性内存）</b>：CPU 和设备看到的内存内容始终一致，不需要手动刷新缓存。代价是速度可能稍慢，但编程更简单。
-<a href="https://docs.kernel.org/core-api/dma-api.html">📖 内核 DMA API 文档</a>
-</div></div></div><div class="mag-page-fade"></div><div class="mag-page-num">3</div></div></div><div class="mag-page"><div class="mag-page-inner"><div class="mag-accent-bar"></div><div class="mag-section-label">⚡ 编译优化：不用完整 LTO 也能内联 C 辅助函数</div><h2 class="mag-title">⚡ 编译优化：不用完整 LTO 也能内联 C 辅助函数</h2><div class="mag-section-content"><div class="mag-article"><div class="art-body"><p>Miguel Ojeda 发布了第二版补丁（共 3 个 patch），标题是"Inline helpers into Rust without full LTO"。这是什么意思呢？在 Rust-for-Linux 里，很多 Rust 代码需要调用 C 语言写的内核函数。有些 C 函数非常小（比如只有一两行），如果每次调用都走"函数调用"的流程，会有性能损耗。理想情况下，编译器应该把这些小函数的代码直接"复制粘贴"到调用处——这叫做<b>内联（inline）</b>。</p><p>问题是，要跨越 C 和 Rust 的边界做内联，以前需要开启"完整 LTO（Link-Time Optimization，链接时优化）"。完整 LTO 会让编译器在链接阶段把所有代码当成一个整体来优化——效果好，但<b>编译速度会慢很多</b>，对于 Linux 内核这种巨型项目来说代价太大。Miguel 的这组补丁找到了一种更轻量的方式，让这些 C 辅助函数可以在不开启完整 LTO 的情况下被内联到 Rust 代码中。这对日常开发体验有很大改善——编译快了，开发者的反馈循环就短了。该补丁已经收到评审，Miguel 自己也在讨论帖中跟进了技术细节。</p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/20260322192159.88138-1-ojeda@kernel.org/" class="art-link">📬 查看补丁</a> <a href="https://lore.kernel.org/rust-for-linux/20260322193830.89324-1-ojeda@kernel.org/" class="art-link">📬 查看讨论</a> </div></div><div class="mag-tips"><div>
-💡 <b>小白科普</b><br/>
-<b>内联（Inline）</b>：编译器把一个小函数的代码直接"嵌入"到调用它的地方，省去了函数调用的开销。就像把常用电话号码背下来，而不是每次都翻通讯录。
-<a href="https://en.wikipedia.org/wiki/Inline_expansion">📖 了解更多</a><br/>
-<b>LTO（Link-Time Optimization）</b>：在编译的最后"链接"阶段，把所有代码一起优化。效果好但很慢，像是把所有拼图摆好后再一次性调整，而不是边拼边调。
-<a href="https://doc.rust-lang.org/rustc/codegen-options/index.html#lto">📖 Rust LTO 文档</a>
-</div></div></div><div class="mag-page-fade"></div><div class="mag-page-num">4</div></div></div><div class="mag-page"><div class="mag-page-inner"><div class="mag-accent-bar"></div><div class="mag-section-label">GPU/DRM 驱动：依赖队列层提案</div><h2 class="mag-title">GPU/DRM 驱动：依赖队列层提案</h2><div class="mag-section-content"><div class="mag-article"><div class="art-body"><p>Intel 的 Matthew Brost 提出了一个 RFC（征求意见稿）补丁系列，总共 12 个 patch，其中第 2 个 patch 引入了一个全新的 <b>"DRM 依赖队列（dependency queue）"层</b>。这是在讨论什么呢？</p><p>在 GPU 驱动里，任务（比如渲染一帧画面）之间往往有复杂的依赖关系：任务 B 必须等任务 A 完成才能开始，任务 C 又依赖 B 和 D 都完成。目前各个 GPU 驱动（AMD、Intel、NVIDIA）都在自己内部处理这些依赖关系，代码重复且容易出 bug。Matthew 提议在 DRM 子系统层面建一个通用的"依赖队列"，让所有 GPU 驱动都能复用同一套依赖管理逻辑。</p><p>这个 RFC 还在早期讨论阶段，目前已经收到了 1 条评审意见。社区在评估这个抽象层的必要性、性能影响以及能否适配不同厂商的 GPU 架构。这对 Rust GPU 驱动（比如 nova 驱动）的开发也有潜在影响，因为依赖管理是驱动调度的核心环节。</p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/ab+PgBzwJkhhj6dw@lstrano-desk.jf.intel.com/" class="art-link">📬 查看讨论</a> </div></div><div class="mag-tips"><div>
-💡 <b>小白科普</b><br/>
-<b>DRM（Direct Rendering Manager）</b>：Linux 内核中管理 GPU 的子系统，不是"数字版权管理"哦！它负责显示输出、GPU 内存管理和任务调度。
-<a href="https://docs.kernel.org/gpu/drm-internals.html">📖 内核 DRM 文档</a><br/>
-<b>RFC（Request for Comments）</b>：一种"先放出来让大家提意见"的补丁状态，表示作者认为方向大致对了，但细节还需要社区讨论打磨。
-<a href="https://en.wikipedia.org/wiki/Request_for_Comments">📖 了解更多</a>
-</div></div></div><div class="mag-page-fade"></div><div class="mag-page-num">5</div></div></div><div class="mag-page"><div class="mag-page-inner"><div class="mag-accent-bar"></div><div class="mag-section-label">️ 安全注释（SAFETY COMMENTS）补全</div><h2 class="mag-title">️ 安全注释（SAFETY Comments）补全</h2><div class="mag-section-content"><div class="mag-article"><div class="art-title">1. rust/print 模块的安全注释</div><div class="art-body"><p>在 Rust 里，<code>unsafe</code> 代码块是允许你绕过编译器安全检查的"特权区域"。Rust 社区有个重要规范：每个 <code>unsafe</code> 块前面都要写一段 <code>// SAFETY:</code> 注释，解释为什么这段代码是安全的。这就像在实验室里操作危险化学品时，旁边必须贴一张"为什么这样操作是安全的"说明牌。今天有两组补丁在做这件事：</p><p>这个补丁由多位作者共同完成（Miguel Ojeda、Shivendra Sharma、Albab Hasan），为 <code>rust/kernel/print.rs</code> 中的 unsafe 代码块补写了 SAFETY 注释。<code>print</code> 模块是 Rust 内核代码中用来打印日志消息的基础组件（类似 C 里的 <code>printk</code>）。虽然打印日志看起来简单，但底层需要调用 C 内核函数，涉及裸指针操作，所以需要 unsafe。这个补丁解释了这些 unsafe 操作为何不会导致未定义行为——比如指针从何而来、为什么一定有效。目前已收到 3 条评审意见。</p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/CANiq72=w0HcWi7z1wL+R1wa6jS_+P=L8Zp7pvZtUG+C51ETzng@mail.gmail.com/" class="art-link">📬 查看补丁</a> </div></div><div class="mag-article"><div class="art-title">2. rust/workqueue 模块的安全注释</div><div class="art-body"><p>Albab Hasan 为工作队列（workqueue）模块中 <code>Pin&lt;KBox&lt;T&gt;&gt;</code> 相关的两个 unsafe trait 实现补写了安全注释。之前这些地方只有占位符 <code>// SAFETY: TODO.</code>——现在被替换成了详细的安全论证。具体来说，<code>WorkItemPointer</code> 的安全性依赖于 <code>__enqueue</code> 通过 <code>T::raw_get_work</code> 获取 <code>work_struct</code> 的正确性，而 <code>RawWorkItem</code> 的安全性依赖于 <code>Work::new</code> 保证的内存布局。工作队列是内核中"延后执行任务"的核心机制，把安全注释补全对后续维护和审计非常重要。</p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/20260322044340.129985-1-albabhasan276@gmail.com/" class="art-link">📬 查看补丁</a> </div></div><div class="mag-tips"><div>
-💡 <b>小白科普</b><br/>
-<b>unsafe 与 SAFETY 注释</b>：Rust 的 <code>unsafe</code> 不是说"这段代码不安全"，而是说"编译器无法自动验证安全性，需要程序员亲自担保"。<code>// SAFETY:</code> 注释就是这个担保书。
-<a href="https://doc.rust-lang.org/book/ch19-01-unsafe-rust.html">📖 Rust unsafe 教程</a><br/>
-<b>工作队列（Workqueue）</b>：内核中一种"稍后再做"的机制。比如网卡收到数据后，先快速记下来，然后交给工作队列慢慢处理，避免阻塞中断。
-<a href="https://docs.kernel.org/core-api/workqueue.html">📖 内核 Workqueue 文档</a>
-</div></div></div><div class="mag-page-fade"></div><div class="mag-page-num">6</div></div></div><div class="mag-page"><div class="mag-page-inner"><div class="mag-accent-bar"></div><div class="mag-section-label">内核驱动核心：7.0-RC5 修复合入</div><h2 class="mag-title">内核驱动核心：7.0-rc5 修复合入</h2><div class="mag-section-content"><div class="mag-article"><div class="art-body"><p>Danilo Krummrich 提交了一个 GIT PULL 请求，将驱动核心（driver core）的修复合入 Linux 7.0-rc5。Linus Torvalds 亲自参与了讨论。<code>pr-tracker-bot</code>（一个自动化机器人）也跟踪了这个 PR 的状态。</p><p>GIT PULL 是 Linux 内核的一种工作流：子系统维护者把一段时间积累的补丁整理好，然后请求 Linus 把这些补丁"拉"进主线内核。<code>rc5</code> 表示 7.0 版本的第 5 个候选发布版——这个阶段通常只接受 bug 修复，不再加新功能。Danilo 是 Rust 设备驱动框架的核心维护者之一，这次的修复应该涉及驱动模型的稳定性改进。目前已经有 3 条评审/讨论消息。</p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/CAHk-=wjA2mOM=hCGBiS9r7+5KCmTd3KMrTTZQsE=rRLqqKMTyg@mail.gmail.com/" class="art-link">📬 查看讨论</a> </div></div><div class="mag-tips"><div>
-💡 <b>小白科普</b><br/>
-<b>rc（Release Candidate，候选发布版）</b>：内核新版本正式发布前的测试阶段。从 rc1 到 rc7 左右，每周出一个，期间只修 bug 不加功能。到没有严重 bug 后就正式发布。
-<a href="https://en.wikipedia.org/wiki/Linux_kernel_version_history">📖 了解更多</a><br/>
-<b>GIT PULL 请求</b>：不是 GitHub 的 Pull Request！内核开发中，子系统维护者通过邮件发送 git pull 请求给 Linus，附上签名的 tag，Linus 验证后手动拉取。
-<a href="https://docs.kernel.org/maintainer/pull-requests.html">📖 内核 Pull Request 指南</a>
-</div></div></div><div class="mag-page-fade"></div><div class="mag-page-num">7</div></div></div><div class="mag-page"><div class="mag-page-inner"><div class="mag-accent-bar"></div><div class="mag-section-label">RUST 宏：TRYFROM 和 INTO 派生宏 V5</div><h2 class="mag-title">Rust 宏：TryFrom 和 Into 派生宏 v5</h2><div class="mag-section-content"><div class="mag-article"><div class="art-body"><p>Jesung Yang 提交了第五版补丁（共 4 个 patch），为内核中的 Rust 代码添加 <code>TryFrom</code> 和 <code>Into</code> 派生宏（derive macros）。这两个是 Rust 标准库中最常用的类型转换 trait：<code>Into</code> 用于无损转换（比如 u8 转 u32），<code>TryFrom</code> 用于可能失败的转换（比如 u32 转 u8，值太大就会失败）。</p><p>在内核代码中，经常需要在不同整数类型、枚举值和底层硬件寄存器值之间互相转换。目前这些转换代码大多是手写的，重复且容易出错。有了派生宏，只要在类型定义上加一行 <code>#[derive(TryFrom, Into)]</code>，编译器就会自动生成转换代码。这是第五版了，说明社区对 API 设计非常谨慎，反复打磨了多轮。目前已收到 1 条评审意见。</p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/DH939HK0611M.22A8T9BJ3NG8@gmail.com/" class="art-link">📬 查看补丁</a> </div></div><div class="mag-tips"><div>
-💡 <b>小白科普</b><br/>
-<b>派生宏（Derive Macro）</b>：Rust 中一种"代码自动生成"机制。你在结构体上面写 <code>#[derive(Debug)]</code>，编译器就自动帮你实现打印调试信息的能力，不用自己手写。就像填表时，系统根据你的名字自动生成拼音一样。
-<a href="https://doc.rust-lang.org/book/ch19-06-macros.html">📖 Rust 宏教程</a>
-</div></div></div><div class="mag-page-fade"></div><div class="mag-page-num">8</div></div></div><div class="mag-page"><div class="mag-page-inner"><div class="mag-accent-bar"></div><div class="mag-section-label">社区工具：PIN-INIT 自动化发布流程调试</div><h2 class="mag-title">社区工具：pin-init 自动化发布流程调试</h2><div class="mag-section-content"><div class="mag-article"><div class="art-body"><p>在 Zulip 聊天的 <code>#pin-init</code> 频道中，Benno Lossin 和 Gary Guo 正在调试 <code>pin-init</code> 库的 staging（暂存）工作流。<code>pin-init</code> 是 Rust-for-Linux 中一个非常核心的库，用于安全地初始化被 <code>Pin</code> 固定的数据结构（在内核中很常见，因为很多结构体一旦初始化就不能被移动到别的内存地址）。</p><p>Benno 发现他设计的自动化工作流"完全按预期工作了"——他在一个 <a href="https://github.com/BennoLossin/staging-workflow-playground/pull/5">测试仓库</a> 中验证了整个流程。不过发现了一个小问题：如果临时分支删除得太快，GitHub 来不及把对应的 PR 标记为"已合并"。他的解决方案是加一个短暂的延迟（<code>sleep(1)</code>），然后通过 API 检查合并状态，最多重试 10 次。这虽然是个小细节，但对于保持 CI/CD 流程的可靠性很重要。</p></div><div class="art-links"><a href="https://rust-for-linux.zulipchat.com/#narrow/stream/pin-init/topic/staging%20workflow" class="art-link">💬 查看 Zulip 讨论</a> </div></div><div class="mag-tips"><div>
-💡 <b>小白科普</b><br/>
-<b>Pin</b>：Rust 中一种保证数据"不会被移动"的机制。有些数据结构内部有指向自身的指针，一旦移动就会出错。<code>Pin</code> 就像用胶水把东西粘在桌子上——确保它不会被搬走。
-<a href="https://doc.rust-lang.org/std/pin/index.html">📖 Rust Pin 文档</a>
-</div></div></div><div class="mag-page-fade"></div><div class="mag-page-num">9</div></div></div><div class="mag-page mag-back-cover" data-density="hard"><div class="mag-page-inner back-cover-inner"><div class="back-decoration"></div><div class="back-content"><div class="back-logo">🦀</div><div class="back-title">Rust-for-Linux</div><div class="back-subtitle">Daily Briefing</div><div class="back-date">2026-03-23</div><div class="back-rule"></div><div class="back-sources"><a href="https://lore.kernel.org/rust-for-linux/">Lore</a> &middot; <a href="https://rust-for-linux.zulipchat.com/">Zulip</a> &middot; <a href="https://github.com/Rust-for-Linux">GitHub</a></div><div class="back-nav"><a href="2026-03-22.html" class="back-link-prev">&larr; 2026-03-22</a><a href="2026-03-24.html" class="back-link-next">2026-03-24 &rarr;</a></div></div></div></div>
+    <div class="mag-page mag-cover" data-density="hard"><div class="mag-page-inner cover-inner"><div class="cover-decoration"></div><div class="cover-content"><div class="cover-masthead">R&thinsp;F&thinsp;L&ensp;D&thinsp;A&thinsp;I&thinsp;L&thinsp;Y</div><div class="cover-rule"></div><div class="cover-crab">🦀</div><div class="cover-date">2026-05-22</div><div class="cover-weekday">Friday</div><div class="cover-rule"></div><div class="cover-hero">️ GPU / DRM 驱动</div><div class="cover-rule-thin"></div><div class="cover-stats">48 emails &middot; 7 msgs</div></div></div></div><div class="mag-page"><div class="mag-page-inner overview-inner"><div class="mag-accent-bar"></div><div class="ov-label">TODAY'S OVERVIEW</div><h2 class="ov-title">📋 今日概览</h2><div class="ov-body"><span class="ov-dropcap">今</span>天社区活动相当丰富！NVIDIA 的 Nova GPU 驱动提交了第 6 版"卸载/解绑"补丁，让驱动能正确清理安全内存区域。一个影响 DRM 和 misc 设备的 <code>fops.owner</code> 缺失 bug 迎来了 7 补丁的系统性修复。构建系统方面有两个重要变化：Rust 工具链缺失时不再"静默成功"而是直接报错，以及 IBM 大型机 s390 架构正式接入 Rust 支持。此外，社区还在推进 RCU 延迟回调的 Rust 抽象、configfs 属性声明宏、Virtio 子系统绑定，以及一系列代码风格统一的清理工作。总的来说，今天的主题是"补全短板、夯实基础"。
+</div><div class="mag-page-num">2</div></div></div><div class="mag-page"><div class="mag-page-inner"><div class="mag-accent-bar"></div><div class="mag-section-label">️ GPU / DRM 驱动</div><h2 class="mag-title">️ GPU / DRM 驱动</h2><div class="mag-section-content"><div class="mag-article"><div class="art-title">Nova-Core：GPU 驱动卸载时的安全内存清理（v6）</div><div class="art-body"><p>
+NVIDIA 开源 GPU 驱动 <strong>nova-core</strong> 提交了第 6 版补丁系列（共 7 个补丁），由 Alexandre Courbot 和 Eliot Courtney 编写，已有 2 位审阅者参与审查。这组补丁解决的问题是：当驱动加载（probe）时，一个叫 <strong>FWSEC-FRTS</strong> 的固件会在显存中创建一块受保护的安全区域（WPR2），用来存放 GSP 固件，然后 <strong>Booter Loader</strong> 会把 GSP 固件加载到这块区域并启动它。问题在于，当驱动被卸载时，这些操作需要被"撤销"——特别是 WPR2 安全区域需要被释放，GSP 也需要被停止运行。
+</p><p>
+你可以把它想象成这样：你在电脑上安装了一个 GPU 驱动，驱动启动时会在显卡内存里"圈一块地"放自己的专用程序。当你卸载驱动的时候，这块地必须被归还，否则下次再装驱动就可能出问题。这组补丁就是在做这个"归还"的工作——运行 Booter Unloader 和 FWSEC-SB 来逆向清理启动时做的所有事情。
+</p><p>
+这是 Nova 驱动走向成熟的重要一步，因为"能正确卸载"是一个生产级驱动的基本要求。经过 6 轮迭代，说明社区对代码质量要求非常严格。
+</p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/20260521-nova-unload-v6-7-65f581c812c9@nvidia.com/" class="art-link">📬 查看补丁</a> </div></div><div class="mag-article"><div class="art-title">Asahi DRM：GEM SHMEM 抽象改进</div><div class="art-body"><p>
+Lyude（Red Hat 的 DRM 开发者）在 Zulip 的 #DRM 频道分享了她对 Asahi（Apple Silicon GPU）驱动中 <strong>GEM SHMEM</strong>（图形执行管理器·共享内存）抽象的改进工作。她在 freedesktop.org 的 GitLab 上推送了新的提交，包含了更多单元测试，并计划在下周二回来后清理代码并正式发送补丁。
+</p><p>
+GEM 是 Linux DRM 子系统管理 GPU 内存的框架，而 SHMEM 后端允许 GPU 内存对象通过系统共享内存来分配。这项改进意味着 Apple Silicon 芯片的 GPU 驱动（Asahi）在内存管理方面会更加可靠，同时有更多测试覆盖来保证质量。
+</p></div><div class="art-links"><a href="https://rust-for-linux.zulipchat.com/#narrow/stream/DRM/topic/Asahi%20GEM%20SHMEM%20changes" class="art-link">💬 查看讨论</a> </div></div><div class="mag-tips"><div>
+💡 <strong>小白科普</strong><br/>
+<strong>WPR2（Write-Protected Region 2）</strong>：NVIDIA GPU 显存中一块受硬件保护的区域，只有特定固件能读写，用来安全存放 GSP 微控制器的代码。<a href="https://en.wikipedia.org/wiki/Nvidia_GSP">了解更多</a><br/>
+<strong>GEM（Graphics Execution Manager）</strong>：Linux 内核管理 GPU 内存的框架，让驱动可以分配、共享和释放显存中的"内存对象"。<a href="https://en.wikipedia.org/wiki/Direct_Rendering_Manager#Graphics_Execution_Manager">了解更多</a>
+</div></div></div><div class="mag-page-fade"></div><div class="mag-page-num">3</div></div></div><div class="mag-page"><div class="mag-page-inner"><div class="mag-accent-bar"></div><div class="mag-section-label">模块系统与 FOPS.OWNER 修复</div><h2 class="mag-title">模块系统与 fops.owner 修复</h2><div class="mag-section-content"><div class="mag-article"><div class="art-title">系统性修复 Rust DRM/misc 抽象中 fops.owner 缺失问题（v2，共 7 补丁）</div><div class="art-body"><p>
+Alvin Sun 提交了一组非常重要的 7 补丁系列（第 2 版），修复了 Rust 驱动抽象层中 <code>file_operations.owner</code> 字段没有被正确设置的问题。在 Linux 内核中，每个字符设备或块设备都有一套"文件操作"函数表（<code>file_operations</code>），其中的 <code>owner</code> 字段指向拥有这个设备的内核模块。这个字段非常关键——它告诉内核"在有人使用这个设备的时候，不要把我的驱动模块卸载掉"。如果 <code>owner</code> 没有设置，就可能出现"设备还在用，驱动却被卸载了"的严重问题（use-after-free）。
+</p><p>这组补丁的具体做法分为以下几步：</p><p>这是一个"看起来不起眼但影响很大"的修复。没有它，用 Rust 写的 DRM 和 misc 设备驱动在模块卸载时都可能出现安全隐患。</p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/20260521-fix-fops-owner-v2-1-fd99079c5a04@linux.dev/" class="art-link">📬 查看补丁</a> <a href="https://lore.kernel.org/rust-for-linux/20260521-fix-fops-owner-v2-2-fd99079c5a04@linux.dev/" class="art-link">📬 查看补丁</a> <a href="https://lore.kernel.org/rust-for-linux/20260521-fix-fops-owner-v2-3-fd99079c5a04@linux.dev/" class="art-link">📬 查看补丁</a> <a href="https://lore.kernel.org/rust-for-linux/20260521-fix-fops-owner-v2-4-fd99079c5a04@linux.dev/" class="art-link">📬 DRM 补丁</a> <a href="https://lore.kernel.org/rust-for-linux/20260521-fix-fops-owner-v2-5-fd99079c5a04@linux.dev/" class="art-link">📬 miscdevice 补丁</a> <a href="https://lore.kernel.org/rust-for-linux/20260521-fix-fops-owner-v2-7-fd99079c5a04@linux.dev/" class="art-link">📬 查看补丁</a> <a href="https://lore.kernel.org/rust-for-linux/20260521-fix-fops-owner-v2-0-fd99079c5a04@linux.dev/" class="art-link">📬 查看完整补丁系列</a> </div></div><div class="mag-tips"><div>
+💡 <strong>小白科普</strong><br/>
+<strong>file_operations (fops)</strong>：Linux 内核中每个设备都有一套"操作函数表"，定义了打开、读写、关闭等操作怎么执行。<code>owner</code> 字段告诉内核这些函数属于哪个模块，防止模块被意外卸载。<a href="https://docs.kernel.org/filesystems/vfs.html">了解更多</a><br/>
+<strong>#[vtable] 宏</strong>：Rust-for-Linux 中的一个过程宏，用于把 Rust trait 的方法转换成内核期望的 C 函数指针表（vtable），是 Rust 与 C 内核交互的桥梁。<a href="https://rust-for-linux.com">了解更多</a>
+</div></div></div><div class="mag-page-fade"></div><div class="mag-page-num">4</div></div></div><div class="mag-page"><div class="mag-page-inner"><div class="mag-accent-bar"></div><div class="mag-section-label">️ 构建系统与新架构支持</div><h2 class="mag-title">️ 构建系统与新架构支持</h2><div class="mag-section-content"><div class="mag-article"><div class="art-title">Rust 工具链缺失时让构建直接报错（v2）</div><div class="art-body"><p>
+Neal Gompa 和 Sasha Finkelstein 提交了一个重要的构建系统改进补丁（第 2 版，已有 1 位审阅者）。当前的问题是：如果你在内核配置中开启了 <code>RUST=y</code>（意思是"我要启用 Rust 驱动"），但系统上实际没有 Rust 编译器，内核构建系统会<strong>悄悄地</strong>把所有 Rust 驱动跳过，最终给你一个"成功"的构建。然后你就会疑惑：明明选了 Rust 驱动，为什么编译出来的内核里找不到？
+</p><p>
+这就好比你去餐厅点了牛排，服务员说"好的"，结果上菜时只有沙拉——因为厨房没有牛排但没告诉你。这个补丁的做法是：如果你点了牛排（<code>RUST=y</code>）但厨房没有牛排（<code>RUST_IS_AVAILABLE=n</code>），就直接告诉你"做不了"（构建失败），而不是假装一切正常。作者指出，这与 OpenSSL 缺失时的行为一致——缺了就报错，不会默默跳过。
+</p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/20260521-evolve-to-crab-v2-1-c18e0e98fc54@chaosmail.tech/" class="art-link">📬 查看补丁</a> </div></div><div class="mag-article"><div class="art-title">s390 架构启用 Rust 支持（v3）</div><div class="art-body"><p>
+Jan Polensky（IBM）提交了 4 个补丁的系列（第 3 版，已有 1 位审阅者），让 IBM 的 s390 大型机架构能够编译 Rust 内核代码。具体的工作包括：
+</p><p>
+s390 是 IBM 大型机使用的处理器架构，虽然普通开发者很少接触，但它在银行、保险等大型企业中广泛使用。让 s390 支持 Rust 意味着这些关键基础设施未来也可以受益于 Rust 的内存安全特性。目前已支持 Rust 的架构包括 x86_64、ARM64、RISC-V 和 LoongArch，s390 将成为下一个。
+</p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/20260521165622.279953-5-japo@linux.ibm.com/" class="art-link">📬 查看补丁</a> </div></div><div class="mag-tips"><div>
+💡 <strong>小白科普</strong><br/>
+<strong>bindgen</strong>：一个自动工具，能读取 C 语言的头文件（.h），然后自动生成对应的 Rust 绑定代码，让 Rust 代码可以调用 C 函数。在内核中大量使用，因为内核的 API 全是 C 写的。<a href="https://doc.rust-lang.org/stable/nomicon/ffi.html">了解 Rust FFI</a><br/>
+<strong>s390</strong>：IBM 大型机（mainframe）使用的处理器架构，主要用于银行、政府等需要超高可靠性的场景。<a href="https://en.wikipedia.org/wiki/Z/Architecture">了解更多</a>
+</div></div></div><div class="mag-page-fade"></div><div class="mag-page-num">5</div></div></div><div class="mag-page"><div class="mag-page-inner"><div class="mag-accent-bar"></div><div class="mag-section-label">内核抽象与 API</div><h2 class="mag-title">内核抽象与 API</h2><div class="mag-section-content"><div class="mag-article"><div class="art-title">RCU：为 call_rcu() 添加 Rust 抽象（v1）</div><div class="art-body"><p>
+Philipp Stanner 提交了 <code>call_rcu()</code> 的 Rust 抽象（第 1 版，已有 1 位审阅者）。RCU（Read-Copy-Update）是 Linux 内核中一种非常重要的同步机制，专门为"读多写少"的场景设计。它允许多个 CPU 同时读取共享数据而不需要加锁，只有写入时才需要特殊处理。
+</p><p>
+<code>call_rcu()</code> 是 RCU 机制中"延迟释放"的核心函数——当你想删除一个被 RCU 保护的数据结构时，你不能立即释放它（因为可能还有其他 CPU 正在读），而是通过 <code>call_rcu()</code> 注册一个回调函数，等所有读取者都完成后再执行释放。这就像图书馆要下架一本书，不能在有人正在读的时候直接抢走，而是等所有人读完再收回。
+</p><p>
+为这个函数提供 Rust 抽象，意味着 Rust 驱动开发者可以用安全的 Rust API 来使用 RCU 的延迟回调功能，而不需要直接调用不安全的 C 绑定。
+</p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/857ba45ce62f7f209a3a764aeb2cd27dc067870d.camel@mailbox.org/" class="art-link">📬 查看补丁</a> </div></div><div class="mag-article"><div class="art-title">configfs 属性声明过程宏</div><div class="art-body"><p>
+Gary Guo 提交了一个新的过程宏（procedural macro）补丁（已有 1 位审阅者），用于声明 <strong>configfs</strong> 属性。configfs 是 Linux 内核中的一个特殊文件系统，允许用户空间通过创建目录和文件来配置内核对象——比如你可以通过 configfs 来配置 USB gadget 设备，就像在文件管理器里操作文件夹一样来配置硬件。
+</p><p>
+之前在 Rust 中声明 configfs 属性需要大量样板代码（boilerplate）。这个过程宏让你可以用简洁的声明式语法来定义属性，编译器会自动帮你生成底层的绑定代码。这降低了用 Rust 编写 configfs 驱动的门槛。
+</p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/DIO4B1VH1JZT.27KYCZG39SKDX@garyguo.net/" class="art-link">📬 查看补丁</a> </div></div><div class="mag-article"><div class="art-title">Zulip 讨论：如何在 Rust 中使用 WARN_ON</div><div class="art-body"><p>
+Philipp Stanner 在 Zulip 的 #Help 频道提问：能不能直接用 <code>unsafe { bindings::WARN_ON(true) }</code> 来调用内核的 <code>WARN_ON</code> 宏？Manos Pitsidianakis 回复指出，应该去看 <code>rust/kernel/bug.rs</code> 里已有的封装函数，而不是直接调用底层绑定。这个问题很快就解决了，Philipp 标记了话题为已解决。
+</p><p>
+这个小讨论反映了 Rust-for-Linux 的一个重要理念：尽量使用已有的安全抽象，而不是到处写 <code>unsafe</code> 直接调用 C 绑定。如果你刚开始写 Rust 内核代码，记得先看看 <code>rust/kernel/</code> 目录下是否已经有你需要的封装。
+</p></div><div class="art-links"><a href="https://rust-for-linux.zulipchat.com/#narrow/stream/Help/topic/%E2%9C%94%20WARN_ON" class="art-link">💬 查看讨论</a> </div></div><div class="mag-tips"><div>
+💡 <strong>小白科普</strong><br/>
+<strong>RCU（Read-Copy-Update）</strong>：内核中一种高效的同步机制，允许多个读取者同时访问数据而无需加锁，写入者修改时不影响正在进行的读取。适合"读多写少"的场景。<a href="https://docs.kernel.org/RCU/whatisRCU.html">了解更多</a><br/>
+<strong>configfs</strong>：一个基于 RAM 的文件系统，让用户空间可以通过创建/删除目录和文件来配置内核子系统，比如 USB gadget 和 NVMe target。<a href="https://docs.kernel.org/filesystems/configfs.html">了解更多</a>
+</div></div></div><div class="mag-page-fade"></div><div class="mag-page-num">6</div></div></div><div class="mag-page"><div class="mag-page-inner"><div class="mag-accent-bar"></div><div class="mag-section-label">VIRTIO 子系统</div><h2 class="mag-title">Virtio 子系统</h2><div class="mag-section-content"><div class="mag-article"><div class="art-title">Virtio Rust 抽象 RFC 系列</div><div class="art-body"><p>
+Manos Pitsidianakis 在 Zulip 的 #General 频道宣布，他已经发布了一组 RFC（征求意见稿）补丁系列，为 <strong>Virtio</strong> 子系统引入 Rust 抽象。Virtio 是虚拟化环境中最重要的设备接口标准——当你在虚拟机（如 QEMU/KVM）中使用网络、磁盘、随机数生成器等设备时，底层大概率用的就是 Virtio。
+</p><p>
+Manos 提到，这组补丁在不断演进：他最初使用了一个 virtio-rtc（实时时钟）样例驱动来演示 API，但后来替换为了一个 <strong>virtio-rng</strong>（随机数生成器）参考驱动。virtio-rng 更简单，更适合作为教学和参考实现。这表明社区在认真考虑 API 的易用性和可理解性。
+</p><p>
+Virtio 的 Rust 抽象一旦完成，将为在虚拟化环境中使用 Rust 编写高性能设备驱动打开大门，这对云计算场景意义重大。
+</p></div><div class="art-links"><a href="https://rust-for-linux.zulipchat.com/#narrow/stream/General/topic/Virtio%20RFC%20series" class="art-link">💬 查看讨论</a> </div></div><div class="mag-tips"><div>
+💡 <strong>小白科普</strong><br/>
+<strong>Virtio</strong>：一种标准化的虚拟设备接口，让虚拟机中的"假设备"（网卡、硬盘等）能高效地与宿主机通信。几乎所有主流虚拟化平台（KVM、QEMU、VirtualBox）都支持它。<a href="https://en.wikipedia.org/wiki/Virtio">了解更多</a><br/>
+<strong>RFC（Request for Comments）</strong>：在内核社区中，RFC 补丁表示"这是我的初步方案，请大家提意见"，还不是正式提交，主要用于收集反馈和讨论设计方向。
+</div></div></div><div class="mag-page-fade"></div><div class="mag-page-num">7</div></div></div><div class="mag-page"><div class="mag-page-inner"><div class="mag-accent-bar"></div><div class="mag-section-label">代码风格与导入整理</div><h2 class="mag-title">代码风格与导入整理</h2><div class="mag-section-content"><div class="mag-article"><div class="art-title">统一采用竖排导入风格 & 清理冗余导入（v3，共 7 补丁）</div><div class="art-body"><p>
+Alvin Sun 提交了另一组 7 补丁系列（第 3 版），对内核 Rust 代码的 <code>use</code> 导入语句进行统一整理。这组补丁做了两件事：
+</p><p>
+<strong>第一，统一导入风格。</strong>把类似 <code>use kernel::{error::Error, prelude::Result};</code> 的"横排"写法改成每个导入项单独一行的"竖排"写法。这样做的好处是：git diff 更清晰（改一个导入只影响一行）、代码审查更容易、合并冲突更少。
+</p><p>
+<strong>第二，删除冗余导入。</strong><code>kernel::prelude</code> 已经重新导出（re-export）了 <code>Error</code>、<code>Result</code>、<code>Pin</code>、<code>c_int</code> 等常用类型，所以各个模块中单独导入这些类型是多余的。补丁删除了 miscdevice、block/mq、rnull、samples、doctest 等模块中的冗余导入。
+</p><p>
+受影响的文件/模块包括：<code>rust/kernel/miscdevice.rs</code>、<code>samples/rust/rust_misc_device.rs</code>、<code>rust/kernel/block/mq.rs</code>、<code>drivers/block/rnull.rs</code>、以及 doctest 基础设施。虽然这类"代码清理"看起来不起眼，但对于一个快速成长中的代码库来说，尽早统一风格可以避免后续更大的技术债务。
+</p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/20260521-miscdev-use-format-v3-0-56240ca70d0c@linux.dev/" class="art-link">📬 查看完整补丁系列</a> </div></div><div class="mag-tips"><div>
+💡 <strong>小白科普</strong><br/>
+<strong>prelude（预导入）</strong>：Rust 中的 prelude 是一组最常用的类型和 trait，自动导入到每个文件中，免去反复写 <code>use</code> 的麻烦。内核的 <code>kernel::prelude</code> 类似标准库的 <code>std::prelude</code>，包含了 <code>Result</code>、<code>Error</code> 等核心类型。<a href="https://doc.rust-lang.org/std/prelude/index.html">了解 Rust prelude</a>
+</div></div></div><div class="mag-page-fade"></div><div class="mag-page-num">8</div></div></div><div class="mag-page mag-back-cover" data-density="hard"><div class="mag-page-inner back-cover-inner"><div class="back-decoration"></div><div class="back-content"><div class="back-logo">🦀</div><div class="back-title">Rust-for-Linux</div><div class="back-subtitle">Daily Briefing</div><div class="back-date">2026-05-22</div><div class="back-rule"></div><div class="back-sources"><a href="https://lore.kernel.org/rust-for-linux/">Lore</a> &middot; <a href="https://rust-for-linux.zulipchat.com/">Zulip</a> &middot; <a href="https://github.com/Rust-for-Linux">GitHub</a></div><div class="back-nav"><a href="2026-05-21.html" class="back-link-prev">&larr; 2026-05-21</a></div></div></div></div>
   </div>
 </div>
 
@@ -307,8 +340,8 @@ document.addEventListener('DOMContentLoaded',function(){
   });
 
   /* ── Keyboard: left/right arrows for prev/next ── */
-  var prevUrl='2026-03-22.html';
-  var nextUrl='2026-03-24.html';
+  var prevUrl='2026-05-21.html';
+  var nextUrl='';
   document.addEventListener('keydown',function(e){
     if(calOpen){if(e.key==='Escape'){closeCal();e.stopPropagation()}return}
     if(e.key==='Escape'){window.location.href='index.html'}
@@ -319,7 +352,7 @@ document.addEventListener('DOMContentLoaded',function(){
   /* ── Calendar picker ── */
   var allSlugs=["2026-05-22", "2026-05-21", "2026-05-20", "2026-05-19", "2026-05-18", "2026-05-17", "2026-05-16", "2026-05-15", "2026-05-14", "2026-05-13", "2026-05-12", "2026-05-11", "2026-05-10", "2026-05-07", "2026-05-06", "2026-05-05", "2026-05-04", "2026-05-03", "2026-05-02", "2026-05-01", "2026-04-30", "2026-04-29", "2026-04-28", "2026-04-27", "2026-04-26", "2026-04-25", "2026-04-24", "2026-04-23", "2026-04-22", "2026-04-21", "2026-04-20", "2026-04-19", "2026-04-18", "2026-04-17", "2026-04-16", "2026-04-15", "2026-04-14", "2026-04-13", "2026-04-12", "2026-04-11", "2026-04-10", "2026-04-09", "2026-04-08", "2026-04-07", "2026-04-06", "2026-04-05", "2026-04-04", "2026-04-03", "2026-04-02", "2026-04-01", "2026-03-31", "2026-03-30", "2026-03-29", "2026-03-28", "2026-03-27", "2026-03-26", "2026-03-25", "2026-03-24", "2026-03-23", "2026-03-22", "2026-03-21", "2026-03-20", "2026-03-19"];
   var slugSet=new Set(allSlugs);
-  var curDate='2026-03-23';
+  var curDate='2026-05-22';
   var calOpen=false;
   var calMonth,calYear;
   // init to current page's month
