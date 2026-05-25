@@ -171,7 +171,7 @@ body{background:#fff;font-family:'Helvetica Neue',Helvetica,Arial,'Noto Sans SC'
 
 <!-- ── Artforum-style masthead ── -->
 <div class="af-masthead">
-  <a href="2026-W21.html" class="af-logo">RFL 社区日报</a>
+  <a href="2026-W22.html" class="af-logo">RFL 社区日报</a>
   <nav class="af-nav">
     <a href="https://github.com/Rust-for-Linux" target="_blank" rel="noopener"><svg style="width:14px;height:14px;vertical-align:-2px;margin-right:3px;fill:currentColor" viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>RFL GitHub</a>
     <a href="https://lore.kernel.org/rust-for-linux/" target="_blank" rel="noopener"><svg style="width:14px;height:14px;vertical-align:-2px;margin-right:3px;fill:currentColor" viewBox="0 0 16 16"><path d="M0 4a2 2 0 012-2h12a2 2 0 012 2v8a2 2 0 01-2 2H2a2 2 0 01-2-2V4zm2-1a1 1 0 00-1 1v.217l7 4.2 7-4.2V4a1 1 0 00-1-1H2zm13 2.383l-4.758 2.855L15 11.114V5.383zm-.034 6.878L9.271 8.82 8 9.583 6.729 8.82l-5.694 3.44A1 1 0 002 13h12a1 1 0 00.966-.739zM1 11.114l4.758-2.876L1 5.383v5.73z"/></svg>Lore</a>
@@ -181,7 +181,7 @@ body{background:#fff;font-family:'Helvetica Neue',Helvetica,Arial,'Noto Sans SC'
   </nav>
 </div>
 <div class="af-date-bar" id="dateBar">
-  <a class="af-today" id="todayBtn" href="2026-W21.html">TODAY</a>
+  <a class="af-today" id="todayBtn" href="2026-W22.html">TODAY</a>
   <span></span>
   <span class="af-cal-btn" id="calBtn"><svg viewBox="0 0 16 16"><path d="M4 0v1H1.5A1.5 1.5 0 000 2.5v12A1.5 1.5 0 001.5 16h13a1.5 1.5 0 001.5-1.5v-12A1.5 1.5 0 0014.5 1H12V0h-1v1H5V0H4zm0 2v1h1V2h6v1h1V2h2.5a.5.5 0 01.5.5V4H1V2.5a.5.5 0 01.5-.5H4zM1 5h14v9.5a.5.5 0 01-.5.5h-13a.5.5 0 01-.5-.5V5z"/></svg>SELECT</span>
   <div id="calDrop" class="cal-drop" style="display:none"></div>
@@ -189,8 +189,8 @@ body{background:#fff;font-family:'Helvetica Neue',Helvetica,Arial,'Noto Sans SC'
 <div id="calOverlay" class="cal-overlay"></div>
 
 <!-- ── Prev / Next arrows ── -->
-<a href="2026-W20.html" class="pn-arrow pn-left" title="Previous: 2026-W20">&#8592;<span class="pn-label">2026-W20</span></a>
-<a href="2026-W22.html" class="pn-arrow pn-right" title="Next: 2026-W22">&#8594;<span class="pn-label">2026-W22</span></a>
+<a href="2026-W21.html" class="pn-arrow pn-left" title="Previous: 2026-W21">&#8592;<span class="pn-label">2026-W21</span></a>
+
 
 <!-- ── Hero: left visual + right article list ── -->
 <div class="af-hero" id="afHero">
@@ -203,40 +203,46 @@ body{background:#fff;font-family:'Helvetica Neue',Helvetica,Arial,'Noto Sans SC'
 <!-- ── Main article content ── -->
 <div class="af-main">
   <div id="magContent">
-    <div class="mag-page mag-cover" data-density="hard"><div class="mag-page-inner cover-inner"><div class="cover-decoration"></div><div class="cover-content"><div class="cover-masthead">R&thinsp;F&thinsp;L&ensp;D&thinsp;A&thinsp;I&thinsp;L&thinsp;Y</div><div class="cover-rule"></div><div class="cover-crab">🦀</div><div class="cover-date"></div><div class="cover-weekday"></div><div class="cover-rule"></div><div class="cover-hero">设备驱动生命周期大重构：高阶生命周期类型 (HRLT)</div><div class="cover-rule-thin"></div><div class="cover-stats"></div></div></div></div><div class="mag-page"><div class="mag-page-inner overview-inner"><div class="mag-accent-bar"></div><div class="ov-label">TODAY'S OVERVIEW</div><h2 class="ov-title">📋 今日概览</h2><div class="ov-body"><span class="ov-dropcap">本</span>周最重要的事件是 Danilo Krummrich 提交了<b>「高阶生命周期类型 (Higher-Ranked Lifetime Types)」补丁系列的第三版</b>，这是一组包含 15 个补丁的大型重构，旨在从根本上改善 Rust 设备驱动的资源管理方式——让驱动程序可以直接通过引用使用设备资源，而不必再依赖运行时的引用计数。此外，社区围绕 <b>kconfirm 工具</b>展开了热烈讨论，该工具旨在为内核配置变更提供安全确认机制。在电源管理方面，Onur Özkan 提出了 <b>Rust 运行时电源管理 (Runtime PM)</b> 的 RFC 补丁。Nova GPU 驱动的社区也迎来了新贡献者的加入，Zulip 上有关于如何开始贡献的讨论。本周共有 33 个邮件列表讨论线程、1 个 Zulip 话题和 1 个 GitHub PR 合并。
-</div><div class="mag-page-num">2</div></div></div><div class="mag-page"><div class="mag-page-inner"><div class="mag-accent-bar"></div><div class="mag-section-label">设备驱动生命周期大重构：高阶生命周期类型 (HRLT)</div><h2 class="mag-title">设备驱动生命周期大重构：高阶生命周期类型 (HRLT)</h2><div class="mag-section-content"><div class="mag-article"><div class="art-body"><p>本周最核心的技术活动来自 <b>Danilo Krummrich</b> 提交的一组大型补丁系列（共 15 个补丁，已迭代到第三版 v3）。这组补丁的目标是为 Rust 设备驱动引入<b>「高阶生命周期类型 (Higher-Ranked Lifetime Types)」</b>，从根本上改变驱动程序访问设备资源的方式。</p><p>目前，Rust 设备驱动通过 <code>Devres&lt;T&gt;</code> 类型来访问 PCI BAR 映射、I/O 内存区域等设备资源。每次访问都需要传入一个 <code>&amp;Device&lt;Bound&gt;</code> 引用来证明设备仍然处于绑定状态。但现有设计要求驱动的私有数据必须具有 <code>'static</code> 生命周期——也就是说，数据必须「永久有效」，这迫使开发者使用引用计数（<code>Arc</code>）等运行时机制来管理资源，既增加了运行时开销，也让代码变得更复杂。</p><p>新设计引入了一个 <code>'bound</code> 生命周期参数，让驱动的私有数据可以直接捕获设备绑定期间的生命周期。这意味着设备资源可以直接通过<b>引用</b>存储，而不再需要引用计数，实现了<b>零开销</b>的资源管理。</p><p><b>这组补丁包含以下关键变更：</b></p><p><b>① 移除 <code>ForeignOwnable</code> 的 <code>'static</code> 约束</b>（作者：Gary Guo）<br/>
-<code>ForeignOwnable</code> 是 Rust 驱动框架中用于在 C 和 Rust 之间传递所有权的核心 trait。之前它要求实现类型必须是 <code>'static</code> 的，现在通过在 GAT（泛型关联类型）上添加 <code>Self: 'a</code> 约束来放宽这个限制，让非 <code>'static</code> 类型也能安全使用。</p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/20260517000149.3226762-2-dakr@kernel.org/" class="art-link">📬 查看补丁</a> </div></div><div class="mag-article"><div class="art-body"><p><b>② 将 <code>'static</code> 约束移至构造函数</b>（作者：Gary Guo）<br/>
-既然 <code>ForeignOwnable</code> 不再要求 <code>'static</code>，那么 <code>drvdata</code> 方法和总线适配器实现上的 <code>'static</code> 约束也不再需要。这个补丁把约束移到了 <code>Registration</code> 构造函数中，让类型系统在编译时而非运行时来保证安全性。</p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/20260517000149.3226762-3-dakr@kernel.org/" class="art-link">📬 查看补丁</a> </div></div><div class="mag-article"><div class="art-body"><p><b>③ 将驱动私有数据与驱动类型解耦</b><br/>
-向所有总线驱动 trait 添加了 <code>Data&lt;'bound&gt;</code> 关联类型，将驱动的总线设备私有数据类型从驱动结构体本身分离出来。这是引入 <code>'bound</code> 生命周期的关键前置步骤。该补丁已收到 1 条 review 意见。</p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/20260517000149.3226762-4-dakr@kernel.org/" class="art-link">📬 查看补丁</a> </div></div><div class="mag-article"><div class="art-body"><p><b>④ 调整 drvdata 的释放顺序</b><br/>
-将 <code>post_unbind_rust</code> 回调移到 <code>devres_release_all()</code> 之前执行。由于移除了 <code>drvdata()</code> 方法后，驱动的私有数据只能被拥有它的驱动自身访问，因此可以安全地在设备资源释放之前先释放驱动私有数据。这个顺序调整确保了生命周期的正确性。</p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/20260517000149.3226762-5-dakr@kernel.org/" class="art-link">📬 查看补丁</a> </div></div></div><div class="mag-page-fade"></div><div class="mag-page-num">3</div></div></div><div class="mag-page"><div class="mag-page-inner"><div class="mag-accent-bar"></div><div class="mag-section-label">CONTINUED</div><h2 class="mag-title">设备驱动生命周期大重构：高阶生命周期类型 (HRLT)</h2><div class="mag-section-content"><div class="mag-article"><div class="art-body"><p><b>⑤ 为多种总线的 <code>Device&lt;Bound&gt;</code> 实现 <code>Sync</code></b><br/>
-为 PCI、Platform、Auxiliary、USB 和通用 Device 五种设备类型的 <code>Device&lt;Bound&gt;</code> 状态实现了 <code>Sync</code> trait。<code>Bound</code> 只是一个零大小的类型状态标记，不影响线程安全性，因此 <code>Device&lt;Bound&gt;</code> 和 <code>Device&lt;Normal&gt;</code> 具有相同的线程安全保证。这让驱动可以安全地在多线程上下文中存储和共享 <code>&amp;Device&lt;Bound&gt;</code> 引用。</p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/20260517000149.3226762-10-dakr@kernel.org/" class="art-link">📬 Device</a> </div></div><div class="mag-article"><div class="art-body"><p><b>⑥ 为多种总线的 Driver trait 添加生命周期参数</b><br/>
-为 PCI、Platform、Auxiliary、USB 和 I2C 五种总线的 Driver trait 添加了 <code>'bound</code> 生命周期参数，将关联类型从 <code>type Data</code> 改为 <code>type Data&lt;'bound&gt;</code>。这是整个重构的「最后一公里」——有了这个变更，驱动的私有数据可以直接以引用方式持有设备资源，不再需要引用计数包装，真正实现了编译时安全的零开销资源管理。</p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/20260517000149.3226762-15-dakr@kernel.org/" class="art-link">📬 I2C</a> </div></div><div class="mag-article"><div class="art-body"><p><b>📎 补丁系列封面信</b><br/>
-封面信详细解释了整个重构的动机和设计思路。当前的 <code>Devres&lt;T&gt;</code> 方案虽然能工作，但要求驱动数据是 <code>'static</code> 的，导致必须使用 <code>Arc</code> 等引用计数机制。新方案通过 Rust 的高阶生命周期特性（Higher-Ranked Trait Bounds, HRTB），让编译器在编译时就能证明资源的生命周期安全性，完全消除运行时开销。</p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/20260517000149.3226762-1-dakr@kernel.org/" class="art-link">📬 查看封面信</a> </div></div><div class="mag-tips"><div>
-<b>💡 小白科普</b><br/>
-<b>生命周期 (Lifetime)：</b>Rust 用生命周期来追踪引用的有效期。你可以把它想象成图书馆的借阅期限——编译器会检查你是否在「书还在架上」的时候才读它，防止「借到一本已经被还回去的书」（悬垂引用）。<br/>
-<b>Sync trait：</b>如果一个类型实现了 <code>Sync</code>，说明它的引用可以安全地在多个线程之间共享。就像一本百科全书，多个人可以同时翻看不同页面，而不会出问题。<br/>
-<b>零开销抽象 (Zero-Cost Abstraction)：</b>Rust 的核心哲学之一——高级抽象在编译后不产生额外的运行时开销，和手写底层代码一样快。<br/>
-<a href="https://doc.rust-lang.org/book/ch10-03-lifetime-syntax.html">📖 学习 Rust 生命周期</a>&nbsp;
-<a href="https://doc.rust-lang.org/nomicon/hrtb.html">📖 高阶 Trait Bounds (HRTB)</a>
-</div></div></div><div class="mag-page-fade"></div><div class="mag-page-num">4</div></div></div><div class="mag-page"><div class="mag-page-inner"><div class="mag-accent-bar"></div><div class="mag-section-label">️ 内核构建安全工具：KCONFIRM</div><h2 class="mag-title">️ 内核构建安全工具：kconfirm</h2><div class="mag-section-content"><div class="mag-article"><div class="art-body"><p>本周邮件列表上最热烈的讨论之一围绕着 <b>Demi Marie Obenour</b> 提出的 <b>kconfirm</b> 工具展开（RFC v3，共 3 个补丁）。Nathan Chancellor 和 Miguel Ojeda 参与了深入讨论，相关邮件多达 10 余条。</p><p><b>kconfirm 是什么？</b>它是一个新的内核脚本工具，用于在内核配置（<code>.config</code>）发生变更时向开发者确认这些变更是否符合预期。想象一下，你在升级内核版本或修改某个配置选项时，可能不小心引入了意想不到的配置变化——kconfirm 就是为了防止这类问题而设计的"安全网"。</p><p>这组 RFC 补丁包括三个部分：kconfirm 脚本本身（补丁 1/3）、对应的文档（补丁 2/3），以及整体的设计说明（补丁 0/3）。从讨论来看，社区对这个工具的实现细节有不同意见，Nathan Chancellor 和 Miguel Ojeda 分别从不同角度提出了反馈。作为 RFC（征求意见稿），这个工具还在早期阶段，社区正在讨论它的最佳实现方式。</p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/c6e9481c-932b-42f7-a903-b781d38cc1a8@gmail.com/" class="art-link">📬 RFC 封面信</a> <a href="https://lore.kernel.org/rust-for-linux/ba7ec52f-c4e9-4588-9484-dc8280d55593@gmail.com/" class="art-link">📬 补丁 1/3 讨论</a> <a href="https://lore.kernel.org/rust-for-linux/CANiq72=dKOhoLUoWRmzG9Kyv0jWY97Nx_O4rWV-UHjRtULz-jg@mail.gmail.com/" class="art-link">📬 补丁 2/3 讨论</a> </div></div><div class="mag-tips"><div>
-<b>💡 小白科普</b><br/>
-<b>RFC (Request for Comments)：</b>在内核开发中，RFC 补丁表示作者正在征求社区意见，还不是正式提交。它相当于先「投石问路」，让大家讨论设计方向是否正确，再决定是否继续完善。<br/>
-<b>.config 文件：</b>Linux 内核在编译前需要一个配置文件来决定启用哪些功能、驱动和选项。这个文件包含数千个选项，一个微小的变更都可能影响内核的行为。<br/>
-<a href="https://www.kernel.org/doc/html/latest/kbuild/kconfig.html">📖 了解内核配置系统 (Kconfig)</a>
-</div></div></div><div class="mag-page-fade"></div><div class="mag-page-num">5</div></div></div><div class="mag-page"><div class="mag-page-inner"><div class="mag-accent-bar"></div><div class="mag-section-label">⚡ 电源管理：RUST 运行时 PM 支持</div><h2 class="mag-title">⚡ 电源管理：Rust 运行时 PM 支持</h2><div class="mag-section-content"><div class="mag-article"><div class="art-body"><p><b>Onur Özkan</b> 提交了一组 RFC 补丁，为 Linux 内核的 Rust 驱动框架添加<b>运行时电源管理 (Runtime PM)</b> 支持。Danilo Krummrich 参与了讨论并提供了反馈。</p><p>运行时电源管理是现代设备节能的关键机制。与「系统级休眠」不同，运行时 PM 允许单个设备在空闲时自动进入低功耗状态，在需要时再被唤醒——比如你的无线网卡在没有数据传输时自动降低功耗，有数据时再恢复满功率运行。目前这套机制在 C 侧已经很成熟，但 Rust 驱动还无法直接使用它。这个 RFC 正是为了填补这个空白。</p><p>作为 RFC 阶段的补丁，社区正在评估其 API 设计是否合理，以及如何与上面提到的 HRLT 生命周期重构协调配合。</p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/DIKIJ81CV55B.3TA7PV8N4BN0E@kernel.org/" class="art-link">📬 查看讨论</a> </div></div><div class="mag-tips"><div>
-<b>💡 小白科普</b><br/>
-<b>运行时电源管理 (Runtime PM)：</b>一种让设备在系统运行时也能单独进入省电模式的机制。想象一个大办公楼，不是等所有人下班才关灯（系统休眠），而是每个房间在没人时自动关灯（运行时 PM）——更精细、更节能。<br/>
-<a href="https://www.kernel.org/doc/html/latest/power/runtime_pm.html">📖 内核运行时 PM 文档</a>
-</div></div></div><div class="mag-page-fade"></div><div class="mag-page-num">6</div></div></div><div class="mag-page"><div class="mag-page-inner"><div class="mag-accent-bar"></div><div class="mag-section-label">GPU 驱动：NOVA 社区迎新</div><h2 class="mag-title">GPU 驱动：Nova 社区迎新</h2><div class="mag-section-content"><div class="mag-article"><div class="art-body"><p>在 Zulip 的 Nova 频道中，社区成员 <b>Nanonej</b> 就如何开始为 Nova GPU 驱动做贡献进行了讨论。Nova 是用 Rust 编写的 NVIDIA GPU 开源驱动，是 Rust-for-Linux 生态中最受关注的驱动项目之一。</p><p>从讨论内容来看，Nanonej 已经掌握了通过邮件提交补丁的流程，并在讨论是否可以将 Git 仓库用于备份、协作或在不同工作机之间同步代码。这表明 Nova 项目正在吸引新的贡献者，社区对新手的入门引导在持续进行中。</p></div><div class="art-links"><a href="https://rust-for-linux.zulipchat.com/#narrow/stream/Nova/topic/Getting%20started%20with%20nova%20contribution" class="art-link">💬 查看 Zulip 讨论</a> </div></div><div class="mag-tips"><div>
-<b>💡 小白科普</b><br/>
-<b>Nova：</b>一个用 Rust 编写的 NVIDIA GPU 内核驱动项目，目标是为 NVIDIA 显卡提供一个安全、现代的开源驱动。它是 Rust-for-Linux 生态中最具雄心的实际应用之一。<br/>
-<b>邮件补丁流程：</b>Linux 内核的代码贡献不使用 GitHub PR，而是通过邮件列表发送补丁（<code>git send-email</code>）。这是一套独特的工作流程，对新人来说需要适应。<br/>
-<a href="https://www.kernel.org/doc/html/latest/process/submitting-patches.html">📖 如何提交内核补丁</a>
-</div></div></div><div class="mag-page-fade"></div><div class="mag-page-num">7</div></div></div><div class="mag-page"><div class="mag-page-inner"><div class="mag-accent-bar"></div><div class="mag-section-label">文档与代码质量</div><h2 class="mag-title">文档与代码质量</h2><div class="mag-section-content"><div class="mag-article"><div class="art-body"><p>本周在 GitHub 上合并了一个由 <b>brambhattabhishek</b> 提交的 PR：<b>修复 Rust 注释中缺失的 Markdown 自动链接</b>（PR #1154）。这个修复确保了 Rust 代码注释中的 URL 能被正确识别为可点击的超链接，改善了自动生成文档的可读性。</p><p>虽然这是一个看似简单的修复，但文档质量对于 Rust-for-Linux 这样正在快速发展的项目至关重要。良好的文档和注释能帮助新贡献者更快地理解代码，也有助于内核社区中不熟悉 Rust 的开发者了解 Rust 驱动的工作方式。</p></div><div class="art-links"><a href="https://github.com/Rust-for-Linux/linux/pull/1154" class="art-link">🔗 查看 GitHub PR</a> </div></div><div class="mag-tips"><div>
-<b>💡 小白科普</b><br/>
-<b>Markdown 自动链接 (Autolink)：</b>在 Markdown 格式中，直接粘贴一个 URL（如 <code>https://example.com</code>）时，应该自动被识别为超链接。如果这个功能失效，URL 就变成了纯文本，用户无法直接点击访问。<br/>
-<a href="https://rust-lang.github.io/rfcs/1946-intra-rustdoc-links.html">📖 Rust 文档链接规范</a>
-</div></div></div><div class="mag-page-fade"></div><div class="mag-page-num">8</div></div></div><div class="mag-page mag-back-cover" data-density="hard"><div class="mag-page-inner back-cover-inner"><div class="back-decoration"></div><div class="back-content"><div class="back-logo">🦀</div><div class="back-title">Rust-for-Linux</div><div class="back-subtitle">Daily Briefing</div><div class="back-date"></div><div class="back-rule"></div><div class="back-sources"><a href="https://lore.kernel.org/rust-for-linux/">Lore</a> &middot; <a href="https://rust-for-linux.zulipchat.com/">Zulip</a> &middot; <a href="https://github.com/Rust-for-Linux">GitHub</a></div><div class="back-nav"><a href="2026-W20.html" class="back-link-prev">&larr; 2026-W20</a><a href="2026-W22.html" class="back-link-next">2026-W22 &rarr;</a></div></div></div></div>
+    <div class="mag-page mag-cover" data-density="hard"><div class="mag-page-inner cover-inner"><div class="cover-decoration"></div><div class="cover-content"><div class="cover-masthead">R&thinsp;F&thinsp;L&ensp;D&thinsp;A&thinsp;I&thinsp;L&thinsp;Y</div><div class="cover-rule"></div><div class="cover-crab">🦀</div><div class="cover-date"></div><div class="cover-weekday"></div><div class="cover-rule"></div><div class="cover-hero">块设备（Block Device）子系统</div><div class="cover-rule-thin"></div><div class="cover-stats"></div></div></div></div><div class="mag-page"><div class="mag-page-inner overview-inner"><div class="mag-accent-bar"></div><div class="ov-label">TODAY'S OVERVIEW</div><h2 class="ov-title">📋 今日概览</h2><div class="ov-body"><span class="ov-dropcap">本</span>周社区共产生 <strong>8 个邮件列表线程</strong>，活动聚焦在三个方向：块设备子系统的资源泄漏修复、I2C 子系统的引用计数 bug 修复与接口扩展，以及 IIO 传感器子系统 Rust 抽象层的第三轮 RFC 迭代。值得关注的是，贡献者 Nicolás Antinori 一人提交了两个不同子系统的修复补丁，体现了社区成员正在系统性地审查现有 Rust 绑定代码的质量。AS5600 磁旋转位置传感器驱动已经迭代到 v3，逐步完善了 IIO 子系统的 Rust 抽象设计，引入了 typestate 模式等 Rust 特色模式。此外，OPP 模块的内联标记修复提醒我们，Rust 在内核中的编译行为仍需持续关注和调优。总体而言，本周的工作体现了"打磨基础、夯实质量"的节奏。
+</div><div class="mag-page-num">2</div></div></div><div class="mag-page"><div class="mag-page-inner"><div class="mag-accent-bar"></div><div class="mag-section-label">块设备（BLOCK DEVICE）子系统</div><h2 class="mag-title">块设备（Block Device）子系统</h2><div class="mag-section-content"><div class="mag-article"><div class="art-title">修复 GenDiskBuilder 构建失败时的资源泄漏</div><div class="art-body"><p>补丁作者：Haoze Xie (Ren Wei)</p><p>
+这个补丁修复了一个隐蔽的资源泄漏问题。当 <code>GenDiskBuilder::build()</code> 在调用内核 C 函数 <code>__blk_mq_alloc_disk()</code> 之后发生失败时，已经分配好的 gendisk（通用磁盘结构）不会被释放，而是一直留在内存中，直到调用者释放最后一个 tagset 引用才会被回收。打个比方：这就像你在组装一台电脑时，主板已经装好了但发现显卡不兼容，结果主板既没有被退回仓库，也没有被安装使用，就一直占着桌面空间。补丁的解决方案是在失败路径上主动释放这个临时创建的 gendisk 对象，确保资源不会泄漏。这类"错误路径"的清理工作虽然不起眼，但对内核的长期稳定性至关重要。
+</p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/b6411cc055080c984a67bfad72fd683aa84b8e13.1779596478.git.royenheart@gmail.com/" class="art-link">📬 查看补丁</a> </div></div><div class="mag-tips"><div>
+<strong>小白科普</strong><br/>
+<strong>gendisk（通用磁盘）：</strong>Linux 内核用来表示一个磁盘设备（如硬盘、SSD）的核心数据结构，类似于磁盘设备的"身份证"，记录了磁盘的名字、大小、分区等信息。<br/>
+<strong>错误路径（failure path）：</strong>代码中处理"如果操作失败了该怎么办"的分支。好的代码需要在每个可能出错的地方都做好清理工作，否则就会造成资源泄漏。<br/>
+<a href="https://docs.kernel.org/block/index.html">📖 了解更多：Linux 块设备文档</a>
+</div></div></div><div class="mag-page-fade"></div><div class="mag-page-num">3</div></div></div><div class="mag-page"><div class="mag-page-inner"><div class="mag-accent-bar"></div><div class="mag-section-label">I2C 子系统</div><h2 class="mag-title">I2C 子系统</h2><div class="mag-section-content"><div class="mag-article"><div class="art-title">修复 I2cAdapter 引用计数重复递增</div><div class="art-body"><p>补丁作者：Nicolás Antinori</p><p>
+这是一个典型的"引用计数"bug 修复。当调用 <code>I2cAdapter::get</code> 时，底层 C 函数 <code>i2c_get_adapter()</code> 已经将设备和模块的引用计数加了一次。然而，在将返回的裸指针转换为 Rust 的 <code>ARef</code>（自动引用计数智能指针）时，<code>From</code> trait 的实现又额外增加了一次引用计数。这导致引用计数被多加了一次，最终设备永远不会被真正释放——就像借了两本图书馆的书，但登记簿上写成了四本，你还了两本后系统还以为你没还完，那两本书就永远"在借"状态了。这个修复确保引用计数只增加一次，避免了资源的永久占用。
+</p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/20260524181151.24988-1-nico.antinori.7@gmail.com/" class="art-link">📬 查看补丁</a> </div></div><div class="mag-article"><div class="art-title">为 I2cClient 实现 Io trait（RFC v3 系列的一部分）</div><div class="art-body"><p>补丁作者：Muchamad Coirul Anwar</p><p>
+这个补丁是 AS5600 传感器驱动系列的一部分，为 <code>I2cClient</code> 实现了 <code>kernel::io::Io</code> trait，提供了 <code>try_read8()</code> 和 <code>try_read16()</code> 方法。这意味着未来所有通过 I2C 总线进行寄存器读写的 Rust 驱动都可以使用统一的接口，而不需要每个驱动自己处理底层通信细节。这遵循了社区之前讨论达成的共识方向，是 I2C Rust 抽象层的重要基础设施。
+</p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/20260524132824.54918-2-muchamadcoirulanwar@gmail.com/" class="art-link">📬 查看补丁</a> </div></div><div class="mag-tips"><div>
+<strong>小白科普</strong><br/>
+<strong>I2C（Inter-Integrated Circuit）：</strong>一种简单、低速的通信总线协议，常用于连接传感器、显示屏等外围设备到主处理器。你可以把它想象成一条"共享电话线"，多个设备轮流用它和 CPU 说话。<br/>
+<strong>引用计数（Reference Counting）：</strong>一种内存管理技术，每个对象维护一个计数器，记录有多少地方在使用它。当计数归零时，对象就可以被安全释放。Rust 的 <code>Arc</code> 和内核的 <code>ARef</code> 都使用这种机制。<br/>
+<a href="https://docs.kernel.org/i2c/index.html">📖 了解更多：Linux I2C 文档</a>
+</div></div></div><div class="mag-page-fade"></div><div class="mag-page-num">4</div></div></div><div class="mag-page"><div class="mag-page-inner"><div class="mag-accent-bar"></div><div class="mag-section-label">IIO 子系统与传感器驱动</div><h2 class="mag-title">IIO 子系统与传感器驱动</h2><div class="mag-section-content"><div class="mag-article"><div class="art-title">Patch 0/4：系列总览</div><div class="art-body"><p>
+本周最值得关注的系列补丁来自 Muchamad Coirul Anwar，他提交了 <strong>AS5600 磁旋转位置传感器 Rust 驱动的第三轮 RFC</strong>（v3），共包含 4 个补丁。这个系列不仅仅是一个传感器驱动，更重要的是它同时引入了 <strong>IIO 子系统的最小化 Rust 抽象层</strong>——这是将整个工业传感器生态引入 Rust 内核的关键一步。
+</p><p>
+v3 在 v2 的基础上继续迭代，v2 已经引入了最小化的 IIO 抽象并通过 sysfs 暴露了 <code>in_angl_raw</code>（原始角度值）和 <code>in_angl_scale</code>（缩放因子）两个属性。这意味着用户空间程序可以通过简单地读取文件来获取传感器的角度数据——这正是 Linux 驱动的标准做法。
+</p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/20260524132824.54918-1-muchamadcoirulanwar@gmail.com/" class="art-link">📬 查看系列总览</a> </div></div><div class="mag-article"><div class="art-title">Patch 2/4：最小化 IIO 子系统 Rust 抽象</div><div class="art-body"><p>
+这是整个系列的核心。它为 Linux IIO 子系统提供了安全的 Rust 封装，包括：使用 <strong>typestate 模式</strong>的 <code>Device&lt;T, State&gt;</code>（设备在"未注册"和"已注册"之间有编译期状态检查）、<code>IioDriver</code> trait 定义驱动接口等。Typestate 模式是 Rust 的一大特色——它让编译器帮你检查"这个设备还没注册呢，你不能读数据"这类逻辑错误，而在 C 语言中这类错误只能靠程序员自己小心。这是 Rust 在内核驱动中展现安全优势的一个优秀案例。
+</p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/20260524132824.54918-3-muchamadcoirulanwar@gmail.com/" class="art-link">📬 查看补丁</a> </div></div></div><div class="mag-page-fade"></div><div class="mag-page-num">5</div></div></div><div class="mag-page"><div class="mag-page-inner"><div class="mag-accent-bar"></div><div class="mag-section-label">CONTINUED</div><h2 class="mag-title">IIO 子系统与传感器驱动</h2><div class="mag-section-content"><div class="mag-article"><div class="art-title">Patch 3/4：AS5600 传感器驱动实现</div><div class="art-body"><p>
+基于上面的 IIO 抽象层，这个补丁实现了 AS5600 磁旋转位置传感器的具体驱动。AS5600 是一颗常见的 12 位磁编码器芯片，能测量磁铁的旋转角度，广泛用于电机控制、旋钮等场景。驱动通过 IIO sysfs 接口暴露原始角度值和缩放系数，让用户空间可以方便地读取传感器数据。
+</p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/20260524132824.54918-4-muchamadcoirulanwar@gmail.com/" class="art-link">📬 查看补丁</a> </div></div><div class="mag-article"><div class="art-title">Patch 4/4：构建系统集成</div><div class="art-body"><p>
+最后一个补丁将 AS5600 驱动添加到内核的构建系统中，新增了 <code>CONFIG_AS5600</code> 配置选项，依赖于 I2C、IIO 和 RUST 三个配置项。这使得用户可以在 <code>make menuconfig</code> 中选择是否编译这个驱动。
+</p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/20260524132824.54918-5-muchamadcoirulanwar@gmail.com/" class="art-link">📬 查看补丁</a> </div></div><div class="mag-tips"><div>
+<strong>小白科普</strong><br/>
+<strong>IIO（Industrial I/O）子系统：</strong>Linux 内核中专门管理各类传感器（加速度计、温度计、光传感器等）的框架。它提供了统一的接口让用户空间程序读取传感器数据，就像一个"传感器通用翻译官"。<br/>
+<strong>Typestate 模式：</strong>Rust 中的一种设计模式，利用类型系统在编译期追踪对象的状态。比如一个设备可以处于"未初始化"或"已初始化"状态，typestate 确保你不会在未初始化时就尝试使用它——编译器会直接报错，而不是等到运行时才崩溃。<br/>
+<a href="https://docs.kernel.org/driver-api/iio/index.html">📖 了解更多：Linux IIO 子系统文档</a>
+</div></div></div><div class="mag-page-fade"></div><div class="mag-page-num">6</div></div></div><div class="mag-page"><div class="mag-page-inner"><div class="mag-accent-bar"></div><div class="mag-section-label">编译与性能优化</div><h2 class="mag-title">编译与性能优化</h2><div class="mag-section-content"><div class="mag-article"><div class="art-title">OPP 模块方法标记为 inline</div><div class="art-body"><p>补丁作者：Nicolás Antinori</p><p>
+使用 LLVM 19.1.7 + Rust 1.85.0 工具链编译内核时，Nicolás 发现 OPP（Operating Performance Points，工作性能点）模块的几个方法（如 <code>OPP::freq</code>）被编译器生成为独立的符号，出现在了 <code>vmlinux</code> 的符号表中。这意味着这些本应很小的函数没有被内联展开，而是被当作了独立函数来编译，产生了不必要的函数调用开销。补丁通过为这些方法添加 <code>#[inline]</code> 标记来提示编译器将它们内联展开。这类优化虽然单个影响很小，但积少成多，对内核整体性能有帮助。同时这也反映出 Rust 编译器在内核场景下的内联策略可能与 C 编译器有差异，需要开发者额外关注。
+</p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/20260524154021.34096-1-nico.antinori.7@gmail.com/" class="art-link">📬 查看补丁</a> </div></div><div class="mag-tips"><div>
+<strong>小白科普</strong><br/>
+<strong>内联（inline）：</strong>一种编译器优化技术。正常的函数调用需要"跳转"到函数代码的位置再"跳回来"，有一定开销。内联是把函数的代码直接"复制粘贴"到调用的地方，省去了跳转开销，但会增加代码体积。对于很短的函数，内联几乎总是划算的。<br/>
+<strong>OPP（Operating Performance Points）：</strong>内核中用于管理设备频率和电压组合的框架。比如你的 CPU 可以在 1GHz/0.9V 或 2GHz/1.1V 下运行，每一组搭配就是一个 OPP。<br/>
+<a href="https://docs.kernel.org/power/opp.html">📖 了解更多：Linux OPP 框架文档</a>
+</div></div></div><div class="mag-page-fade"></div><div class="mag-page-num">7</div></div></div><div class="mag-page"><div class="mag-page-inner"><div class="mag-accent-bar"></div><div class="mag-section-label">本周趋势与观察</div><h2 class="mag-title">本周趋势与观察</h2><div class="mag-section-content"><div class="mag-article"><div class="art-body"></div></div></div><div class="mag-page-fade"></div><div class="mag-page-num">8</div></div></div><div class="mag-page mag-back-cover" data-density="hard"><div class="mag-page-inner back-cover-inner"><div class="back-decoration"></div><div class="back-content"><div class="back-logo">🦀</div><div class="back-title">Rust-for-Linux</div><div class="back-subtitle">Daily Briefing</div><div class="back-date"></div><div class="back-rule"></div><div class="back-sources"><a href="https://lore.kernel.org/rust-for-linux/">Lore</a> &middot; <a href="https://rust-for-linux.zulipchat.com/">Zulip</a> &middot; <a href="https://github.com/Rust-for-Linux">GitHub</a></div><div class="back-nav"><a href="2026-W21.html" class="back-link-prev">&larr; 2026-W21</a></div></div></div></div>
   </div>
 </div>
 
@@ -301,8 +307,8 @@ document.addEventListener('DOMContentLoaded',function(){
   });
 
   /* ── Keyboard: left/right arrows for prev/next ── */
-  var prevUrl='2026-W20.html';
-  var nextUrl='2026-W22.html';
+  var prevUrl='2026-W21.html';
+  var nextUrl='';
   document.addEventListener('keydown',function(e){
     if(calOpen){if(e.key==='Escape'){closeCal();e.stopPropagation()}return}
     if(e.key==='Escape'){window.location.href='index.html'}
@@ -363,7 +369,7 @@ document.addEventListener('DOMContentLoaded',function(){
   }
 
   // Hide TODAY button if already on latest
-  if(curDate==='2026-W21'){document.getElementById('todayBtn').style.display='none'}
+  if(curDate==='2026-W22'){document.getElementById('todayBtn').style.display='none'}
 });
 </script>
 </body>
