@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>RFL 社区日报 &middot; 2026-05-05</title>
+<title>RFL 社区日报 &middot; 2026-06-14</title>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
@@ -182,15 +182,15 @@ body{background:#fff;font-family:'Helvetica Neue',Helvetica,Arial,'Noto Sans SC'
 </div>
 <div class="af-date-bar" id="dateBar">
   <a class="af-today" id="todayBtn" href="2026-06-14.html">TODAY</a>
-  <span>2026-05-05</span>
+  <span>2026-06-14</span>
   <span class="af-cal-btn" id="calBtn"><svg viewBox="0 0 16 16"><path d="M4 0v1H1.5A1.5 1.5 0 000 2.5v12A1.5 1.5 0 001.5 16h13a1.5 1.5 0 001.5-1.5v-12A1.5 1.5 0 0014.5 1H12V0h-1v1H5V0H4zm0 2v1h1V2h6v1h1V2h2.5a.5.5 0 01.5.5V4H1V2.5a.5.5 0 01.5-.5H4zM1 5h14v9.5a.5.5 0 01-.5.5h-13a.5.5 0 01-.5-.5V5z"/></svg>SELECT</span>
   <div id="calDrop" class="cal-drop" style="display:none"></div>
 </div>
 <div id="calOverlay" class="cal-overlay"></div>
 
 <!-- ── Prev / Next arrows ── -->
-<a href="2026-05-04.html" class="pn-arrow pn-left" title="Previous: 2026-05-04">&#8592;<span class="pn-label">2026-05-04</span></a>
-<a href="2026-05-06.html" class="pn-arrow pn-right" title="Next: 2026-05-06">&#8594;<span class="pn-label">2026-05-06</span></a>
+<a href="2026-06-13.html" class="pn-arrow pn-left" title="Previous: 2026-06-13">&#8592;<span class="pn-label">2026-06-13</span></a>
+
 
 <!-- ── Hero: left visual + right article list ── -->
 <div class="af-hero" id="afHero">
@@ -203,7 +203,82 @@ body{background:#fff;font-family:'Helvetica Neue',Helvetica,Arial,'Noto Sans SC'
 <!-- ── Main article content ── -->
 <div class="af-main">
   <div id="magContent">
-    <div class="mag-page mag-cover" data-density="hard"><div class="mag-page-inner cover-inner"><div class="cover-decoration"></div><div class="cover-content"><div class="cover-masthead">R&thinsp;F&thinsp;L&ensp;D&thinsp;A&thinsp;I&thinsp;L&thinsp;Y</div><div class="cover-rule"></div><div class="cover-crab">🦀</div><div class="cover-date">2026-05-05</div><div class="cover-weekday">Tuesday</div><div class="cover-rule"></div><div class="cover-hero"></div><div class="cover-rule-thin"></div><div class="cover-stats">41 emails &middot; 4 msgs</div></div></div></div><div class="mag-page mag-back-cover" data-density="hard"><div class="mag-page-inner back-cover-inner"><div class="back-decoration"></div><div class="back-content"><div class="back-logo">🦀</div><div class="back-title">Rust-for-Linux</div><div class="back-subtitle">Daily Briefing</div><div class="back-date">2026-05-05</div><div class="back-rule"></div><div class="back-sources"><a href="https://lore.kernel.org/rust-for-linux/">Lore</a> &middot; <a href="https://rust-for-linux.zulipchat.com/">Zulip</a> &middot; <a href="https://github.com/Rust-for-Linux">GitHub</a></div><div class="back-nav"><a href="2026-05-04.html" class="back-link-prev">&larr; 2026-05-04</a><a href="2026-05-06.html" class="back-link-next">2026-05-06 &rarr;</a></div></div></div></div>
+    <div class="mag-page mag-cover" data-density="hard"><div class="mag-page-inner cover-inner"><div class="cover-decoration"></div><div class="cover-content"><div class="cover-masthead">R&thinsp;F&thinsp;L&ensp;D&thinsp;A&thinsp;I&thinsp;L&thinsp;Y</div><div class="cover-rule"></div><div class="cover-crab">🦀</div><div class="cover-date">2026-06-14</div><div class="cover-weekday">Sunday</div><div class="cover-rule"></div><div class="cover-hero">驱动核心框架</div><div class="cover-rule-thin"></div><div class="cover-stats">17 emails</div></div></div></div><div class="mag-page"><div class="mag-page-inner overview-inner"><div class="mag-accent-bar"></div><div class="ov-label">TODAY'S OVERVIEW</div><h2 class="ov-title">📋 今日概览</h2><div class="ov-body"><span class="ov-dropcap">2</span>026 年 6 月 14 日 · 面向内核新手的每日速递</div><div class="mag-page-num">2</div></div></div><div class="mag-page"><div class="mag-page-inner"><div class="mag-accent-bar"></div><div class="mag-section-label">驱动核心框架</div><h2 class="mag-title">驱动核心框架</h2><div class="mag-section-content"><div class="mag-article"><div class="art-body"><p>
+<b>驱动核心子系统向 Linus 发起合并请求</b><br/>
+Danilo Krummrich 今天向 Linus Torvalds 发送了驱动核心（driver core）子系统的 GIT PULL 请求，目标是合入 Linux 7.2-rc1。这次提交中最引人注目的部分是 <b>Rust 原生的设备驱动生命周期管理</b>系列补丁，它已经通过签名标签（signed tag）与 DRM 子系统树共享。所有提交都已在 linux-next 中经过了多轮测试。
+</p><p>
+这件事为什么重要？在 Linux 内核中，「驱动核心」是所有设备驱动的底层基础设施——它管理着设备的注册、注销、电源管理等。以前这些全部用 C 写成，现在 Rust 驱动可以用原生的方式管理设备的「生命周期」（也就是设备从创建到销毁的整个过程），不再需要笨拙地包装 C 代码。这相当于给 Rust 驱动开发者铺好了一条安全的高速公路。
+</p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/DJ84318BOPGD.25U77KZQOCNFP@kernel.org/" class="art-link">📬 查看 Pull Request</a> </div></div><div class="mag-article"><div class="art-body"><p>
+<b>faux 设备：允许获取已绑定的 Device（第 20 版）</b><br/>
+Miguel Ojeda 提交了 <code>rust: faux</code> 模块的第 20 版补丁，新增了从 faux 设备获取已绑定设备引用的功能。faux 设备是一种「假设备」，主要用于内核测试——你可以把它理解为一个「模拟器」，让开发者在没有真实硬件的情况下测试驱动代码。这次改动让测试代码可以更方便地拿到设备对象进行操作，迭代到第 20 版说明社区对 API 设计非常谨慎。
+</p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/CANiq72mffbi2BV9epfZtN1qmjM28B6qUp-5tNGj=VBTimL-nYA@mail.gmail.com/" class="art-link">📬 查看补丁</a> </div></div><div class="mag-tips"><div>
+💡 <b>小白科普</b><br/>
+<b>驱动核心（Driver Core）</b>：Linux 内核中管理所有设备驱动的子系统，就像一个「调度中心」，负责设备的发现、注册、绑定驱动程序等。<a href="https://docs.kernel.org/driver-api/driver-model/overview.html">了解更多 →</a><br/>
+<b>设备生命周期（Device Lifetime）</b>：指一个设备对象从被创建到被销毁的完整过程。在 Rust 中，这与所有权系统天然契合——编译器能帮你保证设备不会被「提前释放」或「忘记释放」。<a href="https://doc.rust-lang.org/book/ch04-01-what-is-ownership.html">Rust 所有权 →</a>
+</div></div></div><div class="mag-page-fade"></div><div class="mag-page-num">3</div></div></div><div class="mag-page"><div class="mag-page-inner"><div class="mag-accent-bar"></div><div class="mag-section-label">同步机制：SRCU 抽象</div><h2 class="mag-title">同步机制：SRCU 抽象</h2><div class="mag-section-content"><div class="mag-article"><div class="art-body"><p>
+<b>SRCU Rust 抽象第 10 版（5 个补丁系列）</b><br/>
+Onur Özkan 提交了 SRCU（Sleepable Read-Copy-Update，可睡眠的读-拷贝-更新）Rust 抽象的第 10 版补丁，整个系列包含 5 个补丁。这组补丁的直接动机来自 <b>Tyr 驱动的重置基础设施</b>——在 GPU 等硬件需要重置时，必须确保正在进行的硬件访问已经安全完成，否则就可能出现「你正在写数据，硬件突然重启」的灾难性场景。SRCU 正是解决这类「读写协调」问题的同步机制。
+</p><p>
+这个系列拆解成了 5 个清晰的步骤：
+</p><p>
+<b>① 重构 C 端初始化函数</b>：让 <code>init_srcu_struct()</code> 统一调用 <code>__init_srcu_struct()</code>，不再出现两个函数互相调用的混乱情况。这和 mutex 的初始化方式保持一致，让代码更清晰。
+</p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/20260613065348.96750-2-work@onurozkan.dev/" class="art-link">📬 补丁 1/5</a> </div></div><div class="mag-article"><div class="art-body"><p>
+<b>② 添加 SRCU 辅助函数</b>：在 <code>rust/helpers/srcu.c</code> 中新增了供 Rust 调用的 C 辅助函数包装。因为有些 C 函数是内联函数或宏，Rust 的 FFI（外部函数接口）无法直接调用，所以需要一层薄薄的 C 包装。
+</p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/20260613065348.96750-3-work@onurozkan.dev/" class="art-link">📬 补丁 2/5</a> </div></div><div class="mag-article"><div class="art-body"><p>
+<b>③ 暴露 <code>srcu_readers_active()</code></b>：将这个函数从 <code>kernel/rcu/srcutree.c</code> 移动到头文件 <code>include/linux/srcutree.h</code> 中，使得 Rust 端可以通过辅助函数调用它。这个函数的作用是检查「是否还有读者在使用」，在清理资源前必须先确认没有人在读。
+</p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/20260613065348.96750-4-work@onurozkan.dev/" class="art-link">📬 补丁 3/5</a> </div></div></div><div class="mag-page-fade"></div><div class="mag-page-num">4</div></div></div><div class="mag-page"><div class="mag-page-inner"><div class="mag-accent-bar"></div><div class="mag-section-label">CONTINUED</div><h2 class="mag-title">同步机制：SRCU 抽象</h2><div class="mag-section-content"><div class="mag-article"><div class="art-body"><p>
+<b>④ Rust 端 SRCU 安全抽象</b>：这是核心补丁。它提供了基于 guard（守卫）模式的 API——进入读临界区时获取一个 guard 对象，离开时自动释放，就像 Rust 的 <code>MutexGuard</code> 一样优雅。资源清理通过 <code>PinnedDrop</code> 实现，还会检查是否有 guard 被泄漏并发出警告。
+</p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/20260613065348.96750-5-work@onurozkan.dev/" class="art-link">📬 补丁 4/5</a> </div></div><div class="mag-article"><div class="art-body"><p>
+<b>⑤ 更新 MAINTAINERS 文件</b>：将新增的 Rust SRCU 文件加入到 SRCU 子系统的维护者条目中，确保后续有人负责审查和维护这些代码。
+</p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/20260613065348.96750-6-work@onurozkan.dev/" class="art-link">📬 补丁 5/5</a> <a href="https://lore.kernel.org/rust-for-linux/20260613065348.96750-1-work@onurozkan.dev/" class="art-link">📬 查看完整系列</a> </div></div><div class="mag-tips"><div>
+💡 <b>小白科普</b><br/>
+<b>RCU（Read-Copy-Update）</b>：一种高效的同步机制，允许多个「读者」同时读取数据而不加锁，只在「写者」修改数据时才需要同步。SRCU 是它的「可睡眠版本」——普通 RCU 在读的时候不能睡眠（不能做慢操作），SRCU 放宽了这个限制。<a href="https://docs.kernel.org/RCU/whatisRCU.html">了解 RCU →</a><br/>
+<b>Guard 模式</b>：Rust 中常见的资源管理方式。获取资源时返回一个 guard 对象，当 guard 离开作用域时自动释放资源，防止忘记释放。类似于你进图书馆时领一张借阅卡，离开时自动归还。<a href="https://doc.rust-lang.org/book/ch15-03-drop.html">Rust Drop 机制 →</a>
+</div></div></div><div class="mag-page-fade"></div><div class="mag-page-num">5</div></div></div><div class="mag-page"><div class="mag-page-inner"><div class="mag-accent-bar"></div><div class="mag-section-label">️ GPU 驱动（NOVA-CORE）</div><h2 class="mag-title">️ GPU 驱动（nova-core）</h2><div class="mag-section-content"><div class="mag-article"><div class="art-body"><p>
+<b>移除 <code>#[allow(non_snake_case)]</code> 属性</b><br/>
+NVIDIA 工程师 Alexandre Courbot 提交了一个代码清理补丁，移除了 nova-core GPU 驱动模块中的 <code>#[allow(non_snake_case)]</code> 属性。这个属性的作用是让编译器「闭嘴」——不要抱怨代码里不符合 Rust 命名规范的变量名（Rust 规范要求用 <code>snake_case</code>，比如 <code>my_variable</code>，而不是 <code>myVariable</code>）。
+</p><p>
+移除这个属性意味着代码中之前不规范的命名已经被修正了，现在可以让编译器重新检查命名规范。这看起来是一个很小的改动，但对于一个正在积极开发的驱动来说，保持代码风格统一非常重要——它降低了新贡献者阅读和理解代码的门槛。nova-core 是 NVIDIA GPU 的开源内核驱动，用 Rust 编写，是 Rust-for-Linux 最受关注的项目之一。
+</p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/DJ7GLX1CLDSR.1U7AKTLN63IA5@nvidia.com/" class="art-link">📬 查看补丁</a> </div></div><div class="mag-tips"><div>
+💡 <b>小白科普</b><br/>
+<b>snake_case</b>：一种命名风格，单词之间用下划线连接，全部小写，如 <code>read_buffer</code>。Rust 社区约定变量和函数名使用 snake_case。编译器会对不符合规范的命名发出警告，<code>#[allow(non_snake_case)]</code> 就是手动压制这个警告。<a href="https://doc.rust-lang.org/reference/naming-conventions.html">Rust 命名规范 →</a><br/>
+<b>nova-core</b>：NVIDIA 正在开发的开源 GPU 内核驱动，使用 Rust 编写，旨在支持新一代 NVIDIA GPU。<a href="https://rust-for-linux.com/">Rust for Linux 官网 →</a>
+</div></div></div><div class="mag-page-fade"></div><div class="mag-page-num">6</div></div></div><div class="mag-page"><div class="mag-page-inner"><div class="mag-accent-bar"></div><div class="mag-section-label">构建系统与工具链</div><h2 class="mag-title">构建系统与工具链</h2><div class="mag-section-content"><div class="mag-article"><div class="art-body"><p>
+<b>修复文档测试中的错误模式匹配</b><br/>
+Gary Guo 发现了 Rust 文档测试（doctest）处理代码中的一个 bug。内核的 doctest 框架需要对 rustdoc 生成的代码做一些文本替换，其中一个模式是 <code>-> Result&lt;(), impl core::fmt::Debug&gt;</code>。之前有人不小心在 <code>core</code> 前面加了 <code>::</code>（写成了 <code>::core</code>），导致模式匹配失败——就像你在搜索框里打错了关键词，当然什么都搜不到。这个补丁修正了搜索模式，同时保持替换结果中的 <code>::</code> 不变。
+</p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/20260613140431.232471-1-gary@kernel.org/" class="art-link">📬 查看补丁</a> </div></div><div class="mag-article"><div class="art-body"><p>
+<b>修复文档测试函数名的可重现性问题</b><br/>
+Gary Guo 还修复了另一个问题：当使用 <code>O=</code> 参数指定独立的构建输出目录时，rustdoc 生成的测试函数名会包含构建路径，比如 <code>_doctest_main__home_gary_Projects_linux_rust_kernel_io_rs_824_0</code>。这不仅导致了超长的符号名，更关键的是，不同的开发者在不同的机器上构建，会得到不同的函数名，破坏了构建的可重现性。修复方法是裁剪掉路径部分，只保留文件名和行号。这对于「可重现构建」（reproducible builds）非常重要——它保证无论谁在哪里编译，产出的二进制文件都是完全一样的。
+</p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/20260613140431.232471-2-gary@kernel.org/" class="art-link">📬 查看补丁</a> </div></div></div><div class="mag-page-fade"></div><div class="mag-page-num">7</div></div></div><div class="mag-page"><div class="mag-page-inner"><div class="mag-accent-bar"></div><div class="mag-section-label">CONTINUED</div><h2 class="mag-title">构建系统与工具链</h2><div class="mag-section-content"><div class="mag-article"><div class="art-body"><p>
+<b>重新组织 <code>build_assert</code> 宏模块</b><br/>
+Miguel Ojeda 提交了第 4 版补丁，将 <code>build_assert</code> 相关的宏集中到一个专门的模块中。<code>build_assert!</code> 是内核中一个很有用的宏，它在编译时检查某些条件是否成立——如果条件不满足，编译就会直接失败，而不是等到运行时才发现问题。把这些宏归拢到一起，让代码组织更加清晰。
+</p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/CANiq72mhdy3i+X-9ZDiwe-mAYu9DX2B29dQQi=2iAYMS8JMzXg@mail.gmail.com/" class="art-link">📬 查看补丁</a> </div></div><div class="mag-article"><div class="art-body"><p>
+<b>内核所需的 Rust 不稳定特性追踪</b><br/>
+GitHub 上的 issue #1223 持续追踪着内核代码中使用的所有 Rust 不稳定特性（unstable features）。Rust 语言有很多特性还在开发中，标记为「不稳定」，需要手动开启才能使用。内核项目需要这些特性（比如内联汇编、自定义分配器等），这个 issue 记录了每一个被使用的不稳定特性，以及它们何时可能被稳定化。这对于内核最终能用稳定版 Rust 编译器构建至关重要。
+</p></div><div class="art-links"><a href="https://github.com/Rust-for-Linux/linux/issues/1223" class="art-link">📬 查看 Issue</a> </div></div><div class="mag-tips"><div>
+💡 <b>小白科普</b><br/>
+<b>doctest（文档测试）</b>：Rust 允许在文档注释中嵌入代码示例，编译器会自动运行这些示例来验证它们是否正确。就像教材里的例题，不仅是给人看的，还能自动验证答案对不对。<a href="https://doc.rust-lang.org/rustdoc/write-documentation/documentation-tests.html">了解 doctest →</a><br/>
+<b>不稳定特性（Unstable Features）</b>：Rust 中尚未最终确定的语言功能，只能在 nightly 编译器中通过 <code>#![feature(...)]</code> 开启。内核目前必须使用 nightly Rust。<a href="https://doc.rust-lang.org/unstable-book/">Unstable Book →</a>
+</div></div></div><div class="mag-page-fade"></div><div class="mag-page-num">8</div></div></div><div class="mag-page"><div class="mag-page-inner"><div class="mag-accent-bar"></div><div class="mag-section-label">I/O 与设备配置</div><h2 class="mag-title">I/O 与设备配置</h2><div class="mag-section-content"><div class="mag-article"><div class="art-body"><p>
+<b>添加动态大小的 I/O <code>Region</code> 类型（20 个补丁系列）</b><br/>
+Miguel Ojeda 提交的第 4 版补丁系列是今天最大规模的一组补丁，包含多达 20 个补丁。它为 Rust 内核代码引入了一个新的 <code>Region</code> 类型，用于表示动态大小的 I/O 内存区域。
+</p><p>
+打个比方：当内核想要和一个硬件设备「对话」时，通常通过一块特定的内存地址来读写数据，这块地址就是「I/O 内存区域」。以前的抽象只能处理编译时确定大小的区域，而新的 <code>Region</code> 类型支持运行时才确定大小的区域——因为很多设备的 I/O 区域大小要等到实际探测硬件后才知道。这个改动让 Rust 驱动可以更灵活地处理各种硬件。
+</p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/CANiq72mLqrcdZEAGM1wJ6OE7yUxzDT4dRsYjO91kPzoB5h6mfw@mail.gmail.com/" class="art-link">📬 查看补丁</a> </div></div><div class="mag-article"><div class="art-body"><p>
+<b>configfs 属性声明过程宏（第 3 版）</b><br/>
+Miguel Ojeda 还提交了一个过程宏（procedural macro）补丁，用于声明 configfs 属性。configfs 是 Linux 内核中的一个文件系统，允许用户空间通过文件和目录的方式来配置内核对象。你可以把它想象成一个「控制面板」——用户在文件系统里创建目录、写入文件，就能配置内核里的某个功能。这个宏让 Rust 驱动开发者可以用简洁的语法声明 configfs 属性，不用手动编写大量模板代码。
+</p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/CANiq72=RX5V6W+1tj0GHxZusrk5OqYbZ5-xV=wvSssrx_CWXAA@mail.gmail.com/" class="art-link">📬 查看补丁</a> </div></div><div class="mag-tips"><div>
+💡 <b>小白科普</b><br/>
+<b>I/O 内存映射（MMIO）</b>：硬件设备通过特定的内存地址与 CPU 通信。内核把设备的寄存器「映射」到一段虚拟内存地址上，读写这段地址就相当于和硬件对话。<a href="https://en.wikipedia.org/wiki/Memory-mapped_I/O">维基百科 →</a><br/>
+<b>configfs</b>：一种基于文件系统的内核配置接口。与 sysfs（只读居多）不同，configfs 允许用户空间主动创建和配置内核对象。<a href="https://docs.kernel.org/filesystems/configfs.html">内核文档 →</a>
+</div></div></div><div class="mag-page-fade"></div><div class="mag-page-num">9</div></div></div><div class="mag-page"><div class="mag-page-inner"><div class="mag-accent-bar"></div><div class="mag-section-label">其他动态</div><h2 class="mag-title">其他动态</h2><div class="mag-section-content"><div class="mag-article"><div class="art-body"><p>
+<b>bitfield 的 <code>Debug</code> 实现标记为 <code>#[inline]</code></b><br/>
+Alexandre Courbot 提交了一个小补丁，给 bitfield（位域）模块的 <code>Debug</code> trait 实现添加了 <code>#[inline]</code> 属性。当你想打印一个位域值来调试时，会调用 <code>Debug</code> 方法。加上 <code>#[inline]</code> 后，编译器会把这个函数的代码直接「嵌入」到调用处，避免函数调用的开销。这在内核中尤其重要，因为调试输出可能在性能敏感的路径上。这个补丁已经收到了 3 个 review，说明社区认为即使是这么小的改动也值得仔细审查。
+</p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/DJ7OKONXCQPN.1N5F9PJSNNGIR@nvidia.com/" class="art-link">📬 查看补丁</a> </div></div><div class="mag-tips"><div>
+💡 <b>小白科普</b><br/>
+<b>位域（Bitfield）</b>：把一个整数的各个比特位当作独立的字段来使用。硬件寄存器经常这样设计——一个 32 位寄存器里，第 0-3 位表示模式，第 4 位表示开关，等等。<a href="https://en.wikipedia.org/wiki/Bit_field">维基百科 →</a><br/>
+<b><code>#[inline]</code></b>：提示编译器把函数体直接嵌入调用处，消除函数调用开销。就像把常用菜谱直接贴在冰箱上，不用每次都去翻菜谱书。<a href="https://doc.rust-lang.org/reference/attributes/codegen.html#the-inline-attribute">Rust 参考 →</a>
+</div></div></div><div class="mag-page-fade"></div><div class="mag-page-num">10</div></div></div><div class="mag-page mag-back-cover" data-density="hard"><div class="mag-page-inner back-cover-inner"><div class="back-decoration"></div><div class="back-content"><div class="back-logo">🦀</div><div class="back-title">Rust-for-Linux</div><div class="back-subtitle">Daily Briefing</div><div class="back-date">2026-06-14</div><div class="back-rule"></div><div class="back-sources"><a href="https://lore.kernel.org/rust-for-linux/">Lore</a> &middot; <a href="https://rust-for-linux.zulipchat.com/">Zulip</a> &middot; <a href="https://github.com/Rust-for-Linux">GitHub</a></div><div class="back-nav"><a href="2026-06-13.html" class="back-link-prev">&larr; 2026-06-13</a></div></div></div></div>
   </div>
 </div>
 
@@ -268,8 +343,8 @@ document.addEventListener('DOMContentLoaded',function(){
   });
 
   /* ── Keyboard: left/right arrows for prev/next ── */
-  var prevUrl='2026-05-04.html';
-  var nextUrl='2026-05-06.html';
+  var prevUrl='2026-06-13.html';
+  var nextUrl='';
   document.addEventListener('keydown',function(e){
     if(calOpen){if(e.key==='Escape'){closeCal();e.stopPropagation()}return}
     if(e.key==='Escape'){window.location.href='index.html'}
@@ -280,7 +355,7 @@ document.addEventListener('DOMContentLoaded',function(){
   /* ── Calendar picker ── */
   var allSlugs=["2026-06-14", "2026-06-13", "2026-06-12", "2026-06-11", "2026-06-10", "2026-06-09", "2026-06-08", "2026-06-07", "2026-06-06", "2026-06-05", "2026-06-04", "2026-06-03", "2026-06-02", "2026-06-01", "2026-05-31", "2026-05-30", "2026-05-29", "2026-05-28", "2026-05-27", "2026-05-26", "2026-05-25", "2026-05-24", "2026-05-23", "2026-05-22", "2026-05-21", "2026-05-20", "2026-05-19", "2026-05-18", "2026-05-17", "2026-05-16", "2026-05-15", "2026-05-14", "2026-05-13", "2026-05-12", "2026-05-11", "2026-05-10", "2026-05-07", "2026-05-06", "2026-05-05", "2026-05-04", "2026-05-03", "2026-05-02", "2026-05-01", "2026-04-30", "2026-04-29", "2026-04-28", "2026-04-27", "2026-04-26", "2026-04-25", "2026-04-24", "2026-04-23", "2026-04-22", "2026-04-21", "2026-04-20", "2026-04-19", "2026-04-18", "2026-04-17", "2026-04-16", "2026-04-15", "2026-04-14", "2026-04-13", "2026-04-12", "2026-04-11", "2026-04-10", "2026-04-09", "2026-04-08", "2026-04-07", "2026-04-06", "2026-04-05", "2026-04-04", "2026-04-03", "2026-04-02", "2026-04-01", "2026-03-31", "2026-03-30", "2026-03-29", "2026-03-28", "2026-03-27", "2026-03-26", "2026-03-25", "2026-03-24", "2026-03-23", "2026-03-22", "2026-03-21", "2026-03-20", "2026-03-19"];
   var slugSet=new Set(allSlugs);
-  var curDate='2026-05-05';
+  var curDate='2026-06-14';
   var calOpen=false;
   var calMonth,calYear;
   // init to current page's month
