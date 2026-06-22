@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Weekly Reports</title>
+<title>RFL Weekly - 2026-W26</title>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
 <style>
 :root {
@@ -398,119 +398,56 @@ nav a.active {
 <body>
 <div class="header">
   <div class="header-inner">
-    <a href="index.html" class="logo">RFL DAILY</a>
-    <nav><a href="index.html">All Issues</a>
-<a href="daily/">Daily</a>
+    <a href="../index.html" class="logo">RFL DAILY</a>
+    <nav><a href="../index.html">All Issues</a>
+<a href="../daily/">Daily</a>
 </nav>
   </div>
 </div>
 <div class="container">
-
+<a href="index.html" class="back-link">&larr; Back</a>
 
 <div class="page-header">
-  <h1>Weekly Reports</h1>
-  <div class="subtitle">14 reports</div>
+  <h1><span class="tag tag-weekly">weekly</span> 2026-W26</h1>
 </div>
-<div class="list-section">
-<div class="list-section-title">2026</div>
-<div class="list-item">
-  <div class="list-item-left">
-    <span class="tag tag-weekly">weekly</span>
-    <a href="2026-W26.html">2026-W26</a>
+<div class="stats"><div class="stat"><span class="stat-val">6</span><span class="stat-label">Lore</span></div>
+</div>
+<div class="report-card">
+  <div class="report-card-header">
+    <h2>2026-W26</h2>
+    
   </div>
-  <div class="list-item-meta">6 lore</div>
-</div>
-<div class="list-item">
-  <div class="list-item-left">
-    <span class="tag tag-weekly">weekly</span>
-    <a href="2026-W25.html">2026-W25</a>
+  <div class="report-body">
+    <h1>RFL 周报 - 2026-W26</h1>
+<blockquote>
+<p>2026-06-22 ~ 2026-06-28 | 覆盖 1 份日报</p>
+</blockquote>
+<h2>Summary / 本周要点</h2>
+<p><strong>EN:</strong> 1 reports aggregated. Lore: 6 threads</p>
+<p><strong>CN:</strong> 共聚合 1 份报告。邮件列表 6 个讨论</p>
+<h2>邮件列表 (Lore)</h2>
+<h3>补丁</h3>
+<ul>
+<li><a href="https://lore.kernel.org/rust-for-linux/DJEM4MAO7RON.1EC4OJM72BCNB@nvidia.com/">rust: io: use view types instead of addresses for <code>Io</code></a> v4 (20p) — Gary Guo, Danilo Krummrich, Alexandre Courbot, 4 reviews</li>
+<li><a href="https://lore.kernel.org/rust-for-linux/20260621105909.4055210-1-ekffu200098@gmail.com/">rust: time: warn and assert out-of-range input in fsleep() and udelay()</a> v3 — Sang-Heon Jeon<blockquote>
+<p>fsleep() documents out-of-range input as a bug but does not check it, unlike udelay(). Add <code>debug_assert!</code> calls to catch it in debug builds.  Also add <code>pr_warn_once!</code> calls in both fsleep() and udelay() so the clamped path is observable at runtime.</p>
+</blockquote>
+</li>
+<li><a href="https://lore.kernel.org/rust-for-linux/DJEPMYC7J6ZG.D0ODUD4YGFCT@kernel.org/">rust: pci: add managed Device::enable_device()</a> v2 (4p) — Danilo Krummrich, 1 reviews</li>
+<li><a href="https://lore.kernel.org/rust-for-linux/DJEQ64V8HE19.2DMBHY4XRPMG6@kernel.org/">rust: samples: add EDU PCI driver sample</a> v2 (4p) — Danilo Krummrich, 1 reviews</li>
+<li><a href="https://lore.kernel.org/rust-for-linux/20260621143647.264770-1-nico.antinori.7@gmail.com/">gpu: nova-core: parse structs via zerocopy</a> — Nicolás Antinori<blockquote>
+<p>Replace the unsafe <code>kernel::transmute::FromBytes</code> trait implementation for the <code>FalconUCodeDescV3</code>, <code>PcirStruct</code>, <code>BitHeader</code>, <code>NpdeStruct</code>, and <code>PmuLookupTableHeader</code> structs with the derivable <code>zerocopy::FromBytes</code> trait.  This change eliminates th...</p>
+</blockquote>
+</li>
+<li><a href="https://lore.kernel.org/rust-for-linux/20260621210134.441-1-iganschel@gmail.com/">rust_binder: reject context manager self-transaction</a> — Keshav Verma<blockquote>
+<p>Rust binder resolved handle 0 to the context manager node, but it does not reject the case where the caller owns the same node.  The C binder driver rejects transactions from the context-manager process to handle 0 after resolving the target node. Ma...</p>
+</blockquote>
+</li>
+</ul>
+<hr />
+<p><em>Generated at 2026-06-22 08:00:00 CST by rfl-reports.py</em></p>
   </div>
-  <div class="list-item-meta">7 lore / 1 zulip</div>
-</div>
-<div class="list-item">
-  <div class="list-item-left">
-    <span class="tag tag-weekly">weekly</span>
-    <a href="2026-W24.html">2026-W24</a>
-  </div>
-  <div class="list-item-meta">6 lore / 1 zulip</div>
-</div>
-<div class="list-item">
-  <div class="list-item-left">
-    <span class="tag tag-weekly">weekly</span>
-    <a href="2026-W23.html">2026-W23</a>
-  </div>
-  <div class="list-item-meta">8 lore</div>
-</div>
-<div class="list-item">
-  <div class="list-item-left">
-    <span class="tag tag-weekly">weekly</span>
-    <a href="2026-W22.html">2026-W22</a>
-  </div>
-  <div class="list-item-meta">8 lore</div>
-</div>
-<div class="list-item">
-  <div class="list-item-left">
-    <span class="tag tag-weekly">weekly</span>
-    <a href="2026-W21.html">2026-W21</a>
-  </div>
-  <div class="list-item-meta">33 lore / 1 zulip</div>
-</div>
-<div class="list-item">
-  <div class="list-item-left">
-    <span class="tag tag-weekly">weekly</span>
-    <a href="2026-W20.html">2026-W20</a>
-  </div>
-  <div class="list-item-meta">13 lore / 1 zulip</div>
-</div>
-<div class="list-item">
-  <div class="list-item-left">
-    <span class="tag tag-weekly">weekly</span>
-    <a href="2026-W19.html">2026-W19</a>
-  </div>
-  <div class="list-item-meta">6 lore / 1 zulip</div>
-</div>
-<div class="list-item">
-  <div class="list-item-left">
-    <span class="tag tag-weekly">weekly</span>
-    <a href="2026-W18.html">2026-W18</a>
-  </div>
-  <div class="list-item-meta">23 lore</div>
-</div>
-<div class="list-item">
-  <div class="list-item-left">
-    <span class="tag tag-weekly">weekly</span>
-    <a href="2026-W17.html">2026-W17</a>
-  </div>
-  <div class="list-item-meta">10 lore</div>
-</div>
-<div class="list-item">
-  <div class="list-item-left">
-    <span class="tag tag-weekly">weekly</span>
-    <a href="2026-W16.html">2026-W16</a>
-  </div>
-  <div class="list-item-meta">3 lore</div>
-</div>
-<div class="list-item">
-  <div class="list-item-left">
-    <span class="tag tag-weekly">weekly</span>
-    <a href="2026-W15.html">2026-W15</a>
-  </div>
-  <div class="list-item-meta">92 lore / 3 zulip</div>
-</div>
-<div class="list-item">
-  <div class="list-item-left">
-    <span class="tag tag-weekly">weekly</span>
-    <a href="2026-W14.html">2026-W14</a>
-  </div>
-  <div class="list-item-meta">273 lore / 19 zulip</div>
-</div>
-<div class="list-item">
-  <div class="list-item-left">
-    <span class="tag tag-weekly">weekly</span>
-    <a href="2026-W13.html">2026-W13</a>
-  </div>
-  <div class="list-item-meta">308 lore / 12 zulip</div>
-</div>
+  <div class="report-nav"><a href="2026-W25.html">&larr; 2026-W25</a><span></span></div>
 </div>
 
 </div>
