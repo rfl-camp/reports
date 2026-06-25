@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>RFL 社区日报 &middot; 2026-06-16</title>
+<title>RFL 社区日报 &middot; 2026-06-26</title>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
@@ -182,15 +182,15 @@ body{background:#fff;font-family:'Helvetica Neue',Helvetica,Arial,'Noto Sans SC'
 </div>
 <div class="af-date-bar" id="dateBar">
   <a class="af-today" id="todayBtn" href="2026-06-26.html">TODAY</a>
-  <span>2026-06-16</span>
+  <span>2026-06-26</span>
   <span class="af-cal-btn" id="calBtn"><svg viewBox="0 0 16 16"><path d="M4 0v1H1.5A1.5 1.5 0 000 2.5v12A1.5 1.5 0 001.5 16h13a1.5 1.5 0 001.5-1.5v-12A1.5 1.5 0 0014.5 1H12V0h-1v1H5V0H4zm0 2v1h1V2h6v1h1V2h2.5a.5.5 0 01.5.5V4H1V2.5a.5.5 0 01.5-.5H4zM1 5h14v9.5a.5.5 0 01-.5.5h-13a.5.5 0 01-.5-.5V5z"/></svg>SELECT</span>
   <div id="calDrop" class="cal-drop" style="display:none"></div>
 </div>
 <div id="calOverlay" class="cal-overlay"></div>
 
 <!-- ── Prev / Next arrows ── -->
-<a href="2026-06-15.html" class="pn-arrow pn-left" title="Previous: 2026-06-15">&#8592;<span class="pn-label">2026-06-15</span></a>
-<a href="2026-06-17.html" class="pn-arrow pn-right" title="Next: 2026-06-17">&#8594;<span class="pn-label">2026-06-17</span></a>
+<a href="2026-06-25.html" class="pn-arrow pn-left" title="Previous: 2026-06-25">&#8592;<span class="pn-label">2026-06-25</span></a>
+
 
 <!-- ── Hero: left visual + right article list ── -->
 <div class="af-hero" id="afHero">
@@ -203,7 +203,19 @@ body{background:#fff;font-family:'Helvetica Neue',Helvetica,Arial,'Noto Sans SC'
 <!-- ── Main article content ── -->
 <div class="af-main">
   <div id="magContent">
-    <div class="mag-page mag-cover" data-density="hard"><div class="mag-page-inner cover-inner"><div class="cover-decoration"></div><div class="cover-content"><div class="cover-masthead">R&thinsp;F&thinsp;L&ensp;D&thinsp;A&thinsp;I&thinsp;L&thinsp;Y</div><div class="cover-rule"></div><div class="cover-crab">🦀</div><div class="cover-date">2026-06-16</div><div class="cover-weekday">Tuesday</div><div class="cover-rule"></div><div class="cover-hero"></div><div class="cover-rule-thin"></div><div class="cover-stats">68 emails &middot; 38 msgs &middot; 18 commits</div></div></div></div><div class="mag-page mag-back-cover" data-density="hard"><div class="mag-page-inner back-cover-inner"><div class="back-decoration"></div><div class="back-content"><div class="back-logo">🦀</div><div class="back-title">Rust-for-Linux</div><div class="back-subtitle">Daily Briefing</div><div class="back-date">2026-06-16</div><div class="back-rule"></div><div class="back-sources"><a href="https://lore.kernel.org/rust-for-linux/">Lore</a> &middot; <a href="https://rust-for-linux.zulipchat.com/">Zulip</a> &middot; <a href="https://github.com/Rust-for-Linux">GitHub</a></div><div class="back-nav"><a href="2026-06-15.html" class="back-link-prev">&larr; 2026-06-15</a><a href="2026-06-17.html" class="back-link-next">2026-06-17 &rarr;</a></div></div></div></div>
+    <div class="mag-page mag-cover" data-density="hard"><div class="mag-page-inner cover-inner"><div class="cover-decoration"></div><div class="cover-content"><div class="cover-masthead">R&thinsp;F&thinsp;L&ensp;D&thinsp;A&thinsp;I&thinsp;L&thinsp;Y</div><div class="cover-rule"></div><div class="cover-crab">🦀</div><div class="cover-date">2026-06-26</div><div class="cover-weekday">Friday</div><div class="cover-rule"></div><div class="cover-hero">GPU / DRM 图形驱动</div><div class="cover-rule-thin"></div><div class="cover-stats">6 msgs</div></div></div></div><div class="mag-page"><div class="mag-page-inner"><div class="mag-accent-bar"></div><div class="mag-section-label">GPU / DRM 图形驱动</div><h2 class="mag-title">GPU / DRM 图形驱动</h2><div class="mag-section-content"><div class="mag-article"><div class="art-title">1. Asahi 驱动：给显存对象加上 sg_table() 方法，准备合入主线分支</div><div class="art-body"><p><strong>1. Asahi 驱动：给显存对象加上 <code>sg_table()</code> 方法，准备合入主线分支</strong></p><p>在 <code>#DRM</code> 频道里，Deborah Brouwer 问 Lyude：要不要干脆把那个「<code>drm: gem: Introduce shmem::Object::sg_table()</code>」补丁先推进到 <code>drm-rust-next</code> 分支里，不用等另一个修复了？这里的背景是：DRM 是 Linux 管理显卡的子系统，GEM 是它用来管理「显存里一块块缓冲区」的机制，而 <code>shmem::Object</code> 是用普通内存（共享内存）来当显存的一种实现。这个新加的 <code>sg_table()</code> 方法，作用是把一块缓冲区描述成一张「散列-聚集表」（scatter-gather table），也就是告诉硬件「这块数据其实是分散在内存好几个地方的，请按这张表去拼起来读」。</p><p>争论点其实很小：有人担心底层 <code>SGTable</code> 代码里有个已知问题，要不要等修好再合？Danilo Krummrich 一锤定音——这个问题是「老毛病」，本来就存在，而且修复已经排上日程了，所以没必要为它卡住这个补丁。Lyude 也爽快答应：「等我坐到电脑前就办。」最终这个 v21 版本的第 4/4 号补丁顺利进了 <code>drm-rust-next</code>。这件事重要，是因为它是 Asahi（苹果芯片开源 GPU 驱动）往上游内核推进的一块拼图，合一块少一块。</p></div><div class="art-links"><a href="https://rust-for-linux.zulipchat.com/#narrow/stream/DRM/topic/Asahi%20GEM%20SHMEM%20changes" class="art-link">💬 查看讨论</a> </div></div><div class="mag-article"><div class="art-title">2. Tyr 驱动：强制同步代码，跟上刚合入的新补丁</div><div class="art-body"><p><strong>2. Tyr 驱动：强制同步代码，跟上刚合入的新补丁</strong></p><p>就在上面那个补丁合入之后，Deborah Brouwer 在 <code>#Tyr</code> 频道宣布：对 <code>tyr-for-upstream</code> 这个分支做了一次「强制更新」（forced update），把它重新建立在最新的 <code>drm-rust-next</code> 之上——而新的 <code>drm-rust-next</code> 已经包含了 Lyude 刚弄好的 <code>sg_table()</code> 补丁。Tyr 是面向 ARM 新一代 GPU 的 Rust 驱动，它依赖 DRM 这套公共基础设施，所以上游一更新，它就得跟着「对齐」。</p><p>「强制更新」听起来吓人，其实就是把自己分支的历史重写一遍、整整齐齐地叠到最新的上游代码上面，方便后续继续开发、也方便别人审阅。对新手来说，这反映了内核开发里一个很常见的节奏：公共底座（drm-rust-next）一动，所有依赖它的驱动分支就要做 rebase 跟进，否则代码就会「对不上号」。</p></div><div class="art-links"><a href="https://rust-for-linux.zulipchat.com/#narrow/stream/Tyr/topic/Forced%20updates%20tyr-for-upstream" class="art-link">💬 查看讨论</a> </div></div><div class="mag-tips"><div>
+    🔰 <strong>小白科普</strong><br/>
+    • <strong>DRM/GEM</strong>：DRM 是 Linux 内核里专门管显卡的子系统，GEM 则是它管理显存缓冲区的机制——你可以理解成「显卡的内存管理员」。<a href="https://docs.kernel.org/gpu/drm-mm.html">📖 DRM 内存管理文档</a><br/>
+    • <strong>Scatter-Gather Table（散列-聚集表）</strong>：当一块数据被拆散存在内存的多个不连续位置时，用一张「表」记录每一段在哪、有多长，硬件照着表去逐段读取，省得非要一整块连续内存。<a href="https://en.wikipedia.org/wiki/Vectored_I/O">📖 Vectored I/O（维基百科）</a>
+  </div></div></div><div class="mag-page-fade"></div><div class="mag-page-num">2</div></div></div><div class="mag-page"><div class="mag-page-inner"><div class="mag-accent-bar"></div><div class="mag-section-label">设备模型（KERNEL::DEVICE）</div><h2 class="mag-title">设备模型（kernel::Device）</h2><div class="mag-section-content"><div class="mag-article"><div class="art-title">给 kernel::Device 加上「相等判断」（PartialEq）的设想</div><div class="art-body"><p><strong>给 <code>kernel::Device</code> 加上「相等判断」（PartialEq）的设想</strong></p><p>Lyude 在 <code>#General</code> 频道抛出一个想法：希望给 Rust 内核里的 <code>Device</code> 类型实现 <code>PartialEq</code>，也就是让代码能直接用 <code>==</code> 来判断「这两个引用指的是不是同一个设备」。这里的 <code>Device</code> 是内核对「一个硬件设备」的抽象——不管是显卡、网卡还是 U 盘，在内核眼里都是一个 <code>Device</code>。目前 Rust 这边还不能直接比较两个 <code>Device</code> 是否相等，写代码时就不太顺手。</p><p>Lyude 自己也说了，这件事「优先级不高」，他打算等手头更重要的 KMS（显示模式设置）相关代码重新 rebase 完之后再做。而且这个需求要等 Danilo 的 <code>DeviceContext</code> 后续改造（特别是其中某个补丁）落地之后才好动手——因为设备的「上下文/状态」体系一改，相等判断该怎么定义也会跟着变。所以这更像是「记在待办清单上的一个心愿」，提醒大家它和 KMS、<code>DeviceContext</code> 这些大块工作是串在一起的。</p></div><div class="art-links"><a href="https://rust-for-linux.zulipchat.com/#narrow/stream/General/topic/Adding%20PartialEq%20support%20for%20kernel%3A%3ADevice%3F" class="art-link">💬 查看讨论</a> </div></div><div class="mag-tips"><div>
+    🔰 <strong>小白科普</strong><br/>
+    • <strong>PartialEq</strong>：Rust 里的一个 trait（能力接口），一个类型实现了它，就能用 <code>==</code> / <code>!=</code> 来比较两个值是否相等。<a href="https://doc.rust-lang.org/std/cmp/trait.PartialEq.html">📖 PartialEq 官方文档</a><br/>
+    • <strong>KMS（Kernel Mode Setting）</strong>：由内核来设置显示器的分辨率、刷新率、画面输出等的机制——简单说就是「内核负责把画面正确地点亮到屏幕上」。<a href="https://en.wikipedia.org/wiki/Mode_setting">📖 Mode setting（维基百科）</a>
+  </div></div></div><div class="mag-page-fade"></div><div class="mag-page-num">3</div></div></div><div class="mag-page"><div class="mag-page-inner"><div class="mag-accent-bar"></div><div class="mag-section-label">ZEROCOPY 库：功能愿望单与 BUG 整理</div><h2 class="mag-title">zerocopy 库：功能愿望单与 bug 整理</h2><div class="mag-section-content"><div class="mag-article"><div class="art-title">1. 汇总 zerocopy 想要的功能和待修 bug（GitHub Issue #1239）</div><div class="art-body"><p><strong>1. 汇总 <code>zerocopy</code> 想要的功能和待修 bug（GitHub Issue #1239）</strong></p><p>Miguel Ojeda 开了一个 issue（#1239，打了 <code>lib</code> 和 <code>meta</code> 标签），用来集中追踪内核这边对 <code>zerocopy</code> 这个库「希望它补上哪些功能、还有哪些 bug 要修」。<code>zerocopy</code> 是一个让你能「零拷贝」地把一段原始字节安全地解释成某个结构体（或反过来）的库——所谓零拷贝，就是不额外复制数据、直接原地当成另一种类型来用，这在内核里处理硬件数据、网络包时既快又省内存。<code>meta</code> 标签说明这是个「汇总型/跟踪型」的 issue，本身不解决问题，而是把零散的需求归拢到一处方便管理。</p></div><div class="art-links"><a href="https://github.com/Rust-for-Linux/linux/issues/1239" class="art-link">📬 查看 Issue</a> </div></div><div class="mag-article"><div class="art-title">2. 「静默 derive」与 feature(trivial_bounds) 的相关讨论</div><div class="art-body"><p><strong>2. 「静默 derive」与 <code>feature(trivial_bounds)</code> 的相关讨论</strong></p><p>在 <code>#zerocopy</code> 频道里，Miguel Ojeda 贴出了上游 <code>zerocopy</code> 项目的一个相关问题链接（google/zerocopy 的 issue #3466），话题是「Silent derives（静默自动派生）」和 Rust 的 <code>feature(trivial_bounds)</code>。简单理解：Rust 里很多 trait 可以用 <code>#[derive(...)]</code> 让编译器自动帮你生成实现，但在某些「平凡约束」（trivial bounds，即一眼就能判定成立或不成立的类型约束）场景下，自动派生的行为会变得不直观甚至「悄悄」出问题，于是涉及到一个还在开发中的编译器特性 <code>trivial_bounds</code>。Miguel 把内核侧和上游库侧的讨论关联起来，方便两边对照、避免重复踩坑。</p></div><div class="art-links"><a href="https://rust-for-linux.zulipchat.com/#narrow/stream/zerocopy/topic/Silent%20derives%20and%20%60feature%28trivial_bounds%29%60" class="art-link">💬 查看讨论</a> </div></div><div class="mag-tips"><div>
+    🔰 <strong>小白科普</strong><br/>
+    • <strong>Zero-copy（零拷贝）</strong>：直接把内存里的原始字节「原地」当成某个数据结构来读写，不额外复制一份，又快又省内存——内核处理硬件寄存器和网络数据时特别需要它。<a href="https://en.wikipedia.org/wiki/Zero-copy">📖 Zero-copy（维基百科）</a><br/>
+    • <strong>derive（派生）</strong>：Rust 里用 <code>#[derive(Trait)]</code> 让编译器自动帮你生成一个 trait 的实现代码，省得手写。<a href="https://doc.rust-lang.org/rust-by-example/trait/derive.html">📖 Rust derive 入门</a>
+  </div></div></div><div class="mag-page-fade"></div><div class="mag-page-num">4</div></div></div><div class="mag-page mag-back-cover" data-density="hard"><div class="mag-page-inner back-cover-inner"><div class="back-decoration"></div><div class="back-content"><div class="back-logo">🦀</div><div class="back-title">Rust-for-Linux</div><div class="back-subtitle">Daily Briefing</div><div class="back-date">2026-06-26</div><div class="back-rule"></div><div class="back-sources"><a href="https://lore.kernel.org/rust-for-linux/">Lore</a> &middot; <a href="https://rust-for-linux.zulipchat.com/">Zulip</a> &middot; <a href="https://github.com/Rust-for-Linux">GitHub</a></div><div class="back-nav"><a href="2026-06-25.html" class="back-link-prev">&larr; 2026-06-25</a></div></div></div></div>
   </div>
 </div>
 
@@ -268,8 +280,8 @@ document.addEventListener('DOMContentLoaded',function(){
   });
 
   /* ── Keyboard: left/right arrows for prev/next ── */
-  var prevUrl='2026-06-15.html';
-  var nextUrl='2026-06-17.html';
+  var prevUrl='2026-06-25.html';
+  var nextUrl='';
   document.addEventListener('keydown',function(e){
     if(calOpen){if(e.key==='Escape'){closeCal();e.stopPropagation()}return}
     if(e.key==='Escape'){window.location.href='index.html'}
@@ -280,7 +292,7 @@ document.addEventListener('DOMContentLoaded',function(){
   /* ── Calendar picker ── */
   var allSlugs=["2026-06-26", "2026-06-25", "2026-06-24", "2026-06-23", "2026-06-22", "2026-06-21", "2026-06-20", "2026-06-19", "2026-06-18", "2026-06-17", "2026-06-16", "2026-06-15", "2026-06-14", "2026-06-13", "2026-06-12", "2026-06-11", "2026-06-10", "2026-06-09", "2026-06-08", "2026-06-07", "2026-06-06", "2026-06-05", "2026-06-04", "2026-06-03", "2026-06-02", "2026-06-01", "2026-05-31", "2026-05-30", "2026-05-29", "2026-05-28", "2026-05-27", "2026-05-26", "2026-05-25", "2026-05-24", "2026-05-23", "2026-05-22", "2026-05-21", "2026-05-20", "2026-05-19", "2026-05-18", "2026-05-17", "2026-05-16", "2026-05-15", "2026-05-14", "2026-05-13", "2026-05-12", "2026-05-11", "2026-05-10", "2026-05-07", "2026-05-06", "2026-05-05", "2026-05-04", "2026-05-03", "2026-05-02", "2026-05-01", "2026-04-30", "2026-04-29", "2026-04-28", "2026-04-27", "2026-04-26", "2026-04-25", "2026-04-24", "2026-04-23", "2026-04-22", "2026-04-21", "2026-04-20", "2026-04-19", "2026-04-18", "2026-04-17", "2026-04-16", "2026-04-15", "2026-04-14", "2026-04-13", "2026-04-12", "2026-04-11", "2026-04-10", "2026-04-09", "2026-04-08", "2026-04-07", "2026-04-06", "2026-04-05", "2026-04-04", "2026-04-03", "2026-04-02", "2026-04-01", "2026-03-31", "2026-03-30", "2026-03-29", "2026-03-28", "2026-03-27", "2026-03-26", "2026-03-25", "2026-03-24", "2026-03-23", "2026-03-22", "2026-03-21", "2026-03-20", "2026-03-19"];
   var slugSet=new Set(allSlugs);
-  var curDate='2026-06-16';
+  var curDate='2026-06-26';
   var calOpen=false;
   var calMonth,calYear;
   // init to current page's month
