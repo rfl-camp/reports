@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>RFL 社区日报 &middot; 2026-06-21</title>
+<title>RFL 社区日报 &middot; 2026-06-29</title>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
@@ -182,15 +182,15 @@ body{background:#fff;font-family:'Helvetica Neue',Helvetica,Arial,'Noto Sans SC'
 </div>
 <div class="af-date-bar" id="dateBar">
   <a class="af-today" id="todayBtn" href="2026-06-29.html">TODAY</a>
-  <span>2026-06-21</span>
+  <span>2026-06-29</span>
   <span class="af-cal-btn" id="calBtn"><svg viewBox="0 0 16 16"><path d="M4 0v1H1.5A1.5 1.5 0 000 2.5v12A1.5 1.5 0 001.5 16h13a1.5 1.5 0 001.5-1.5v-12A1.5 1.5 0 0014.5 1H12V0h-1v1H5V0H4zm0 2v1h1V2h6v1h1V2h2.5a.5.5 0 01.5.5V4H1V2.5a.5.5 0 01.5-.5H4zM1 5h14v9.5a.5.5 0 01-.5.5h-13a.5.5 0 01-.5-.5V5z"/></svg>SELECT</span>
   <div id="calDrop" class="cal-drop" style="display:none"></div>
 </div>
 <div id="calOverlay" class="cal-overlay"></div>
 
 <!-- ── Prev / Next arrows ── -->
-<a href="2026-06-20.html" class="pn-arrow pn-left" title="Previous: 2026-06-20">&#8592;<span class="pn-label">2026-06-20</span></a>
-<a href="2026-06-22.html" class="pn-arrow pn-right" title="Next: 2026-06-22">&#8594;<span class="pn-label">2026-06-22</span></a>
+<a href="2026-06-28.html" class="pn-arrow pn-left" title="Previous: 2026-06-28">&#8592;<span class="pn-label">2026-06-28</span></a>
+
 
 <!-- ── Hero: left visual + right article list ── -->
 <div class="af-hero" id="afHero">
@@ -203,7 +203,60 @@ body{background:#fff;font-family:'Helvetica Neue',Helvetica,Arial,'Noto Sans SC'
 <!-- ── Main article content ── -->
 <div class="af-main">
   <div id="magContent">
-    <div class="mag-page mag-cover" data-density="hard"><div class="mag-page-inner cover-inner"><div class="cover-decoration"></div><div class="cover-content"><div class="cover-masthead">R&thinsp;F&thinsp;L&ensp;D&thinsp;A&thinsp;I&thinsp;L&thinsp;Y</div><div class="cover-rule"></div><div class="cover-crab">🦀</div><div class="cover-date">2026-06-21</div><div class="cover-weekday">Sunday</div><div class="cover-rule"></div><div class="cover-hero"></div><div class="cover-rule-thin"></div><div class="cover-stats">52 emails</div></div></div></div><div class="mag-page mag-back-cover" data-density="hard"><div class="mag-page-inner back-cover-inner"><div class="back-decoration"></div><div class="back-content"><div class="back-logo">🦀</div><div class="back-title">Rust-for-Linux</div><div class="back-subtitle">Daily Briefing</div><div class="back-date">2026-06-21</div><div class="back-rule"></div><div class="back-sources"><a href="https://lore.kernel.org/rust-for-linux/">Lore</a> &middot; <a href="https://rust-for-linux.zulipchat.com/">Zulip</a> &middot; <a href="https://github.com/Rust-for-Linux">GitHub</a></div><div class="back-nav"><a href="2026-06-20.html" class="back-link-prev">&larr; 2026-06-20</a><a href="2026-06-22.html" class="back-link-next">2026-06-22 &rarr;</a></div></div></div></div>
+    <div class="mag-page mag-cover" data-density="hard"><div class="mag-page-inner cover-inner"><div class="cover-decoration"></div><div class="cover-content"><div class="cover-masthead">R&thinsp;F&thinsp;L&ensp;D&thinsp;A&thinsp;I&thinsp;L&thinsp;Y</div><div class="cover-rule"></div><div class="cover-crab">🦀</div><div class="cover-date">2026-06-29</div><div class="cover-weekday">Monday</div><div class="cover-rule"></div><div class="cover-hero">☀️ 今日概览</div><div class="cover-rule-thin"></div><div class="cover-stats">40 emails &middot; 1 msgs &middot; 3 commits</div></div></div></div><div class="mag-page"><div class="mag-page-inner"><div class="mag-accent-bar"></div><div class="mag-section-label">☀️ 今日概览</div><h2 class="mag-title">☀️ 今日概览</h2><div class="mag-section-content"><div class="mag-article"><div class="art-body"><p>
+    今天社区最大的动静来自显卡（GPU/DRM）方向：Danilo Krummrich 提交了一个超大的 <strong>19 个补丁</strong>的系列（已经第 5 版了），专门解决"显卡命令运行时父设备可能已经被拔掉"这个棘手的安全问题。同时，nova-core（一个用 Rust 写的英伟达显卡驱动雏形）也在修一个内存布局对不齐的隐患。
+    另一条主线是"初始化安全大扫除"：好几位开发者（主要是 Miguel Ojeda）在把内核里手写的、容易出错的"清零初始化"代码，统一换成更安全的现代写法（<code>pin_init::zeroed</code> 和 zerocopy）。
+    引用计数方面也有个小而精的改动，让一个"危险函数"更难被误用。
+    最后，Linus 正式发布了 <strong>Linux 7.2-rc1</strong>，新一轮开发周期开始啦！
+  </p></div></div></div><div class="mag-page-fade"></div><div class="mag-page-num">2</div></div></div><div class="mag-page"><div class="mag-page-inner"><div class="mag-accent-bar"></div><div class="mag-section-label">GPU / DRM 显卡驱动</div><h2 class="mag-title">GPU / DRM 显卡驱动</h2><div class="mag-section-content"><div class="mag-article"><div class="art-title">1. 给显卡命令加一把"父设备还在不在"的安全锁（19 连发大系列 v5）</div><div class="art-body"><p><strong>1. 给显卡命令加一把"父设备还在不在"的安全锁（19 连发大系列 v5）</strong></p><p>
+    Danilo Krummrich 提交了今天分量最重的一组补丁。问题的背景是这样的：当用户程序通过 <code>ioctl</code>（用户态向驱动下命令的一种方式）操作显卡时，这段代码是在普通的进程上下文里跑的，<strong>内核并不保证此时显卡背后的总线设备还连着</strong>——想象你正在用打印机打文件，结果有人偷偷把打印机的 USB 线拔了，程序还傻乎乎地往那个地址写数据，就会崩溃。
+  </p><p>
+    Danilo 的解法是引入一个叫 <code>RegistrationGuard</code> 的"守卫"对象。它本质上是把内核的 <code>drm_dev_enter/exit</code> 这对函数（基于 SRCU 这种特殊的读写保护机制）包成一个 Rust 守卫：只要这个守卫还活着，编译器就能保证"父设备在这段时间内一定是绑定状态的"。这样就把一个运行时才会爆的 bug，变成了编译期就能挡住的类型错误。
+  </p><p>
+    这个系列里有好几块拼图，都很有看头：
+  </p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/20260628145406.2107056-1-dakr@kernel.org/" class="art-link">📬 查看补丁系列</a> </div></div><div class="mag-article"><div class="art-title">2. nova-core：修复 GSP 共享内存的"内存对不齐"隐患（4 连发）</div><div class="art-body"><p><strong>2. nova-core：修复 GSP 共享内存的"内存对不齐"隐患（4 连发）</strong></p><p>
+    SeungJong Ha 提交了一组补丁，针对 nova-core（社区正在用 Rust 重写的英伟达 GPU 驱动）里和 GSP 通信的内存结构 <code>GspMem</code>。GSP 是英伟达显卡上的一颗小处理器，主机和它之间通过一块 DMA 共享内存来交换消息。原来的代码手写了一个 <code>unsafe impl transmute::{AsBytes, FromBytes}</code>，意思是"我保证这块内存可以原封不动地当字节数组来读写"——但实际上它<strong>并不满足"无填充字节"的要求</strong>：里面的 <code>Msgq</code> 在两个小头部之后塞了一个按页对齐的 <code>MsgqData</code>，中间会有编译器自动插入的空隙（padding）。
+  </p><p>
+    这种"手工保证"一旦哪天结构改了就可能出错，是典型的 unsafe 雷区。补丁通过 transmute 桥接到更严谨的 <code>zerocopy</code> 库来重新实现这个转换，让"能不能安全地当字节看"这件事由库和编译器来把关，而不是靠人肉审查。
+  </p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/20260628-dma-zerocopy-bridge-v1-4-9a2895ebe30d@gmail.com/" class="art-link">📬 查看补丁</a> </div></div><div class="mag-article"><div class="art-title">3. drm/nova：删掉 commands.rs 里没人用的 trait（7 连发清理）</div><div class="art-body"><p><strong>3. drm/nova：删掉 commands.rs 里没人用的 trait（7 连发清理）</strong></p><p>
+    Miguel Ojeda 做了一次小清理，移除了 nova 驱动 <code>commands.rs</code> 文件里一个已经没有任何地方使用的 trait。这类"删死代码"的补丁虽然不起眼，但对一个还在快速发育的新驱动来说很重要：及时清掉用不上的抽象，能让后来者读代码时少走弯路，也避免别人误以为这个 trait 还有用而去维护它。
+  </p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/CANiq72ki4YkLKUQw-iR_GcF_ernUvN75m8VdHCeWmQh8Amy6Ww@mail.gmail.com/" class="art-link">📬 查看补丁</a> </div></div><div class="mag-tips"><div>
+    🔍 <strong>小白科普</strong><br/>
+    · <strong>DRM</strong>（Direct Rendering Manager）：Linux 内核里专门管显卡的子系统，负责让程序能直接画图、操作 GPU。和"数字版权管理"那个 DRM 完全没关系。<a href="https://docs.kernel.org/gpu/drm-internals.html">了解更多 →</a><br/>
+    · <strong>ioctl</strong>：用户程序给设备驱动"下特殊命令"的通用接口，比如让显卡分配一块显存。可以理解成"给驱动打的一个万能客服电话"。<a href="https://en.wikipedia.org/wiki/Ioctl">了解更多 →</a>
+  </div></div></div><div class="mag-page-fade"></div><div class="mag-page-num">3</div></div></div><div class="mag-page"><div class="mag-page-inner"><div class="mag-accent-bar"></div><div class="mag-section-label">初始化安全大扫除（PIN_INIT / ZEROCOPY）</div><h2 class="mag-title">初始化安全大扫除（pin_init / zerocopy）</h2><div class="mag-section-content"><div class="mag-article"><div class="art-title">1. iommu：把 core::mem::zeroed 换成 pin_init::zeroed</div><div class="art-body"><p>
+    今天有一条很清晰的支线：把内核里各处"手动清零初始化"的老写法，统一替换成更现代、更安全的方式。背景是 Rust 标准库里的 <code>core::mem::zeroed()</code> 是个 unsafe 函数——它直接把一块内存全填成 0 然后当作某个类型来用，但万一这个类型并不允许"全 0"是合法值，就是未定义行为。社区更推荐用 <code>pin_init::zeroed</code>，它会在类型层面要求"这个类型确实可以安全地全 0 初始化"。
+  </p><p><strong>1. iommu：把 <code>core::mem::zeroed</code> 换成 <code>pin_init::zeroed</code></strong></p><p>
+    由 Gary Guo 等人推动，针对 IOMMU（内存管理单元，负责给设备做地址翻译和隔离）相关代码。改动把不安全的清零调用换成更受约束的版本，已经有两个 reviewer 看过。这是这条"扫除线"里最核心的一笔。
+  </p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/CANiq72kdCAyRUmXFcqQfkHpk1miG8Gagsn0_5U8p4WpKxv9d_g@mail.gmail.com/" class="art-link">📬 查看补丁</a> </div></div><div class="mag-article"><div class="art-title">2. USB：usb_device_id 改用 pin_init::zeroed 初始化</div><div class="art-body"><p><strong>2. USB：<code>usb_device_id</code> 改用 <code>pin_init::zeroed</code> 初始化</strong></p><p>
+    同样由 Miguel Ojeda 提交。<code>usb_device_id</code> 是 USB 驱动用来声明"我支持哪些 USB 设备"的一张身份表（靠厂商 ID、产品 ID 等字段匹配）。这里把它的零初始化也换成了安全版本，思路和上面 iommu 的完全一致。
+  </p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/CANiq72mx1EDo4EYLUMN63_MtScJjobbPH3QCZ50oJCnZ9vc27g@mail.gmail.com/" class="art-link">📬 查看补丁</a> </div></div></div><div class="mag-page-fade"></div><div class="mag-page-num">4</div></div></div><div class="mag-page"><div class="mag-page-inner"><div class="mag-accent-bar"></div><div class="mag-section-label">CONTINUED</div><h2 class="mag-title">初始化安全大扫除（pin_init / zerocopy）</h2><div class="mag-section-content"><div class="mag-article"><div class="art-title">3. rust_binder：file_operations 改用 pin_init::zeroed 初始化</div><div class="art-body"><p><strong>3. rust_binder：<code>file_operations</code> 改用 <code>pin_init::zeroed</code> 初始化</strong></p><p>
+    还是 Miguel 的同款改造，这次落在 rust_binder（用 Rust 重写的 Android Binder 进程间通信驱动）上。<code>file_operations</code> 是一张"函数指针表"，定义了当用户对一个文件（设备节点）执行 read/write/ioctl 等操作时，内核该调哪个函数。把它的初始化统一成安全写法，是这场扫除行动覆盖到的又一个角落。
+  </p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/CANiq72k8KOmVLrHGOa9SidU=vYqGUqi5dmyW9J1auVMnqaQAeg@mail.gmail.com/" class="art-link">📬 查看补丁</a> </div></div><div class="mag-article"><div class="art-title">4. 【新手友好】从 transmute::AsBytes 迁移到 zerocopy::IntoBytes 的讨论</div><div class="art-body"><p><strong>4. 【新手友好】从 <code>transmute::AsBytes</code> 迁移到 <code>zerocopy::IntoBytes</code> 的讨论</strong></p><p>
+    在 Zulip 聊天室里，新人 Prashant 认领了一个被标记为 "good first issue"（适合新手上手）的任务（GitHub issue #975），目标是把内核里自家维护的 <code>transmute</code> 模块迁移到业界更成熟的 <code>zerocopy</code> 库。他在频道里说自己刚理解了 zerocopy 的大致用法，准备动手试试。这其实和上面 nova-core 修 <code>GspMem</code> 是同一个大方向——社区正逐步用 zerocopy 这套经过千锤百炼的库，来替换内核里自己手搓的字节转换代码。如果你也想给内核投出第一个补丁，盯着这类标签准没错。
+  </p></div><div class="art-links"><a href="https://rust-for-linux.zulipchat.com/#narrow/stream/Help/topic/Migration%20from%20transmute%3A%3AAsBytes%20to%20zerocopy%3A%3AIntoBytes" class="art-link">💬 查看讨论</a> </div></div><div class="mag-tips"><div>
+    🔍 <strong>小白科普</strong><br/>
+    · <strong>zerocopy / "零拷贝"</strong>：一种把一块内存原样当成另一种类型来读写、不用复制数据的技术。难点在于"必须保证内存布局完全对得上、没有偷偷的填充字节"，zerocopy 库就是帮你在编译期把这件事验证清楚。<a href="https://doc.rust-lang.org/nomicon/transmutes.html">了解 transmute 风险 →</a><br/>
+    · <strong>good first issue</strong>：开源项目专门给新人留的"练手任务"标签，难度低、范围清晰，是迈出贡献第一步的最佳起点。<a href="https://rust-for-linux.com/contributing">如何参与贡献 →</a>
+  </div></div></div><div class="mag-page-fade"></div><div class="mag-page-num">5</div></div></div><div class="mag-page"><div class="mag-page-inner"><div class="mag-accent-bar"></div><div class="mag-section-label">引用计数 API 改进</div><h2 class="mag-title">引用计数 API 改进</h2><div class="mag-section-content"><div class="mag-article"><div class="art-title">把 AlwaysRefCounted::inc_ref 改成"关联函数"（v5）</div><div class="art-body"><p><strong>把 <code>AlwaysRefCounted::inc_ref</code> 改成"关联函数"（v5）</strong></p><p>
+    Trevor Chan 提交了一个看着小、但设计意味很足的改动。<code>AlwaysRefCounted</code> 是内核里描述"这种对象永远带引用计数"的 trait，<code>inc_ref</code> 就是"给引用计数 +1"的操作。问题在于：增加引用计数是个<strong>不该随手乱调</strong>的危险动作——调多了对象就永远释放不掉（内存泄漏），调错了甚至可能引发安全问题。
+  </p><p>
+    原来 <code>inc_ref</code> 是个普通方法，可以像 <code>obj.inc_ref()</code> 这样很顺手地点出来，太容易手滑误调。补丁把它改成<strong>关联函数</strong>，调用时必须写成 <code>AlwaysRefCounted::inc_ref(&obj)</code> 这种更显眼、更"郑重其事"的形式，相当于给这个危险操作加了一道"你确定要这么做吗"的视觉提醒。当然，这个改动要求把内核里所有实现了 <code>AlwaysRefCounted</code> 的类型都跟着改一遍，所以已经迭代到第 5 版了。
+  </p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/20260628092853.16550-1-trev@trevrosa.dev/" class="art-link">📬 查看补丁</a> </div></div><div class="mag-tips"><div>
+    🔍 <strong>小白科普</strong><br/>
+    · <strong>引用计数</strong>：给一个对象记账"现在有几个人在用我"。用的人 +1，用完 -1，归零就自动释放。这是内核管理共享对象生命周期最常见的手段。<a href="https://en.wikipedia.org/wiki/Reference_counting">了解更多 →</a><br/>
+    · <strong>关联函数 vs 方法</strong>：Rust 里 <code>obj.foo()</code>（方法）和 <code>Type::foo(&obj)</code>（关联函数）调用形式不同；把危险操作设计成后者，能让它在代码里更显眼、不容易被误用。<a href="https://doc.rust-lang.org/book/ch05-03-method-syntax.html">了解更多 →</a>
+  </div></div></div><div class="mag-page-fade"></div><div class="mag-page-num">6</div></div></div><div class="mag-page"><div class="mag-page-inner"><div class="mag-accent-bar"></div><div class="mag-section-label">️ 内核主线发布与合并</div><h2 class="mag-title">️ 内核主线发布与合并</h2><div class="mag-section-content"><div class="mag-article"><div class="art-title">1. Linus 发布 Linux 7.2-rc1</div><div class="art-body"><p><strong>1. Linus 发布 Linux 7.2-rc1</strong></p><p>
+    Linus Torvalds 打出了 <code>Linux 7.2-rc1</code> 这个标签，意味着 7.2 版本的"合并窗口"已经结束，进入了候选发布（rc, release candidate）阶段。简单说：接下来这段时间不再大量加新功能，而是专心测试和修 bug，直到足够稳定后才正式发布 7.2。对在跟踪 rust-next 分支的同学来说，这是一个重要的时间节点。
+  </p></div><div class="art-links"><a href="https://github.com/Rust-for-Linux/linux/commit/dc59e4fea9d83f03bad6bddf3fa2e52491777482" class="art-link">🔗 查看提交</a> </div></div><div class="mag-article"><div class="art-title">2. 合并 NTB 子系统更新</div><div class="art-body"><p><strong>2. 合并 NTB 子系统更新</strong></p><p>
+    Linus 拉取了 Jon Mason 维护的 NTB（Non-Transparent Bridge，非透明桥，一种让两台机器通过 PCIe 直连通信的技术）更新。这次主要是一个 EPF 的 bug 修复——防止在设备移除时执行非法的 unmap（解除内存映射）操作——外加一些文档修正和 AMD 驱动的小清理。属于稳健的维护性更新。
+  </p></div><div class="art-links"><a href="https://github.com/Rust-for-Linux/linux/commit/0716f9b9338a86dd27796e00ed0fd560c653323a" class="art-link">🔗 查看提交</a> </div></div><div class="mag-article"><div class="art-title">3. 合并 Input 输入子系统更新</div><div class="art-body"><p><strong>3. 合并 Input 输入子系统更新</strong></p><p>
+    来自 Dmitry Torokhov 的输入设备更新也被合入。重点是给 Synaptics RMI4 触摸板驱动修了两个潜在的"越界访问"（OOB）问题——分别出在 F30 和 F3A 这两类功能的按键映射处理上——还加了一个兼容措施来容忍某些有 bug 的固件。越界访问是内核里很常见也很危险的一类漏洞，能直接读写到不该碰的内存，所以这类修复值得关注。
+  </p></div><div class="art-links"><a href="https://github.com/Rust-for-Linux/linux/commit/8b69c047587112f7bcb4b0d83f2729d8dd29ebe2" class="art-link">🔗 查看提交</a> </div></div><div class="mag-tips"><div>
+    🔍 <strong>小白科普</strong><br/>
+    · <strong>-rc 版本</strong>：release candidate（候选发布版）。内核开发节奏是"先开合并窗口疯狂加料 → 然后发一连串 rc 版只修 bug → 最后发正式版"。看到 rc1 就知道新功能定型、进入打磨期了。<a href="https://docs.kernel.org/process/2.Process.html">了解内核开发流程 →</a><br/>
+    · <strong>越界访问（OOB, Out-Of-Bounds）</strong>：程序读写了数组/缓冲区边界之外的内存，是导致崩溃和安全漏洞的常见根源。<a href="https://en.wikipedia.org/wiki/Buffer_overflow">了解更多 →</a>
+  </div></div></div><div class="mag-page-fade"></div><div class="mag-page-num">7</div></div></div><div class="mag-page mag-back-cover" data-density="hard"><div class="mag-page-inner back-cover-inner"><div class="back-decoration"></div><div class="back-content"><div class="back-logo">🦀</div><div class="back-title">Rust-for-Linux</div><div class="back-subtitle">Daily Briefing</div><div class="back-date">2026-06-29</div><div class="back-rule"></div><div class="back-sources"><a href="https://lore.kernel.org/rust-for-linux/">Lore</a> &middot; <a href="https://rust-for-linux.zulipchat.com/">Zulip</a> &middot; <a href="https://github.com/Rust-for-Linux">GitHub</a></div><div class="back-nav"><a href="2026-06-28.html" class="back-link-prev">&larr; 2026-06-28</a></div></div></div></div>
   </div>
 </div>
 
@@ -268,8 +321,8 @@ document.addEventListener('DOMContentLoaded',function(){
   });
 
   /* ── Keyboard: left/right arrows for prev/next ── */
-  var prevUrl='2026-06-20.html';
-  var nextUrl='2026-06-22.html';
+  var prevUrl='2026-06-28.html';
+  var nextUrl='';
   document.addEventListener('keydown',function(e){
     if(calOpen){if(e.key==='Escape'){closeCal();e.stopPropagation()}return}
     if(e.key==='Escape'){window.location.href='index.html'}
@@ -280,7 +333,7 @@ document.addEventListener('DOMContentLoaded',function(){
   /* ── Calendar picker ── */
   var allSlugs=["2026-06-29", "2026-06-28", "2026-06-27", "2026-06-26", "2026-06-25", "2026-06-24", "2026-06-23", "2026-06-22", "2026-06-21", "2026-06-20", "2026-06-19", "2026-06-18", "2026-06-17", "2026-06-16", "2026-06-15", "2026-06-14", "2026-06-13", "2026-06-12", "2026-06-11", "2026-06-10", "2026-06-09", "2026-06-08", "2026-06-07", "2026-06-06", "2026-06-05", "2026-06-04", "2026-06-03", "2026-06-02", "2026-06-01", "2026-05-31", "2026-05-30", "2026-05-29", "2026-05-28", "2026-05-27", "2026-05-26", "2026-05-25", "2026-05-24", "2026-05-23", "2026-05-22", "2026-05-21", "2026-05-20", "2026-05-19", "2026-05-18", "2026-05-17", "2026-05-16", "2026-05-15", "2026-05-14", "2026-05-13", "2026-05-12", "2026-05-11", "2026-05-10", "2026-05-07", "2026-05-06", "2026-05-05", "2026-05-04", "2026-05-03", "2026-05-02", "2026-05-01", "2026-04-30", "2026-04-29", "2026-04-28", "2026-04-27", "2026-04-26", "2026-04-25", "2026-04-24", "2026-04-23", "2026-04-22", "2026-04-21", "2026-04-20", "2026-04-19", "2026-04-18", "2026-04-17", "2026-04-16", "2026-04-15", "2026-04-14", "2026-04-13", "2026-04-12", "2026-04-11", "2026-04-10", "2026-04-09", "2026-04-08", "2026-04-07", "2026-04-06", "2026-04-05", "2026-04-04", "2026-04-03", "2026-04-02", "2026-04-01", "2026-03-31", "2026-03-30", "2026-03-29", "2026-03-28", "2026-03-27", "2026-03-26", "2026-03-25", "2026-03-24", "2026-03-23", "2026-03-22", "2026-03-21", "2026-03-20", "2026-03-19"];
   var slugSet=new Set(allSlugs);
-  var curDate='2026-06-21';
+  var curDate='2026-06-29';
   var calOpen=false;
   var calMonth,calYear;
   // init to current page's month
