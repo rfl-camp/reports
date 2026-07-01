@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Monthly Reports</title>
+<title>RFL Monthly - 2026-07</title>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
 <style>
 :root {
@@ -398,49 +398,81 @@ nav a.active {
 <body>
 <div class="header">
   <div class="header-inner">
-    <a href="index.html" class="logo">RFL DAILY</a>
-    <nav><a href="index.html">All Issues</a>
-<a href="daily/">Daily</a>
+    <a href="../index.html" class="logo">RFL DAILY</a>
+    <nav><a href="../index.html">All Issues</a>
+<a href="../daily/">Daily</a>
 </nav>
   </div>
 </div>
 <div class="container">
-
+<a href="index.html" class="back-link">&larr; Back</a>
 
 <div class="page-header">
-  <h1>Monthly Reports</h1>
-  <div class="subtitle">4 reports</div>
+  <h1><span class="tag tag-monthly">monthly</span> 2026-07</h1>
 </div>
-<div class="list-section">
-<div class="list-section-title">2026</div>
-<div class="list-item">
-  <div class="list-item-left">
-    <span class="tag tag-monthly">monthly</span>
-    <a href="2026-07.html">2026-07</a>
+<div class="stats"><div class="stat"><span class="stat-val">25</span><span class="stat-label">Lore</span></div>
+<div class="stat"><span class="stat-val">1</span><span class="stat-label">GitHub</span></div>
+</div>
+<div class="report-card">
+  <div class="report-card-header">
+    <h2>2026-07</h2>
+    
   </div>
-  <div class="list-item-meta">25 lore</div>
-</div>
-<div class="list-item">
-  <div class="list-item-left">
-    <span class="tag tag-monthly">monthly</span>
-    <a href="2026-06.html">2026-06</a>
+  <div class="report-body">
+    <h1>RFL 月报 - 2026年7月</h1>
+<blockquote>
+<p>2026-07-01 ~ 2026-07-31 | 覆盖 1 份日报</p>
+</blockquote>
+<h2>Summary / 本月要点</h2>
+<p><strong>EN:</strong> 1 reports aggregated. Lore: 25 threads | GitHub: 1 items</p>
+<p><strong>CN:</strong> 共聚合 1 份报告。邮件列表 25 个讨论、GitHub 1 项更新</p>
+<h2>邮件列表 (Lore)</h2>
+<h3>补丁</h3>
+<ul>
+<li><a href="https://lore.kernel.org/rust-for-linux/20260630205342.22301-1-breno301alves@gmail.com/">rust: core: implement rx580 state optimization engine and c-to-rust char dev</a> — Breno Rodrigues Alves, Miguel Ojeda, Gary Guo, 2 reviews<blockquote>
+<p>This patch introduces an automated indexed state mechanism to optimize VRAM latency and command loops for the Radeon RX 580 architecture. Additionally, it provides a converted C-to-Rust sample char driver.</p>
+</blockquote>
+</li>
+<li><a href="https://lore.kernel.org/rust-for-linux/DJM8SSFIWO1F.XXJVWIMPWWV2@nvidia.com/">rust: error: add remaining error codes</a> — Fiona Behrens, Gary Guo, Alexandre Courbot, 4 reviews</li>
+<li><a href="https://lore.kernel.org/rust-for-linux/878cfb22ab185874bc363e2b7910a6978af646ab.1782763889.git.pgovind2@uci.edu/">Make Guard::lock_ref unavailable if Lock is not Sync</a> v2 — Gary Guo, Priya Bala Govindasamy, 1 reviews<blockquote>
+<p>Guard::lock_ref() returns a reference to the Lock stored in the Guard. Guard is Sync if T is Sync. However, Lock is Sync only if T is Send. This means that a reference to Guard can be sent across threads and multiple threads can acquire a reference t...</p>
+</blockquote>
+</li>
+<li><a href="https://lore.kernel.org/rust-for-linux/CANiq72==81FEfMxTnUCdrFBtj9fnCnhF6jXgx_eqE-VsLgW9Rw@mail.gmail.com/">rust: I/O type generalization and projection</a> v5 (20p) — Miguel Ojeda, Gary Guo, 2 reviews</li>
+<li><a href="https://lore.kernel.org/rust-for-linux/20260630194749.1209490-2-ttabi@nvidia.com/">rust: firmware: add request_into_buf()</a> v2 (7p) — Timur Tabi, Danilo Krummrich, 1 reviews<blockquote>
+<p>Add request_into_buf(), a Rust wrapper around the request_firmware_into_buf() function. This variant loads the firmware image directly into a caller-provided buffer rather than a kernel-allocated one.</p>
+</blockquote>
+</li>
+<li><a href="https://lore.kernel.org/rust-for-linux/20260630194749.1209490-3-ttabi@nvidia.com/">gpu: nova-core: add TLV parser for firmware files</a> v2 (7p) — Timur Tabi, Danilo Krummrich, 1 reviews<blockquote>
+<p>TLV (type, length, value) files are the new image format used by Nova to encapsulate firmware images and their metadata.  Unlike the firmware files for previous versions of the firmware, TLV filenames are not versioned, and they have a .tlv suffix.  ...</p>
+</blockquote>
+</li>
+<li><a href="https://lore.kernel.org/rust-for-linux/CAPPBnEZ+aNg+0ES+TmGo+JQMD1rH1ougz2PrAEtQLMy4+oLrOg@mail.gmail.com/">rust: sync: avoid leaking the lock lifetime from Guard::lock_ref</a> — Priya Bala Govindasamy, 1 reviews</li>
+<li><a href="https://lore.kernel.org/rust-for-linux/cover.1782763889.git.pgovind2@uci.edu/">rust: sync: Make Guard::lock_ref unavailable if Lock is not Sync</a> v2 — Priya Bala Govindasamy<blockquote>
+<p>Dear Linux Kernel Maintainers,  We are developing a tool called FerroLens to detect potential unsound behavior in Rust code in the Linux kernel. The tool internally uses an LLM to detect bugs. We then perform manual analysis to verify these reports. ...</p>
+</blockquote>
+</li>
+<li><a href="https://lore.kernel.org/rust-for-linux/DJLZI1M9JV9M.1Z8DFJS8QERKS@nvidia.com/">rust: iommu: replace core::mem::zeroed with Zeroable::zeroed</a> v2 — Alexandre Courbot, 1 reviews</li>
+<li><a href="https://lore.kernel.org/rust-for-linux/akM2AsJ0H4q1aLon@MacBook-0RXW5/">rust: sync: move lockdep types to rust/kernel/sync/lockdep.rs</a> (5p) — Boqun Feng, 1 reviews</li>
+<li><a href="https://lore.kernel.org/rust-for-linux/akM7upgsb5y9d67B@MacBook-0RXW5/">rust: sync: add const constructor for raw_spinlock_t</a> (5p) — Boqun Feng, 1 reviews</li>
+<li><a href="https://lore.kernel.org/rust-for-linux/akNXvfSfue7_3tyd@li-1a3e774c-28e4-11b2-a85c-acc9f2883e29.ibm.com/">rust/powerpc: Set min rustc version for powerpc</a> V16 (7p) — Mukesh Kumar Chaurasiya, 1 reviews</li>
+<li><a href="https://lore.kernel.org/rust-for-linux/CANiq72=SQK7pd-fj+4MOb=E6=R-DHCcLcuCvN=us2E5o7Rcy2A@mail.gmail.com/">cpufreq: rcpufreq_dt: use vertical import style</a> (7p) — Miguel Ojeda, 1 reviews</li>
+<li><a href="https://lore.kernel.org/rust-for-linux/DJMAFSKM4K9W.19ED2PVPU6S3R@kernel.org/">samples: rust_dma: use vertical import style</a> (7p) — Danilo Krummrich, 1 reviews</li>
+<li><a href="https://lore.kernel.org/rust-for-linux/20260630-configfs-syn-v5-1-da712975ec1a@gmail.com/">rust: configfs: add procedural macro for declaring configfs attributes</a> v5 — Malte Wechter</li>
+</ul>
+<h3>讨论</h3>
+<ul>
+<li><a href="https://lore.kernel.org/rust-for-linux/a0e5782a-e1ee-4e12-8f78-d202184568f8@gmail.com/">[RFC PATCH] KVM: rust: add Rust reimplementation of eventfd</a> — ninol (1 条)</li>
+</ul>
+<h2>GitHub</h2>
+<h3>议题 (1)</h3>
+<ul>
+<li>[open] <a href="https://github.com/Rust-for-Linux/linux/issues/2">#2 Rust unstable features needed for the kernel</a> — ojeda <code>• toolchain</code> <code>meta</code></li>
+</ul>
+<hr />
+<p><em>Generated at 2026-07-01 09:00:00 CST by rfl-reports.py</em></p>
   </div>
-  <div class="list-item-meta">8 lore</div>
-</div>
-<div class="list-item">
-  <div class="list-item-left">
-    <span class="tag tag-monthly">monthly</span>
-    <a href="2026-05.html">2026-05</a>
-  </div>
-  <div class="list-item-meta">29 lore / 2 zulip</div>
-</div>
-<div class="list-item">
-  <div class="list-item-left">
-    <span class="tag tag-monthly">monthly</span>
-    <a href="2026-04.html">2026-04</a>
-  </div>
-  <div class="list-item-meta"></div>
-</div>
+  <div class="report-nav"><a href="2026-06.html">&larr; 2026-06</a><span></span></div>
 </div>
 
 </div>
