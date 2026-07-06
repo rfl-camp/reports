@@ -190,7 +190,7 @@ body{background:#fff;font-family:'Helvetica Neue',Helvetica,Arial,'Noto Sans SC'
 
 <!-- ── Prev / Next arrows ── -->
 <a href="2026-W26.html" class="pn-arrow pn-left" title="Previous: 2026-W26">&#8592;<span class="pn-label">2026-W26</span></a>
-
+<a href="2026-W28.html" class="pn-arrow pn-right" title="Next: 2026-W28">&#8594;<span class="pn-label">2026-W28</span></a>
 
 <!-- ── Hero: left visual + right article list ── -->
 <div class="af-hero" id="afHero">
@@ -215,7 +215,7 @@ body{background:#fff;font-family:'Helvetica Neue',Helvetica,Arial,'Noto Sans SC'
     </div></div></div><div class="mag-page-fade"></div><div class="mag-page-num">5</div></div></div><div class="mag-page"><div class="mag-page-inner"><div class="mag-accent-bar"></div><div class="mag-section-label">️ 内核主线：7.2-RC1 发布，新周期开始</div><h2 class="mag-title">️ 内核主线：7.2-rc1 发布，新周期开始</h2><div class="mag-section-content"><div class="mag-article"><div class="art-body"><p>在 GitHub 的 rust-next 分支上，本周最重要的标志是 Linus Torvalds 打出了 <strong>Linux 7.2-rc1</strong>。对新手解释一下节奏：内核每个版本先有约两周的"合并窗口"，大量新代码在这期间汇入；窗口一关，<code>rc1</code> 就发布，之后进入若干轮 <code>rc2、rc3……</code> 的纯修 bug 阶段。所以 <code>7.2-rc1</code> 出现，等于宣告"<strong>7.2 的新功能收齐了，接下来专心打磨稳定性</strong>"。</p></div><div class="art-links"><a href="https://github.com/Rust-for-Linux/linux/commit/dc59e4fea9d83f03bad6bddf3fa2e52491777482" class="art-link">🔗 Linux 7.2-rc1</a> </div></div><div class="mag-article"><div class="art-body"><p>同时合入的还有两个子系统的更新标签。<strong>NTB</strong>（Non-Transparent Bridge，一种让两台机器通过 PCIe 互联的桥接技术）这次主要是 Jon Mason 带来的 bug 修复——修了一个会在设备移除时触发"非法解除映射"的 EPF 问题，外加文档修正和 AMD 驱动的小清理。<strong>Input</strong>（输入子系统，管键盘鼠标触摸板）则来自 Dmitry Torokhov，重点是给 Synaptics RMI4 触摸板驱动堵了 F30、F3A 键位映射里潜在的"越界访问"（OOB）漏洞，并加了一个容忍问题固件的兼容处理。这两条都不涉及 Rust，但它们说明本周内核整体的氛围就是<strong>"以稳为主、查漏补缺"</strong>，和 Rust 侧的安全收尾节奏完全合拍。</p></div><div class="art-links"><a href="https://github.com/Rust-for-Linux/linux/commit/8b69c047587112f7bcb4b0d83f2729d8dd29ebe2" class="art-link">🔗 Input 合并</a> </div></div><div class="mag-tips"><div>
       <strong>🔰 小白科普</strong>
       <p><strong>-rc1（Release Candidate 1，第一候选版）</strong>：内核版本发布前的"试用版"。<code>rc</code> 数字越大，代表越接近正式发布、越稳定。看到 <code>rc1</code> 就知道一个新开发周期刚刚开始。<br/><strong>越界访问（OOB, Out-Of-Bounds）</strong>：程序读写了数组/缓冲区允许范围之外的内存，是内核里最常见的安全漏洞之一，可能导致崩溃或被攻击者利用。<a href="https://www.kernel.org/doc/html/latest/process/2.Process.html">→ 内核开发流程介绍</a></p>
-    </div></div></div><div class="mag-page-fade"></div><div class="mag-page-num">6</div></div></div><div class="mag-page mag-back-cover" data-density="hard"><div class="mag-page-inner back-cover-inner"><div class="back-decoration"></div><div class="back-content"><div class="back-logo">🦀</div><div class="back-title">Rust-for-Linux</div><div class="back-subtitle">Daily Briefing</div><div class="back-date"></div><div class="back-rule"></div><div class="back-sources"><a href="https://lore.kernel.org/rust-for-linux/">Lore</a> &middot; <a href="https://rust-for-linux.zulipchat.com/">Zulip</a> &middot; <a href="https://github.com/Rust-for-Linux">GitHub</a></div><div class="back-nav"><a href="2026-W26.html" class="back-link-prev">&larr; 2026-W26</a></div></div></div></div>
+    </div></div></div><div class="mag-page-fade"></div><div class="mag-page-num">6</div></div></div><div class="mag-page mag-back-cover" data-density="hard"><div class="mag-page-inner back-cover-inner"><div class="back-decoration"></div><div class="back-content"><div class="back-logo">🦀</div><div class="back-title">Rust-for-Linux</div><div class="back-subtitle">Daily Briefing</div><div class="back-date"></div><div class="back-rule"></div><div class="back-sources"><a href="https://lore.kernel.org/rust-for-linux/">Lore</a> &middot; <a href="https://rust-for-linux.zulipchat.com/">Zulip</a> &middot; <a href="https://github.com/Rust-for-Linux">GitHub</a></div><div class="back-nav"><a href="2026-W26.html" class="back-link-prev">&larr; 2026-W26</a><a href="2026-W28.html" class="back-link-next">2026-W28 &rarr;</a></div></div></div></div>
   </div>
 </div>
 
@@ -281,7 +281,7 @@ document.addEventListener('DOMContentLoaded',function(){
 
   /* ── Keyboard: left/right arrows for prev/next ── */
   var prevUrl='2026-W26.html';
-  var nextUrl='';
+  var nextUrl='2026-W28.html';
   document.addEventListener('keydown',function(e){
     if(calOpen){if(e.key==='Escape'){closeCal();e.stopPropagation()}return}
     if(e.key==='Escape'){window.location.href='index.html'}
