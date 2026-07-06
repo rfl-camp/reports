@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>RFL 社区日报 &middot; 2026-06-01</title>
+<title>RFL 社区日报 &middot; 2026-07-07</title>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
@@ -182,15 +182,15 @@ body{background:#fff;font-family:'Helvetica Neue',Helvetica,Arial,'Noto Sans SC'
 </div>
 <div class="af-date-bar" id="dateBar">
   <a class="af-today" id="todayBtn" href="2026-07-07.html">TODAY</a>
-  <span>2026-06-01</span>
+  <span>2026-07-07</span>
   <span class="af-cal-btn" id="calBtn"><svg viewBox="0 0 16 16"><path d="M4 0v1H1.5A1.5 1.5 0 000 2.5v12A1.5 1.5 0 001.5 16h13a1.5 1.5 0 001.5-1.5v-12A1.5 1.5 0 0014.5 1H12V0h-1v1H5V0H4zm0 2v1h1V2h6v1h1V2h2.5a.5.5 0 01.5.5V4H1V2.5a.5.5 0 01.5-.5H4zM1 5h14v9.5a.5.5 0 01-.5.5h-13a.5.5 0 01-.5-.5V5z"/></svg>SELECT</span>
   <div id="calDrop" class="cal-drop" style="display:none"></div>
 </div>
 <div id="calOverlay" class="cal-overlay"></div>
 
 <!-- ── Prev / Next arrows ── -->
-<a href="2026-05-31.html" class="pn-arrow pn-left" title="Previous: 2026-05-31">&#8592;<span class="pn-label">2026-05-31</span></a>
-<a href="2026-06-02.html" class="pn-arrow pn-right" title="Next: 2026-06-02">&#8594;<span class="pn-label">2026-06-02</span></a>
+<a href="2026-07-06.html" class="pn-arrow pn-left" title="Previous: 2026-07-06">&#8592;<span class="pn-label">2026-07-06</span></a>
+
 
 <!-- ── Hero: left visual + right article list ── -->
 <div class="af-hero" id="afHero">
@@ -203,48 +203,7 @@ body{background:#fff;font-family:'Helvetica Neue',Helvetica,Arial,'Noto Sans SC'
 <!-- ── Main article content ── -->
 <div class="af-main">
   <div id="magContent">
-    <div class="mag-page mag-cover" data-density="hard"><div class="mag-page-inner cover-inner"><div class="cover-decoration"></div><div class="cover-content"><div class="cover-masthead">R&thinsp;F&thinsp;L&ensp;D&thinsp;A&thinsp;I&thinsp;L&thinsp;Y</div><div class="cover-rule"></div><div class="cover-crab">🦀</div><div class="cover-date">2026-06-01</div><div class="cover-weekday">Monday</div><div class="cover-rule"></div><div class="cover-hero">设备驱动</div><div class="cover-rule-thin"></div><div class="cover-stats">19 emails</div></div></div></div><div class="mag-page"><div class="mag-page-inner overview-inner"><div class="mag-accent-bar"></div><div class="ov-label">TODAY'S OVERVIEW</div><h2 class="ov-title">📋 今日概览</h2><div class="ov-body"><span class="ov-dropcap">2</span>026 年 6 月 1 日 · 第一期</div><div class="mag-page-num">2</div></div></div><div class="mag-page"><div class="mag-page-inner"><div class="mag-accent-bar"></div><div class="mag-section-label">设备驱动</div><h2 class="mag-title">设备驱动</h2><div class="mag-section-content"><div class="mag-article"><div class="art-title">串口设备总线抽象（v11，共 3 个补丁）</div><div class="art-body"><p>
-这组补丁为 Linux 内核的<b>串口（Serial）设备总线</b>提供了基础的 Rust 抽象层。简单来说，串口是电脑和外部设备之间最经典的通信方式之一——想象一下用 USB 转串口线连接单片机、调试嵌入式设备，底层走的就是串口协议。这组补丁做的事情，就是让内核开发者可以用 Rust 来编写串口设备的驱动程序，而不必只能用 C 语言。已经迭代到了第 11 版，说明社区对代码质量要求很高，经过了反复的评审和修改。参与者包括 Markus Probst、Onur Özkan 和内核维护者 Danilo Krummrich，收到了 9 条审查意见，讨论相当热烈。
-</p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/DIWEXUCNLURG.136XXDBHSBNVR@kernel.org/" class="art-link">📬 查看补丁</a> </div></div><div class="mag-article"><div class="art-title">LED 多色灯控制器抽象（v18，共 3 个补丁）</div><div class="art-body"><p>
-你手机上的呼吸灯、键盘背光灯、RGB 灯条——这些"可以变颜色的灯"在内核里由一个叫 <b>multicolor LED classdev</b> 的子系统管理。这组补丁就是为这个子系统编写 Rust 语言的封装接口，让驱动开发者可以用 Rust 安全地控制多色 LED 设备。这个补丁已经迭代到惊人的第 18 版，作者 Onur Özkan 非常有耐心地根据社区反馈持续改进。能坚持迭代 18 次，也说明 Rust 进入内核的门槛确实不低，但社区对代码质量的追求值得敬佩。
-</p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/20260531075514.47769-1-work@onurozkan.dev/" class="art-link">📬 查看补丁</a> </div></div><div class="mag-article"><div class="art-title">I2C 适配器引用计数双重递增修复（v3）</div><div class="art-body"><p>
-这是一个 bug 修复补丁，作者 Nicolás Antinori 发现了 Rust I2C 驱动封装中的一个<b>引用计数（refcount）</b>问题。问题出在 <code>I2cAdapter::get</code> 这个函数：当它调用 C 函数 <code>i2c_get_adapter()</code> 时，引用计数已经加了 1；但随后代码把裸指针转换成 Rust 的 <code>ARef</code> 智能指针时，又会自动再加 1——这就导致引用计数被多加了一次。这就好比你借了一本书，图书馆登记了一次，结果你的借书卡上又自动登记了一次，导致你得还两次才能注销。虽然这不会让系统崩溃，但会导致资源永远不会被正确释放（内存泄漏）。修复方法是避免这次多余的引用计数递增。
-</p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/20260531182319.21777-1-nico.antinori.7@gmail.com/" class="art-link">📬 查看补丁</a> </div></div><div class="mag-tips"><div>
-💡 <b>小白科普</b><br/>
-<b>设备总线（Device Bus）：</b>内核用来统一管理某类硬件设备的框架，比如 I2C 总线上挂着各种传感器、串口总线上挂着调试设备。<a href="https://docs.kernel.org/driver-api/driver-model/bus.html">了解更多 →</a><br/>
-<b>引用计数（Reference Counting）：</b>一种内存管理技巧，记录有多少地方在使用某个对象，计数归零时就释放它。Rust 的 <code>Arc</code> 就是基于此原理。<a href="https://doc.rust-lang.org/book/ch15-04-rc.html">了解更多 →</a>
-</div></div></div><div class="mag-page-fade"></div><div class="mag-page-num">3</div></div></div><div class="mag-page"><div class="mag-page-inner"><div class="mag-accent-bar"></div><div class="mag-section-label">同步与并发</div><h2 class="mag-title">同步与并发</h2><div class="mag-section-content"><div class="mag-article"><div class="art-title">SRCU 同步机制的 Rust 抽象（v7，共 4 个补丁）</div><div class="art-body"><p>
-<b>SRCU（Sleepable Read-Copy-Update）</b>是 Linux 内核中一种高级的同步机制。普通的锁就像一扇门——你进去了别人就得等；而 RCU 更像是"大家都可以看报纸（读），但换报纸（写）时要巧妙地先准备好新报纸再替换"，读操作几乎没有开销。SRCU 是 RCU 的一种变体，允许在等待的过程中"睡觉"（阻塞），这在某些场景下是必须的。这组补丁由 Onur Özkan 编写，RCU 子系统的权威维护者 Paul E. McKenney 和 Rust-for-Linux 项目负责人 Miguel Ojeda 都参与了评审，说明这个抽象的重要性很高。能在 Rust 中安全地使用 SRCU，意味着用 Rust 写的内核模块可以享受到这种高性能的无锁并发保护。
-</p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/4c03540b-8a80-46a5-98b3-dc16ee160cfe@paulmck-laptop/" class="art-link">📬 查看补丁</a> </div></div><div class="mag-tips"><div>
-💡 <b>小白科普</b><br/>
-<b>RCU（Read-Copy-Update）：</b>Linux 内核中最重要的无锁同步机制之一，让多个读者可以不用加锁就安全地读数据，写者则通过"先复制再替换"的方式更新数据。<a href="https://docs.kernel.org/RCU/whatisRCU.html">了解更多 →</a><br/>
-<b>SRCU：</b>RCU 的"可睡眠"版本，适用于读侧临界区可能需要阻塞（如等待 I/O）的场景。<a href="https://docs.kernel.org/RCU/checklist.html">了解更多 →</a>
-</div></div></div><div class="mag-page-fade"></div><div class="mag-page-num">4</div></div></div><div class="mag-page"><div class="mag-page-inner"><div class="mag-accent-bar"></div><div class="mag-section-label">构建系统与工具链</div><h2 class="mag-title">构建系统与工具链</h2><div class="mag-section-content"><div class="mag-article"><div class="art-title">kbuild：将长类型名文件纳入清理目标（v3）</div><div class="art-body"><p>
-Rust 编译器有时会生成一些文件名很长的临时文件（<code>*.long-type-*.txt</code>），这些文件是用来记录 Rust 那些"超级长的类型签名"的——Rust 的泛型嵌套起来类型名可以长到令人发指。这些文件在编译后其实就没用了，但之前执行 <code>make clean</code>（清理编译产物）时，这些文件不会被自动删除，日积月累就会占用空间、干扰开发。Miguel Ojeda 提交的这个补丁把这类文件加入了 kbuild（内核构建系统）的清理规则，这样一运行 <code>make clean</code> 就会自动打扫干净，保持源码目录整洁。虽然是个小改动，但对日常开发体验很重要。
-</p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/CANiq72=huc=AfjBRYUsoJY1hSvB8W6CvnUh7g2G4rt98XYmxYw@mail.gmail.com/" class="art-link">📬 查看补丁</a> </div></div><div class="mag-article"><div class="art-title">x86 架构：支持 Rust 1.98.0 及更高版本的目标规范</div><div class="art-body"><p>
-Rust 编译器会不定期更新它的"目标规范"（target spec），也就是告诉编译器"我要生成的代码是给什么样的 CPU/平台用的"这份配置。Rust 1.98.0 版本对 x86 架构的目标规范做了一些修改，而内核编译需要使用自定义的目标规范，所以这个补丁就是让内核的构建系统兼容新版 Rust 编译器的变化。Miguel Ojeda 提交了补丁，确保使用 Rust 1.98.0 或更新版本时，内核仍然能正确编译。这类补丁虽然不涉及功能变化，但对于"跟上 Rust 上游"至关重要——毕竟你不希望更新了 Rust 编译器之后内核就编译不了了。
-</p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/CANiq72nJP0+FED8MRX9_Jz0WX9ZeTekqE8xE2066VGsQPns-QA@mail.gmail.com/" class="art-link">📬 查看补丁</a> </div></div><div class="mag-tips"><div>
-💡 <b>小白科普</b><br/>
-<b>kbuild：</b>Linux 内核的构建系统，负责编译、链接内核和各种模块。你运行 <code>make</code> 编译内核时，背后就是 kbuild 在工作。<a href="https://docs.kernel.org/kbuild/index.html">了解更多 →</a><br/>
-<b>目标规范（Target Spec）：</b>告诉 Rust 编译器生成适合特定硬件平台的机器码的配置文件，内核因为运行在裸机（没有操作系统托底）上，需要特别的自定义目标。<a href="https://doc.rust-lang.org/rustc/targets/custom.html">了解更多 →</a>
-</div></div></div><div class="mag-page-fade"></div><div class="mag-page-num">5</div></div></div><div class="mag-page"><div class="mag-page-inner"><div class="mag-accent-bar"></div><div class="mag-section-label">ANDROID BINDER 驱动</div><h2 class="mag-title">Android Binder 驱动</h2><div class="mag-section-content"><div class="mag-article"><div class="art-title">rust_binder：修复 offsets 数组的遍历步长问题（v2）</div><div class="art-body"><p>
-Android 系统的核心进程间通信（IPC）机制叫做 <b>Binder</b>——所有 App 之间的数据传递都要经过它，可以说是 Android 的"神经系统"。Rust-for-Linux 社区正在用 Rust 重写 Binder 驱动（即 <code>rust_binder</code>）。Hyunwoo Kim 发现了一个关于内存遍历步长的 bug：在 Binder 清理资源时，需要遍历一个 offsets 数组，数组中每个元素是 <code>binder_size_t</code> 类型（固定 8 字节 / u64）。但代码用了 <code>usize</code>（与平台相关的大小）作为步长。在 64 位系统上 <code>usize</code> 刚好也是 8 字节，没有问题；但在 <b>32 位系统</b>上，<code>usize</code> 只有 4 字节，这意味着每次只跨 4 字节去读一个 8 字节的条目——就像你看日历每次翻半页，内容全都错位了。修复方法很直接：把步长和读取类型都改为 <code>u64</code>，保证在所有平台上行为一致。
-</p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/ahw3tFhLz9bMMJAO@v4bel/" class="art-link">📬 查看补丁</a> </div></div><div class="mag-tips"><div>
-💡 <b>小白科普</b><br/>
-<b>Binder：</b>Android 操作系统的核心 IPC（进程间通信）机制，所有 App 之间传数据、调用系统服务都要通过它。<a href="https://en.wikipedia.org/wiki/OpenBinder">了解更多 →</a><br/>
-<b>usize vs u64：</b>在 Rust 中，<code>u64</code> 永远是 8 字节；而 <code>usize</code> 的大小取决于平台——64 位系统上是 8 字节，32 位系统上是 4 字节。跨平台代码要特别注意两者的区别。<a href="https://doc.rust-lang.org/reference/types/numeric.html">了解更多 →</a>
-</div></div></div><div class="mag-page-fade"></div><div class="mag-page-num">6</div></div></div><div class="mag-page"><div class="mag-page-inner"><div class="mag-accent-bar"></div><div class="mag-section-label">RUST 宏与语言特性</div><h2 class="mag-title">Rust 宏与语言特性</h2><div class="mag-section-content"><div class="mag-article"><div class="art-title">用 const expect 替换 match + panic 模式</div><div class="art-body"><p>
-Daniel del Castillo 提交了一个代码改进补丁，针对的是内核 Rust 代码中<b>过程宏（proc macro）</b>的写法。在某些需要在编译期（const context）做计算的地方，以前用的是 <code>match</code> 加 <code>panic!</code> 的写法——也就是"如果结果不对就直接崩溃"。这种写法虽然能用，但不够简洁优雅。新补丁改用 Rust 较新提供的 <code>const expect</code> 特性，代码更简洁、意图更清晰：直接说"我期望这个值存在，不存在就报错"。就好比从"如果钥匙不在门口，就大喊一声然后倒下"变成了"期望钥匙在门口"——含义一样，但表达简洁多了。这类改动虽然不影响功能，但能让内核 Rust 代码更地道、更易读。
-</p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/357ce503-cc2d-43ae-8f58-ea3b980f5780@gmail.com/" class="art-link">📬 查看补丁</a> </div></div><div class="mag-tips"><div>
-💡 <b>小白科普</b><br/>
-<b>const 上下文（const context）：</b>Rust 中可以在编译时而非运行时执行的代码区域。比如 <code>const fn</code> 函数会在编译阶段就算出结果，这样程序运行时就不用再算了，更快。<a href="https://doc.rust-lang.org/reference/const_eval.html">了解更多 →</a><br/>
-<b>过程宏（Proc Macro）：</b>Rust 的"代码生成器"，可以在编译时自动生成或改写代码，内核中大量使用宏来减少样板代码。<a href="https://doc.rust-lang.org/reference/procedural-macros.html">了解更多 →</a>
-</div></div></div><div class="mag-page-fade"></div><div class="mag-page-num">7</div></div></div><div class="mag-page"><div class="mag-page-inner"><div class="mag-accent-bar"></div><div class="mag-section-label">社区追踪</div><h2 class="mag-title">社区追踪</h2><div class="mag-section-content"><div class="mag-article"><div class="art-title">GitHub Issue #2：内核需要的 Rust 不稳定特性清单</div><div class="art-body"><p>
-这是一个由项目负责人 Miguel Ojeda（ojeda）维护的<b>长期追踪 Issue</b>，列出了 Linux 内核中使用到的所有 Rust <b>不稳定特性（unstable features）</b>。Rust 语言分为稳定版和 nightly 版，很多实验性功能只有 nightly 才有（比如内联汇编的高级用法、自定义内存分配器等）。内核开发天然需要很多底层能力，所以不可避免地会用到一些还没有"转正"的 Rust 特性。这个 Issue 的意义在于：它帮助 Rust 语言团队了解哪些特性对内核开发最重要、应该优先稳定化，同时也让内核开发者清楚地知道自己依赖了哪些"不稳定的地基"。如果你想了解 Rust 进入内核的最大技术障碍之一，这个 Issue 是必读材料。
-</p></div><div class="art-links"><a href="https://github.com/Rust-for-Linux/linux/issues/2" class="art-link">📬 查看 Issue</a> </div></div><div class="mag-tips"><div>
-💡 <b>小白科普</b><br/>
-<b>Rust 不稳定特性（Unstable Features）：</b>Rust 中还在实验阶段、可能随时变化的功能。使用它们需要切换到 nightly 版编译器并用 <code>#![feature(...)]</code> 显式开启。内核尽量减少对不稳定特性的依赖，但有些底层操作目前别无选择。<a href="https://doc.rust-lang.org/unstable-book/">了解更多 →</a>
-</div></div></div><div class="mag-page-fade"></div><div class="mag-page-num">8</div></div></div><div class="mag-page mag-back-cover" data-density="hard"><div class="mag-page-inner back-cover-inner"><div class="back-decoration"></div><div class="back-content"><div class="back-logo">🦀</div><div class="back-title">Rust-for-Linux</div><div class="back-subtitle">Daily Briefing</div><div class="back-date">2026-06-01</div><div class="back-rule"></div><div class="back-sources"><a href="https://lore.kernel.org/rust-for-linux/">Lore</a> &middot; <a href="https://rust-for-linux.zulipchat.com/">Zulip</a> &middot; <a href="https://github.com/Rust-for-Linux">GitHub</a></div><div class="back-nav"><a href="2026-05-31.html" class="back-link-prev">&larr; 2026-05-31</a><a href="2026-06-02.html" class="back-link-next">2026-06-02 &rarr;</a></div></div></div></div>
+    <div class="mag-page mag-cover" data-density="hard"><div class="mag-page-inner cover-inner"><div class="cover-decoration"></div><div class="cover-content"><div class="cover-masthead">R&thinsp;F&thinsp;L&ensp;D&thinsp;A&thinsp;I&thinsp;L&thinsp;Y</div><div class="cover-rule"></div><div class="cover-crab">🦀</div><div class="cover-date">2026-07-07</div><div class="cover-weekday">Tuesday</div><div class="cover-rule"></div><div class="cover-hero"></div><div class="cover-rule-thin"></div><div class="cover-stats">139 emails &middot; 7 msgs</div></div></div></div><div class="mag-page mag-back-cover" data-density="hard"><div class="mag-page-inner back-cover-inner"><div class="back-decoration"></div><div class="back-content"><div class="back-logo">🦀</div><div class="back-title">Rust-for-Linux</div><div class="back-subtitle">Daily Briefing</div><div class="back-date">2026-07-07</div><div class="back-rule"></div><div class="back-sources"><a href="https://lore.kernel.org/rust-for-linux/">Lore</a> &middot; <a href="https://rust-for-linux.zulipchat.com/">Zulip</a> &middot; <a href="https://github.com/Rust-for-Linux">GitHub</a></div><div class="back-nav"><a href="2026-07-06.html" class="back-link-prev">&larr; 2026-07-06</a></div></div></div></div>
   </div>
 </div>
 
@@ -309,8 +268,8 @@ document.addEventListener('DOMContentLoaded',function(){
   });
 
   /* ── Keyboard: left/right arrows for prev/next ── */
-  var prevUrl='2026-05-31.html';
-  var nextUrl='2026-06-02.html';
+  var prevUrl='2026-07-06.html';
+  var nextUrl='';
   document.addEventListener('keydown',function(e){
     if(calOpen){if(e.key==='Escape'){closeCal();e.stopPropagation()}return}
     if(e.key==='Escape'){window.location.href='index.html'}
@@ -321,7 +280,7 @@ document.addEventListener('DOMContentLoaded',function(){
   /* ── Calendar picker ── */
   var allSlugs=["2026-07-07", "2026-07-06", "2026-07-05", "2026-07-04", "2026-07-03", "2026-07-02", "2026-07-01", "2026-06-30", "2026-06-29", "2026-06-28", "2026-06-27", "2026-06-26", "2026-06-25", "2026-06-24", "2026-06-23", "2026-06-22", "2026-06-21", "2026-06-20", "2026-06-19", "2026-06-18", "2026-06-17", "2026-06-16", "2026-06-15", "2026-06-14", "2026-06-13", "2026-06-12", "2026-06-11", "2026-06-10", "2026-06-09", "2026-06-08", "2026-06-07", "2026-06-06", "2026-06-05", "2026-06-04", "2026-06-03", "2026-06-02", "2026-06-01", "2026-05-31", "2026-05-30", "2026-05-29", "2026-05-28", "2026-05-27", "2026-05-26", "2026-05-25", "2026-05-24", "2026-05-23", "2026-05-22", "2026-05-21", "2026-05-20", "2026-05-19", "2026-05-18", "2026-05-17", "2026-05-16", "2026-05-15", "2026-05-14", "2026-05-13", "2026-05-12", "2026-05-11", "2026-05-10", "2026-05-07", "2026-05-06", "2026-05-05", "2026-05-04", "2026-05-03", "2026-05-02", "2026-05-01", "2026-04-30", "2026-04-29", "2026-04-28", "2026-04-27", "2026-04-26", "2026-04-25", "2026-04-24", "2026-04-23", "2026-04-22", "2026-04-21", "2026-04-20", "2026-04-19", "2026-04-18", "2026-04-17", "2026-04-16", "2026-04-15", "2026-04-14", "2026-04-13", "2026-04-12", "2026-04-11", "2026-04-10", "2026-04-09", "2026-04-08", "2026-04-07", "2026-04-06", "2026-04-05", "2026-04-04", "2026-04-03", "2026-04-02", "2026-04-01", "2026-03-31", "2026-03-30", "2026-03-29", "2026-03-28", "2026-03-27", "2026-03-26", "2026-03-25", "2026-03-24", "2026-03-23", "2026-03-22", "2026-03-21", "2026-03-20", "2026-03-19"];
   var slugSet=new Set(allSlugs);
-  var curDate='2026-06-01';
+  var curDate='2026-07-07';
   var calOpen=false;
   var calMonth,calYear;
   // init to current page's month
