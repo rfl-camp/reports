@@ -3,463 +3,335 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>RFL Weekly - 2026-W28</title>
+<title>RFL 社区日报 &middot; </title>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
 <style>
-:root {
-  --c-bg: #ffffff;
-  --c-surface: #f9f9f9;
-  --c-border: #ddd;
-  --c-border-light: #eee;
-  --c-text: #111;
-  --c-text-secondary: #555;
-  --c-text-tertiary: #999;
-  --c-link: #000;
-  --c-accent: #e8730e;
-  --radius: 2px;
-  --max-w: 1100px;
-}
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body {
-  font-family: 'Helvetica Neue', Helvetica, Arial, 'Noto Sans SC', sans-serif;
-  background: var(--c-bg);
-  color: var(--c-text);
-  font-size: 14px;
-  line-height: 1.5;
-  -webkit-font-smoothing: antialiased;
-}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:#fff;font-family:'Helvetica Neue',Helvetica,Arial,'Noto Sans SC',sans-serif;color:#111;-webkit-font-smoothing:antialiased}
 
-/* Header — Editorial masthead */
-.header {
-  border-bottom: 1px solid var(--c-border);
-  background: var(--c-bg);
-}
-.header-inner {
-  max-width: var(--max-w);
-  margin: 0 auto;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-.logo {
-  font-size: 42px;
-  font-weight: 700;
-  color: #000;
-  text-decoration: none;
-  letter-spacing: 4px;
-  font-family: Georgia, 'Times New Roman', serif;
-  padding: 24px 0 0;
-  display: block;
-  text-align: center;
-}
-.logo:hover { color: var(--c-accent); }
-.logo .accent { color: inherit; }
-nav {
-  display: flex;
-  gap: 24px;
-  padding: 14px 0;
-  border-top: 1px solid var(--c-border-light);
-  margin-top: 16px;
-}
-nav a {
-  color: var(--c-text-secondary);
-  text-decoration: none;
-  font-size: 11px;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  font-weight: 500;
-  transition: color 0.15s;
-}
-nav a:hover { color: #000; }
-nav a.active {
-  color: #000;
-  font-weight: 700;
-}
+/* ── Masthead ── */
+.af-masthead{text-align:center;padding:20px 0 0;border-bottom:1px solid #ddd}
+.af-logo{font-size:48px;font-weight:700;letter-spacing:3px;color:#000;font-family:Georgia,'Times New Roman',serif;text-decoration:none;display:block;line-height:1}
+.af-logo:hover{color:#e8730e}
+.af-nav{display:flex;justify-content:center;gap:24px;padding:14px 0;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;font-weight:500;border-top:1px solid #eee;margin-top:16px}
+.af-nav a{color:#555;text-decoration:none;transition:color .15s}
+.af-nav a:hover{color:#000}
+.af-nav a.active{color:#000;font-weight:700}
 
-/* Layout */
-.container {
-  max-width: var(--max-w);
-  margin: 0 auto;
-  padding: 32px 24px;
-}
-.back-link {
-  display: inline-block;
-  color: #000;
-  text-decoration: none;
-  font-size: 10px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  font-weight: 700;
-  margin-bottom: 24px;
-  transition: color .15s;
-}
-.back-link:hover { color: var(--c-accent); }
+/* ── Prev/Next arrows ── */
+.pn-arrow{position:fixed;top:50%;transform:translateY(-50%);z-index:200;display:flex;align-items:center;justify-content:center;width:48px;height:48px;background:rgba(0,0,0,0.06);color:#333;text-decoration:none;font-size:22px;font-family:Georgia,serif;transition:all .2s;border-radius:50%}
+.pn-arrow:hover{background:rgba(0,0,0,0.12);color:#000}
+.pn-arrow.pn-left{left:16px}
+.pn-arrow.pn-right{right:16px}
+.pn-arrow .pn-label{position:absolute;top:50%;white-space:nowrap;font-size:9px;letter-spacing:2px;text-transform:uppercase;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-weight:700;color:#999;opacity:0;transition:opacity .2s;transform:translateY(-50%)}
+.pn-left .pn-label{left:56px}
+.pn-right .pn-label{right:56px}
+.pn-arrow:hover .pn-label{opacity:1}
 
-/* Page header */
-.page-header {
-  margin-bottom: 32px;
-  padding-bottom: 20px;
-  border-bottom: 2px solid #000;
-}
-.page-header h1 {
-  font-size: 28px;
-  font-weight: 700;
-  letter-spacing: -0.3px;
-  font-family: Georgia, 'Times New Roman', serif;
-  text-transform: uppercase;
-}
-.page-header .subtitle {
-  color: var(--c-text-tertiary);
-  font-size: 11px;
-  margin-top: 6px;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-}
+/* ── Date bar tools ── */
+.af-date-bar{font-size:10px;color:#999;letter-spacing:2px;text-transform:uppercase;text-align:center;padding:10px 0;border-bottom:2px solid #000;position:relative;display:flex;align-items:center;justify-content:center;gap:20px}
+.af-today{font-size:9px;letter-spacing:2px;text-transform:uppercase;font-weight:700;color:#e8730e;text-decoration:none;transition:color .15s;cursor:pointer}
+.af-today:hover{color:#000}
+.af-cal-btn{font-size:9px;letter-spacing:2px;text-transform:uppercase;font-weight:700;color:#999;cursor:pointer;transition:color .15s;user-select:none;position:relative}
+.af-cal-btn:hover{color:#000}
+.af-cal-btn svg{width:14px;height:14px;vertical-align:-2px;margin-right:3px;fill:currentColor}
 
-/* Stats row */
-.stats {
-  display: flex;
-  gap: 24px;
-  margin-bottom: 24px;
-  flex-wrap: wrap;
-}
-.stat {
-  display: flex;
-  align-items: baseline;
-  gap: 6px;
-}
-.stat-val {
-  font-size: 20px;
-  font-weight: 600;
-  color: var(--c-text);
-}
-.stat-label {
-  font-size: 12px;
-  color: var(--c-text-tertiary);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
+/* ── Calendar dropdown ── */
+.cal-overlay{display:none;position:fixed;inset:0;z-index:500}
+.cal-overlay.open{display:block}
+.cal-drop{position:absolute;top:100%;left:50%;transform:translateX(-50%);margin-top:8px;background:#fff;border:1px solid #ddd;box-shadow:0 8px 32px rgba(0,0,0,0.12);z-index:501;padding:16px;min-width:280px}
+.cal-drop.open{display:block}
+.cal-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+.cal-month{font-size:13px;font-weight:700;font-family:Georgia,serif;letter-spacing:0.5px}
+.cal-arrow-btn{background:none;border:none;cursor:pointer;font-size:16px;color:#999;padding:4px 8px;transition:color .15s}
+.cal-arrow-btn:hover{color:#000}
+.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:2px;text-align:center}
+.cal-dow{font-size:8px;color:#999;letter-spacing:1px;text-transform:uppercase;padding:4px 0;font-weight:700}
+.cal-day{font-size:12px;padding:6px 2px;color:#ccc;cursor:default;border-radius:2px;transition:all .12s;font-variant-numeric:tabular-nums}
+.cal-day.has-issue{color:#000;font-weight:600;cursor:pointer}
+.cal-day.has-issue:hover{background:#f5f5f5}
+.cal-day.current{background:#000;color:#fff;font-weight:700}
+.cal-day.current:hover{background:#333}
+.cal-day.today-mark{box-shadow:inset 0 -2px 0 #e8730e}
 
-/* Report list */
-.list-section {
-  margin-bottom: 32px;
-}
-.list-section-title {
-  font-size: 9px;
-  font-weight: 700;
-  color: var(--c-accent);
-  text-transform: uppercase;
-  letter-spacing: 3px;
-  padding: 12px 0 10px;
-  border-bottom: 2px solid #000;
-  margin-bottom: 0;
-}
-.list-item {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 14px 0;
-  border-bottom: 1px solid var(--c-border-light);
-  gap: 12px;
-  transition: background .15s;
-}
-.list-item:hover { background: #fafafa; }
-.list-item:last-child { border-bottom: none; }
-.list-item-left {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  min-width: 0;
-}
-.list-item a {
-  color: #000;
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 15px;
-  font-family: Georgia, 'Times New Roman', serif;
-}
-.list-item a:hover { color: var(--c-accent); }
-.list-item-meta {
-  color: var(--c-text-tertiary);
-  font-size: 11px;
-  white-space: nowrap;
-  font-variant-numeric: tabular-nums;
-  letter-spacing: 0.5px;
-}
+/* ── Hero split layout ── */
+.af-hero{display:flex;gap:0;border-bottom:2px solid #000;max-width:1100px;margin:0 auto}
+.af-hero-left{flex:1;min-width:0;border-right:1px solid #ddd;display:flex;flex-direction:column}
+.af-hero-visual{flex:1;background:#000;display:flex;align-items:center;justify-content:center;padding:48px;min-height:340px;position:relative;overflow:hidden}
+.af-hero-visual .cover-crab{font-size:80px}
+.af-hero-visual .cover-date{font-size:36px;font-weight:700;color:#fff;margin-top:12px;font-family:Georgia,serif;letter-spacing:1px}
+.af-hero-visual .cover-weekday{font-size:10px;color:rgba(255,255,255,0.4);letter-spacing:4px;text-transform:uppercase;margin-top:4px}
+.af-hero-visual .cover-hero{font-size:15px;color:rgba(255,255,255,0.6);margin-top:16px;font-family:'Noto Serif SC',Georgia,serif;line-height:1.6;max-width:340px;text-align:center}
+.af-hero-right{flex:1;min-width:0;display:flex;flex-direction:column}
 
-/* Tags */
-.tag {
-  display: inline-block;
-  padding: 2px 8px;
-  font-size: 9px;
-  font-weight: 700;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  background: #000;
-  color: #fff;
-  border-radius: 0;
-}
-.tag-daily { background: #000; }
-.tag-weekly { background: #333; }
-.tag-monthly { background: #555; }
-.tag-yearly { background: #777; }
+/* ── Hero article list (right side) ── */
+.af-hero-item{padding:20px 24px;border-bottom:1px solid #eee;transition:background .15s}
+.af-hero-item:last-child{border-bottom:none}
+.af-hero-item:hover{background:#fafafa}
+.af-hero-cat{font-size:9px;letter-spacing:2px;color:#e8730e;text-transform:uppercase;font-weight:700;margin-bottom:4px}
+.af-hero-title{font-size:17px;font-weight:700;color:#000;text-transform:uppercase;line-height:1.3;letter-spacing:0.3px;margin-bottom:4px}
+.af-hero-excerpt{font-size:12.5px;color:#666;line-height:1.5;font-family:'Noto Serif SC',Georgia,serif}
 
-/* Report content */
-.report-card {
-  border: none;
-  border-top: 2px solid #000;
-  border-radius: 0;
-  background: var(--c-bg);
-  overflow: hidden;
-}
-.report-card-header {
-  background: transparent;
-  padding: 16px 0;
-  border-bottom: 1px solid var(--c-border-light);
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-.report-card-header h2 {
-  font-size: 14px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-.report-body {
-  padding: 28px 0;
-  font-size: 15px;
-  line-height: 1.8;
-  font-family: 'Noto Serif SC', Georgia, serif;
-}
-.report-body h1 { font-size: 24px; font-weight: 700; margin: 0 0 20px 0; color: #000; font-family: Georgia, serif; text-transform: uppercase; letter-spacing: -0.3px; }
-.report-body h2 { font-size: 18px; font-weight: 700; margin: 32px 0 14px 0; color: #000; padding-bottom: 8px; border-bottom: 1px solid var(--c-border-light); font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-transform: uppercase; letter-spacing: 0.3px; }
-.report-body h3 { font-size: 14px; font-weight: 700; margin: 24px 0 8px 0; color: var(--c-text-secondary); text-transform: uppercase; letter-spacing: 0.5px; }
-.report-body ul { padding-left: 20px; margin: 8px 0; }
-.report-body li { margin-bottom: 4px; }
-.report-body a { color: #000; text-decoration: none; border-bottom: 1px solid #ccc; transition: all .15s; }
-.report-body a:hover { color: var(--c-accent); border-color: var(--c-accent); }
-.report-body blockquote { border-left: 2px solid #000; padding: 8px 16px; margin: 12px 0; color: var(--c-text-secondary); background: #f9f9f9; font-size: 13.5px; }
-.report-body code { background: #f5f5f5; padding: 2px 6px; border-radius: 2px; font-size: 12px; font-family: 'SF Mono', 'Fira Code', monospace; border: 1px solid #e5e5e5; }
-.report-body hr { border: none; border-top: 1px solid var(--c-border-light); margin: 28px 0; }
-.report-body p { margin: 10px 0; }
-.report-body img { max-width: 100%; }
-/* Embedded newsletter overrides */
-.report-body > div {
-  background: transparent !important;
-  box-shadow: none !important;
-  margin-bottom: 20px;
-}
-.report-body > div > div {
-  border-color: var(--c-border-light);
-}
-/* 小白科普 info boxes */
-.report-body div[style*="#f0f7ff"] {
-  background: #f9f9f9 !important;
-  border: 1px solid var(--c-border-light) !important;
-  border-top: 2px solid #000 !important;
-  border-radius: 0 !important;
-}
-/* Report prev/next navigation */
-.report-nav {
-  display: flex;
-  justify-content: space-between;
-  padding: 20px 0;
-  border-top: 2px solid #000;
-  font-size: 10px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-}
-.report-nav a {
-  color: #000;
-  text-decoration: none;
-  font-weight: 700;
-  transition: color .15s;
-}
-.report-nav a:hover {
-  color: var(--c-accent);
-}
+/* ── Main content ── */
+.af-main{max-width:1100px;margin:0 auto;padding:0}
 
-/* Empty state */
-.empty {
-  color: var(--c-text-tertiary);
-  text-align: center;
-  padding: 48px 20px;
-  border-top: 2px solid #000;
-  font-size: 13px;
-  letter-spacing: 1px;
-}
+/* ── Page / Section base ── */
+.mag-page{background:#fff;border:none;box-shadow:none;overflow:visible;cursor:default;position:relative}
+.mag-page-inner{padding:40px 32px;font-family:'Noto Serif SC',Georgia,serif;font-size:15.5px;line-height:1.95;color:#222;position:relative;height:auto;overflow:visible}
+.mag-page + .mag-page{border-top:1px solid #ddd}
 
-/* Footer */
-.footer {
-  text-align: center;
-  padding: 32px;
-  color: #ccc;
-  font-size: 9px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  border-top: 1px solid var(--c-border-light);
-  margin-top: 48px;
-  max-width: var(--max-w);
-  margin-left: auto;
-  margin-right: auto;
-}
+/* Full-bleed */
+.mag-full-bleed{width:100vw;margin-left:calc(-50vw + 50%);position:relative}
 
-/* Magazine rack */
-.magazine-shelf {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-  gap: 24px;
-  padding: 16px 0;
-}
-.magazine-cover {
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  aspect-ratio: 3/4;
-  background: linear-gradient(160deg, #1a1a3e 0%, #0d1b2a 50%, #1b2838 100%);
-  border-radius: 4px;
-  padding: 20px 18px 16px;
-  text-decoration: none;
-  color: #fff;
-  overflow: hidden;
-  box-shadow: 4px 4px 14px rgba(0,0,0,0.3);
-  transition: transform 0.4s cubic-bezier(0.25,0.46,0.45,0.94), box-shadow 0.4s cubic-bezier(0.25,0.46,0.45,0.94);
-}
-.magazine-cover::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.08) 45%, rgba(255,255,255,0.15) 50%, rgba(255,255,255,0.08) 55%, transparent 60%);
-  background-size: 200% 100%;
-  background-position: 200% 0;
-  transition: background-position 0.6s ease-out;
-  pointer-events: none;
-  border-radius: 4px;
-}
-.magazine-cover:hover {
-  transform: perspective(600px) rotateY(-3deg) translateY(-4px) scale(1.02);
-  box-shadow: 8px 8px 28px rgba(0,0,0,0.4);
-}
-.magazine-cover:hover::after {
-  background-position: -200% 0;
-}
-.mc-spine {
-  position: absolute;
-  left: 0; top: 0; bottom: 0;
-  width: 4px;
-  background: linear-gradient(180deg, rgba(232,115,14,0.6), rgba(232,115,14,0.2));
-}
-.mc-masthead {
-  font-size: 9px;
-  font-weight: 700;
-  letter-spacing: 3px;
-  color: #e8730e;
-  text-transform: uppercase;
-  margin-bottom: 8px;
-}
-.mc-date {
-  font-size: 18px;
-  font-weight: 700;
-  color: #fff;
-  letter-spacing: -0.3px;
-  line-height: 1.2;
-}
-.mc-weekday {
-  font-size: 11px;
-  color: rgba(255,255,255,0.45);
-  margin-bottom: 14px;
-}
-.mc-hero {
-  font-size: 12px;
-  line-height: 1.5;
-  color: rgba(255,255,255,0.8);
-  font-family: Georgia, 'Noto Serif SC', serif;
-  flex-grow: 1;
-  display: flex;
-  align-items: center;
-}
-.mc-stats {
-  font-size: 10px;
-  color: rgba(255,255,255,0.35);
-  margin-top: 10px;
-}
-.mc-issue {
-  position: absolute;
-  bottom: 12px;
-  right: 14px;
-  font-size: 10px;
-  color: rgba(255,255,255,0.25);
-  font-variant-numeric: tabular-nums;
+/* Hide original cover/back-cover inside main flow (we rebuild them) */
+.mag-cover{display:none !important}
+.mag-back-cover{border-top:2px solid #000 !important}
+
+/* ── OVERVIEW ── */
+.overview-inner{display:flex;flex-direction:column;height:auto;overflow:visible}
+.ov-label{font-size:9px;letter-spacing:3px;color:#e8730e;text-transform:uppercase;font-weight:700;margin-bottom:6px}
+.ov-title{font-size:24px;font-weight:700;color:#000;margin-bottom:20px;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;letter-spacing:-0.3px;line-height:1.2;text-transform:uppercase}
+.ov-body{font-size:15.5px;line-height:2;color:#333}
+.ov-body b,.ov-body strong{color:#000;font-weight:700}
+.ov-body a{color:#000;text-decoration:none;border-bottom:1px solid #ccc;transition:all .15s}
+.ov-body a:hover{border-color:#e8730e;color:#e8730e}
+.ov-dropcap{float:left;font-size:64px;line-height:0.78;font-family:Georgia,serif;color:#000;margin:4px 12px 0 0;font-weight:400}
+
+/* ── SECTION PAGES ── */
+.mag-accent-bar{height:2px;background:#000;margin-bottom:16px}
+.mag-section-label{font-size:9px;letter-spacing:3px;color:#e8730e;text-transform:uppercase;font-weight:700;margin-bottom:4px}
+.mag-title{font-size:22px;font-weight:700;color:#000;margin-bottom:24px;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;line-height:1.25;padding-bottom:14px;border-bottom:1px solid #ddd;text-transform:uppercase;letter-spacing:0.2px}
+.mag-section-content{overflow:visible}
+
+/* Articles */
+.mag-article{margin-bottom:24px;padding:0 0 20px;border-bottom:1px solid #eee}
+.mag-article:last-child{border-bottom:none;margin-bottom:8px;padding-bottom:0}
+.art-title{font-size:16px;font-weight:700;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;color:#000;margin-bottom:6px;line-height:1.3;text-transform:uppercase;letter-spacing:0.2px}
+.art-body{font-size:14.5px;line-height:1.85;color:#444}
+.art-body p{margin-bottom:8px}
+.art-body b,.art-body strong{color:#000}
+.art-body code{background:#f5f5f5;padding:2px 6px;border-radius:2px;font-size:12.5px;font-family:'SF Mono','Fira Code',monospace;color:#333;border:1px solid #e5e5e5}
+.art-body a{color:#000;text-decoration:none;border-bottom:1px solid #ccc;transition:all .15s}
+.art-body a:hover{color:#e8730e;border-color:#e8730e}
+.art-body ul,.art-body ol{padding-left:20px;margin:8px 0}
+.art-body li{margin-bottom:3px;font-size:14px}
+.art-links{margin-top:10px}
+.art-link{display:inline-block;background:#000;color:#fff;padding:4px 12px;font-size:9px;text-decoration:none;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;margin-right:5px;margin-bottom:4px;transition:background .15s;letter-spacing:1px;text-transform:uppercase;font-weight:500}
+.art-link:hover{background:#e8730e}
+
+/* Tips box */
+.mag-tips{margin-top:16px;padding:18px 22px;background:#f7f7f7;border:none;border-top:2px solid #000;font-size:13.5px;line-height:1.8}
+.mag-tips div{background:transparent !important;border:none !important;padding:0 !important;border-radius:0 !important}
+.mag-tips b,.mag-tips strong{color:#000;font-size:13.5px}
+.mag-tips a{color:#000;font-size:12.5px;border-bottom:1px solid #ccc}
+.mag-tips a:hover{color:#e8730e;border-color:#e8730e}
+.mag-tips br{line-height:1.8}
+
+.mag-page-fade{display:none}
+.mag-page-num{display:none}
+
+/* ── BACK COVER → Footer ── */
+.mag-back-cover{background:#000 !important;cursor:default;position:relative;overflow:hidden;border:none !important;box-shadow:none}
+.mag-back-cover::before{display:none}
+.back-cover-inner{display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;padding:48px 24px;height:auto}
+.back-decoration{display:none}
+.back-content{display:flex;flex-direction:column;align-items:center;text-align:center}
+.back-logo{font-size:44px}
+.back-title{font-size:12px;font-weight:700;color:#fff;letter-spacing:6px;margin-top:12px;text-transform:uppercase}
+.back-subtitle{font-size:9px;color:rgba(255,255,255,0.3);letter-spacing:4px;text-transform:uppercase;margin-top:2px}
+.back-date{font-size:12px;color:rgba(255,255,255,0.3);margin-top:12px;letter-spacing:2px}
+.back-rule{width:40px;height:1px;background:rgba(255,255,255,0.2);margin:20px 0}
+.back-sources{font-size:10px;letter-spacing:1px}
+.back-sources a{color:rgba(255,255,255,0.5);text-decoration:none;transition:color .15s;text-transform:uppercase;font-size:10px;letter-spacing:1px}
+.back-sources a:hover{color:#e8730e}
+.back-nav{margin-top:24px;display:flex;gap:12px}
+.back-nav a{color:#fff;text-decoration:none;font-size:10px;padding:6px 16px;border:1px solid rgba(255,255,255,0.2);transition:all .15s;letter-spacing:1px;text-transform:uppercase}
+.back-nav a:hover{border-color:#e8730e;color:#e8730e}
+
+/* Reveal */
+@keyframes revealUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+.mag-page:not(.mag-cover):not(.mag-back-cover){opacity:0}
+.mag-page.revealed{animation:revealUp 0.35s ease-out forwards}
+
+@media(max-width:767px){
+  .af-hero{flex-direction:column}
+  .af-hero-left{border-right:none;border-bottom:1px solid #ddd}
+  .af-hero-visual{min-height:240px;padding:32px}
+  .af-logo{font-size:32px}
+  .af-nav{gap:12px;font-size:10px;flex-wrap:wrap}
+  .mag-page-inner{padding:28px 16px}
+  .mag-title{font-size:18px}
+  .art-title{font-size:14px}
+  .art-body{font-size:13.5px}
 }
 </style>
 </head>
 <body>
-<div class="header">
-  <div class="header-inner">
-    <a href="../index.html" class="logo">RFL DAILY</a>
-    <nav><a href="../index.html">All Issues</a>
-<a href="../daily/">Daily</a>
-</nav>
-  </div>
-</div>
-<div class="container">
-<a href="index.html" class="back-link">&larr; Back</a>
 
-<div class="page-header">
-  <h1><span class="tag tag-weekly">weekly</span> 2026-W28</h1>
+<!-- ── Artforum-style masthead ── -->
+<div class="af-masthead">
+  <a href="2026-W28.html" class="af-logo">RFL 社区日报</a>
+  <nav class="af-nav">
+    <a href="https://github.com/Rust-for-Linux" target="_blank" rel="noopener"><svg style="width:14px;height:14px;vertical-align:-2px;margin-right:3px;fill:currentColor" viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>RFL GitHub</a>
+    <a href="https://lore.kernel.org/rust-for-linux/" target="_blank" rel="noopener"><svg style="width:14px;height:14px;vertical-align:-2px;margin-right:3px;fill:currentColor" viewBox="0 0 16 16"><path d="M0 4a2 2 0 012-2h12a2 2 0 012 2v8a2 2 0 01-2 2H2a2 2 0 01-2-2V4zm2-1a1 1 0 00-1 1v.217l7 4.2 7-4.2V4a1 1 0 00-1-1H2zm13 2.383l-4.758 2.855L15 11.114V5.383zm-.034 6.878L9.271 8.82 8 9.583 6.729 8.82l-5.694 3.44A1 1 0 002 13h12a1 1 0 00.966-.739zM1 11.114l4.758-2.876L1 5.383v5.73z"/></svg>Lore</a>
+    <a href="https://rust-for-linux.zulipchat.com/" target="_blank" rel="noopener"><svg style="width:14px;height:14px;vertical-align:-2px;margin-right:3px;fill:currentColor" viewBox="0 0 16 16"><path d="M14 1a1 1 0 011 1v8a1 1 0 01-1 1h-2.5a1 1 0 00-.8.4l-1.9 2.533a1 1 0 01-1.6 0L5.3 11.4a1 1 0 00-.8-.4H2a1 1 0 01-1-1V2a1 1 0 011-1h12zM2 0a2 2 0 00-2 2v8a2 2 0 002 2h2.5a.5.5 0 01.4.2l1.9 2.533a2 2 0 003.2 0l1.9-2.533a.5.5 0 01.4-.2H14a2 2 0 002-2V2a2 2 0 00-2-2H2z"/></svg>Zulip</a>
+    <span style="color:#ddd">|</span>
+    <a href="https://github.com/rfl-camp/reports" target="_blank" rel="noopener"><svg style="width:14px;height:14px;vertical-align:-2px;margin-right:3px;fill:currentColor" viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>Source</a>
+  </nav>
 </div>
-<div class="stats"><div class="stat"><span class="stat-val">9</span><span class="stat-label">Lore</span></div>
-<div class="stat"><span class="stat-val">1</span><span class="stat-label">GitHub</span></div>
+<div class="af-date-bar" id="dateBar">
+  <a class="af-today" id="todayBtn" href="2026-W28.html">TODAY</a>
+  <span></span>
+  <span class="af-cal-btn" id="calBtn"><svg viewBox="0 0 16 16"><path d="M4 0v1H1.5A1.5 1.5 0 000 2.5v12A1.5 1.5 0 001.5 16h13a1.5 1.5 0 001.5-1.5v-12A1.5 1.5 0 0014.5 1H12V0h-1v1H5V0H4zm0 2v1h1V2h6v1h1V2h2.5a.5.5 0 01.5.5V4H1V2.5a.5.5 0 01.5-.5H4zM1 5h14v9.5a.5.5 0 01-.5.5h-13a.5.5 0 01-.5-.5V5z"/></svg>SELECT</span>
+  <div id="calDrop" class="cal-drop" style="display:none"></div>
 </div>
-<div class="report-card">
-  <div class="report-card-header">
-    <h2>2026-W28</h2>
-    
+<div id="calOverlay" class="cal-overlay"></div>
+
+<!-- ── Prev / Next arrows ── -->
+<a href="2026-W27.html" class="pn-arrow pn-left" title="Previous: 2026-W27">&#8592;<span class="pn-label">2026-W27</span></a>
+
+
+<!-- ── Hero: left visual + right article list ── -->
+<div class="af-hero" id="afHero">
+  <div class="af-hero-left">
+    <div class="af-hero-visual" id="heroVisual"></div>
   </div>
-  <div class="report-body">
-    <h1>RFL 周报 - 2026-W28</h1>
-<blockquote>
-<p>2026-07-06 ~ 2026-07-12 | 覆盖 1 份日报</p>
-</blockquote>
-<h2>Summary / 本周要点</h2>
-<p><strong>EN:</strong> 1 reports aggregated. Lore: 9 threads | GitHub: 1 items</p>
-<p><strong>CN:</strong> 共聚合 1 份报告。邮件列表 9 个讨论、GitHub 1 项更新</p>
-<h2>邮件列表 (Lore)</h2>
-<h3>补丁</h3>
-<ul>
-<li><a href="https://lore.kernel.org/rust-for-linux/akmnh0AKFfu9-OYn@gurudas.dev/">rust: Use kernel style vertical imports in various drivers</a> (7p) — Miguel Ojeda, Andrew Lunn, Guru Das Srinagesh, 4 reviews</li>
-<li><a href="https://lore.kernel.org/rust-for-linux/akmtA7EbVBdhRAOq@gurudas.dev/">cpufreq: rcpufreq_dt: use vertical import style</a> (7p) — Miguel Ojeda, Guru Das Srinagesh, 2 reviews</li>
-<li><a href="https://lore.kernel.org/rust-for-linux/DJQOWA2VOJ3G.2YGSYJGK7HPBJ@nvidia.com/">rust: io: add missing safety requirement in <code>IoCapable</code> methods</a> v5 (20p) — Gary Guo, Alexandre Courbot, 2 reviews</li>
-<li><a href="https://lore.kernel.org/rust-for-linux/20260705175936.4653-1-litvindev@gmail.com/">scripts/tags.sh: Prevent binary files appearing in cscope.files</a> — Miguel Ojeda, Sergei Litvin, 1 reviews<blockquote>
-<p>PROBLEM  When executing the command <code>make COMPILED_SOURCE=1 cscope</code>, the resulting <code>cscope.files</code> file contains filenames with the extensions <em>.rlib, </em>.rmeta, and *.so.  SOLUTION  Modify the regular expression in the <code>all_compiled_sources()</code> function...</p>
-</blockquote>
-</li>
-<li><a href="https://lore.kernel.org/rust-for-linux/akmwRDWy0FkAPeXf@gurudas.dev/">samples: rust_dma: use vertical import style</a> (7p) — Guru Das Srinagesh, 1 reviews</li>
-<li><a href="https://lore.kernel.org/rust-for-linux/DJQOVQU813BE.YEOLP9RLAFK@nvidia.com/">rust: io: add copying methods</a> v5 (20p) — Alexandre Courbot, 1 reviews</li>
-<li><a href="https://lore.kernel.org/rust-for-linux/20260705175957.4672-1-litvindev@gmail.com/">scripts/tags.sh: Add support for rust source files</a> — Sergei Litvin<blockquote>
-<p>PROBLEM  When executing the command <code>make cscope</code>, the <code>cscope.files</code> file generated by it includes only filenames with the extensions <em>.h, </em>.c, <em>.S and not includes filenames with </em>.rs extensions.  SOLUTION  Modify the functions `find_arch_sources()...</p>
-</blockquote>
-</li>
-<li><a href="https://lore.kernel.org/rust-for-linux/DJQXXV5KC973.1XAINGJFCKSWE@mailbox.org/">rust: pci: rework device enabling API</a> — Maurice Hieronymus, 1 reviews</li>
-</ul>
-<h3>讨论</h3>
-<ul>
-<li><a href="https://lore.kernel.org/rust-for-linux/DJQNN9FRZN3C.3DQE4H9HAZ8W6@kernel.org/">[RFC 1/3] gpu: nova-core: Add auxiliary bus registration data to nova-core</a> — Danilo Krummrich (2 条)</li>
-</ul>
-<h2>GitHub</h2>
-<h3>议题 (1)</h3>
-<ul>
-<li>[closed] <a href="https://github.com/Rust-for-Linux/linux/issues/1243">#1243 Network Driver</a> — tuna2134</li>
-</ul>
-<hr />
-<p><em>Generated at 2026-07-06 08:00:00 CST by rfl-reports.py</em></p>
-  </div>
-  <div class="report-nav"><a href="2026-W27.html">&larr; 2026-W27</a><span></span></div>
+  <div class="af-hero-right" id="heroRight"></div>
 </div>
 
+<!-- ── Main article content ── -->
+<div class="af-main">
+  <div id="magContent">
+    <div class="mag-page mag-cover" data-density="hard"><div class="mag-page-inner cover-inner"><div class="cover-decoration"></div><div class="cover-content"><div class="cover-masthead">R&thinsp;F&thinsp;L&ensp;D&thinsp;A&thinsp;I&thinsp;L&thinsp;Y</div><div class="cover-rule"></div><div class="cover-crab">🦀</div><div class="cover-date"></div><div class="cover-weekday"></div><div class="cover-rule"></div><div class="cover-hero">邮件列表 (Lore)</div><div class="cover-rule-thin"></div><div class="cover-stats"></div></div></div></div><div class="mag-page"><div class="mag-page-inner overview-inner"><div class="mag-accent-bar"></div><div class="ov-label">TODAY'S OVERVIEW</div><h2 class="ov-title">📋 今日概览</h2><div class="ov-body"><span class="ov-dropcap">2</span>026-07-06 ~ 2026-07-12 共聚合 2 份日报，包含 Lore 线程 132 个、Zulip 话题 2 个、GitHub 更新 2 项。本周整理出 31 条可追踪动态，下面按数据来源和主题集中回顾。</div><div class="mag-page-num">2</div></div></div><div class="mag-page"><div class="mag-page-inner"><div class="mag-accent-bar"></div><div class="mag-section-label">邮件列表 (LORE)</div><h2 class="mag-title">邮件列表 (Lore)</h2><div class="mag-section-content"><div class="mag-article"><div class="art-body"><p>该动态在本周多份日报中出现，说明相关补丁或讨论值得继续跟踪。</p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/akmnh0AKFfu9-OYn@gurudas.dev/" class="art-link">查看原文</a> </div></div><div class="mag-article"><div class="art-body"><p>该动态在本周多份日报中出现，说明相关补丁或讨论值得继续跟踪。</p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/akmtA7EbVBdhRAOq@gurudas.dev/" class="art-link">查看原文</a> </div></div><div class="mag-article"><div class="art-body"><p>该动态在本周多份日报中出现，说明相关补丁或讨论值得继续跟踪。</p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/DJQOWA2VOJ3G.2YGSYJGK7HPBJ@nvidia.com/" class="art-link">查看原文</a> </div></div><div class="mag-article"><div class="art-body"><p>PROBLEM  When executing the command make COMPILED_SOURCE=1 cscope, the resulting cscope.files file contains filenames with the extensions *.rlib, *.rmeta, and *.so.  SOLUTION  Modify the regular expression in the all_compiled_sources() function...</p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/20260705175936.4653-1-litvindev@gmail.com/" class="art-link">查看原文</a> </div></div><div class="mag-article"><div class="art-body"><p>该动态在本周多份日报中出现，说明相关补丁或讨论值得继续跟踪。</p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/akmwRDWy0FkAPeXf@gurudas.dev/" class="art-link">查看原文</a> </div></div><div class="mag-article"><div class="art-body"><p>该动态在本周多份日报中出现，说明相关补丁或讨论值得继续跟踪。</p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/DJQOVQU813BE.YEOLP9RLAFK@nvidia.com/" class="art-link">查看原文</a> </div></div><div class="mag-article"><div class="art-body"><p>PROBLEM  When executing the command make cscope, the cscope.files file generated by it includes only filenames with the extensions *.h, *.c, *.S and not includes filenames with *.rs extensions.  SOLUTION  Modify the functions `find_arch_sources()...</p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/20260705175957.4672-1-litvindev@gmail.com/" class="art-link">查看原文</a> </div></div><div class="mag-article"><div class="art-body"><p>该动态在本周多份日报中出现，说明相关补丁或讨论值得继续跟踪。</p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/DJQXXV5KC973.1XAINGJFCKSWE@mailbox.org/" class="art-link">查看原文</a> </div></div><div class="mag-article"><div class="art-body"><p>该动态在本周多份日报中出现，说明相关补丁或讨论值得继续跟踪。</p></div></div><div class="mag-article"><div class="art-body"><p>Convert use imports to vertical layout for better readability and maintainability.</p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/20260705-net-vert-imp-v1-2-95a35ddff411@gurudas.dev/" class="art-link">查看原文</a> </div></div></div><div class="mag-page-fade"></div><div class="mag-page-num">3</div></div></div><div class="mag-page"><div class="mag-page-inner"><div class="mag-accent-bar"></div><div class="mag-section-label">CONTINUED</div><h2 class="mag-title">邮件列表 (Lore)</h2><div class="mag-section-content"><div class="mag-article"><div class="art-body"><p>Convert use imports to vertical layout for better readability and maintainability.</p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/20260705-net-vert-imp-v1-1-95a35ddff411@gurudas.dev/" class="art-link">查看原文</a> </div></div><div class="mag-article"><div class="art-body"><p>One of the first things a user needs to know about a GPU is its chipset, so add an ioctl to return that.</p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/20260706053413.154135-4-apopple@nvidia.com/" class="art-link">查看原文</a> </div></div><div class="mag-article"><div class="art-body"><p>该动态在本周多份日报中出现，说明相关补丁或讨论值得继续跟踪。</p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/DJR9ZKFB5WQQ.1CGI0N3GS1SFM@nvidia.com/" class="art-link">查看原文</a> </div></div><div class="mag-article"><div class="art-body"><p>该动态在本周多份日报中出现，说明相关补丁或讨论值得继续跟踪。</p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/DJR9ZP56YXX9.P8U6V298X5RW@nvidia.com/" class="art-link">查看原文</a> </div></div><div class="mag-article"><div class="art-body"><p>This series fixes two issues with {:p} pointer formatting: - The impl_fmt_adapter_forward! macro destructures self into a local variable, causing {:p} to print a stack address instead of the actual pointer - Kernel address leak — {:p} prints raw poin...</p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/20260706-hashedptr-v13-0-e32a15ee2854@kylinos.cn/" class="art-link">查看原文</a> </div></div><div class="mag-article"><div class="art-body"><p>该动态在本周多份日报中出现，说明相关补丁或讨论值得继续跟踪。</p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/DJR76RV8NEKN.2MP5M9Z66U4TY@nvidia.com/" class="art-link">查看原文</a> </div></div><div class="mag-article"><div class="art-body"><p>Makes dept able to track PG_locked waits and events, which will be useful in practice.  See the following link that shows dept worked with PG_locked and detected real issues in practice:  https://lore.kernel.org/lkml/1674268856-31807-1-git-send-email...</p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/20260706061928.66713-23-byungchul@sk.com/" class="art-link">查看原文</a> </div></div><div class="mag-article"><div class="art-body"><p>该动态在本周多份日报中出现，说明相关补丁或讨论值得继续跟踪。</p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/akuV_GRAM4QPqf-o@google.com/" class="art-link">查看原文</a> </div></div><div class="mag-article"><div class="art-body"><p>该动态在本周多份日报中出现，说明相关补丁或讨论值得继续跟踪。</p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/akuXpnwb_y4R7ekV@google.com/" class="art-link">查看原文</a> </div></div><div class="mag-article"><div class="art-body"><p>该动态在本周多份日报中出现，说明相关补丁或讨论值得继续跟踪。</p><p>另有 7 条动态保留在 Markdown 周报中。</p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/akvXzPd169ahMuCi@yury/" class="art-link">查看原文</a> </div></div><div class="mag-tips"><div><strong>小白科普：邮件列表审查</strong>：Rust-for-Linux 补丁主要通过邮件列表公开审查，回复里常包含设计取舍和维护者意见。 <a href="https://docs.kernel.org/process/submitting-patches.html">学习链接</a></div></div></div><div class="mag-page-fade"></div><div class="mag-page-num">4</div></div></div><div class="mag-page"><div class="mag-page-inner"><div class="mag-accent-bar"></div><div class="mag-section-label">ZULIP 讨论</div><h2 class="mag-title">Zulip 讨论</h2><div class="mag-section-content"><div class="mag-article"><div class="art-body"><p>Alice Ryhl: These properties would be useful:     For all possible inputs from userspace, the code must not panic.   When  Allocation::cleanup_object  is called, it must clean up exactly the s...</p></div><div class="art-links"><a href="https://rust-for-linux.zulipchat.com/#narrow/stream/General/topic/Verifying%20Binder%27s%20parsing%20of%20userspace%20input%20in%20Lean%204" class="art-link">查看原文</a> </div></div><div class="mag-article"><div class="art-body"><p>matt3o12: Hello,   I am trying to get started on kernel development and thought that the nova subsystem was a good place to start as I have rust experience, a nvidia GPU and I am generally i...</p></div><div class="art-links"><a href="https://rust-for-linux.zulipchat.com/#narrow/stream/Nova/topic/nova%20core%3A%20DMA-API%3A%20nova-core%200000%3A00%3A03.0%3A%20mapping%20sg%20segme" class="art-link">查看原文</a> </div></div><div class="mag-tips"><div><strong>小白科普：Zulip 讨论</strong>：Zulip 更适合快速澄清想法，正式补丁结论仍通常回到邮件列表。 <a href="https://rust-for-linux.zulipchat.com/">学习链接</a></div></div></div><div class="mag-page-fade"></div><div class="mag-page-num">5</div></div></div><div class="mag-page"><div class="mag-page-inner"><div class="mag-accent-bar"></div><div class="mag-section-label">GITHUB</div><h2 class="mag-title">GitHub</h2><div class="mag-section-content"><div class="mag-article"><div class="art-body"><p>该动态在本周多份日报中出现，说明相关补丁或讨论值得继续跟踪。</p></div><div class="art-links"><a href="https://github.com/Rust-for-Linux/linux/issues/1243" class="art-link">查看原文</a> </div></div><div class="mag-article"><div class="art-body"><p>该动态在本周多份日报中出现，说明相关补丁或讨论值得继续跟踪。</p></div><div class="art-links"><a href="https://github.com/Rust-for-Linux/linux/issues/355" class="art-link">查看原文</a> </div></div><div class="mag-tips"><div><strong>小白科普：rust-next</strong>：Rust-for-Linux 的开发分支会先积累候选改动，再进入更上游的内核集成流程。 <a href="https://github.com/Rust-for-Linux/linux">学习链接</a></div></div></div><div class="mag-page-fade"></div><div class="mag-page-num">6</div></div></div><div class="mag-page mag-back-cover" data-density="hard"><div class="mag-page-inner back-cover-inner"><div class="back-decoration"></div><div class="back-content"><div class="back-logo">🦀</div><div class="back-title">Rust-for-Linux</div><div class="back-subtitle">Daily Briefing</div><div class="back-date"></div><div class="back-rule"></div><div class="back-sources"><a href="https://lore.kernel.org/rust-for-linux/">Lore</a> &middot; <a href="https://rust-for-linux.zulipchat.com/">Zulip</a> &middot; <a href="https://github.com/Rust-for-Linux">GitHub</a></div><div class="back-nav"><a href="2026-W27.html" class="back-link-prev">&larr; 2026-W27</a></div></div></div></div>
+  </div>
 </div>
-<div class="footer">Rust-for-Linux &middot; RFL Daily</div>
+
+<script>
+document.addEventListener('DOMContentLoaded',function(){
+  var sections=document.querySelectorAll('.mag-page');
+
+  /* ── Build hero from cover data ── */
+  var cover=document.querySelector('.mag-cover');
+  if(cover){
+    var vis=document.getElementById('heroVisual');
+    var crab=cover.querySelector('.cover-crab');
+    var date=cover.querySelector('.cover-date');
+    var wd=cover.querySelector('.cover-weekday');
+    var hero=cover.querySelector('.cover-hero');
+    if(crab)vis.appendChild(crab.cloneNode(true));
+    if(date)vis.appendChild(date.cloneNode(true));
+    if(wd)vis.appendChild(wd.cloneNode(true));
+    if(hero)vis.appendChild(hero.cloneNode(true));
+    vis.style.display='flex';
+    vis.style.flexDirection='column';
+    vis.style.alignItems='center';
+    vis.style.textAlign='center';
+  }
+
+  /* ── Build hero right: first few section titles ── */
+  var heroR=document.getElementById('heroRight');
+  var sectionPages=document.querySelectorAll('.mag-page:not(.mag-cover):not(.mag-back-cover)');
+  var count=0;
+  sectionPages.forEach(function(pg){
+    if(count>=5)return;
+    var label=pg.querySelector('.mag-section-label,.ov-label');
+    var title=pg.querySelector('.mag-title,.ov-title');
+    if(!title)return;
+    var item=document.createElement('div');
+    item.className='af-hero-item';
+    var cat=label?label.textContent.trim():'';
+    var ttl=title.textContent.trim();
+    // Get first line of body
+    var body=pg.querySelector('.art-body,.ov-body');
+    var excerpt=body?body.textContent.trim().slice(0,80)+'…':'';
+    item.innerHTML='<div class="af-hero-cat">'+cat+'</div><div class="af-hero-title">'+ttl+'</div><div class="af-hero-excerpt">'+excerpt+'</div>';
+    // Click to scroll to section
+    item.style.cursor='pointer';
+    item.addEventListener('click',function(){pg.scrollIntoView({behavior:'smooth',block:'start'})});
+    heroR.appendChild(item);
+    count++;
+  });
+
+  /* ── Back cover full-bleed ── */
+  var bc=document.querySelector('.mag-back-cover');
+  if(bc)bc.classList.add('mag-full-bleed');
+
+  /* ── Scroll reveal ── */
+  var observer=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){e.target.classList.add('revealed');observer.unobserve(e.target)}
+    });
+  },{threshold:0.06});
+  sections.forEach(function(s){
+    if(!s.classList.contains('mag-cover'))observer.observe(s);
+  });
+
+  /* ── Keyboard: left/right arrows for prev/next ── */
+  var prevUrl='2026-W27.html';
+  var nextUrl='';
+  document.addEventListener('keydown',function(e){
+    if(calOpen){if(e.key==='Escape'){closeCal();e.stopPropagation()}return}
+    if(e.key==='Escape'){window.location.href='index.html'}
+    if(e.key==='ArrowLeft'&&prevUrl){window.location.href=prevUrl}
+    if(e.key==='ArrowRight'&&nextUrl){window.location.href=nextUrl}
+  });
+
+  /* ── Calendar picker ── */
+  var allSlugs=[];
+  var slugSet=new Set(allSlugs);
+  var curDate='';
+  var calOpen=false;
+  var calMonth,calYear;
+  // init to current page's month
+  var dp=curDate.split('-');
+  calYear=parseInt(dp[0]);calMonth=parseInt(dp[1])-1;
+
+  var calBtn=document.getElementById('calBtn');
+  var calDrop=document.getElementById('calDrop');
+  var calOverlay=document.getElementById('calOverlay');
+
+  function closeCal(){calOpen=false;calDrop.style.display='none';calOverlay.className='cal-overlay'}
+  function openCal(){calOpen=true;renderCal();calDrop.style.display='block';calOverlay.className='cal-overlay open'}
+  calBtn.addEventListener('click',function(e){e.stopPropagation();calOpen?closeCal():openCal()});
+  calOverlay.addEventListener('click',closeCal);
+
+  var MONTHS=['January','February','March','April','May','June','July','August','September','October','November','December'];
+  var DOWS=['Su','Mo','Tu','We','Th','Fr','Sa'];
+  var today=new Date();var todayStr=today.getFullYear()+'-'+String(today.getMonth()+1).padStart(2,'0')+'-'+String(today.getDate()).padStart(2,'0');
+
+  function renderCal(){
+    var first=new Date(calYear,calMonth,1);
+    var startDow=first.getDay();
+    var daysInMonth=new Date(calYear,calMonth+1,0).getDate();
+    var h='<div class="cal-header">';
+    h+='<button class="cal-arrow-btn" id="calPrev">&#8592;</button>';
+    h+='<span class="cal-month">'+MONTHS[calMonth]+' '+calYear+'</span>';
+    h+='<button class="cal-arrow-btn" id="calNext">&#8594;</button>';
+    h+='</div><div class="cal-grid">';
+    for(var d=0;d<7;d++)h+='<div class="cal-dow">'+DOWS[d]+'</div>';
+    for(var b=0;b<startDow;b++)h+='<div class="cal-day"></div>';
+    for(var day=1;day<=daysInMonth;day++){
+      var ds=calYear+'-'+String(calMonth+1).padStart(2,'0')+'-'+String(day).padStart(2,'0');
+      var cls='cal-day';
+      var hasIssue=slugSet.has(ds);
+      if(hasIssue)cls+=' has-issue';
+      if(ds===curDate)cls+=' current';
+      if(ds===todayStr)cls+=' today-mark';
+      h+='<div class="'+cls+'" data-date="'+ds+'">'+day+'</div>';
+    }
+    h+='</div>';
+    calDrop.innerHTML=h;
+    document.getElementById('calPrev').addEventListener('click',function(e){e.stopPropagation();calMonth--;if(calMonth<0){calMonth=11;calYear--}renderCal()});
+    document.getElementById('calNext').addEventListener('click',function(e){e.stopPropagation();calMonth++;if(calMonth>11){calMonth=0;calYear++}renderCal()});
+    calDrop.querySelectorAll('.cal-day.has-issue').forEach(function(el){
+      el.addEventListener('click',function(){window.location.href=el.dataset.date+'.html'});
+    });
+  }
+
+  // Hide TODAY button if already on latest
+  if(curDate==='2026-W28'){document.getElementById('todayBtn').style.display='none'}
+});
+</script>
 </body>
 </html>
