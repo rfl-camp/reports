@@ -210,7 +210,7 @@ body{background:#fff;font-family:'Helvetica Neue',Helvetica,Arial,'Noto Sans SC'
 Joel Fernandes 和 John Hubbard 提交了一组大型补丁，为 nova-core 的内存管理模块引入了统一的页表条目（Page Table Entry）包装枚举。简单来说，GPU 有自己的"地址簿"（页表），用来记录显存中每块数据放在哪里。之前不同类型的页表条目各自为政，这组补丁把它们统一成一套枚举类型，让代码更整洁、更不容易出错。已经迭代到第 10 版，有 5 位审查者参与，说明这块设计经过了非常充分的讨论和打磨。
 </p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/f3a00d39-cbf5-41e0-9c7e-8ef078328821@nvidia.com/" class="art-link">📬 查看补丁</a> </div></div><div class="mag-article"><div class="art-body"><p>2. Hopper / Blackwell 架构：基础 GPU 识别 — 第 10 版，共 28 个补丁</p><p>
 John Hubbard 和 Timur Tabi 提交的另一组大型补丁，为 nova-core 添加了对 NVIDIA Hopper（H100 等）和 Blackwell（B200 等）架构 GPU 的基础识别能力。这就好比给驱动装上了"眼睛"，让它能认出"你是哪款 GPU"。这是支持新一代 GPU 的第一步——先认出硬件，才能进一步初始化和使用它。28 个补丁、第 10 版迭代，可以看出这个功能的复杂度和社区对质量的高要求。
-</p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/cb2bf998-55cf-466b-a6ba-1851278bbf43@nvidia.com/" class="art-link">📬 查看补丁</a> </div></div><div class="mag-article"><div class="art-body"><p>3. 启用 GA100 GPU 支持（含多项前置修复）</p><p>
+</p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/cb2bf998-55cf-466b-a6ba-1851278bbf43@nvidia.com/" class="art-link">📬 查看补丁</a> </div></div><div class="mag-article"><div class="art-title">使用正确的固件签名（fwsignature）</div><div class="art-body"><p>3. 启用 GA100 GPU 支持（含多项前置修复）</p><p>
 Eliot Courtney 今天提交了一系列相互关联的补丁，最终目标是让 nova-core 支持 GA100（NVIDIA A100 数据中心 GPU）。为了达到这个目标，他先提交了几组前置修复：
 </p><p>这几组补丁环环相扣，一起为 GA100 的正式启用扫清了障碍。</p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/DHRQL0KVSETV.2YWE5W5JFGHJE@nvidia.com/" class="art-link">📬 FRTS 检查</a> </div></div><div class="mag-article"><div class="art-body"><p>4. 修复 GSP 代码中内存屏障的错误使用</p><p>
 Gary Guo 发现 nova-core 的 GSP（GPU System Processor，GPU 上运行的一个小处理器）通信代码中，内存屏障（memory barrier）用错了。内存屏障就像是给 CPU 下的一道"命令"：在继续之前，必须确保之前的读写操作都已完成。用错屏障类型可能导致 GPU 和 CPU 之间的数据不同步，出现各种诡异的 bug。这组 3 个补丁修复了屏障类型选择的问题，同时引入了新的 Rust 同步辅助函数（详见下方基础设施部分）。
@@ -284,13 +284,13 @@ Greg Rose 在 #Help 频道分享了他尝试测试一个补丁时遇到的问题
 <strong>linux-next</strong>：Linux 内核的一个集成测试分支，包含了下一个版本将要合并的各种补丁。想提前测试新功能的人通常会用这个分支。<br/>
 <a href="https://doc.rust-lang.org/nomicon/ffi.html">📖 Rust FFI 指南</a>&nbsp;
 <a href="https://docs.kernel.org/process/2.Process.html">📖 内核开发流程</a>
-</div></div></div><div class="mag-page-fade"></div><div class="mag-page-num">11</div></div></div><div class="mag-page"><div class="mag-page-inner"><div class="mag-accent-bar"></div><div class="mag-section-label">️ 上游内核合并动态</div><h2 class="mag-title">️ 上游内核合并动态</h2><div class="mag-section-content"><div class="mag-article"><div class="art-body"><p>
+</div></div></div><div class="mag-page-fade"></div><div class="mag-page-num">11</div></div></div><div class="mag-page"><div class="mag-page-inner"><div class="mag-accent-bar"></div><div class="mag-section-label">️ 上游内核合并动态</div><h2 class="mag-title">️ 上游内核合并动态</h2><div class="mag-section-content"><div class="mag-article"><div class="art-title">文件完整性支持</div><div class="art-body"><p>
 除了 Rust 相关内容，rust-next 仓库还同步了多个 7.1-rc1 阶段的上游合并。虽然这些不是直接的 Rust 代码，但它们构成了 Rust 驱动运行的"地基"：
 </p><p>VFS（虚拟文件系统）系列更新</p><p>
 Christian Brauner 提交了多组 VFS 更新，被 Linus 合并：
 </p></div><div class="art-links"><a href="https://github.com/Rust-for-Linux/linux/commit/0e58e3f1c57850f62afd40a642a7fe3417d80b21" class="art-link">📦 writeback</a> </div></div><div class="mag-article"><div class="art-body"><p>RCU 子系统更新</p><p>
 Joel Fernandes 提交的 RCU 更新被合并，包括 NOCB CPU 管理代码的整合简化、bypass 刷新辅助函数的提取等。RCU 是内核中最重要的并发原语之一，它的每一次改进都会影响整个系统的性能和稳定性。
-</p></div><div class="art-links"><a href="https://github.com/Rust-for-Linux/linux/commit/28483203f7d7fe4f123ed08266c381fac96b0701" class="art-link">📦 查看合并</a> </div></div><div class="mag-article"><div class="art-body"><p>其他上游变更</p></div><div class="art-links"><a href="https://github.com/Rust-for-Linux/linux/commit/fdcbb1bc06508eb7ad961b3876b16382ae678ef8" class="art-link">📦 拷贝清理</a> </div></div><div class="mag-tips"><div>
+</p></div><div class="art-links"><a href="https://github.com/Rust-for-Linux/linux/commit/28483203f7d7fe4f123ed08266c381fac96b0701" class="art-link">📦 查看合并</a> </div></div><div class="mag-article"><div class="art-title">proc 内存安全默认值变更</div><div class="art-body"><p>其他上游变更</p></div><div class="art-links"><a href="https://github.com/Rust-for-Linux/linux/commit/fdcbb1bc06508eb7ad961b3876b16382ae678ef8" class="art-link">📦 拷贝清理</a> </div></div><div class="mag-tips"><div>
 💡 <strong>小白科普</strong><br/>
 <strong>VFS（Virtual File System）</strong>：Linux 内核中的一层"翻译官"，让不同的文件系统（ext4、btrfs、nfs 等）对用户程序来说都长一个样。你用的每一个 open()、read()、write() 都经过 VFS。<br/>
 <strong>合并窗口（Merge Window）</strong>：Linux 内核每个版本的开发分两个阶段——先是约两周的"合并窗口"（大量新功能涌入），然后是数周的"rc 阶段"（只修 bug，不加新功能）。<br/>
