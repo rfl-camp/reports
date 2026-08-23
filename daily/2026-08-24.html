@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>RFL 社区日报 &middot; 2026-06-15</title>
+<title>RFL 社区日报 &middot; 2026-08-24</title>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
@@ -182,15 +182,15 @@ body{background:#fff;font-family:'Helvetica Neue',Helvetica,Arial,'Noto Sans SC'
 </div>
 <div class="af-date-bar" id="dateBar">
   <a class="af-today" id="todayBtn" href="2026-08-24.html">TODAY</a>
-  <span>2026-06-15</span>
+  <span>2026-08-24</span>
   <span class="af-cal-btn" id="calBtn"><svg viewBox="0 0 16 16"><path d="M4 0v1H1.5A1.5 1.5 0 000 2.5v12A1.5 1.5 0 001.5 16h13a1.5 1.5 0 001.5-1.5v-12A1.5 1.5 0 0014.5 1H12V0h-1v1H5V0H4zm0 2v1h1V2h6v1h1V2h2.5a.5.5 0 01.5.5V4H1V2.5a.5.5 0 01.5-.5H4zM1 5h14v9.5a.5.5 0 01-.5.5h-13a.5.5 0 01-.5-.5V5z"/></svg>SELECT</span>
   <div id="calDrop" class="cal-drop" style="display:none"></div>
 </div>
 <div id="calOverlay" class="cal-overlay"></div>
 
 <!-- ── Prev / Next arrows ── -->
-<a href="2026-06-14.html" class="pn-arrow pn-left" title="Previous: 2026-06-14">&#8592;<span class="pn-label">2026-06-14</span></a>
-<a href="2026-06-16.html" class="pn-arrow pn-right" title="Next: 2026-06-16">&#8594;<span class="pn-label">2026-06-16</span></a>
+<a href="2026-08-23.html" class="pn-arrow pn-left" title="Previous: 2026-08-23">&#8592;<span class="pn-label">2026-08-23</span></a>
+
 
 <!-- ── Hero: left visual + right article list ── -->
 <div class="af-hero" id="afHero">
@@ -203,58 +203,7 @@ body{background:#fff;font-family:'Helvetica Neue',Helvetica,Arial,'Noto Sans SC'
 <!-- ── Main article content ── -->
 <div class="af-main">
   <div id="magContent">
-    <div class="mag-page mag-cover" data-density="hard"><div class="mag-page-inner cover-inner"><div class="cover-decoration"></div><div class="cover-content"><div class="cover-masthead">R&thinsp;F&thinsp;L&ensp;D&thinsp;A&thinsp;I&thinsp;L&thinsp;Y</div><div class="cover-rule"></div><div class="cover-crab">🦀</div><div class="cover-date">2026-06-15</div><div class="cover-weekday">Monday</div><div class="cover-rule"></div><div class="cover-hero">今日概览</div><div class="cover-rule-thin"></div><div class="cover-stats">12 emails &middot; 3 msgs</div></div></div></div><div class="mag-page"><div class="mag-page-inner overview-inner"><div class="mag-accent-bar"></div><div class="ov-label">TODAY'S OVERVIEW</div><h2 class="ov-title">📋 今日概览</h2><div class="ov-body"><span class="ov-dropcap">面</span>向内核开发新手的每日速递</div><div class="mag-page-num">2</div></div></div><div class="mag-page"><div class="mag-page-inner"><div class="mag-accent-bar"></div><div class="mag-section-label">今日概览</div><h2 class="mag-title">今日概览</h2><div class="mag-section-content"><div class="mag-article"><div class="art-body"><p>今天社区非常热闹！最大的新闻是 Miguel Ojeda 向 Linus 发出了 <strong>Rust for v7.2 的合并请求</strong>，这次引入了 <code>zerocopy</code> 库来替换大量不安全代码，是一次重量级更新。与此同时，Maurice Hieronymus 提交了一个完整的 <strong>QEMU EDU PCI 设备驱动示例</strong>，把内存映射 I/O、中断和 DMA 三大功能在一个驱动里全部展示出来，对学习者来说是一份很好的参考材料。此外，社区还在讨论一个叫 <strong>cargo-nok</strong> 的新工具，它试图让开发者不依赖 Kbuild 就能用纯 Cargo 编译树外内核模块。同步原语和测试基础设施也有小幅改进。</p></div></div></div><div class="mag-page-fade"></div><div class="mag-page-num">3</div></div></div><div class="mag-page"><div class="mag-page-inner"><div class="mag-accent-bar"></div><div class="mag-section-label">RUST 主线合并：V7.2 PULL REQUEST</div><h2 class="mag-title">Rust 主线合并：v7.2 Pull Request</h2><div class="mag-section-content"><div class="mag-article"><div class="art-title">发生了什么：</div><div class="art-body"><p>
-<strong>发生了什么：</strong>Miguel Ojeda（Rust-for-Linux 项目的主要维护者）向 Linus Torvalds 发送了将 Rust 代码合并到 Linux v7.2 内核的拉取请求。这是一个<strong>体量很大</strong>的更新，最核心的变化是引入了 <code>zerocopy</code> 这个第三方库（以 vendoring 的方式，即把源码直接放进内核树）。
-</p><p>
-<strong>为什么重要：</strong>在内核开发中，经常需要把一段原始的字节序列（比如从硬件读回来的数据）解释成某种结构体。以前用 Rust 做这件事，需要写大量的 <code>unsafe</code>（不安全）代码——就像是告诉编译器"相信我，这段代码没问题"，但这样就绕过了 Rust 的安全检查。<code>zerocopy</code> 库提供了安全的方式来做这种转换，相当于给这些操作加上了"安全带"。引入它之后，可以用安全代码替换掉一大批不安全代码，让内核中的 Rust 代码整体更可靠。
-</p><p>
-打个比方：以前你要把一袋混装的零件（字节）按说明书组装成成品（结构体），得自己保证不会装错，现在有了一个自动化夹具（zerocopy），它会帮你检查每个零件是否放对了位置。
-</p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/20260614202412.400461-1-ojeda@kernel.org/" class="art-link">📬 查看邮件</a> </div></div><div class="mag-tips"><div>
-<strong>💡 小白科普</strong><br/>
-<strong>Vendoring（供应商化）</strong>：把第三方库的源码直接复制到自己的项目里，而不是通过包管理器在线下载。内核这样做是因为内核构建不能依赖外部网络。<br/>
-<strong>zerocopy</strong>：一个 Rust 库，用于安全地在字节序列和结构体之间进行零拷贝转换，无需 unsafe 代码。<a href="https://doc.rust-lang.org/nomicon/transmutes.html">📖 了解类型转换</a>
-</div></div></div><div class="mag-page-fade"></div><div class="mag-page-num">4</div></div></div><div class="mag-page"><div class="mag-page-inner"><div class="mag-accent-bar"></div><div class="mag-section-label">️ PCI 驱动：EDU 教学设备驱动示例</div><h2 class="mag-title">️ PCI 驱动：EDU 教学设备驱动示例</h2><div class="mag-section-content"><div class="mag-article"><div class="art-title">补丁 1：让 Vendor::from_raw() 变成公开方法</div><div class="art-body"><p>
-今天最具教学价值的一组补丁来自 Maurice Hieronymus，他提交了一整套（共 4 个补丁）针对 QEMU EDU 设备的 Rust PCI 驱动示例。这个系列从底层 API 改进到最终驱动实现，环环相扣。
-</p><p>
-<strong>改了什么：</strong>之前 <code>Vendor::from_raw()</code> 的可见性是 <code>pub(super)</code>，也就是只有同一个模块内部才能用它。这意味着驱动代码只能通过内核预定义的 <code>PCI_VENDOR_ID_*</code> 常量来获取厂商 ID。但有些设备（比如 QEMU 的教学设备 "edu"）并没有在内核的 <code>pci_ids.h</code> 头文件里注册常量名。
-</p><p>
-<strong>解决方案：</strong>把 <code>from_raw()</code> 改为完全公开（<code>pub</code>），让驱动可以直接用数字厂商 ID 来创建 Vendor 对象。这样就能为没有"名字"的设备编写驱动了。Gary Guo 对此进行了 review。
-</p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/20260614-b4-rust-pci-edu-driver-v1-1-e3f2471b595c@mailbox.org/" class="art-link">📬 查看补丁</a> </div></div><div class="mag-article"><div class="art-title">补丁 2：添加托管式 Device::enable_device()</div><div class="art-body"><p>
-<strong>改了什么：</strong>之前 Rust PCI 绑定只有 <code>enable_device_mem()</code>（对应 C 里的 <code>pcim_enable_device()</code>），现在又加了一个 <code>enable_device()</code> 方法，它是"managed"的——意思是当驱动从设备上解绑时，系统会<strong>自动</strong>调用 <code>pci_disable_device()</code> 来清理资源。
-</p><p>
-<strong>为什么重要：</strong>想象一下你在图书馆借了一本书，"managed"模式就像图书馆有自动归还系统：你离开时书会自动还回去，不需要你记着手动还。这避免了驱动开发者忘记关闭设备导致的资源泄漏。使能计数（enable count）会在 unbind/rebind 过程中保持平衡。
-</p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/20260614-b4-rust-pci-edu-driver-v1-2-e3f2471b595c@mailbox.org/" class="art-link">📬 查看补丁</a> </div></div><div class="mag-article"><div class="art-title">补丁 3 & 4：完整的 EDU PCI 驱动示例</div><div class="art-body"><p>
-<strong>改了什么：</strong>这是整个系列的"大菜"。之前内核树里的 Rust 示例驱动是分散的——<code>rust_driver_pci</code> 只演示 MMIO，<code>rust_dma</code> 只演示 DMA，没有一个把所有技术点整合在一起的完整例子。这个新示例驱动面向 QEMU 的 <code>edu</code> 设备（一个专门为教学设计的虚拟 PCI 设备），在一个驱动里同时展示了：
-</p><p>
-补丁 4 还添加了 <code>SAMPLE_RUST_DRIVER_EDU</code> Kconfig 选项和 Makefile 配置，让用户可以通过内核配置菜单选择是否编译这个示例。对于想学习"如何用 Rust 写一个真正的内核驱动"的人来说，这是目前最好的入门参考。
-</p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/20260614-b4-rust-pci-edu-driver-v1-0-e3f2471b595c@mailbox.org/" class="art-link">📬 查看系列封面信</a> <a href="https://lore.kernel.org/rust-for-linux/20260614-b4-rust-pci-edu-driver-v1-4-e3f2471b595c@mailbox.org/" class="art-link">📬 查看补丁 4</a> </div></div><div class="mag-tips"><div>
-<strong>💡 小白科普</strong><br/>
-<strong>PCI（Peripheral Component Interconnect）</strong>：电脑里连接显卡、网卡、声卡等硬件的标准总线，类似于主板上的"高速公路"。每个 PCI 设备都有唯一的厂商 ID 和设备 ID。<br/>
-<strong>QEMU EDU 设备</strong>：QEMU 虚拟机里专门为教学目的设计的一个假 PCI 设备，用来让开发者练习写驱动，不需要真实硬件。<a href="https://www.qemu.org/docs/master/specs/edu.html">📖 EDU 设备文档</a>
-</div></div></div><div class="mag-page-fade"></div><div class="mag-page-num">5</div></div></div><div class="mag-page"><div class="mag-page-inner"><div class="mag-accent-bar"></div><div class="mag-section-label">内核同步原语：COMPLETION 添加 COMPLETE()</div><h2 class="mag-title">内核同步原语：Completion 添加 complete()</h2><div class="mag-section-content"><div class="mag-article"><div class="art-title">发生了什么：</div><div class="art-body"><p>
-<strong>发生了什么：</strong>Gary Guo 和 Maurice Hieronymus 合作为 Rust 的 <code>Completion</code>（完成量）抽象添加了 <code>complete()</code> 方法。之前 Rust 的 Completion 绑定只有 <code>complete_all()</code> 和 <code>wait_for_completion()</code> 两个方法。
-</p><p>
-<strong>问题是什么：</strong><code>complete_all()</code> 会把一个 Completion 永久标记为"已完成"——一旦调用了它，之后所有的 <code>wait_for_completion()</code> 都会立即返回，不会再等待。这意味着你<strong>不能</strong>用同一个 Completion 对象反复发信号。打个比方：<code>complete_all()</code> 就像把交通灯永远变成绿灯，所有车都直接通过；而新添加的 <code>complete()</code> 则是每次只放行一辆车（唤醒一个等待者），之后灯又变红了。
-</p><p>
-<strong>为什么需要它：</strong>EDU 驱动里的中断处理需要反复通知等待者"中断来了"，每次中断只唤醒一个等待者，所以需要 <code>complete()</code> 这种"一次性唤醒一个"的语义。这个补丁收到了 2 个 review，说明社区对它的正确性比较重视。
-</p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/20260614-b4-rust-pci-edu-driver-v1-3-e3f2471b595c@mailbox.org/" class="art-link">📬 查看补丁</a> </div></div><div class="mag-tips"><div>
-<strong>💡 小白科普</strong><br/>
-<strong>Completion（完成量）</strong>：内核中的一种同步机制，允许一个线程等待另一个线程完成某个操作后再继续执行。就像你下了外卖单后等待"您的外卖已送达"通知一样。<a href="https://docs.kernel.org/locking/completion.html">📖 内核文档</a>
-</div></div></div><div class="mag-page-fade"></div><div class="mag-page-num">6</div></div></div><div class="mag-page"><div class="mag-page-inner"><div class="mag-accent-bar"></div><div class="mag-section-label">️ 构建系统与工具链</div><h2 class="mag-title">️ 构建系统与工具链</h2><div class="mag-section-content"><div class="mag-article"><div class="art-title">doctest 函数名裁剪：提升可重复性</div><div class="art-body"><p>
-<strong>改了什么：</strong>Gary Guo 提交、David Gow review 的一个小补丁，修复了 Rust doctest（文档测试）在生成测试函数名时的一个问题。之前生成的函数名可能因为路径等因素在不同构建环境下不一致，导致测试结果"不可重复"——同样的代码在不同机器上编译出来的二进制不完全一样。
-</p><p>
-<strong>为什么重要：</strong>可重复构建（reproducible build）是安全和调试的基础。如果同一份源码在任何机器上编译的结果都完全相同，你就能确认"这个二进制确实来自这份源码"。这个补丁通过裁剪（trim）掉函数名中多余的部分来确保一致性。虽然改动很小，但对 CI（持续集成）系统和内核安全验证很有意义。
-</p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/5f5c5555-466d-41ac-8187-8b9ddc14965f@davidgow.net/" class="art-link">📬 查看补丁</a> </div></div><div class="mag-article"><div class="art-title">cargo-nok：用纯 Cargo 编译树外内核模块（社区讨论）</div><div class="art-body"><p>
-<strong>发生了什么：</strong>Tiago Dinis 在 Zulip 的 #Modules 频道里介绍了他的新项目 <code>cargo-nok</code>（No-Kbuild 的缩写）。这是一个实验性工具，目标是让开发者<strong>完全绕过内核的 Kbuild 构建系统</strong>，只用 Rust 自己的 Cargo 包管理器来编译树外（out-of-tree）内核模块。
-</p><p>
-<strong>为什么这很有意思：</strong>目前要编译一个 Rust 内核模块，你必须用内核的 Kbuild 系统（也就是 <code>make</code> 那一套），配置起来对新手不太友好。如果能直接用 <code>cargo build</code> 就搞定，开发体验会好很多——就像你写普通 Rust 项目一样。
-</p><p>
-<strong>限制和讨论：</strong>Tiago 自己也指出，并非所有 crate 都能兼容，因为内核使用的是自定义版本的 <code>core</code>、<code>alloc</code> 等基础库。但很多纯逻辑的 crate 是可以直接用的。他还 fork 了 <code>serde</code>（一个流行的序列化库），移除了浮点数支持后就能在内核模块里使用了——这说明不少用户态的 Rust 生态库离内核可用并不远。
-</p></div><div class="art-links"><a href="https://rust-for-linux.zulipchat.com/#narrow/stream/Modules/topic/PITCH%3A%20cargo-nok%3A%20Build%20out-of-tree%20modules%20using%20pure%20Cargo" class="art-link">💬 查看讨论</a> </div></div><div class="mag-tips"><div>
-<strong>💡 小白科普</strong><br/>
-<strong>Kbuild</strong>：Linux 内核专用的构建系统，基于 Makefile，负责把内核源码编译成可运行的内核镜像或模块。它很强大但学习曲线陡峭。<br/>
-<strong>树外模块（out-of-tree module）</strong>：不在内核源码树里的模块，通常是第三方驱动或实验性代码。类似于手机上的"侧载应用"。<a href="https://docs.kernel.org/kbuild/modules.html">📖 内核模块构建文档</a>
-</div></div></div><div class="mag-page-fade"></div><div class="mag-page-num">7</div></div></div><div class="mag-page mag-back-cover" data-density="hard"><div class="mag-page-inner back-cover-inner"><div class="back-decoration"></div><div class="back-content"><div class="back-logo">🦀</div><div class="back-title">Rust-for-Linux</div><div class="back-subtitle">Daily Briefing</div><div class="back-date">2026-06-15</div><div class="back-rule"></div><div class="back-sources"><a href="https://lore.kernel.org/rust-for-linux/">Lore</a> &middot; <a href="https://rust-for-linux.zulipchat.com/">Zulip</a> &middot; <a href="https://github.com/Rust-for-Linux">GitHub</a></div><div class="back-nav"><a href="2026-06-14.html" class="back-link-prev">&larr; 2026-06-14</a><a href="2026-06-16.html" class="back-link-next">2026-06-16 &rarr;</a></div></div></div></div>
+    <div class="mag-page mag-cover" data-density="hard"><div class="mag-page-inner cover-inner"><div class="cover-decoration"></div><div class="cover-content"><div class="cover-masthead">R&thinsp;F&thinsp;L&ensp;D&thinsp;A&thinsp;I&thinsp;L&thinsp;Y</div><div class="cover-rule"></div><div class="cover-crab">🦀</div><div class="cover-date">2026-08-24</div><div class="cover-weekday">Monday</div><div class="cover-rule"></div><div class="cover-hero">GPU/DRM 与显示驱动</div><div class="cover-rule-thin"></div><div class="cover-stats">10 emails</div></div></div></div><div class="mag-page"><div class="mag-page-inner overview-inner"><div class="mag-accent-bar"></div><div class="ov-label">TODAY'S OVERVIEW</div><h2 class="ov-title">📋 今日概览</h2><div class="ov-body"><span class="ov-dropcap">2</span>026-08-24 的 Rust-for-Linux 社区活动共整理出 4 条重点动态，其中补丁 4 条、讨论 0 条、GitHub 更新 0 条。下面按技术主线归纳，而不是逐条搬运邮件标题；重点说明“改了什么、为什么重要、后续值得看什么”。</div><div class="mag-page-num">2</div></div></div><div class="mag-page"><div class="mag-page-inner"><div class="mag-accent-bar"></div><div class="mag-section-label">GPU/DRM 与显示驱动</div><h2 class="mag-title">GPU/DRM 与显示驱动</h2><div class="mag-section-content"><div class="mag-article"><div class="art-title">1. drm/tyr: unplug the GPU when reset fails</div><div class="art-body"><p>今天 GPU/DRM 方向有 2 条动态，重点集中在 drm/tyr: unplug the GPU when reset fails、drm/tyr: move reset work to platform driver data。这类改动通常影响驱动如何向 DRM 暴露能力、如何管理设备私有数据，以及 nova 等 Rust 驱动的长期维护性。</p><p><strong>1. drm/tyr: unplug the GPU when reset fails</strong>：Unplug the DRM device when a scheduled GPU reset fails so that new DRM hardware access is rejected after the GPU becomes unusable. This follows the reset failure behavior implemented by Panthor.  This series applies on top of &quot;drm/tyr: GPU reset infrastructure&quot; [1] as a follow up work and resolves i... <a href="https://lore.kernel.org/rust-for-linux/20260823-tyr-gpu-unplug-b4-v1-0-e99c07d4c785@onurozkan.dev/">查看原文 1</a></p><p><strong>2. drm/tyr: move reset work to platform driver data</strong>：Move ResetHandle out of DRM registration data and store it as the first field of platform driver data. This makes platform teardown drain queued or running reset work before dropping the DRM registration and the resources it owns. <a href="https://lore.kernel.org/rust-for-linux/20260823-tyr-gpu-unplug-b4-v1-1-e99c07d4c785@onurozkan.dev/">查看原文 2</a></p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/20260823-tyr-gpu-unplug-b4-v1-0-e99c07d4c785@onurozkan.dev/" class="art-link">查看原文 1</a> <a href="https://lore.kernel.org/rust-for-linux/20260823-tyr-gpu-unplug-b4-v1-1-e99c07d4c785@onurozkan.dev/" class="art-link">查看原文 2</a> </div></div><div class="mag-tips"><div><strong>小白科普：DRM</strong>：Linux 的图形显示子系统，GPU 驱动通常通过它向用户空间暴露设备能力。 <a href="https://docs.kernel.org/gpu/index.html">学习链接</a></div></div></div><div class="mag-page-fade"></div><div class="mag-page-num">3</div></div></div><div class="mag-page"><div class="mag-page-inner"><div class="mag-accent-bar"></div><div class="mag-section-label">RUST 内核抽象</div><h2 class="mag-title">Rust 内核抽象</h2><div class="mag-section-content"><div class="mag-article"><div class="art-title">1. rust: net: phy: fix off-by-one bit positions in device status accessors</div><div class="art-body"><p>Rust 内核抽象方向有 2 条动态，主线是 rust: net: phy: fix off-by-one bit positions in device status accessors、rust: kbuild: disambiguate `zerocopy_derive` for `rusttest`。这些补丁看起来分散，但共同目标是把原本容易误用的底层能力收进更明确的 Rust 类型、生命周期和安全注释里。</p><p><strong>1. rust: net: phy: fix off-by-one bit positions in device status accessors</strong>：The hand-written bitfield offsets in is_link_up(), is_autoneg_enabled() and is_autoneg_completed() are all one bit short of the actual layout of struct phy_device. Counting from the first bitfield in the unit (is_c45 at bit 0), the C definition places autoneg at bit 14, link at bit 15, and autoneg_c... <a href="https://lore.kernel.org/rust-for-linux/20260823103644.342849-1-springbreeze@stu.pku.edu.cn/">查看原文 1</a></p><p><strong>2. rust: kbuild: disambiguate `zerocopy_derive` for `rusttest`</strong>：The `rustc-dev` components for Rust 1.82.0 through 1.87.0 include a precompiled `zerocopy_derive` procedural macro in the sysroot. This range includes Rust 1.85.0, our minimum supported version.  This makes `rusttest` fail because the compiler finds both the sysroot copy and the copy built in `rust/... <a href="https://lore.kernel.org/rust-for-linux/20260823193529.156066-1-ojeda@kernel.org/">查看原文 2</a></p></div><div class="art-links"><a href="https://lore.kernel.org/rust-for-linux/20260823103644.342849-1-springbreeze@stu.pku.edu.cn/" class="art-link">查看原文 1</a> <a href="https://lore.kernel.org/rust-for-linux/20260823193529.156066-1-ojeda@kernel.org/" class="art-link">查看原文 2</a> </div></div><div class="mag-tips"><div><strong>小白科普：安全抽象</strong>：Rust-for-Linux 会把底层 C API 包成带生命周期和所有权约束的接口，减少误用。 <a href="https://docs.kernel.org/rust/index.html">学习链接</a></div></div></div><div class="mag-page-fade"></div><div class="mag-page-num">4</div></div></div><div class="mag-page mag-back-cover" data-density="hard"><div class="mag-page-inner back-cover-inner"><div class="back-decoration"></div><div class="back-content"><div class="back-logo">🦀</div><div class="back-title">Rust-for-Linux</div><div class="back-subtitle">Daily Briefing</div><div class="back-date">2026-08-24</div><div class="back-rule"></div><div class="back-sources"><a href="https://lore.kernel.org/rust-for-linux/">Lore</a> &middot; <a href="https://rust-for-linux.zulipchat.com/">Zulip</a> &middot; <a href="https://github.com/Rust-for-Linux">GitHub</a></div><div class="back-nav"><a href="2026-08-23.html" class="back-link-prev">&larr; 2026-08-23</a></div></div></div></div>
   </div>
 </div>
 
@@ -319,8 +268,8 @@ document.addEventListener('DOMContentLoaded',function(){
   });
 
   /* ── Keyboard: left/right arrows for prev/next ── */
-  var prevUrl='2026-06-14.html';
-  var nextUrl='2026-06-16.html';
+  var prevUrl='2026-08-23.html';
+  var nextUrl='';
   document.addEventListener('keydown',function(e){
     if(calOpen){if(e.key==='Escape'){closeCal();e.stopPropagation()}return}
     if(e.key==='Escape'){window.location.href='index.html'}
@@ -331,7 +280,7 @@ document.addEventListener('DOMContentLoaded',function(){
   /* ── Calendar picker ── */
   var allSlugs=["2026-08-24", "2026-08-23", "2026-08-22", "2026-08-21", "2026-08-20", "2026-08-19", "2026-08-18", "2026-08-17", "2026-08-16", "2026-08-15", "2026-08-14", "2026-08-13", "2026-08-12", "2026-08-11", "2026-08-10", "2026-08-09", "2026-08-08", "2026-08-07", "2026-08-06", "2026-08-05", "2026-08-04", "2026-08-03", "2026-08-02", "2026-08-01", "2026-07-31", "2026-07-30", "2026-07-29", "2026-07-28", "2026-07-27", "2026-07-26", "2026-07-25", "2026-07-24", "2026-07-23", "2026-07-22", "2026-07-21", "2026-07-20", "2026-07-19", "2026-07-18", "2026-07-17", "2026-07-16", "2026-07-15", "2026-07-14", "2026-07-13", "2026-07-12", "2026-07-11", "2026-07-10", "2026-07-09", "2026-07-08", "2026-07-07", "2026-07-06", "2026-07-05", "2026-07-04", "2026-07-03", "2026-07-02", "2026-07-01", "2026-06-30", "2026-06-29", "2026-06-28", "2026-06-27", "2026-06-26", "2026-06-25", "2026-06-24", "2026-06-23", "2026-06-22", "2026-06-21", "2026-06-20", "2026-06-19", "2026-06-18", "2026-06-17", "2026-06-16", "2026-06-15", "2026-06-14", "2026-06-13", "2026-06-12", "2026-06-11", "2026-06-10", "2026-06-09", "2026-06-08", "2026-06-07", "2026-06-06", "2026-06-05", "2026-06-04", "2026-06-03", "2026-06-02", "2026-06-01", "2026-05-31", "2026-05-30", "2026-05-29", "2026-05-28", "2026-05-27", "2026-05-26", "2026-05-25", "2026-05-24", "2026-05-23", "2026-05-22", "2026-05-21", "2026-05-20", "2026-05-19", "2026-05-18", "2026-05-17", "2026-05-16", "2026-05-15", "2026-05-14", "2026-05-13", "2026-05-12", "2026-05-11", "2026-05-10", "2026-05-07", "2026-05-06", "2026-05-05", "2026-05-04", "2026-05-03", "2026-05-02", "2026-05-01", "2026-04-30", "2026-04-29", "2026-04-28", "2026-04-27", "2026-04-26", "2026-04-25", "2026-04-24", "2026-04-23", "2026-04-22", "2026-04-21", "2026-04-20", "2026-04-19", "2026-04-18", "2026-04-17", "2026-04-16", "2026-04-15", "2026-04-14", "2026-04-13", "2026-04-12", "2026-04-11", "2026-04-10", "2026-04-09", "2026-04-08", "2026-04-07", "2026-04-06", "2026-04-05", "2026-04-04", "2026-04-03", "2026-04-02", "2026-04-01", "2026-03-31", "2026-03-30", "2026-03-29", "2026-03-28", "2026-03-27", "2026-03-26", "2026-03-25", "2026-03-24", "2026-03-23", "2026-03-22", "2026-03-21", "2026-03-20", "2026-03-19"];
   var slugSet=new Set(allSlugs);
-  var curDate='2026-06-15';
+  var curDate='2026-08-24';
   var calOpen=false;
   var calMonth,calYear;
   // init to current page's month
